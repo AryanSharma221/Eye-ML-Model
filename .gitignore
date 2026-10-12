@@ -87,3 +87,7 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+# Panel Preparation & Academic Viva Documentation (Private notes)
+docs/panel-preparation/
+backup_panel_docs/
