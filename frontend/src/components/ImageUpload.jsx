@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { IconUpload, IconCheck, IconAlertCircle, IconEye, IconRefresh } from './MedicalIcons';
+import { useState, useRef } from 'react';
+import { IconUpload, IconEye, IconRefresh } from './MedicalIcons';
 import { DEMO_SAMPLES } from '../api';
 
 export default function ImageUpload({ onEvaluate, isAnalyzing, qualityResults }) {
@@ -72,7 +72,6 @@ export default function ImageUpload({ onEvaluate, isAnalyzing, qualityResults })
       try {
         const response = await fetch(selectedPreview);
         const blob = await response.blob();
-        const ext = (selectedFileName || 'sample.jpg').split('.').pop() || 'jpg';
         file = new File([blob], selectedFileName || 'sample.jpg', { type: blob.type || 'image/jpeg' });
         setSelectedFileObj(file);
       } catch (e) {

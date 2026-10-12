@@ -32,7 +32,8 @@ ml-checkpoint = "ml.checkpoint_manager:main"
 include = ["ml*"]
 
 [tool.pytest.ini_options]
-testpaths = ["ml/tests"]
+pythonpath = ["."]
+testpaths = ["ml/tests", "tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

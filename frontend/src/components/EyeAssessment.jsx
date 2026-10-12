@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { IconEye, IconCrosshair, IconAlertCircle, IconCheck } from './MedicalIcons';
+import { IconEye, IconCrosshair } from './MedicalIcons';
 import { getBackendOrigin } from '../api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);

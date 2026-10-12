@@ -1,5 +1,4 @@
-import React from 'react';
-import { IconShieldCheck, IconFileText } from '../components/MedicalIcons';
+import { IconShieldCheck } from '../components/MedicalIcons';
 
 export default function PrivacyPolicy() {
   return (

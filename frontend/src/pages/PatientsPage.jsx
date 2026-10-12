@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { IconUser, IconFileText, IconCheck } from '../components/MedicalIcons';
+import { useState } from 'react';
+import { IconCheck } from '../components/MedicalIcons';
 
 export default function PatientsPage({
   patients = [],

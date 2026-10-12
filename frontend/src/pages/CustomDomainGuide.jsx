@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { IconGlobe, IconShieldCheck, IconCheck, IconRefresh } from '../components/MedicalIcons';
+import { useState } from 'react';
+import { IconGlobe, IconCheck, IconRefresh } from '../components/MedicalIcons';
 
 export default function CustomDomainGuide() {
-  const [domainInput, setDomainInput] = useState('screening.medpulse.io');
+  const domainInput = 'screening.medpulse.io';
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState('verified'); // verified, checking, idle
 
@@ -47,9 +47,13 @@ export default function CustomDomainGuide() {
             </div>
 
             <div className="flex items-center space-x-2">
-              <span className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded border bg-emerald-50 text-emerald-800 border-emerald-300">
+              <span className={`inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded border ${
+                verificationStatus === 'verified'
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                  : 'bg-amber-50 text-amber-800 border-amber-300'
+              }`}>
                 <IconCheck className="w-3.5 h-3.5 mr-1 text-emerald-600" />
-                DNS & SSL Active
+                {verificationStatus === 'verified' ? 'DNS & SSL Active' : 'Verifying Records...'}
               </span>
               <button
                 type="button"

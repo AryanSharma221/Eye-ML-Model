@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { IconActivity, IconEye, IconUser, IconGlobe, IconShieldCheck } from './MedicalIcons';
+import { IconEye, IconUser, IconGlobe, IconShieldCheck } from './MedicalIcons';
 
 export default function Navbar({
   patients = [],

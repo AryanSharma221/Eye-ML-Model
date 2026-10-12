@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   IconFileText,
   IconDownload,
-  IconEye,
-  IconHeartPulse,
-  IconCheck,
-  IconAlertCircle,
-  IconShieldCheck,
 } from './MedicalIcons';
 import { api, getBackendOrigin } from '../api';
 

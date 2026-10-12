@@ -13,10 +13,6 @@ import { Line } from 'react-chartjs-2';
 import {
   IconFileText,
   IconDownload,
-  IconHeartPulse,
-  IconEye,
-  IconAlertCircle,
-  IconCheck,
 } from './MedicalIcons';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);

@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ImageUpload from '../components/ImageUpload';
 import EyeAssessment from '../components/EyeAssessment';
 import VitalsPanel from '../components/VitalsPanel';
 import ManualVitals from '../components/ManualVitals';
 import PatientHistory from '../components/PatientHistory';
 import ReportDownload from '../components/ReportDownload';
-import { IconUser, IconActivity, IconFileText, IconDownload, IconCheck, IconAlertCircle } from '../components/MedicalIcons';
+import { IconUser, IconDownload, IconAlertCircle } from '../components/MedicalIcons';
 import { api, DEMO_SAMPLES } from '../api';
 
 export default function ScreeningDashboard({
   patient,
   sessions,
   onRefreshSessions,
-  backendOnline,
 }) {
   const [activeSessionId, setActiveSessionId] = useState(null);
   const [analysisError, setAnalysisError] = useState(null);
   const [isAnalyzingEye, setIsAnalyzingEye] = useState(false);
-  const [eyeResult, setEyeResult] = useState({
+  const [eyeResult, setEyeResult] = useState(() => ({
     prediction: DEMO_SAMPLES[0].condition,
     confidence: DEMO_SAMPLES[0].confidence,
     risk_level: DEMO_SAMPLES[0].riskLevel,
@@ -26,7 +25,7 @@ export default function ScreeningDashboard({
     gradcam_image: DEMO_SAMPLES[0].gradcamHeatmap,
     original_url: DEMO_SAMPLES[0].originalImage,
     timestamp: new Date().toISOString(),
-  });
+  }));
   const [qualityResults, setQualityResults] = useState(DEMO_SAMPLES[0].quality);
 
   const [isSubmittingVitals, setIsSubmittingVitals] = useState(false);
@@ -60,7 +59,7 @@ export default function ScreeningDashboard({
   };
 
   // Handle Fundus Image Evaluation
-  const handleEvaluateImage = async (imageInput, filename) => {
+  const handleEvaluateImage = async (imageInput, _filename) => {
     setIsAnalyzingEye(true);
     setAnalysisError(null);
     try {

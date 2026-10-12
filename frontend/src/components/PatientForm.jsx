@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { IconUser, IconCheck } from './MedicalIcons';
+import { useState, useEffect } from 'react';
+import { IconUser } from './MedicalIcons';
 
 export default function PatientForm({ isOpen, onClose, onSubmit }) {
   const [name, setName] = useState('');
