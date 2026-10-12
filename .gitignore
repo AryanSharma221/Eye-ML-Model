@@ -53,6 +53,7 @@ ml/dataset/*
 ml/weights/*
 !ml/weights/.gitkeep
 !ml/weights/eye_model.pth
+ml/experiments/runs/
 
 # Uploaded Patient Data and Generated Artifacts
 backend/uploads/*
