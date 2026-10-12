@@ -26,10 +26,10 @@ services:
       - key: MAX_UPLOAD_SIZE_MB
         value: "30"
       - key: CORS_ORIGINS
-        value: "http://localhost:5173,https://multimodal-health-frontend.onrender.com"
+        value: "http://localhost:5173,https://multimodal-health-frontend.onrender.com,https://screening.medpulse.io"
 
   # ----------------------------------------------------------------------------
-  # 2. React 18 + Vite 5 Static Frontend Service
+  # 2. React 19 + Vite 8 Static Frontend Service
   # ----------------------------------------------------------------------------
   - type: web
     name: multimodal-health-frontend
@@ -45,3 +45,5 @@ services:
     envVars:
       - key: VITE_BACKEND_URL
         value: "https://multimodal-health-backend.onrender.com"
+      - key: VITE_API_BASE_URL
+        value: "https://multimodal-health-backend.onrender.com/api/v1"

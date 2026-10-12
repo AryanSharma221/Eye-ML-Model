@@ -1,10 +1,25 @@
 import axios from 'axios';
 
-// Backend configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+// Backend configuration with robust environment detection
+export const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL.replace(/\/+$/, '');
+  }
+  if (import.meta.env.VITE_BACKEND_URL) {
+    const raw = import.meta.env.VITE_BACKEND_URL.replace(/\/+$/, '');
+    return raw.endsWith('/api/v1') ? raw : `${raw}/api/v1`;
+  }
+  // In development, default to local backend. In production, default to same-origin /api/v1
+  return import.meta.env.DEV ? 'http://localhost:8000/api/v1' : '/api/v1';
+};
+
+export const getBackendOrigin = () => {
+  const apiBase = getApiBaseUrl();
+  return apiBase.replace(/\/api\/v1\/?$/, '');
+};
 
 export const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getApiBaseUrl(),
   timeout: 30000,
 });
 

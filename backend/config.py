@@ -16,6 +16,9 @@ DATABASE_URL = os.getenv(
     "DATABASE_URL",
     f"sqlite:///{BACKEND_DIR / 'health_screening.db'}",
 )
+# Heroku / Render legacy postgres:// fix for modern SQLAlchemy
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # CORS Configuration
 _DEFAULT_CORS_ORIGINS = [
@@ -32,7 +35,7 @@ def get_cors_origins() -> List[str]:
     return _DEFAULT_CORS_ORIGINS
 
 # Storage & Upload Configuration
-UPLOADS_DIR = BACKEND_DIR / "uploads"
+UPLOADS_DIR = Path(os.getenv("UPLOADS_DIR", str(BACKEND_DIR / "uploads")))
 GRADCAM_DIR = UPLOADS_DIR / "gradcam"
 MAX_UPLOAD_SIZE_MB = int(os.getenv("MAX_UPLOAD_SIZE_MB", "30"))
 MAX_FILE_SIZE_BYTES = MAX_UPLOAD_SIZE_MB * 1024 * 1024
@@ -43,7 +46,8 @@ RATE_LIMIT_PER_MINUTE = int(os.getenv("RATE_LIMIT_PER_MINUTE", "60"))
 ENABLE_RATE_LIMIT = os.getenv("ENABLE_RATE_LIMIT", "true").lower() in ("true", "1", "yes")
 MAX_IMAGE_PIXELS = int(os.getenv("MAX_IMAGE_PIXELS", "25000000"))
 
-# ML Checkpoint Configuration
+# ML Checkpoint & Runtime Configuration
+ML_DEVICE = os.getenv("ML_DEVICE", "auto")
 DEFAULT_CHECKPOINT_PATH = os.getenv(
     "CHECKPOINT_PATH",
     str(ML_DIR / "weights" / "eye_model.pth"),

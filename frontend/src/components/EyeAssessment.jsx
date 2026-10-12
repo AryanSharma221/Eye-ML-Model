@@ -10,6 +10,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { IconEye, IconCrosshair, IconAlertCircle, IconCheck } from './MedicalIcons';
+import { getBackendOrigin } from '../api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -142,9 +143,7 @@ export default function EyeAssessment({ result, isLoading }) {
     setReticleCoords(null);
   };
 
-  const backendBase = import.meta.env.VITE_API_BASE_URL
-    ? import.meta.env.VITE_API_BASE_URL.replace(/\/api\/v1\/?$/, '')
-    : 'http://localhost:8000';
+  const backendBase = getBackendOrigin();
 
   const rawOriginal = original_url || result?.image_url;
   const originalDisplayUrl = rawOriginal

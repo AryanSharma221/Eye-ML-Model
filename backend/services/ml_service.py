@@ -17,7 +17,8 @@ from typing import Any, Dict, Optional, Tuple
 
 import torch
 
-from backend.config import DEFAULT_CHECKPOINT_PATH
+from backend.config import DEFAULT_CHECKPOINT_PATH, ML_DEVICE
+from ml.config import resolve_device
 from ml.exceptions import (
     CheckpointCorruptError,
     CheckpointIncompatibleError,
@@ -57,9 +58,13 @@ class MLService:
     with granular sub-stage observability and timing.
     """
 
-    def __init__(self, checkpoint_path: Optional[str] = None):
+    def __init__(self, checkpoint_path: Optional[str] = None, device: Optional[str] = None):
         self.checkpoint_path = checkpoint_path or DEFAULT_CHECKPOINT_PATH
-        self.device = get_default_device()
+        target_device = device or ML_DEVICE
+        try:
+            self.device = resolve_device(target_device)
+        except Exception:
+            self.device = get_default_device()
         self._gradcam_lock = threading.Lock()
         self.model_load_duration_ms: Optional[float] = None
         self.checkpoint_verified: bool = False

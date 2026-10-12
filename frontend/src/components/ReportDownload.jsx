@@ -8,7 +8,7 @@ import {
   IconAlertCircle,
   IconShieldCheck,
 } from './MedicalIcons';
-import { api } from '../api';
+import { api, getBackendOrigin } from '../api';
 
 export default function ReportDownload({ session, patient, isOpen, onClose }) {
   const [isExporting, setIsExporting] = useState(false);
@@ -42,9 +42,7 @@ export default function ReportDownload({ session, patient, isOpen, onClose }) {
   const spo2 = vitalsRecord ? vitalsRecord.spo2_percent : (session.vitals?.spo2 ?? 97);
   const temp = vitalsRecord ? vitalsRecord.temperature_celsius : (session.vitals?.temp ?? 36.8);
 
-  const backendBase = import.meta.env.VITE_API_BASE_URL
-    ? import.meta.env.VITE_API_BASE_URL.replace(/\/api\/v1\/?$/, '')
-    : 'http://localhost:8000';
+  const backendBase = getBackendOrigin();
   const rawGradcam = session.gradcam_image || session.eye_record?.gradcam_path;
   const gradcamDisplay = rawGradcam
     ? rawGradcam.startsWith('data:')
