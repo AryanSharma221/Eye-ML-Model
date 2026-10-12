@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-10-12T19:22:37.028Z",
+  "target": "http://localhost:5173",
+  "total": 26,
+  "passed": 26,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Dashboard Initial HTTP 200 Status",
+      "passed": true,
+      "details": "Status: 200"
+    },
+    {
+      "name": "Page Title Verification",
+      "passed": true,
+      "details": "Title: RetinaPulse - Multimodal Health Screening Platform"
+    },
+    {
+      "name": "Initial Empty State & Upload Area Present",
+      "passed": true,
+      "details": "Fundus upload prompt detected"
+    },
+    {
+      "name": "Direct Navigation to /patients (Patients Directory)",
+      "passed": true,
+      "details": "Selector 'table, h1, h2, th' found"
+    },
+    {
+      "name": "Direct Refresh on /patients",
+      "passed": true,
+      "details": "Status: 304"
+    },
+    {
+      "name": "Direct Navigation to /domain-guide (Custom Domain Guide)",
+      "passed": true,
+      "details": "Selector 'h1, h2, pre' found"
+    },
+    {
+      "name": "Direct Refresh on /domain-guide",
+      "passed": true,
+      "details": "Status: 304"
+    },
+    {
+      "name": "Direct Navigation to /terms (Terms of Service)",
+      "passed": true,
+      "details": "Selector 'h1, h2' found"
+    },
+    {
+      "name": "Direct Refresh on /terms",
+      "passed": true,
+      "details": "Status: 304"
+    },
+    {
+      "name": "Direct Navigation to /privacy (Privacy Policy)",
+      "passed": true,
+      "details": "Selector 'h1, h2' found"
+    },
+    {
+      "name": "Direct Refresh on /privacy",
+      "passed": true,
+      "details": "Status: 304"
+    },
+    {
+      "name": "Responsive Layout: Desktop (1920x1080)",
+      "passed": true,
+      "details": "scrollWidth: 1920, clientWidth: 1920"
+    },
+    {
+      "name": "Responsive Layout: Laptop (1366x768)",
+      "passed": true,
+      "details": "scrollWidth: 1366, clientWidth: 1366"
+    },
+    {
+      "name": "Responsive Layout: Tablet (768x1024)",
+      "passed": true,
+      "details": "scrollWidth: 768, clientWidth: 768"
+    },
+    {
+      "name": "Responsive Layout: Mobile (375x667)",
+      "passed": true,
+      "details": "scrollWidth: 375, clientWidth: 375"
+    },
+    {
+      "name": "Backend /predict_eye HTTP 200 Response",
+      "passed": true,
+      "details": "Prediction: cataract, Confidence: 0.9813"
+    },
+    {
+      "name": "Valid Canonical Class in Result",
+      "passed": true,
+      "details": "Class: cataract"
+    },
+    {
+      "name": "Grad-CAM Heatmap Generated",
+      "passed": true,
+      "details": "Grad-CAM length: 291784"
+    },
+    {
+      "name": "Prediction Label Rendered in UI Panel",
+      "passed": true,
+      "details": "Detected condition label in DOM"
+    },
+    {
+      "name": "Medical Decision-Support Disclaimer Rendered",
+      "passed": true,
+      "details": "Non-diagnostic disclaimer confirmed in UI"
+    },
+    {
+      "name": "Backend /submit_vitals HTTP 200 Response",
+      "passed": true,
+      "details": "Overall: Abnormal, HR: 108"
+    },
+    {
+      "name": "Patient Intake Modal Opened",
+      "passed": true,
+      "details": "Form element located"
+    },
+    {
+      "name": "Patient Modal Escape Key Dismissal",
+      "passed": true,
+      "details": "Escape key sent"
+    },
+    {
+      "name": "Clinical Dossier Export Modal Rendered",
+      "passed": true,
+      "details": "Dossier modal opened with PDF download button"
+    },
+    {
+      "name": "Zero Critical Browser Console Errors",
+      "passed": true,
+      "details": "Critical console errors: 0"
+    },
+    {
+      "name": "Zero Critical Network Request Failures",
+      "passed": true,
+      "details": "Failed requests: 0"
+    }
+  ]
+}

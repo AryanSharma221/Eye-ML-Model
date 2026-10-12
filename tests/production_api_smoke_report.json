@@ -1,0 +1,139 @@
+{
+  "target": "http://127.0.0.1:8000",
+  "timestamp": "2026-10-12T19:15:00Z",
+  "total_tests": 26,
+  "passed_tests": 26,
+  "failed_tests": 0,
+  "results": [
+    {
+      "name": "GET /health/live (Liveness Probe)",
+      "passed": true,
+      "details": "Status: 200, latency: 5.0ms, resp: {'status': 'alive', 'service': 'multimodal-health-screening-backend', 'timestamp': '2026-10-12T19:14:59.541505+00:00'}"
+    },
+    {
+      "name": "GET /health/ready (Readiness Probe)",
+      "passed": true,
+      "details": "Status: 200, latency: 2.5ms, device: cuda, model_loaded: True"
+    },
+    {
+      "name": "GET /health (Legacy Health)",
+      "passed": true,
+      "details": "Status: 200, latency: 1.6ms"
+    },
+    {
+      "name": "OWASP Defensive Security Headers & Request Correlation",
+      "passed": true,
+      "details": "X-Content-Type-Options: nosniff, X-Frame-Options: DENY, X-Request-ID: 9391483b62a049cc8bda35d08fa637eb"
+    },
+    {
+      "name": "POST /api/v1/patients (Patient Intake)",
+      "passed": true,
+      "details": "Status: 201, latency: 7.7ms, patient_id: 88"
+    },
+    {
+      "name": "GET /api/v1/patients/88 (Patient Record Lookup)",
+      "passed": true,
+      "details": "Status: 200, retrieved name: Audit Verification Patient"
+    },
+    {
+      "name": "GET /api/v1/patients (List Patients)",
+      "passed": true,
+      "details": "Status: 200, patient count: 88"
+    },
+    {
+      "name": "POST /api/v1/sessions (Session Initialization)",
+      "passed": true,
+      "details": "Status: 201, latency: 9.3ms, session_id: 103"
+    },
+    {
+      "name": "GET /api/v1/sessions/103 (Session Lookup)",
+      "passed": true,
+      "details": "Status: 200, patient_id: 88"
+    },
+    {
+      "name": "GET /api/v1/sessions (List Sessions)",
+      "passed": true,
+      "details": "Status: 200, session count: 100"
+    },
+    {
+      "name": "ML Inference on sample_cataract.jpg (cataract)",
+      "passed": true,
+      "details": "Status: 200, Latency: 230.4ms, Pred: 'cataract', Conf: 0.9813, GradCAM length: 291784, ProbSum: 1.0000"
+    },
+    {
+      "name": "ML Inference on sample_dr.jpeg (diabetic_retinopathy)",
+      "passed": true,
+      "details": "Status: 200, Latency: 203.3ms, Pred: 'diabetic_retinopathy', Conf: 0.9713, GradCAM length: 311084, ProbSum: 1.0000"
+    },
+    {
+      "name": "ML Inference on sample_glaucoma.jpg (glaucoma)",
+      "passed": true,
+      "details": "Status: 200, Latency: 185.6ms, Pred: 'glaucoma', Conf: 0.9286, GradCAM length: 358884, ProbSum: 1.0000"
+    },
+    {
+      "name": "ML Inference on sample_normal.jpg (normal)",
+      "passed": true,
+      "details": "Status: 200, Latency: 180.1ms, Pred: 'normal', Conf: 0.9410, GradCAM length: 401444, ProbSum: 0.9999"
+    },
+    {
+      "name": "POST /api/v1/submit_vitals (Normal Vitals Intake)",
+      "passed": true,
+      "details": "Status: 200, latency: 8.8ms, overall: Normal"
+    },
+    {
+      "name": "POST /api/v1/submit_vitals (Critical Triage Vitals)",
+      "passed": true,
+      "details": "Status: 200, overall: Abnormal"
+    },
+    {
+      "name": "POST /api/v1/screen (Multimodal Combined Screening)",
+      "passed": true,
+      "details": "Status: 200, latency: 174.9ms, eye_pred: glaucoma, overall_risk: HIGH"
+    },
+    {
+      "name": "GET /api/v1/sessions/103 (Session Persistence Audit)",
+      "passed": true,
+      "details": "Eye Record Present: True, Vitals Records Count: 3"
+    },
+    {
+      "name": "GET /api/v1/sessions/103/report?format=pdf (PDF Clinical Report)",
+      "passed": true,
+      "details": "Status: 200, latency: 24.6ms, length: 3168 bytes, content-type: application/pdf"
+    },
+    {
+      "name": "GET /api/v1/sessions/103/report?format=html (HTML Dossier View)",
+      "passed": true,
+      "details": "Status: 200, latency: 6.7ms, length: 4510 bytes"
+    },
+    {
+      "name": "Security Boundary: Corrupt Image Bytes Rejection (400 Bad Request)",
+      "passed": true,
+      "details": "Status: 400, error payload: {'status': 'error', 'error_type': 'HTTPException', 'message': 'Invalid file content: File content does not match expected image signature (JPEG or PNG required).', 'detail': 'Invalid file content: File content does not match expected image signature (JPEG or PNG required).', 'request_id': '5f30f82eae0f4b80831583c4ad57a0aa'}"
+    },
+    {
+      "name": "Security Boundary: Text File Disguised as Image (400 Bad Request)",
+      "passed": true,
+      "details": "Status: 400, message: Invalid file content: File content does not match expected image signature (JPEG or PNG required)."
+    },
+    {
+      "name": "Quality Gate Enforcement: Low-Quality Image Rejection (400 Bad Request)",
+      "passed": true,
+      "details": "Status: 400, rejection reason: Excessive image blur (blur score 0.00 < threshold 100.0)."
+    },
+    {
+      "name": "Input Validation: Missing Required Vitals Fields (400 Bad Request)",
+      "passed": true,
+      "details": "Status: 400, message: All three vital signs (heart_rate, spo2, temperature) must be provided."
+    },
+    {
+      "name": "Input Validation: String Data Type for Numeric Vitals (422 Unprocessable Entity)",
+      "passed": true,
+      "details": "Status: 422, details: ['body -> heart_rate: Input should be a valid number, unable to parse string as a number']"
+    },
+    {
+      "name": "Security Boundary: Oversized Upload Rejection (413 Payload Too Large)",
+      "passed": true,
+      "details": "Status: 413, message: {\"status\":\"error\",\"error_type\":\"PayloadTooLarge\",\"message\":\"Uploaded file exceeds maximum limit of 30 MB.\",\"detail\":\"Uploaded file exceeds maximum lim"
+    }
+  ]
+}
