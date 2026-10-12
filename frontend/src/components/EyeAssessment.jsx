@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { IconEye, IconCrosshair } from './MedicalIcons';
+import { IconEye, IconCrosshair, IconAlertCircle } from './MedicalIcons';
 import { getBackendOrigin } from '../api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -18,6 +18,7 @@ export default function EyeAssessment({ result, isLoading }) {
   const [showGradCam, setShowGradCam] = useState(false);
   const [reticleCoords, setReticleCoords] = useState(null);
   const [isReticleActive, setIsReticleActive] = useState(true);
+  const [imageLoadError, setImageLoadError] = useState(false);
 
   if (isLoading) {
     return (
@@ -58,9 +59,10 @@ export default function EyeAssessment({ result, isLoading }) {
     risk_level,
     all_probabilities,
     gradcam_image,
+    gradcam_url,
     original_url,
     timestamp,
-  } = result;
+  } = result || {};
 
   const riskBadgeStyles = {
     HIGH: 'bg-rose-50 text-rose-800 border-rose-300',
@@ -145,18 +147,38 @@ export default function EyeAssessment({ result, isLoading }) {
 
   const backendBase = getBackendOrigin();
 
-  const rawOriginal = original_url || result?.image_url;
-  const originalDisplayUrl = rawOriginal
-    ? rawOriginal.startsWith('http') || rawOriginal.startsWith('data:') || rawOriginal.startsWith('/samples')
-      ? rawOriginal
-      : `${backendBase}${rawOriginal.startsWith('/') ? '' : '/'}${rawOriginal}`
-    : null;
+  // Resolve Grad-CAM URL or Data URI safely
+  const rawGradCam = gradcam_image || gradcam_url || result?.gradcam_url;
+  let gradcamDisplayUrl = null;
+  if (rawGradCam && typeof rawGradCam === 'string' && rawGradCam.trim()) {
+    const trimmed = rawGradCam.trim();
+    if (trimmed.startsWith('data:image/')) {
+      gradcamDisplayUrl = trimmed;
+    } else if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      gradcamDisplayUrl = trimmed;
+    } else if (trimmed.startsWith('/samples')) {
+      gradcamDisplayUrl = trimmed;
+    } else if (trimmed.startsWith('/uploads') || trimmed.startsWith('uploads/')) {
+      gradcamDisplayUrl = `${backendBase}${trimmed.startsWith('/') ? '' : '/'}${trimmed}`;
+    } else if (trimmed !== 'undefined' && trimmed !== 'null') {
+      // Raw base64 string from DenseNet201 inference pipeline
+      gradcamDisplayUrl = `data:image/png;base64,${trimmed}`;
+    }
+  }
 
-  const currentImageUrl = showGradCam
-    ? gradcam_image?.startsWith('data:')
-      ? gradcam_image
-      : `data:image/png;base64,${gradcam_image}`
-    : originalDisplayUrl || (gradcam_image ? (gradcam_image.startsWith('data:') ? gradcam_image : `data:image/png;base64,${gradcam_image}`) : '/samples/sample_glaucoma.jpg');
+  // Resolve Original Image URL safely
+  const rawOriginal = original_url || result?.image_url;
+  let originalDisplayUrl = '/samples/sample_glaucoma.jpg';
+  if (rawOriginal && typeof rawOriginal === 'string' && rawOriginal.trim()) {
+    const trimmed = rawOriginal.trim();
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('data:') || trimmed.startsWith('/samples')) {
+      originalDisplayUrl = trimmed;
+    } else {
+      originalDisplayUrl = `${backendBase}${trimmed.startsWith('/') ? '' : '/'}${trimmed}`;
+    }
+  }
+
+  const currentImageUrl = showGradCam ? gradcamDisplayUrl : originalDisplayUrl;
 
   return (
     <div className="bg-white border border-slate-200 rounded p-5">
@@ -248,7 +270,10 @@ export default function EyeAssessment({ result, isLoading }) {
           <div className="inline-flex rounded border border-slate-300 overflow-hidden bg-slate-100 text-xs">
             <button
               type="button"
-              onClick={() => setShowGradCam(false)}
+              onClick={() => {
+                setShowGradCam(false);
+                setImageLoadError(false);
+              }}
               className={`px-3 py-1 font-medium transition-colors ${
                 !showGradCam ? 'bg-white text-slate-900 font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
@@ -257,7 +282,10 @@ export default function EyeAssessment({ result, isLoading }) {
             </button>
             <button
               type="button"
-              onClick={() => setShowGradCam(true)}
+              onClick={() => {
+                setShowGradCam(true);
+                setImageLoadError(false);
+              }}
               className={`px-3 py-1 font-medium transition-colors ${
                 showGradCam ? 'bg-white text-slate-900 font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
@@ -275,14 +303,29 @@ export default function EyeAssessment({ result, isLoading }) {
             isReticleActive ? 'inspection-reticle' : ''
           }`}
         >
-          <img
-            src={currentImageUrl}
-            alt="Fundus photograph of retina displaying optic disc, macula, and vessel anatomy with diagnostic Grad-CAM overlay"
-            className="h-full w-full object-contain select-none"
-          />
+          {showGradCam && (!currentImageUrl || imageLoadError) ? (
+            <div className="flex flex-col items-center justify-center text-center p-6 text-slate-300">
+              <IconAlertCircle className="w-8 h-8 text-amber-400 mb-2" />
+              <p className="text-xs font-semibold text-white">Grad-CAM Heatmap Unavailable</p>
+              <p className="text-[11px] text-slate-400 max-w-sm mt-1">
+                Visual attention heatmap not generated for this scan. Run AI analysis to compute DenseNet201 (dense_block4) activation overlay.
+              </p>
+            </div>
+          ) : currentImageUrl ? (
+            <img
+              src={currentImageUrl}
+              alt="Fundus photograph of retina displaying optic disc, macula, and vessel anatomy with diagnostic Grad-CAM overlay"
+              className="h-full w-full object-contain select-none"
+              onError={() => setImageLoadError(true)}
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center p-6 text-slate-400 text-xs">
+              No image available
+            </div>
+          )}
 
           {/* Precision Diagnostic Reticle Coordinate Overlay (Cursor Animation) */}
-          {isReticleActive && reticleCoords && (
+          {isReticleActive && reticleCoords && !imageLoadError && currentImageUrl && (
             <div className="absolute top-2 left-2 bg-slate-900/90 border border-slate-700 text-sky-300 text-[10px] font-mono px-2 py-1 rounded pointer-events-none">
               Foveal Coordinate: X={reticleCoords.x}% Y={reticleCoords.y}% | Mode: {showGradCam ? 'Grad-CAM Attention' : 'Color Fundus'}
             </div>

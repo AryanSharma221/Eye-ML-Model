@@ -110,7 +110,8 @@ class SecurityHeadersMiddleware:
                 headers["Content-Security-Policy"] = (
                     "default-src 'self'; "
                     "img-src 'self' data: blob:; "
-                    "style-src 'self' 'unsafe-inline'; "
+                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+                    "font-src 'self' https://fonts.gstatic.com data:; "
                     "script-src 'self'; "
                     "frame-ancestors 'none';"
                 )

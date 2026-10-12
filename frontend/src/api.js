@@ -47,6 +47,7 @@ export const DEMO_SAMPLES = [
       overall_pass: true,
     },
     originalImage: '/samples/sample_glaucoma.jpg',
+    gradcamHeatmap: '/samples/sample_glaucoma_gradcam.png',
     disclosure: 'Held-out Clinical Retinal Fundus Sample (kaggle_2052_right)',
   },
   {
@@ -71,6 +72,7 @@ export const DEMO_SAMPLES = [
       overall_pass: true,
     },
     originalImage: '/samples/sample_normal.jpg',
+    gradcamHeatmap: '/samples/sample_normal_gradcam.png',
     disclosure: 'Held-out Clinical Retinal Fundus Sample (kaggle_2587_right)',
   },
   {
@@ -95,6 +97,7 @@ export const DEMO_SAMPLES = [
       overall_pass: true,
     },
     originalImage: '/samples/sample_dr.jpeg',
+    gradcamHeatmap: '/samples/sample_dr_gradcam.png',
     disclosure: 'Held-out Clinical Retinal Fundus Sample (kaggle_10184_left)',
   },
   {
@@ -119,6 +122,7 @@ export const DEMO_SAMPLES = [
       overall_pass: true,
     },
     originalImage: '/samples/sample_cataract.jpg',
+    gradcamHeatmap: '/samples/sample_cataract_gradcam.png',
     disclosure: 'Held-out Clinical Retinal Fundus Sample (kaggle_112_right)',
   },
 ];
