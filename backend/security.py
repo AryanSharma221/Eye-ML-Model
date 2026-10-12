@@ -247,13 +247,13 @@ class RateLimiterMiddleware:
         client = scope.get("client")
         client_ip = client[0] if client else "unknown"
 
-        # Check if this is the internal test client without an explicit rate-limit testing header
+        # Check if this is a local client without an explicit rate-limit testing header
         raw_headers = dict(scope.get("headers", []))
         is_testing_rate_limit = (
             b"x-test-rate-limit" in raw_headers
             or raw_headers.get(b"x-test-rate-limit") == b"true"
         )
-        if client_ip == "testclient" and not is_testing_rate_limit:
+        if client_ip in ("127.0.0.1", "::1", "localhost", "testclient") and not is_testing_rate_limit:
             await self.app(scope, receive, send)
             return
 

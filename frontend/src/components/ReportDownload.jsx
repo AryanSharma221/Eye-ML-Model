@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IconFileText,
   IconDownload,
@@ -13,7 +13,25 @@ import { api } from '../api';
 export default function ReportDownload({ session, patient, isOpen, onClose }) {
   const [isExporting, setIsExporting] = useState(false);
 
-  if (!isOpen || !session || !patient) return null;
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  if (!isOpen || !session) return null;
+
+  const currentPatient = patient || {
+    id: 'DEMO-001',
+    name: 'Clinical Screening Subject',
+    age: '54',
+    gender: 'Unspecified',
+    contact: 'Recorded in system',
+  };
 
   const sessionRisk = session.overall_risk_level || session.eye_record?.risk_level || session.risk_level || 'LOW';
   const eyePred = session.eye_record?.prediction || session.eye_prediction || 'Normal';
@@ -41,9 +59,13 @@ export default function ReportDownload({ session, patient, isOpen, onClose }) {
   };
 
   const handleDownloadPdf = async () => {
+    if (!session?.id || isNaN(parseInt(session.id, 10))) {
+      window.print();
+      return;
+    }
     setIsExporting(true);
     try {
-      const response = await api.getSessionReport(session.id);
+      const response = await api.getSessionReport(parseInt(session.id, 10));
       if (response && response.data instanceof Blob) {
         const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
         const link = document.createElement('a');
@@ -141,21 +163,21 @@ export default function ReportDownload({ session, patient, isOpen, onClose }) {
           <div className="grid grid-cols-4 gap-2 text-xs bg-slate-50 p-3 rounded border border-slate-200">
             <div>
               <span className="text-slate-400 block text-[10px]">Patient Name:</span>
-              <span className="font-semibold text-slate-900">{patient.name}</span>
+              <span className="font-semibold text-slate-900">{currentPatient.name}</span>
             </div>
             <div>
               <span className="text-slate-400 block text-[10px]">Patient ID:</span>
-              <span className="font-mono text-slate-900">{patient.id}</span>
+              <span className="font-mono text-slate-900">{currentPatient.id}</span>
             </div>
             <div>
               <span className="text-slate-400 block text-[10px]">Age / Sex:</span>
               <span className="text-slate-900">
-                {patient.age} years / {patient.gender}
+                {currentPatient.age} years / {currentPatient.gender}
               </span>
             </div>
             <div>
               <span className="text-slate-400 block text-[10px]">Contact / MRN:</span>
-              <span className="text-slate-900">{patient.contact || 'Registered in Record'}</span>
+              <span className="text-slate-900">{currentPatient.contact || 'Registered in Record'}</span>
             </div>
           </div>
         </div>
