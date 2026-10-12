@@ -11,9 +11,11 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from fastapi.responses import HTMLResponse, StreamingResponse
 from sqlalchemy.orm import Session, joinedload
 
+import html
 from backend.database import get_db
 from backend.models_db import EyeData, Patient, PhysiologicalData, Session as ScreeningSession
 from backend.schemas import SessionCreate, SessionResponse
+from backend.security import delete_physical_file, sanitize_html_text
 
 router = APIRouter(prefix="/api/v1/sessions", tags=["Sessions"])
 
@@ -73,6 +75,33 @@ def get_session(session_id: int, db: Session = Depends(get_db)):
             detail=f"Session with ID {session_id} not found.",
         )
     return sess
+
+
+@router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_session(session_id: int, db: Session = Depends(get_db)):
+    """Deletes a screening session and all associated files and records."""
+    sess = (
+        db.query(ScreeningSession)
+        .filter(ScreeningSession.id == session_id)
+        .options(
+            joinedload(ScreeningSession.eye_record),
+            joinedload(ScreeningSession.vitals_records),
+        )
+        .first()
+    )
+    if not sess:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Session with ID {session_id} not found.",
+        )
+
+    # Clean up physical retinal fundus and Grad-CAM image files
+    if sess.eye_record:
+        delete_physical_file(sess.eye_record.image_path)
+        delete_physical_file(sess.eye_record.gradcam_path)
+
+    db.delete(sess)
+    db.commit()
 
 
 @router.get("/{session_id}/report")
@@ -287,28 +316,34 @@ def get_session_report(
             pass
 
     # ─────────────────────────────────────────────────────────────────────────
-    # B. HTML Report Format (Default web view)
+    # B. HTML Report Format (Default web view with XSS sanitization)
     # ─────────────────────────────────────────────────────────────────────────
-    patient_name = patient.name if patient else "Anonymous / Unregistered"
-    patient_age = f"{patient.age} yrs" if patient and patient.age else "N/A"
-    patient_gender = patient.gender if patient and patient.gender else "N/A"
+    patient_name = sanitize_html_text(patient.name) if patient else "Anonymous / Unregistered"
+    patient_age = f"{patient.age} yrs" if patient and patient.age is not None else "N/A"
+    patient_gender = sanitize_html_text(patient.gender) if patient and patient.gender else "N/A"
+    overall_risk_sanitized = sanitize_html_text(sess.overall_risk_level or "UNKNOWN")
 
     eye_html = ""
     if eye:
         prob_rows = ""
         if eye.all_probabilities:
             for k, v in eye.all_probabilities.items():
-                prob_rows += f"<tr><td>{k.replace('_', ' ').title()}</td><td>{v*100:.2f}%</td></tr>"
+                k_clean = sanitize_html_text(k.replace('_', ' ').title())
+                prob_rows += f"<tr><td>{k_clean}</td><td>{float(v)*100:.2f}%</td></tr>"
 
-        gcam_img = f'<img src="{eye.gradcam_path}" style="max-width:250px; border-radius:4px;" />' if eye.gradcam_path else "<i>Not computed</i>"
-        fundus_img = f'<img src="{eye.image_path}" style="max-width:250px; border-radius:4px;" />' if eye.image_path else "<i>No image</i>"
+        gcam_url_safe = sanitize_html_text(eye.gradcam_path)
+        fundus_url_safe = sanitize_html_text(eye.image_path)
+        gcam_img = f'<img src="{gcam_url_safe}" style="max-width:250px; border-radius:4px;" />' if eye.gradcam_path else "<i>Not computed</i>"
+        fundus_img = f'<img src="{fundus_url_safe}" style="max-width:250px; border-radius:4px;" />' if eye.image_path else "<i>No image</i>"
+        pred_safe = sanitize_html_text(eye.prediction.upper() if eye.prediction else "UNKNOWN")
+        risk_safe = sanitize_html_text(eye.risk_level or "UNKNOWN")
 
         eye_html = f"""
         <div class="card">
             <h3>Eye Disease Assessment (DenseNet201)</h3>
-            <p><strong>Predicted Condition:</strong> <span class="badge">{eye.prediction.upper()}</span></p>
-            <p><strong>Confidence:</strong> {eye.confidence*100:.2f}%</p>
-            <p><strong>Risk Level:</strong> {eye.risk_level}</p>
+            <p><strong>Predicted Condition:</strong> <span class="badge">{pred_safe}</span></p>
+            <p><strong>Confidence:</strong> {float(eye.confidence or 0)*100:.2f}%</p>
+            <p><strong>Risk Level:</strong> {risk_safe}</p>
             <table class="subtable">
                 <thead><tr><th>Condition</th><th>Probability</th></tr></thead>
                 <tbody>{prob_rows}</tbody>
@@ -326,13 +361,17 @@ def get_session_report(
     if vitals_list:
         v_rows = ""
         for v in vitals_list:
+            hr_stat = sanitize_html_text(v.hr_status)
+            spo2_stat = sanitize_html_text(v.spo2_status)
+            temp_stat = sanitize_html_text(v.temp_status)
+            ov_stat = sanitize_html_text(v.overall_status)
             v_rows += f"""
             <tr>
                 <td>{v.timestamp.strftime('%H:%M:%S UTC')}</td>
-                <td>{v.heart_rate_bpm:.1f} BPM ({v.hr_status})</td>
-                <td>{v.spo2_percent:.1f}% ({v.spo2_status})</td>
-                <td>{v.temperature_celsius:.1f}°C ({v.temp_status})</td>
-                <td><strong>{v.overall_status}</strong></td>
+                <td>{v.heart_rate_bpm:.1f} BPM ({hr_stat})</td>
+                <td>{v.spo2_percent:.1f}% ({spo2_stat})</td>
+                <td>{v.temperature_celsius:.1f}°C ({temp_stat})</td>
+                <td><strong>{ov_stat}</strong></td>
             </tr>
             """
         vitals_html = f"""
@@ -374,7 +413,7 @@ def get_session_report(
             <div class="card">
                 <p><strong>Session ID:</strong> #{sess.id} | <strong>Date:</strong> {sess.timestamp.strftime('%Y-%m-%d %H:%M UTC')}</p>
                 <p><strong>Patient:</strong> {patient_name} (Age: {patient_age}, Gender: {patient_gender})</p>
-                <p><strong>Overall Risk:</strong> <span class="badge">{sess.overall_risk_level}</span></p>
+                <p><strong>Overall Risk:</strong> <span class="badge">{overall_risk_sanitized}</span></p>
             </div>
             {eye_html}
             {vitals_html}

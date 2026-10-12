@@ -4,6 +4,7 @@ Unifies teammate's API contracts with the multimodal screening contracts.
 """
 
 from datetime import datetime
+import math
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -139,7 +140,7 @@ class VitalsSubmit(BaseModel):
     @classmethod
     def validate_hr(cls, v):
         if v is not None:
-            if v < 30.0 or v > 220.0:
+            if math.isnan(v) or math.isinf(v) or v < 30.0 or v > 220.0:
                 raise ValueError(f"Heart rate {v} BPM is outside physiological range [30, 220].")
         return v
 
@@ -147,7 +148,7 @@ class VitalsSubmit(BaseModel):
     @classmethod
     def validate_spo2(cls, v):
         if v is not None:
-            if v < 50.0 or v > 100.0:
+            if math.isnan(v) or math.isinf(v) or v < 50.0 or v > 100.0:
                 raise ValueError(f"SpO2 {v}% is outside physiological range [50, 100].")
         return v
 
@@ -155,7 +156,7 @@ class VitalsSubmit(BaseModel):
     @classmethod
     def validate_temp(cls, v):
         if v is not None:
-            if v < 30.0 or v > 45.0:
+            if math.isnan(v) or math.isinf(v) or v < 30.0 or v > 45.0:
                 raise ValueError(f"Temperature {v}°C is outside physiological range [30.0, 45.0].")
         return v
 

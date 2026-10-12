@@ -28,6 +28,12 @@ from backend.observability import (
     CorrelationIdMiddleware,
     configure_backend_logging,
 )
+from backend.security import (
+    InMemoryRateLimiter,
+    RateLimiterMiddleware,
+    RequestSizeLimitMiddleware,
+    SecurityHeadersMiddleware,
+)
 from backend.routes import (
     eye_router,
     health_router,
@@ -97,6 +103,17 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# ---------------------------------------------------------------------------
+# Middlewares (Security Headers, Rate Limiting, Request Size, Correlation, CORS)
+# ---------------------------------------------------------------------------
+
+# In-Memory Rate Limiter for compute-heavy screening routes
+rate_limiter = InMemoryRateLimiter()
+app.add_middleware(RateLimiterMiddleware, limiter=rate_limiter)
+
+# Transport-Level Request Size Limit Middleware (blocks oversized payloads upfront)
+app.add_middleware(RequestSizeLimitMiddleware)
+
 # Correlation ID and Request Observability Middleware (runs on every request)
 app.add_middleware(CorrelationIdMiddleware)
 
@@ -110,6 +127,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# OWASP Security Headers Middleware (injects defensive headers on all responses)
+app.add_middleware(SecurityHeadersMiddleware)
 
 
 # ---------------------------------------------------------------------------

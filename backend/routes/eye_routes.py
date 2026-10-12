@@ -81,7 +81,7 @@ async def predict_eye(
         request.state.error_category = type(err).__name__
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Model checkpoint is corrupted or incompatible: {err}",
+            detail="Model checkpoint is corrupted or incompatible with current architecture.",
         )
     except InvalidImageInputError as err:
         cleanup_file(disk_path)

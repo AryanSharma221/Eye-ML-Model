@@ -6,6 +6,7 @@ with end-to-end sub-stage timing and correlation tracking.
 
 from datetime import datetime, timezone
 import logging
+import math
 from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile, status
 from fastapi.responses import JSONResponse
@@ -16,6 +17,11 @@ from backend.models_db import EyeData, PhysiologicalData, Session as ScreeningSe
 from backend.schemas import ScreeningResponse
 from backend.services.ml_service import ml_service
 from backend.utils import cleanup_file, save_base64_gradcam, save_uploaded_image
+from ml.exceptions import (
+    InvalidImageInputError,
+    PhysiologicalTypeValidationError,
+    PhysiologicalValidationError,
+)
 
 logger = logging.getLogger("backend.routes.screening_routes")
 router = APIRouter(prefix="/api/v1", tags=["Multimodal Screening"])
@@ -51,24 +57,27 @@ async def screen_multimodal(
         )
 
     # 1. Range Validation for Vital Signs (if provided)
-    if heart_rate is not None and (heart_rate < 20.0 or heart_rate > 300.0):
-        request.state.error_category = "PhysiologicalValidationError"
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Heart rate {heart_rate} BPM is outside physiological range [20, 300].",
-        )
-    if spo2 is not None and (spo2 < 0.0 or spo2 > 100.0):
-        request.state.error_category = "PhysiologicalValidationError"
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"SpO2 {spo2}% is outside physiological range [0, 100].",
-        )
-    if temperature is not None and (temperature < 25.0 or temperature > 45.0):
-        request.state.error_category = "PhysiologicalValidationError"
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Temperature {temperature}°C is outside physiological range [25.0, 45.0].",
-        )
+    if heart_rate is not None:
+        if math.isnan(heart_rate) or math.isinf(heart_rate) or heart_rate < 20.0 or heart_rate > 300.0:
+            request.state.error_category = "PhysiologicalValidationError"
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Heart rate {heart_rate} BPM is outside physiological range [20, 300].",
+            )
+    if spo2 is not None:
+        if math.isnan(spo2) or math.isinf(spo2) or spo2 < 0.0 or spo2 > 100.0:
+            request.state.error_category = "PhysiologicalValidationError"
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"SpO2 {spo2}% is outside physiological range [0, 100].",
+            )
+    if temperature is not None:
+        if math.isnan(temperature) or math.isinf(temperature) or temperature < 25.0 or temperature > 45.0:
+            request.state.error_category = "PhysiologicalValidationError"
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Temperature {temperature}°C is outside physiological range [25.0, 45.0].",
+            )
 
     # 2. Process and Save Image (if provided)
     disk_path = None
@@ -87,6 +96,22 @@ async def screen_multimodal(
             request_id=request_id,
         )
         request.state.ml_timings = pipeline_output.get("timings_ms")
+    except (PhysiologicalValidationError, PhysiologicalTypeValidationError) as val_err:
+        if disk_path:
+            cleanup_file(disk_path)
+        request.state.error_category = type(val_err).__name__
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(val_err),
+        )
+    except InvalidImageInputError as img_err:
+        if disk_path:
+            cleanup_file(disk_path)
+        request.state.error_category = "InvalidImageInputError"
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(img_err),
+        )
     except Exception as exc:
         if disk_path:
             cleanup_file(disk_path)
