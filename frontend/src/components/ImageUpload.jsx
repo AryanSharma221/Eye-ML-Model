@@ -1,187 +1,246 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from 'react';
+import { IconUpload, IconCheck, IconAlertCircle, IconEye, IconRefresh } from './MedicalIcons';
+import { DEMO_SAMPLES } from '../api';
 
-export default function ImageUpload({
-  selectedFile,
-  setSelectedFile,
-  previewUrl,
-  setPreviewUrl,
-  qualityChecks,
-  isRejected,
-  rejectionReason,
-  disabled,
-}) {
-  const [isDragging, setIsDragging] = useState(false);
+export default function ImageUpload({ onEvaluate, isAnalyzing, qualityResults }) {
+  const [dragActive, setDragActive] = useState(false);
+  const [selectedPreview, setSelectedPreview] = useState(DEMO_SAMPLES[0].originalImage);
+  const [selectedFileName, setSelectedFileName] = useState('sample_glaucoma.jpg');
+  const [selectedFileObj, setSelectedFileObj] = useState(null);
+  const [isAiSample, setIsAiSample] = useState(false);
+  const [aiDisclosure, setAiDisclosure] = useState(DEMO_SAMPLES[0].disclosure);
   const fileInputRef = useRef(null);
 
-  const handleFile = (file) => {
-    if (!file) return;
-    const validExtensions = ["image/jpeg", "image/jpg", "image/png"];
-    if (!validExtensions.includes(file.type) && !/\.(jpe?g|png)$/i.test(file.name)) {
-      alert("Invalid format: Please upload a JPG or PNG retinal image.");
-      return;
-    }
-    setSelectedFile(file);
-    const objectUrl = URL.createObjectURL(file);
-    setPreviewUrl(objectUrl);
-  };
-
-  const handleDragOver = (e) => {
+  const handleDrag = (e) => {
     e.preventDefault();
-    if (!disabled) setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else if (e.type === 'dragleave') {
+      setDragActive(false);
+    }
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
-    setIsDragging(false);
-    if (disabled) return;
+    e.stopPropagation();
+    setDragActive(false);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFile(e.dataTransfer.files[0]);
+      processSelectedFile(e.dataTransfer.files[0]);
     }
   };
 
-  const handleClear = () => {
-    setSelectedFile(null);
-    if (previewUrl && previewUrl.startsWith("blob:")) {
-      URL.revokeObjectURL(previewUrl);
+  const handleChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      processSelectedFile(e.target.files[0]);
     }
-    setPreviewUrl(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const processSelectedFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setSelectedPreview(event.target.result);
+      setSelectedFileName(file.name);
+      setSelectedFileObj(file);
+      setIsAiSample(false);
+      setAiDisclosure('Operator-Supplied Clinical Capture');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSelectDemo = async (sample) => {
+    setSelectedPreview(sample.originalImage);
+    const ext = sample.originalImage.split('.').pop() || 'jpg';
+    const filename = `${sample.id}.${ext}`;
+    setSelectedFileName(filename);
+    setIsAiSample(false);
+    setAiDisclosure(sample.disclosure || 'Clinical Benchmark Fundus Sample');
+    try {
+      const response = await fetch(sample.originalImage);
+      const blob = await response.blob();
+      const file = new File([blob], filename, { type: blob.type || 'image/jpeg' });
+      setSelectedFileObj(file);
+    } catch (e) {
+      console.warn('Could not load sample blob:', e);
+    }
+  };
+
+  const handleTriggerAnalysis = async () => {
+    if (isAnalyzing) return;
+    let file = selectedFileObj;
+    if (!file && selectedPreview) {
+      try {
+        const response = await fetch(selectedPreview);
+        const blob = await response.blob();
+        const ext = (selectedFileName || 'sample.jpg').split('.').pop() || 'jpg';
+        file = new File([blob], selectedFileName || 'sample.jpg', { type: blob.type || 'image/jpeg' });
+        setSelectedFileObj(file);
+      } catch (e) {
+        console.warn('Could not convert selectedPreview to File:', e);
+      }
+    }
+    onEvaluate(file || selectedPreview, selectedFileName);
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-      <div className="flex justify-between items-center mb-3">
+    <div className="bg-white border border-slate-200 rounded p-5">
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
         <div>
-          <h2 className="font-semibold text-slate-900 text-base flex items-center space-x-2">
-            <span>📷 Retinal Fundus Photograph</span>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-800 flex items-center">
+            <IconEye className="w-4 h-4 mr-2 text-sky-600" />
+            1. Fundus Image Ingestion
           </h2>
-          <p className="text-xs text-slate-500">
-            JPG, JPEG, or PNG up to 30 MB. Evaluated for focus, illumination, and retinal geometry.
+          <p className="text-xs text-slate-500 mt-0.5">
+            Color retinal photography upload with automated quality gating
           </p>
         </div>
-        {selectedFile && !disabled && (
-          <button
-            onClick={handleClear}
-            className="text-xs text-rose-600 hover:text-rose-700 font-medium px-2 py-1 rounded bg-rose-50"
-          >
-            Clear Image
-          </button>
-        )}
+        <span className="text-[11px] font-mono px-2 py-0.5 bg-slate-100 text-slate-600 rounded border border-slate-200">
+          Modality: Retinal Fundus
+        </span>
       </div>
 
-      {/* Dropzone / Preview Area */}
-      {!previewUrl ? (
-        <div
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-          onClick={() => !disabled && fileInputRef.current?.click()}
-          className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${
-            isDragging
-              ? "border-blue-500 bg-blue-50/50"
-              : "border-slate-300 hover:border-blue-400 bg-slate-50/50"
-          } ${disabled ? "opacity-60 cursor-not-allowed" : ""}`}
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".jpg,.jpeg,.png"
-            className="hidden"
-            onChange={(e) => handleFile(e.target.files?.[0])}
-            disabled={disabled}
-          />
-          <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-3">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+      {/* Upload Zone */}
+      <div
+        onDragEnter={handleDrag}
+        onDragOver={handleDrag}
+        onDragLeave={handleDrag}
+        onDrop={handleDrop}
+        onClick={() => fileInputRef.current?.click()}
+        className={`relative border-2 border-dashed rounded p-5 text-center cursor-pointer transition-colors ${
+          dragActive
+            ? 'border-sky-500 bg-sky-50/50'
+            : 'border-slate-300 hover:border-slate-400 bg-slate-50/60'
+        }`}
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          className="hidden"
+          onChange={handleChange}
+          aria-label="Upload retinal fundus scan"
+        />
+
+        <div className="flex flex-col items-center justify-center space-y-2">
+          <div className="w-10 h-10 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600">
+            <IconUpload className="w-5 h-5 text-slate-600" />
           </div>
-          <p className="text-sm font-medium text-slate-700 mb-1">
-            Drag & drop patient fundus image here, or{" "}
-            <span className="text-blue-600 font-semibold underline">browse</span>
-          </p>
-          <p className="text-xs text-slate-400">
-            Recommended: High-resolution macula- or optic-disc-centered fundus photo
-          </p>
+          <div className="text-xs text-slate-700">
+            <span className="font-semibold text-sky-700">Click to upload fundus file</span> or drag and drop
+          </div>
+          <div className="text-[11px] text-slate-500">
+            Supported formats: PNG, JPG, JPEG (Minimum resolution: 512x512)
+          </div>
         </div>
-      ) : (
-        <div className="space-y-4">
-          <div className="relative rounded-lg overflow-hidden bg-slate-900 border border-slate-200 flex items-center justify-center max-h-72">
-            <img
-              src={previewUrl}
-              alt="Uploaded retinal fundus preview"
-              className="object-contain max-h-72 w-full"
-            />
-            <div className="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-md">
-              {selectedFile ? `${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)` : "Loaded Sample"}
+      </div>
+
+      {/* Selected Image Preview & Metadata */}
+      {selectedPreview && (
+        <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded">
+          <div className="flex items-start space-x-3">
+            <div className="relative w-20 h-20 bg-slate-900 rounded overflow-hidden flex-shrink-0 border border-slate-300">
+              <img
+                src={selectedPreview}
+                alt="Selected retinal fundus scan preview showing optic disc and retinal vascular pattern"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold text-slate-900 truncate">
+                  {selectedFileName}
+                </p>
+                {isAiSample && (
+                  <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-200">
+                    AI Test Sample
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-slate-500 mt-1">
+                {aiDisclosure}
+              </p>
+              <div className="mt-2 flex items-center space-x-2">
+                <button
+                  type="button"
+                  onClick={handleTriggerAnalysis}
+                  disabled={isAnalyzing}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded text-white transition-colors flex items-center ${
+                    isAnalyzing
+                      ? 'bg-slate-400 cursor-not-allowed'
+                      : 'bg-sky-700 hover:bg-sky-800'
+                  }`}
+                >
+                  {isAnalyzing ? (
+                    <>
+                      <IconRefresh className="w-3.5 h-3.5 mr-1.5 animate-spin" />
+                      Evaluating Quality & Model...
+                    </>
+                  ) : (
+                    'Analyze Fundus Image'
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Quality Gate Rejection Banner */}
-      {isRejected && (
-        <div className="mt-4 p-3.5 bg-rose-50 border border-rose-200 rounded-lg flex items-start space-x-3">
-          <div className="text-rose-600 mt-0.5">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-          </div>
-          <div className="flex-1 text-xs">
-            <h4 className="font-semibold text-rose-800 text-sm mb-0.5">Image Rejected by Quality Gate</h4>
-            <p className="text-rose-700 mb-2">{rejectionReason || "The submitted photograph does not satisfy clinical quality requirements."}</p>
-            <p className="text-rose-600 font-medium">Action: Please acquire a clearer, well-illuminated retinal photograph and retry.</p>
-          </div>
+      {/* Pre-configured Clinical Demo Presets for Real Testing */}
+      <div className="mt-4 pt-3 border-t border-slate-100">
+        <label className="text-[11px] font-semibold text-slate-700 block mb-2">
+          Or Load Verified Clinical Evaluation Samples:
+        </label>
+        <div className="grid grid-cols-2 gap-2">
+          {DEMO_SAMPLES.map((sample) => (
+            <button
+              key={sample.id}
+              type="button"
+              onClick={() => handleSelectDemo(sample)}
+              className="text-left p-2 rounded border border-slate-200 bg-white hover:bg-slate-50 transition-colors text-xs"
+            >
+              <div className="font-semibold text-slate-800">{sample.label}</div>
+              <div className="text-[10px] text-slate-500 truncate">Condition: {sample.condition}</div>
+            </button>
+          ))}
         </div>
-      )}
+      </div>
 
-      {/* Quality Checks Breakdown Indicator */}
-      {qualityChecks && (
+      {/* Image Quality Gate Telemetry */}
+      {qualityResults && (
         <div className="mt-4 pt-3 border-t border-slate-100">
-          <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-            Quality Gate Metrics
-          </h4>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <div className="bg-slate-50 p-2 rounded-lg border border-slate-200 text-center">
-              <span className="text-[10px] text-slate-500 uppercase block">Blur (Laplacian)</span>
-              <span className={`text-xs font-bold ${qualityChecks.blur_score >= 100 ? "text-emerald-600" : "text-rose-600"}`}>
-                {qualityChecks.blur_score?.toFixed(1) ?? "N/A"}
-              </span>
-              <span className="text-[9px] text-slate-400 block">&ge; 100 req.</span>
-            </div>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-semibold text-slate-800">
+              Automated Image Quality Gate Telemetry:
+            </span>
+            <span
+              className={`text-[11px] font-semibold px-2 py-0.5 rounded border ${
+                qualityResults.overall_pass
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                  : 'bg-rose-50 text-rose-800 border-rose-300'
+              }`}
+            >
+              {qualityResults.overall_pass ? 'PASSED QUALITY GATE' : 'QUALITY REJECTED'}
+            </span>
+          </div>
 
-            <div className="bg-slate-50 p-2 rounded-lg border border-slate-200 text-center">
-              <span className="text-[10px] text-slate-500 uppercase block">Brightness</span>
-              <span className={`text-xs font-bold ${
-                ((qualityChecks.brightness_mean ?? qualityChecks.brightness) >= 30 &&
-                 (qualityChecks.brightness_mean ?? qualityChecks.brightness) <= 225)
-                  ? "text-emerald-600"
-                  : "text-rose-600"
-              }`}>
-                {(qualityChecks.brightness_mean ?? qualityChecks.brightness)?.toFixed(1) ?? "N/A"}
+          <div className="grid grid-cols-3 gap-2 text-[11px]">
+            <div className="p-2 bg-slate-50 border border-slate-200 rounded">
+              <span className="text-slate-500 block">Blur Metric:</span>
+              <span className="font-mono font-semibold text-slate-800">
+                {qualityResults.blur_score?.toFixed(1)} / 100 min
               </span>
-              <span className="text-[9px] text-slate-400 block">[30, 225]</span>
             </div>
-
-            <div className="bg-slate-50 p-2 rounded-lg border border-slate-200 text-center">
-              <span className="text-[10px] text-slate-500 uppercase block">Contrast (StdDev)</span>
-              <span className={`text-xs font-bold ${
-                (qualityChecks.contrast_std ?? qualityChecks.contrast) >= 20 ? "text-emerald-600" : "text-rose-600"
-              }`}>
-                {(qualityChecks.contrast_std ?? qualityChecks.contrast)?.toFixed(1) ?? "N/A"}
+            <div className="p-2 bg-slate-50 border border-slate-200 rounded">
+              <span className="text-slate-500 block">Mean Brightness:</span>
+              <span className="font-mono font-semibold text-slate-800">
+                {qualityResults.brightness_mean?.toFixed(1)} / 255
               </span>
-              <span className="text-[9px] text-slate-400 block">&ge; 20 req.</span>
             </div>
-
-            <div className="bg-slate-50 p-2 rounded-lg border border-slate-200 text-center">
-              <span className="text-[10px] text-slate-500 uppercase block">Retinal Region</span>
-              <span className={`text-xs font-bold ${qualityChecks.retinal_region_detected ? "text-emerald-600" : "text-rose-600"}`}>
-                {qualityChecks.retinal_region_detected ? "Detected" : "Missing"}
+            <div className="p-2 bg-slate-50 border border-slate-200 rounded">
+              <span className="text-slate-500 block">Contrast STD:</span>
+              <span className="font-mono font-semibold text-slate-800">
+                {qualityResults.contrast_std?.toFixed(1)}
               </span>
-              <span className="text-[9px] text-slate-400 block">Contour gate</span>
             </div>
           </div>
         </div>

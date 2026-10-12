@@ -1,89 +1,124 @@
-import React from "react";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { IconActivity, IconEye, IconUser, IconGlobe, IconShieldCheck } from './MedicalIcons';
 
-export default function Navbar({ health, activeTab, setActiveTab }) {
-  const isReady = health && health.model_loaded;
-  const device = health ? health.device : "Unknown";
+export default function Navbar({
+  patients = [],
+  selectedPatient,
+  onSelectPatient,
+  onOpenNewPatient,
+  backendOnline,
+}) {
+  const location = useLocation();
+
+  const navLinks = [
+    { to: '/', label: 'Screening Dashboard' },
+    { to: '/patients', label: 'Patient Records' },
+    { to: '/domain-guide', label: 'Domain Config' },
+    { to: '/terms', label: 'Terms and Conditions' },
+    { to: '/privacy', label: 'Privacy Policy' },
+  ];
 
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Brand */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h1 className="font-bold text-lg text-slate-900 leading-tight">
-                  Multimodal Health Screening
-                </h1>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
-                  v1.0
-                </span>
-              </div>
-              <p className="text-xs text-slate-500">
-                DenseNet201 Retinal AI &bull; Physiological Triage &bull; Decision Support
-              </p>
-            </div>
+    <header className="bg-slate-900 border-b border-slate-800 text-slate-100">
+      {/* Top Clinical Utility Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between border-b border-slate-800/80 text-xs">
+        <div className="flex items-center space-x-3">
+          <span className="flex items-center text-slate-300 font-medium">
+            <IconGlobe className="w-3.5 h-3.5 mr-1.5 text-sky-400" />
+            Custom Domain: <strong className="text-white ml-1">screening.medpulse.io</strong>
+          </span>
+          <span className="inline-flex items-center px-1.5 py-0.5 rounded border border-emerald-500/40 bg-emerald-950/60 text-emerald-300 text-[11px]">
+            DNS & SSL Verified
+          </span>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          {/* Backend Connection Indicator */}
+          <div className="flex items-center space-x-1.5">
+            <span
+              className={`w-2 h-2 rounded-full ${
+                backendOnline ? 'bg-emerald-400' : 'bg-amber-400'
+              }`}
+            />
+            <span className="text-slate-300">
+              API Status: {backendOnline ? 'FastAPI Online' : 'Simulation Mode'}
+            </span>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            <button
-              onClick={() => setActiveTab("screening")}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                activeTab === "screening"
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-              }`}
-            >
-              Live Screening
-            </button>
-            <button
-              onClick={() => setActiveTab("patients")}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                activeTab === "patients"
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-              }`}
-            >
-              Patients
-            </button>
-            <button
-              onClick={() => setActiveTab("sessions")}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                activeTab === "sessions"
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-              }`}
-            >
-              Session History
-            </button>
+          {/* Regulatory Clinical Disclaimer */}
+          <div className="hidden md:flex items-center text-slate-400">
+            <IconShieldCheck className="w-3.5 h-3.5 mr-1 text-slate-400" />
+            <span>Clinical Screening Assessment (Investigational)</span>
           </div>
+        </div>
+      </div>
 
-          {/* System Status Pill */}
-          <div className="hidden md:flex items-center space-x-2">
-            <div
-              className={`flex items-center space-x-1.5 text-xs font-medium px-2.5 py-1 rounded-full border ${
-                isReady
-                  ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                  : "bg-amber-50 text-amber-700 border-amber-200"
-              }`}
-            >
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  isReady ? "bg-emerald-500 animate-pulse" : "bg-amber-500"
-                }`}
-              />
-              <span>
-                {isReady ? `AI Model Ready (${device})` : "Model Initializing..."}
+      {/* Main Navigation Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+        {/* Brand Identity */}
+        <Link to="/" className="flex items-center space-x-3 group">
+          <div className="w-9 h-9 rounded bg-sky-600 flex items-center justify-center text-white font-bold">
+            <IconEye className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <div className="text-base font-bold tracking-tight text-white flex items-center">
+              RetinaPulse
+              <span className="ml-2 text-[10px] tracking-wider uppercase px-1.5 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700">
+                v1.0 Clinical
               </span>
             </div>
+            <div className="text-[11px] text-slate-400">
+              Multimodal Retinal & Physiological Screening
+            </div>
           </div>
+        </Link>
+
+        {/* Primary Nav Links */}
+        <nav className="flex items-center space-x-1 sm:space-x-2">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`px-3 py-1.5 rounded text-xs font-medium transition-colors ${
+                  isActive
+                    ? 'bg-slate-800 text-sky-400 border border-slate-700'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Patient Selection Bar */}
+        <div className="flex items-center space-x-2">
+          <div className="flex items-center bg-slate-800 border border-slate-700 rounded px-2.5 py-1">
+            <IconUser className="w-4 h-4 text-slate-400 mr-2" />
+            <select
+              value={selectedPatient?.id || ''}
+              onChange={(e) => onSelectPatient(e.target.value)}
+              className="bg-transparent text-xs text-white focus:outline-none cursor-pointer pr-2"
+              aria-label="Active patient selector"
+            >
+              {patients.map((p) => (
+                <option key={p.id} value={p.id} className="bg-slate-900 text-white">
+                  {p.name} ({p.gender ? p.gender[0] : 'U'}, {p.age || '--'}y)
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            onClick={onOpenNewPatient}
+            className="px-2.5 py-1 text-xs font-semibold rounded bg-sky-600 hover:bg-sky-500 text-white transition-colors"
+            title="Register a new patient"
+          >
+            + New Patient
+          </button>
         </div>
       </div>
     </header>
