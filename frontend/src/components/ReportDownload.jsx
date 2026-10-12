@@ -49,7 +49,9 @@ export default function ReportDownload({ session, patient, isOpen, onClose }) {
       ? rawGradcam
       : rawGradcam.startsWith('http')
       ? rawGradcam
-      : `${backendBase}${rawGradcam.startsWith('/') ? '' : '/'}${rawGradcam}`
+      : rawGradcam.startsWith('/') || rawGradcam.startsWith('uploads/')
+      ? `${backendBase}${rawGradcam.startsWith('/') ? '' : '/'}${rawGradcam}`
+      : `data:image/png;base64,${rawGradcam}`
     : '/samples/sample_glaucoma.jpg';
 
   const handlePrint = () => {

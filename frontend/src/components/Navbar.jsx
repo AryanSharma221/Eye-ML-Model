@@ -75,7 +75,7 @@ export default function Navbar({
         </Link>
 
         {/* Primary Nav Links */}
-        <nav className="flex items-center space-x-1 sm:space-x-2">
+        <nav className="flex flex-wrap items-center gap-1 sm:gap-2">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to;
             return (
@@ -95,13 +95,13 @@ export default function Navbar({
         </nav>
 
         {/* Patient Selection Bar */}
-        <div className="flex items-center space-x-2">
-          <div className="flex items-center bg-slate-800 border border-slate-700 rounded px-2.5 py-1">
-            <IconUser className="w-4 h-4 text-slate-400 mr-2" />
+        <div className="flex flex-wrap items-center gap-2 max-w-full">
+          <div className="flex items-center bg-slate-800 border border-slate-700 rounded px-2.5 py-1 max-w-[200px] sm:max-w-none">
+            <IconUser className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
             <select
               value={selectedPatient?.id || ''}
               onChange={(e) => onSelectPatient(e.target.value)}
-              className="bg-transparent text-xs text-white focus:outline-none cursor-pointer pr-2"
+              className="bg-transparent text-xs text-white focus:outline-none cursor-pointer pr-2 truncate max-w-[150px] sm:max-w-none"
               aria-label="Active patient selector"
             >
               {patients.map((p) => (
@@ -114,7 +114,7 @@ export default function Navbar({
 
           <button
             onClick={onOpenNewPatient}
-            className="px-2.5 py-1 text-xs font-semibold rounded bg-sky-600 hover:bg-sky-500 text-white transition-colors"
+            className="px-2.5 py-1 text-xs font-semibold rounded bg-sky-600 hover:bg-sky-500 text-white transition-colors flex-shrink-0"
             title="Register a new patient"
           >
             + New Patient
