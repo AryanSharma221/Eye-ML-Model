@@ -1,12 +1,13 @@
 """
 Unified multimodal health screening API route (/api/v1/screen).
-Combines retinal fundus imagery and physiological measurements into a single screening session.
+Combines retinal fundus imagery and physiological measurements into a single screening session
+with end-to-end sub-stage timing and correlation tracking.
 """
 
 from datetime import datetime, timezone
 import logging
 from typing import Optional
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
@@ -22,6 +23,7 @@ router = APIRouter(prefix="/api/v1", tags=["Multimodal Screening"])
 
 @router.post("/screen", response_model=ScreeningResponse)
 async def screen_multimodal(
+    request: Request,
     image: Optional[UploadFile] = File(None, description="Retinal fundus image (JPG, JPEG, PNG, max 30MB)"),
     heart_rate: Optional[float] = Form(None, description="Heart rate in BPM (20 - 300)"),
     spo2: Optional[float] = Form(None, description="Blood oxygen saturation (0 - 100%)"),
@@ -34,11 +36,15 @@ async def screen_multimodal(
     """
     Unified multimodal screening endpoint. Accepts retinal fundus imagery and/or
     physiological measurements together in a single request.
+    Instruments pipeline sub-stage latencies and propagates request correlation ID.
     """
+    request_id = getattr(request.state, "request_id", None)
+
     has_image = image is not None and bool(image.filename)
     has_any_vitals = any(v is not None for v in (heart_rate, spo2, temperature))
 
     if not has_image and not has_any_vitals:
+        request.state.error_category = "MissingModalityError"
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="At least one modality (retinal fundus image or vital signs) must be provided.",
@@ -46,16 +52,19 @@ async def screen_multimodal(
 
     # 1. Range Validation for Vital Signs (if provided)
     if heart_rate is not None and (heart_rate < 20.0 or heart_rate > 300.0):
+        request.state.error_category = "PhysiologicalValidationError"
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Heart rate {heart_rate} BPM is outside physiological range [20, 300].",
         )
     if spo2 is not None and (spo2 < 0.0 or spo2 > 100.0):
+        request.state.error_category = "PhysiologicalValidationError"
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"SpO2 {spo2}% is outside physiological range [0, 100].",
         )
     if temperature is not None and (temperature < 25.0 or temperature > 45.0):
+        request.state.error_category = "PhysiologicalValidationError"
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Temperature {temperature}°C is outside physiological range [25.0, 45.0].",
@@ -75,11 +84,14 @@ async def screen_multimodal(
             spo2=spo2,
             temperature=temperature,
             include_gradcam=include_gradcam,
+            request_id=request_id,
         )
+        request.state.ml_timings = pipeline_output.get("timings_ms")
     except Exception as exc:
         if disk_path:
             cleanup_file(disk_path)
-        logger.error(f"Multimodal screening execution failure: {exc}")
+        request.state.error_category = type(exc).__name__
+        logger.error(f"Multimodal screening execution failure [req_id={request_id}]: {exc}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Internal error while executing multimodal screening pipeline.",
@@ -156,6 +168,7 @@ async def screen_multimodal(
     if has_image and not has_any_vitals and eye_res.get("status") == "rejected":
         if disk_path and not active_session_id:
             cleanup_file(disk_path)
+        request.state.error_category = "QUALITY_REJECTED"
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content=pipeline_output,

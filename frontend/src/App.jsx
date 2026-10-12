@@ -82,7 +82,8 @@ export default function App() {
         // Quality Gate Rejected response payload
         setScreeningResult(err.data);
       } else {
-        setErrorBanner(err.message || "An unexpected error occurred during screening.");
+        const refStr = err.requestId ? ` (Ref: ${err.requestId.slice(0, 8)})` : "";
+        setErrorBanner(`${err.userMessage || err.message || "An unexpected error occurred during screening."}${refStr}`);
       }
     } finally {
       setIsScreening(false);

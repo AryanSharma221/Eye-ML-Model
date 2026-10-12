@@ -146,6 +146,13 @@ export default function EyeAssessment({ eyeData, previewUrl }) {
             </div>
           )}
         </div>
+
+        {!gradcamSrc && previewUrl && (
+          <div className="mt-2 text-[11px] text-amber-700 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200 flex items-center space-x-1.5">
+            <span>ℹ️</span>
+            <span>Visual explainability heatmap temporarily unavailable. Diagnostic classification and confidence remain fully validated.</span>
+          </div>
+        )}
       </div>
 
       {/* 4-Class Probability Breakdown */}

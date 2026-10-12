@@ -18,6 +18,9 @@ class HealthResponse(BaseModel):
     model_loaded: bool
     device: str
     checkpoint_available: bool
+    checkpoint_verified: Optional[bool] = None
+    checkpoint_error: Optional[str] = None
+    model_load_duration_ms: Optional[float] = None
     supported_classes: List[str]
     timestamp: str
 
@@ -209,6 +212,7 @@ class EyePredictionResponse(BaseModel):
     image_url: Optional[str] = None
     session_id: Optional[int] = None
     timestamp: str
+    timings_ms: Optional[Dict[str, Optional[float]]] = None
     disclaimer: Optional[str] = None
 
 
@@ -217,6 +221,7 @@ class EyeRejectionResponse(BaseModel):
     reason: str
     quality_checks: Dict[str, Any]
     image_url: Optional[str] = None
+    timings_ms: Optional[Dict[str, Optional[float]]] = None
 
 
 # -----------------------------------------------------------------------------
@@ -227,6 +232,7 @@ class ScreeningResponse(BaseModel):
     screening_id: str
     timestamp: str
     duration_ms: float
+    timings_ms: Optional[Dict[str, Optional[float]]] = None
     session_id: Optional[int] = None
     eye_screening: Dict[str, Any]
     vitals_screening: Dict[str, Any]

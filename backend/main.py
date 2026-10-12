@@ -1,6 +1,7 @@
 """
 FastAPI application entry point for the Multimodal Health Screening system.
-Integrates teammate's backend routes, ORM persistence, and the standalone ML layer.
+Integrates teammate's backend routes, ORM persistence, the standalone ML layer,
+and production observability (structured logging, request correlation, latency monitoring).
 """
 
 from contextlib import asynccontextmanager
@@ -17,11 +18,16 @@ from backend.config import (
     API_TITLE,
     API_VERSION,
     DEBUG,
+    LOG_FORMAT,
     LOG_LEVEL,
     get_cors_origins,
     UPLOADS_DIR,
 )
 from backend.database import init_db
+from backend.observability import (
+    CorrelationIdMiddleware,
+    configure_backend_logging,
+)
 from backend.routes import (
     eye_router,
     health_router,
@@ -42,11 +48,8 @@ from ml.exceptions import (
     QualityGateRejectionError,
 )
 
-# Configure logging
-logging.basicConfig(
-    level=getattr(logging, LOG_LEVEL, logging.INFO),
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-)
+# Configure structured backend logging
+configure_backend_logging(level=LOG_LEVEL, log_format=LOG_FORMAT)
 logger = logging.getLogger("backend.main")
 
 BACKEND_DIR = Path(__file__).resolve().parent
@@ -66,10 +69,13 @@ async def lifespan(app: FastAPI):
     logger.info("Pre-warming DenseNet201 model weights into memory...")
     success = ml_service.prewarm()
     if success:
-        logger.info(f"DenseNet201 model successfully pre-warmed on device: {ml_service.device}")
+        logger.info(
+            f"DenseNet201 model successfully pre-warmed on device: {ml_service.device} "
+            f"({ml_service.model_load_duration_ms}ms)"
+        )
     else:
         logger.warning(
-            f"Model checkpoint not found or could not be pre-warmed. "
+            "Model checkpoint not found or could not be pre-warmed. "
             "Inference requests will fail until checkpoint is provided."
         )
 
@@ -91,6 +97,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Correlation ID and Request Observability Middleware (runs on every request)
+app.add_middleware(CorrelationIdMiddleware)
+
 # CORS Middleware using environment-based allowed origins
 cors_origins = get_cors_origins()
 logger.info(f"Configuring CORS with allowed origins: {cors_origins}")
@@ -104,11 +113,13 @@ app.add_middleware(
 
 
 # ---------------------------------------------------------------------------
-# Centralized Error Handlers
+# Centralized Error Handlers (with Correlation ID & Safe Sanitization)
 # ---------------------------------------------------------------------------
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = "ValidationError"
     errors = []
     for err in exc.errors():
         field = " -> ".join(str(loc) for loc in err.get("loc", []))
@@ -120,94 +131,139 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
             "error_type": "ValidationError",
             "message": "Input validation error occurred.",
             "details": errors,
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(QualityGateRejectionError)
 async def quality_rejection_handler(request: Request, exc: QualityGateRejectionError):
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = "QUALITY_REJECTED"
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
         content={
             "status": "rejected",
             "reason": str(exc),
             "quality_checks": getattr(exc, "quality_checks", {}),
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(CheckpointNotFoundError)
 async def checkpoint_not_found_handler(request: Request, exc: CheckpointNotFoundError):
-    logger.error(f"Checkpoint not found error: {exc}")
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = "CheckpointNotFoundError"
+    logger.error(f"Checkpoint not found error [req_id={req_id}]: {exc}")
     return JSONResponse(
         status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
         content={
             "status": "error",
             "error_type": "CheckpointNotFoundError",
             "message": "Model checkpoint weights file not found on server.",
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(CheckpointCorruptError)
 @app.exception_handler(CheckpointIncompatibleError)
 async def checkpoint_invalid_handler(request: Request, exc: Exception):
-    logger.error(f"Checkpoint invalid error: {exc}")
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = type(exc).__name__
+    logger.error(f"Checkpoint invalid error [req_id={req_id}]: {exc}")
     return JSONResponse(
         status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
         content={
             "status": "error",
             "error_type": type(exc).__name__,
-            "message": f"Model checkpoint is corrupted or incompatible: {exc}",
+            "message": "Model checkpoint is corrupted or incompatible with current architecture.",
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(InvalidImageInputError)
 async def invalid_image_handler(request: Request, exc: InvalidImageInputError):
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = "InvalidImageInputError"
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
         content={
             "status": "error",
             "error_type": "InvalidImageInputError",
             "message": str(exc),
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(PhysiologicalValidationError)
 @app.exception_handler(PhysiologicalTypeValidationError)
 async def physio_validation_handler(request: Request, exc: Exception):
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = type(exc).__name__
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
         content={
             "status": "error",
             "error_type": type(exc).__name__,
             "message": str(exc),
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
-    content = exc.detail if isinstance(exc.detail, dict) else {"detail": exc.detail}
+    req_id = getattr(request.state, "request_id", None)
+    if isinstance(exc.detail, dict):
+        content = dict(exc.detail)
+    else:
+        content = {
+            "status": "error" if exc.status_code >= 400 else "ok",
+            "error_type": "HTTPException",
+            "message": exc.detail,
+            "detail": exc.detail,
+        }
+    if req_id and "request_id" not in content:
+        content["request_id"] = req_id
+
+    headers = dict(exc.headers or {})
+    if req_id and "X-Request-ID" not in headers:
+        headers["X-Request-ID"] = req_id
+
     return JSONResponse(
         status_code=exc.status_code,
         content=content,
-        headers=exc.headers,
+        headers=headers if headers else None,
     )
 
 
 @app.exception_handler(Exception)
 async def generic_exception_handler(request: Request, exc: Exception):
-    logger.exception(f"Unhandled exception on {request.method} {request.url.path}: {exc}")
+    req_id = getattr(request.state, "request_id", None)
+    request.state.error_category = type(exc).__name__
+    # Log internal traceback with request ID for server-side debugging
+    logger.exception(f"Unhandled exception on {request.method} {request.url.path} [req_id={req_id}]: {exc}")
+
+    # Return safe, non-leaking generic error response to client
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={
             "status": "error",
             "error_type": "InternalServerError",
             "message": "An unexpected error occurred while processing the request.",
+            "request_id": req_id,
         },
+        headers={"X-Request-ID": req_id} if req_id else None,
     )
 
 

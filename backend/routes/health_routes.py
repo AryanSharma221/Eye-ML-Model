@@ -20,6 +20,7 @@ def liveness_check():
     """
     Lightweight application liveness probe.
     Returns 200 OK immediately to indicate the web server process is responsive.
+    Does not touch database or execute expensive ML operations.
     """
     return {
         "status": "alive",
@@ -33,8 +34,10 @@ def liveness_check():
 def readiness_check(response: Response, db: Session = Depends(get_db)):
     """
     Deep application readiness probe for orchestration and load balancers.
-    Verifies model weights checkpoint presence, in-memory pre-warming, and database connectivity.
+    Verifies model weights checkpoint presence, verification state, in-memory pre-warming,
+    and database connectivity.
     Returns 200 OK if ready for inference traffic, or 503 Service Unavailable if unready.
+    Never exposes internal filesystem paths or sensitive credentials.
     """
     health_info = ml_service.get_health_status()
     db_ok = True
@@ -43,14 +46,22 @@ def readiness_check(response: Response, db: Session = Depends(get_db)):
     except Exception:
         db_ok = False
 
-    is_ready = bool(health_info["checkpoint_available"] and health_info["model_loaded"] and db_ok)
+    checkpoint_verified = bool(health_info.get("checkpoint_verified", False))
+    is_ready = bool(
+        health_info["checkpoint_available"]
+        and checkpoint_verified
+        and health_info["model_loaded"]
+        and db_ok
+    )
 
     payload = {
         "status": "ready" if is_ready else "unready",
         "checkpoint_available": health_info["checkpoint_available"],
+        "checkpoint_verified": checkpoint_verified,
         "model_loaded": health_info["model_loaded"],
         "database_connected": db_ok,
         "device": health_info["device"],
+        "model_load_duration_ms": health_info.get("model_load_duration_ms"),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -59,6 +70,9 @@ def readiness_check(response: Response, db: Session = Depends(get_db)):
         reasons = []
         if not health_info["checkpoint_available"]:
             reasons.append("Model weights checkpoint not found on server")
+        elif not checkpoint_verified:
+            err_type = health_info.get("checkpoint_error") or "VerificationFailed"
+            reasons.append(f"Model checkpoint verification failed ({err_type})")
         if not health_info["model_loaded"]:
             reasons.append("Model weights not pre-warmed into memory")
         if not db_ok:
@@ -82,6 +96,9 @@ def get_health() -> HealthResponse:
         model_loaded=health_info["model_loaded"],
         device=health_info["device"],
         checkpoint_available=health_info["checkpoint_available"],
+        checkpoint_verified=health_info.get("checkpoint_verified"),
+        checkpoint_error=health_info.get("checkpoint_error"),
+        model_load_duration_ms=health_info.get("model_load_duration_ms"),
         supported_classes=health_info["supported_classes"],
         timestamp=datetime.now(timezone.utc).isoformat(),
     )

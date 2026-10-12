@@ -2,6 +2,12 @@
  * Centralized API client for the Multimodal Health Screening Frontend.
  * Interacts with the FastAPI backend across system health, patient intake,
  * eye disease screening, physiological vitals triage, and session reporting.
+ *
+ * Observability & Error Handling:
+ * - Differentiates network timeout (504), service offline (network error),
+ *   model not ready (503), quality gate rejections (400), and internal failures (500).
+ * - Extracts and propagates correlation request IDs (X-Request-ID).
+ * - Provides concise user-facing messages while isolating technical diagnostics.
  */
 
 // Use Vite environment variable with graceful fallback to relative /api/v1
@@ -11,7 +17,7 @@ const API_BASE = `${BACKEND_URL}/api/v1`;
 const DEFAULT_TIMEOUT_MS = 30000; // 30s timeout for deep learning inference & Grad-CAM
 
 /**
- * Fetch wrapper with timeout and informative error sanitization.
+ * Fetch wrapper with timeout and informative error categorization.
  */
 async function fetchWithTimeout(url, options = {}, timeoutMs = DEFAULT_TIMEOUT_MS) {
   const controller = new AbortController();
@@ -29,6 +35,8 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = DEFAULT_TIMEOUT_M
     if (err.name === "AbortError") {
       const timeoutError = new Error("The screening request timed out after 30 seconds. Please try again.");
       timeoutError.status = 504;
+      timeoutError.errorType = "NETWORK_TIMEOUT";
+      timeoutError.userMessage = "The screening request timed out after 30 seconds. The deep learning service may be under high load. Please try again.";
       throw timeoutError;
     }
     // Network failure (server down, CORS blocked, unreachable)
@@ -37,6 +45,8 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = DEFAULT_TIMEOUT_M
     );
     netError.status = 0;
     netError.isNetworkError = true;
+    netError.errorType = "BACKEND_UNAVAILABLE";
+    netError.userMessage = "The health screening service is currently unreachable. Please check your network connection or ensure the backend server is running.";
     throw netError;
   }
 }
@@ -46,6 +56,7 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = DEFAULT_TIMEOUT_M
  */
 async function handleResponse(res) {
   const contentType = res.headers.get("content-type");
+  const requestId = res.headers.get("x-request-id") || null;
   let data = null;
 
   if (contentType && contentType.includes("application/json")) {
@@ -63,23 +74,55 @@ async function handleResponse(res) {
   }
 
   if (!res.ok) {
-    let errorMsg = `Request failed with status ${res.status}`;
-    if (data && typeof data === "object") {
-      if (data.reason) {
-        errorMsg = data.reason;
-      } else if (data.message) {
-        errorMsg = data.message;
-      } else if (data.detail) {
-        errorMsg = typeof data.detail === "string" ? data.detail : JSON.stringify(data.detail);
+    let errorType = "API_ERROR";
+    let userMessage = "";
+
+    // 1. Model Not Ready / Checkpoint Missing (HTTP 503)
+    if (res.status === 503) {
+      errorType = "MODEL_NOT_READY";
+      userMessage = "The AI screening model is currently initializing or unavailable. Please wait a moment and try again.";
+    }
+    // 2. Quality Gate Rejection or Bad Input (HTTP 400)
+    else if (res.status === 400) {
+      if (data && (data.status === "rejected" || data.reason)) {
+        errorType = "QUALITY_GATE_REJECTED";
+        userMessage = data.reason || "The uploaded image did not meet clinical quality standards. Please submit a clearer fundus photograph.";
+      } else {
+        errorType = "BAD_REQUEST";
+        userMessage = data?.detail || data?.message || "Invalid input provided. Please verify image file and vital values.";
       }
-    } else if (typeof data === "string" && data.trim()) {
-      errorMsg = data.slice(0, 150);
+    }
+    // 3. Validation Error (HTTP 422)
+    else if (res.status === 422) {
+      errorType = "VALIDATION_ERROR";
+      userMessage = "Input validation failed. Please check your form entries.";
+    }
+    // 4. Server Internal Error (HTTP 500)
+    else if (res.status === 500) {
+      errorType = "INFERENCE_FAILURE";
+      userMessage = "An unexpected error occurred during retinal analysis. Please try again or contact system support.";
+    }
+    else {
+      userMessage = data?.message || data?.detail || `Request failed with HTTP status ${res.status}.`;
     }
 
-    const error = new Error(errorMsg);
+    const error = new Error(userMessage);
     error.status = res.status;
+    error.errorType = errorType;
+    error.userMessage = userMessage;
+    error.requestId = requestId || data?.request_id || null;
     error.data = data;
     throw error;
+  }
+
+  // Handle empty or unparseable response when status is OK
+  if (data === null && res.status !== 204) {
+    const parseError = new Error("Invalid response format received from server.");
+    parseError.status = res.status;
+    parseError.errorType = "INVALID_RESPONSE_FORMAT";
+    parseError.userMessage = "Received an invalid or unparseable response from the server.";
+    parseError.requestId = requestId;
+    throw parseError;
   }
 
   return data;
@@ -91,6 +134,22 @@ export const api = {
    */
   async getHealth() {
     const res = await fetchWithTimeout(`${BACKEND_URL}/health`, {}, 5000);
+    return handleResponse(res);
+  },
+
+  /**
+   * Liveness probe for process uptime
+   */
+  async getLiveness() {
+    const res = await fetchWithTimeout(`${BACKEND_URL}/health/live`, {}, 3000);
+    return handleResponse(res);
+  },
+
+  /**
+   * Deep readiness probe checking model pre-warming and database connectivity
+   */
+  async getReadiness() {
+    const res = await fetchWithTimeout(`${BACKEND_URL}/health/ready`, {}, 5000);
     return handleResponse(res);
   },
 

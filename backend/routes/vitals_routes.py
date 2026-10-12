@@ -1,12 +1,13 @@
 """
 API route handler for physiological vital signs assessment (/api/v1/submit_vitals).
-Reuses teammate's hardware integration contract and integrates the ML physio model.
+Reuses teammate's hardware integration contract and integrates the ML physio model
+with sub-stage latency measurement and correlation ID propagation.
 """
 
 from datetime import datetime, timezone
 import logging
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from backend.database import get_db
@@ -24,16 +25,20 @@ router = APIRouter(prefix="/api/v1", tags=["Vital Signs"])
 
 @router.post("/submit_vitals")
 def submit_vitals(
+    request: Request,
     payload: VitalsSubmit,
     db: Session = Depends(get_db),
 ):
     """
     Submits physiological measurements (heart rate, SpO2, core body temperature)
     for rule-based/ML physiological triage and anomaly detection.
+    Instruments execution latency and correlation ID tracking.
     """
+    request_id = getattr(request.state, "request_id", None)
     hr, ox, temp = payload.resolve_vitals()
 
     if hr is None or ox is None or temp is None:
+        request.state.error_category = "MissingVitalsError"
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="All three vital signs (heart_rate, spo2, temperature) must be provided.",
@@ -44,6 +49,7 @@ def submit_vitals(
     if payload.session_id is not None:
         session_obj = db.query(ScreeningSession).filter(ScreeningSession.id == payload.session_id).first()
         if not session_obj:
+            request.state.error_category = "SessionNotFoundError"
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"Session {payload.session_id} not found.",
@@ -55,14 +61,18 @@ def submit_vitals(
             heart_rate=hr,
             spo2=ox,
             temperature=temp,
+            request_id=request_id,
         )
+        request.state.ml_timings = analysis.get("timings_ms")
     except (PhysiologicalValidationError, PhysiologicalTypeValidationError) as val_err:
+        request.state.error_category = type(val_err).__name__
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(val_err),
         )
     except Exception as err:
-        logger.error(f"Vitals assessment error: {err}")
+        request.state.error_category = type(err).__name__
+        logger.error(f"Vitals assessment error [req_id={request_id}]: {err}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Error occurred while evaluating physiological readings.",
@@ -114,6 +124,8 @@ def submit_vitals(
             "overall_status": analysis["overall_status"],
         },
         "session_id": payload.session_id,
+        "timings_ms": analysis.get("timings_ms"),
+        "request_id": request_id,
         "timestamp": now.isoformat(),
         # Top-level fields
         "heart_rate": {
