@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  health-screening:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multimodal-health-screening
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=false
+      - LOG_LEVEL=INFO
+      - DATABASE_URL=sqlite:////app/backend/health_screening.db
+      - CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000
+      - CHECKPOINT_PATH=ml/weights/eye_model.pth
+      - ML_DEVICE=cpu
+      - MAX_UPLOAD_SIZE_MB=30
+    volumes:
+      - screening-uploads:/app/backend/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  screening-uploads:
+    driver: local

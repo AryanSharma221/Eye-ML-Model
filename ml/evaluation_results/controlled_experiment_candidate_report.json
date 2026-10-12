@@ -1,0 +1,288 @@
+{
+  "timestamp": "2026-10-11T19:07:47Z",
+  "device": "cuda",
+  "seed": 42,
+  "epochs": 2,
+  "lr": 3e-05,
+  "calibrated_weights": {
+    "cataract": 1.02,
+    "diabetic_retinopathy": 0.96,
+    "glaucoma": 0.97,
+    "normal": 1.05
+  },
+  "baseline_checkpoint": "ml/weights/eye_model.pth",
+  "candidate_checkpoint": "ml/weights/eye_candidate_model.pth",
+  "baseline_val": {
+    "acc": 0.9028901734104047,
+    "macro_f1": 0.903,
+    "confusion_matrix": [
+      [
+        189,
+        3,
+        7,
+        8
+      ],
+      [
+        4,
+        199,
+        10,
+        5
+      ],
+      [
+        8,
+        2,
+        176,
+        12
+      ],
+      [
+        3,
+        0,
+        22,
+        217
+      ]
+    ]
+  },
+  "candidate_val": {
+    "acc": 0.9028901734104047,
+    "macro_f1": 0.903
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.354,
+      "train_acc": 0.9128,
+      "val_loss": 0.3835,
+      "val_acc": 0.9029,
+      "val_macro_f1": 0.9013,
+      "val_per_class": {
+        "cataract": {
+          "precision": 0.9126,
+          "recall": 0.9082,
+          "f1_score": 0.9104,
+          "support": 207
+        },
+        "diabetic_retinopathy": {
+          "precision": 0.9628,
+          "recall": 0.9495,
+          "f1_score": 0.9561,
+          "support": 218
+        },
+        "glaucoma": {
+          "precision": 0.8743,
+          "recall": 0.8081,
+          "f1_score": 0.8399,
+          "support": 198
+        },
+        "normal": {
+          "precision": 0.8659,
+          "recall": 0.9339,
+          "f1_score": 0.8986,
+          "support": 242
+        }
+      },
+      "val_confusion_matrix": [
+        [
+          188,
+          5,
+          6,
+          8
+        ],
+        [
+          2,
+          207,
+          4,
+          5
+        ],
+        [
+          13,
+          3,
+          160,
+          22
+        ],
+        [
+          3,
+          0,
+          13,
+          226
+        ]
+      ]
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3212,
+      "train_acc": 0.9264,
+      "val_loss": 0.3873,
+      "val_acc": 0.9017,
+      "val_macro_f1": 0.9003,
+      "val_per_class": {
+        "cataract": {
+          "precision": 0.9208,
+          "recall": 0.8986,
+          "f1_score": 0.9095,
+          "support": 207
+        },
+        "diabetic_retinopathy": {
+          "precision": 0.9581,
+          "recall": 0.945,
+          "f1_score": 0.9515,
+          "support": 218
+        },
+        "glaucoma": {
+          "precision": 0.8663,
+          "recall": 0.8182,
+          "f1_score": 0.8416,
+          "support": 198
+        },
+        "normal": {
+          "precision": 0.8659,
+          "recall": 0.9339,
+          "f1_score": 0.8986,
+          "support": 242
+        }
+      },
+      "val_confusion_matrix": [
+        [
+          186,
+          5,
+          8,
+          8
+        ],
+        [
+          3,
+          206,
+          4,
+          5
+        ],
+        [
+          10,
+          4,
+          162,
+          22
+        ],
+        [
+          3,
+          0,
+          13,
+          226
+        ]
+      ]
+    }
+  ],
+  "baseline_test": {
+    "accuracy": 0.8780760626398211,
+    "macro_f1": 0.8778,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9,
+        "recall": 0.8571,
+        "f1_score": 0.878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9727,
+        "recall": 0.9185,
+        "f1_score": 0.9448,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7928,
+        "recall": 0.867,
+        "f1_score": 0.8282,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8532,
+        "recall": 0.8669,
+        "f1_score": 0.86,
+        "support": 248
+      }
+    },
+    "confusion_matrix": [
+      [
+        180,
+        2,
+        15,
+        13
+      ],
+      [
+        8,
+        214,
+        2,
+        9
+      ],
+      [
+        8,
+        4,
+        176,
+        15
+      ],
+      [
+        4,
+        0,
+        29,
+        215
+      ]
+    ]
+  },
+  "candidate_test": {
+    "accuracy": 0.8825503355704698,
+    "macro_f1": 0.8806,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9319,
+        "recall": 0.8476,
+        "f1_score": 0.8878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9569,
+        "recall": 0.9528,
+        "f1_score": 0.9548,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.8377,
+        "recall": 0.7882,
+        "f1_score": 0.8122,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8179,
+        "recall": 0.9234,
+        "f1_score": 0.8674,
+        "support": 248
+      }
+    },
+    "confusion_matrix": [
+      [
+        178,
+        3,
+        15,
+        14
+      ],
+      [
+        3,
+        222,
+        1,
+        7
+      ],
+      [
+        7,
+        6,
+        160,
+        30
+      ],
+      [
+        3,
+        1,
+        15,
+        229
+      ]
+    ]
+  },
+  "acceptance_verdict": {
+    "candidate_improved_validation": false,
+    "candidate_improved_test": true,
+    "selected_champion": "ml/weights/eye_model.pth"
+  }
+}

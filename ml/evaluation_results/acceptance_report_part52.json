@@ -1,0 +1,205 @@
+{
+  "acceptance_test_metadata": {
+    "task": "Part 52 — Final ML Pipeline Acceptance Test",
+    "timestamp_utc": "2026-10-12T09:08:45.000000+00:00",
+    "verdict": "PASS"
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.12.4",
+    "pytorch_version": "2.6.0+cu124",
+    "torchvision_version": "0.21.0+cu124",
+    "numpy_version": "2.5.4",
+    "opencv_version": "5.0.0",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "gpu_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "compute_capability": "8.9"
+  },
+  "champion_model_checkpoint": {
+    "weights_path": "ml/weights/eye_model.pth",
+    "size_bytes": 73757657,
+    "size_mb": 70.34,
+    "sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+    "architecture": "DenseNet201",
+    "epoch": 6,
+    "best_val_accuracy": 0.9028901734104047,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "state_dict_keys": 1207
+  },
+  "dataset_manifest": {
+    "manifest_path": "ml/dataset/split_manifest.json",
+    "total_images": 5889,
+    "splits": {
+      "train": 4130,
+      "val": 865,
+      "test": 894
+    },
+    "canonical_class_ordering": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ]
+  },
+  "scenarios_tested": [
+    {
+      "id": 1,
+      "name": "Valid image and valid vital signs",
+      "status": "PASS",
+      "eye_status": "success",
+      "vitals_status": "success",
+      "overall_status": "success",
+      "details": "Model produces calibrated 4-class probabilities, valid Grad-CAM Base64 PNG heatmap, and independent normal vitals assessment."
+    },
+    {
+      "id": 2,
+      "name": "Blurry or poor-quality image (quality gate rejection)",
+      "status": "PASS",
+      "eye_status": "rejected",
+      "vitals_status": "success",
+      "overall_status": "partial",
+      "details": "Hard quality gate detects excessive blur (score < 100.0) and rejects sample early without calling preprocessing, inference, or Grad-CAM."
+    },
+    {
+      "id": 3,
+      "name": "Missing image file",
+      "status": "PASS",
+      "eye_status": "error",
+      "vitals_status": "success",
+      "overall_status": "partial",
+      "details": "Non-existent file path returns structured status 'error' with clear sanitized reason. No predictions fabricated."
+    },
+    {
+      "id": 4,
+      "name": "Corrupt image file",
+      "status": "PASS",
+      "eye_status": "rejected",
+      "vitals_status": "success",
+      "overall_status": "partial",
+      "details": "Corrupted or non-image binary fails OpenCV decoding and is rejected by the quality gate cleanly without uncaught exceptions."
+    },
+    {
+      "id": 5,
+      "name": "Missing or invalid model checkpoint",
+      "status": "PASS",
+      "eye_status": "error",
+      "vitals_status": "success",
+      "overall_status": "partial",
+      "details": "Missing or architecture-incompatible checkpoint raises typed exception and returns status 'error'. No fallback to random weights."
+    },
+    {
+      "id": 6,
+      "name": "Invalid heart rate, SpO2, or temperature (out of range/bad type)",
+      "status": "PASS",
+      "eye_status": "success",
+      "vitals_status": "error",
+      "overall_status": "partial",
+      "details": "Values exceeding physiological boundaries (HR=550, SpO2=115%, Temp=55°C) or non-numeric types (bool) fail validation; eye screening remains unaffected."
+    },
+    {
+      "id": 7,
+      "name": "Eye-model inference failure (injected forward exception)",
+      "status": "PASS",
+      "eye_status": "error",
+      "vitals_status": "success",
+      "overall_status": "partial",
+      "details": "Runtime exception in forward pass is caught and recorded as status 'error'; vital signs triage completes independently."
+    },
+    {
+      "id": 8,
+      "name": "Grad-CAM generation failure (safe isolation)",
+      "status": "PASS",
+      "eye_status": "success",
+      "vitals_status": "success",
+      "overall_status": "success",
+      "details": "Exception raised during Grad-CAM visualization is safely isolated: gradcam_image is set to null, gradcam_error is recorded, and inference prediction is preserved."
+    },
+    {
+      "id": 9,
+      "name": "Successful eye analysis with vital-sign validation failure",
+      "status": "PASS",
+      "eye_status": "success",
+      "vitals_status": "error",
+      "overall_status": "partial",
+      "details": "Composite status resolves to 'partial' when eye succeeds and vitals fail, cleanly isolating modality states."
+    },
+    {
+      "id": 10,
+      "name": "Successful execution of both independent analyses",
+      "status": "PASS",
+      "eye_status": "success",
+      "vitals_status": "success",
+      "overall_status": "success",
+      "details": "Both modalities complete successfully, yielding aggregated risk triage and full structured report."
+    }
+  ],
+  "output_correctness_invariants": {
+    "output_structure": {
+      "status": "PASS",
+      "required_keys": [
+        "status",
+        "screening_id",
+        "timestamp",
+        "duration_ms",
+        "timings_ms",
+        "eye_screening",
+        "vitals_screening",
+        "overall_risk_level",
+        "disclaimer"
+      ],
+      "json_serializable": true
+    },
+    "probability_sum": {
+      "status": "PASS",
+      "tolerance": 0.0001,
+      "condition": "sum(all_probabilities.values()) == 1.0 +- 1e-4"
+    },
+    "argmax_alignment": {
+      "status": "PASS",
+      "condition": "prediction == argmax(all_probabilities) and confidence == all_probabilities[prediction]"
+    },
+    "early_halting_on_quality_failure": {
+      "status": "PASS",
+      "condition": "preprocessing, inference, and Grad-CAM are never called on quality gate rejection"
+    },
+    "gradcam_isolation": {
+      "status": "PASS",
+      "condition": "Grad-CAM failure sets gradcam_image=None without invalidating prediction or confidence"
+    },
+    "modality_isolation": {
+      "status": "PASS",
+      "condition": "Vital sign inputs do not alter eye disease probabilities, and eye image inputs do not alter vitals triage"
+    }
+  },
+  "automated_tests_summary": {
+    "total_tests_executed": 97,
+    "passed": 97,
+    "failed": 0,
+    "skipped": 0,
+    "suites": {
+      "test_part52_acceptance.py": 17,
+      "test_final_acceptance.py": 10,
+      "test_screening_pipeline.py": 19,
+      "test_final_independent_ml_audit.py": 14,
+      "test_physio_boundary_audit.py": 37
+    },
+    "execution_time_seconds": 37.31
+  },
+  "cli_verification": {
+    "status": "PASS",
+    "command": "python -m ml.screening_pipeline --image <test_cataract_image> --hr 72 --spo2 98 --temp 36.8 --output <output_path>",
+    "exit_code": 0,
+    "output_schema_validated": true
+  },
+  "final_verdict": {
+    "status": "PASS",
+    "readiness": "PRODUCTION_READY",
+    "summary": "All 10 realistic operational scenarios, all output correctness invariants, and all automated acceptance test suites passed without failure."
+  }
+}

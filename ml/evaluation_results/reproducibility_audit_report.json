@@ -1,0 +1,132 @@
+{
+  "audit_name": "Audit Evidence Reconciliation & Final Regression Verification",
+  "audit_version": "2.0.0",
+  "timestamp": "2026-10-12T09:36:00+00:00",
+  "audit_verdict": "PASS",
+  "environment": {
+    "os": "Windows 11 (10.0.26200-SP0)",
+    "python_version": "3.12.4",
+    "torch_version": "2.6.0+cu124",
+    "torchvision_version": "0.21.0+cu124",
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "cuda_compute_capability": [8, 9],
+    "numpy_version": "2.5.4"
+  },
+  "artifact_signatures": {
+    "champion_checkpoint": {
+      "file_path": "ml/weights/eye_model.pth",
+      "absolute_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth",
+      "size_bytes": 73754057,
+      "sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+      "architecture": "DenseNet201",
+      "epoch": 6,
+      "best_val_accuracy": 0.9028901734104047,
+      "classes": [
+        "cataract",
+        "diabetic_retinopathy",
+        "glaucoma",
+        "normal"
+      ],
+      "verified_integrity": true
+    },
+    "dataset_split_manifest": {
+      "file_path": "ml/dataset/split_manifest.json",
+      "absolute_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\dataset\\split_manifest.json",
+      "size_bytes": 2512695,
+      "sha256": "cb2d80449899673438268750011697f7ae9518a8259e5dc8482edfe9d7c01f27",
+      "total_samples": 5889,
+      "split_counts": {
+        "train": 4130,
+        "val": 865,
+        "test": 894
+      },
+      "class_distribution_test": {
+        "cataract": 210,
+        "diabetic_retinopathy": 233,
+        "glaucoma": 203,
+        "normal": 248
+      },
+      "verified_integrity": true
+    },
+    "checkpoint_selection": {
+      "file_path": "ml/weights/checkpoint_selection.json",
+      "sha256": "95d87c1f3649d7acea8bff93ad7c1f255e5b46300d43eab60fe4b8bb8da44007",
+      "active_checkpoint_path": "ml/weights/eye_model.pth",
+      "verified_integrity": true
+    },
+    "configuration": {
+      "file_path": "ml/config.py",
+      "sha256": "1ef694f88ee6f2b08811ee62b84544571468ee7956d9a12af048bd89adf15d2d",
+      "verified_integrity": true
+    }
+  },
+  "reconciled_execution_evidence": {
+    "execution_script": "ml/reconcile_reproducibility.py",
+    "execution_log_artifact": "ml/evaluation_results/reconciled_reproducibility_execution.json",
+    "full_held_out_sample_count": 894,
+    "timings_seconds": {
+      "cuda_pass_1": 28.80,
+      "cuda_pass_2": 27.59,
+      "cpu_pass": 67.29
+    },
+    "repeatability_cuda_vs_cuda_full_test_split": {
+      "sample_count": 894,
+      "prediction_agreement_count": 894,
+      "prediction_agreement_pct": 100.0,
+      "bit_for_bit_identical": true,
+      "max_absolute_probability_difference": 0.0,
+      "mean_absolute_probability_difference": 0.0,
+      "verification_status": "VERIFIED_COMPLETED"
+    },
+    "cross_device_parity_cpu_vs_cuda_full_test_split": {
+      "sample_count": 894,
+      "prediction_agreement_count": 894,
+      "prediction_agreement_pct": 100.0,
+      "bit_for_bit_identical": false,
+      "max_absolute_probability_difference": 0.0005432367324829102,
+      "mean_absolute_probability_difference": 2.886258516809903e-05,
+      "root_cause": "cuDNN vs Intel MKL/OpenBLAS convolution/batchnorm floating-point reduction summation order. Maximum shift (0.00054) does not cross any class decision boundary.",
+      "verification_status": "VERIFIED_COMPLETED"
+    },
+    "historical_cohort_clarification": {
+      "historical_file": "ml/evaluation_results/reproducibility_report.json",
+      "historical_cohort_size": 40,
+      "historical_cohort_description": "Prior smoke benchmark used 40 quality-passed samples (10 per class) to evaluate latency and portability. It was NOT the full test split.",
+      "reconciled_status": "Historical 40-sample cohort distinguished from full 894-sample held-out evaluation."
+    }
+  },
+  "full_regression_suite_summary": {
+    "command": ".\\venv\\Scripts\\python.exe -m pytest ml/tests/ -v --durations=10",
+    "total_collected": 566,
+    "passed": 566,
+    "failed": 0,
+    "skipped": 0,
+    "interrupted": 0,
+    "duration_seconds": 314.37,
+    "slowest_tests": [
+      {
+        "test": "ml/tests/test_benchmark.py::TestBenchmarkPipelineExecution::test_run_pipeline_benchmark_cpu",
+        "duration_seconds": 18.65
+      },
+      {
+        "test": "ml/tests/test_benchmark.py::TestBenchmarkPipelineExecution::test_run_pipeline_benchmark_without_gradcam",
+        "duration_seconds": 16.88
+      },
+      {
+        "test": "ml/tests/test_benchmark.py::TestBenchmarkPipelineExecution::test_no_external_downloads_during_benchmark",
+        "duration_seconds": 16.81
+      },
+      {
+        "test": "ml/tests/test_benchmark.py::TestBenchmarkPipelineExecution::test_report_json_serializability",
+        "duration_seconds": 16.50
+      },
+      {
+        "test": "ml/tests/test_checkpoint_manager.py::TestCLIIntegration::test_cli_list_command",
+        "duration_seconds": 8.07
+      }
+    ],
+    "verification_status": "VERIFIED_COMPLETED_100_PERCENT"
+  },
+  "clinical_disclaimer": "This module is designed and evaluated strictly as a standalone machine-learning software layer for screening decision support and research. Cryptographic checksum validity, mathematical repeatability, and identical class predictions across CPU and CUDA do NOT constitute clinical validation or autonomous diagnostic efficacy. Prospective multi-site clinical trials are mandatory before any real-world patient use."
+}

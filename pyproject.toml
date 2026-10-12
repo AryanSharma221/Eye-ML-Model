@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multimodal-health-screening-ml"
+version = "1.0.0"
+description = "Machine Learning layer for Multimodal Health Screening (DenseNet201 Retinal AI & Physiological Triage)"
+readme = "ml/README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4.0",
+    "torchvision>=0.19.0",
+    "numpy>=1.26.0",
+    "pillow>=10.2.0",
+    "opencv-python>=4.9.0",
+    "scikit-learn>=1.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+ml-screening = "ml.screening_pipeline:main"
+ml-diagnostics = "ml.diagnostics:main"
+ml-demo = "ml.demo:main"
+ml-checkpoint = "ml.checkpoint_manager:main"
+
+[tool.setuptools.packages.find]
+include = ["ml*"]
+
+[tool.pytest.ini_options]
+testpaths = ["ml/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "unit: Pure unit tests with synthetic or mocked inputs",
+    "integration: Integration tests exercising multiple modules together",
+    "smoke: Real-model smoke tests validating real weights and pipeline execution",
+    "regression: Deterministic regression tests for boundaries, contracts, and resource safety",
+    "eval: Held-out model evaluation tests measuring predictive metrics",
+    "slow: Tests with extended execution duration",
+]

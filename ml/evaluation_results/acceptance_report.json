@@ -1,0 +1,213 @@
+{
+  "timestamp": "2026-10-11T17:22:19.050942+00:00",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "checkpoint_path": "eye_model.pth",
+  "canonical_classes": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "checks": {
+    "dataset_manifest": {
+      "status": "PASS",
+      "total_images": 5889,
+      "splits": {
+        "train": 4130,
+        "val": 865,
+        "test": 894
+      },
+      "class_distribution": {
+        "train": {
+          "cataract": 975,
+          "diabetic_retinopathy": 1078,
+          "glaucoma": 958,
+          "normal": 1119
+        },
+        "val": {
+          "cataract": 207,
+          "diabetic_retinopathy": 218,
+          "glaucoma": 198,
+          "normal": 242
+        },
+        "test": {
+          "cataract": 210,
+          "diabetic_retinopathy": 233,
+          "glaucoma": 203,
+          "normal": 248
+        }
+      }
+    },
+    "checkpoint_loading": {
+      "status": "PASS",
+      "epoch": 6,
+      "best_val_accuracy": 0.9028901734104047,
+      "architecture": "DenseNet201",
+      "classes": [
+        "cataract",
+        "diabetic_retinopathy",
+        "glaucoma",
+        "normal"
+      ],
+      "device": "cuda",
+      "invalid_checkpoint_protection": "VERIFIED"
+    },
+    "inference_correctness": {
+      "status": "PASS",
+      "samples_evaluated": 4,
+      "results": [
+        {
+          "ground_truth": "cataract",
+          "sample": "kaggle_2052_right.jpg",
+          "prediction": "glaucoma",
+          "class_index": 2,
+          "confidence": 0.9286,
+          "all_probabilities": {
+            "cataract": 0.0039,
+            "diabetic_retinopathy": 0.0015,
+            "glaucoma": 0.9286,
+            "normal": 0.066
+          },
+          "probabilities_sum": 1.0
+        },
+        {
+          "ground_truth": "diabetic_retinopathy",
+          "sample": "kaggle_10184_left.jpeg",
+          "prediction": "diabetic_retinopathy",
+          "class_index": 1,
+          "confidence": 0.9713,
+          "all_probabilities": {
+            "cataract": 0.0016,
+            "diabetic_retinopathy": 0.9713,
+            "glaucoma": 0.0253,
+            "normal": 0.0018
+          },
+          "probabilities_sum": 1.0
+        },
+        {
+          "ground_truth": "glaucoma",
+          "sample": "kaggle_1491_left.jpg",
+          "prediction": "normal",
+          "class_index": 3,
+          "confidence": 0.9467,
+          "all_probabilities": {
+            "cataract": 0.0109,
+            "diabetic_retinopathy": 0.002,
+            "glaucoma": 0.0404,
+            "normal": 0.9467
+          },
+          "probabilities_sum": 1.0
+        },
+        {
+          "ground_truth": "normal",
+          "sample": "kaggle_2587_right.jpg",
+          "prediction": "normal",
+          "class_index": 3,
+          "confidence": 0.941,
+          "all_probabilities": {
+            "cataract": 0.0086,
+            "diabetic_retinopathy": 0.0253,
+            "glaucoma": 0.025,
+            "normal": 0.941
+          },
+          "probabilities_sum": 0.9998999999999999
+        }
+      ]
+    },
+    "quality_rejection": {
+      "status": "PASS",
+      "sample": "1019.png",
+      "rejection_reason": "Quality check failed",
+      "inference_blocked": true
+    },
+    "gradcam": {
+      "status": "PASS",
+      "image_format": "PNG",
+      "dimensions": [
+        512,
+        512
+      ],
+      "base64_length_chars": 372300
+    },
+    "physiological_analysis": {
+      "status": "PASS",
+      "normal_case_risk": "LOW",
+      "critical_case_risk": "HIGH",
+      "boolean_rejection_verified": true
+    },
+    "backend_contract": {
+      "status": "PASS",
+      "composite_status": "success",
+      "json_serializable": true
+    },
+    "held_out_evaluation": {
+      "status": "PASS",
+      "evaluated_images": 894,
+      "failed_or_excluded_images": 0,
+      "overall_accuracy": 0.8781,
+      "macro_precision": 0.8797,
+      "macro_recall": 0.8774,
+      "macro_f1": 0.8778,
+      "weighted_f1": 0.8791,
+      "per_class": {
+        "cataract": {
+          "precision": 0.9,
+          "recall": 0.8571,
+          "f1_score": 0.878,
+          "support": 210
+        },
+        "diabetic_retinopathy": {
+          "precision": 0.9727,
+          "recall": 0.9185,
+          "f1_score": 0.9448,
+          "support": 233
+        },
+        "glaucoma": {
+          "precision": 0.7928,
+          "recall": 0.867,
+          "f1_score": 0.8282,
+          "support": 203
+        },
+        "normal": {
+          "precision": 0.8532,
+          "recall": 0.8669,
+          "f1_score": 0.86,
+          "support": 248
+        }
+      },
+      "confusion_matrix": [
+        [
+          180,
+          2,
+          15,
+          13
+        ],
+        [
+          8,
+          214,
+          2,
+          9
+        ],
+        [
+          8,
+          4,
+          176,
+          15
+        ],
+        [
+          4,
+          0,
+          29,
+          215
+        ]
+      ]
+    }
+  },
+  "final_verdict": {
+    "all_acceptance_checks_passed": true,
+    "ready_for_backend_integration": true,
+    "status": "READY_FOR_INTEGRATION",
+    "medical_prototype_disclaimer": "This system is an automated multimodal health screening prototype engineered for clinical triage research and decision support. It does not provide definitive medical diagnoses. All flagged findings must be reviewed by certified medical professionals."
+  }
+}

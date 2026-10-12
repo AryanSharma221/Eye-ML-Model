@@ -1,0 +1,412 @@
+{
+  "metadata": {
+    "timestamp": "2026-10-12T07:46:54Z",
+    "checkpoint_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth",
+    "checkpoint_size_bytes": 73754057,
+    "checkpoint_size_mb": 70.34,
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "python_version": "3.12.4",
+    "torch_version": "2.6.0+cu124",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "baseline": {
+    "cold_initialization_ms": 432.52,
+    "memory_before_init_mb": {
+      "working_set_mb": 607.3,
+      "private_usage_mb": 1485.68,
+      "cuda_allocated_mb": 0.0,
+      "cuda_reserved_mb": 0.0,
+      "cuda_max_allocated_mb": 0.0
+    },
+    "memory_after_init_mb": {
+      "working_set_mb": 695.49,
+      "private_usage_mb": 1710.88,
+      "cuda_allocated_mb": 70.09,
+      "cuda_reserved_mb": 150.0,
+      "cuda_max_allocated_mb": 140.19
+    },
+    "memory_delta_mb": {
+      "working_set": 88.19,
+      "cuda_allocated": 70.09
+    },
+    "steady_state_e2e_latency": {
+      "count": 20,
+      "min_ms": 140.97,
+      "mean_ms": 157.56,
+      "median_ms": 155.68,
+      "p90_ms": 175.36,
+      "p95_ms": 176.18,
+      "p99_ms": 176.88,
+      "max_ms": 177.05,
+      "std_ms": 10.62
+    },
+    "stage_latencies": {
+      "quality_gate": {
+        "count": 20,
+        "min_ms": 5.04,
+        "mean_ms": 6.1,
+        "median_ms": 6.09,
+        "p90_ms": 6.8,
+        "p95_ms": 7.52,
+        "p99_ms": 7.97,
+        "max_ms": 8.09,
+        "std_ms": 0.72
+      },
+      "preprocessing": {
+        "count": 20,
+        "min_ms": 3.4,
+        "mean_ms": 3.81,
+        "median_ms": 3.78,
+        "p90_ms": 4.1,
+        "p95_ms": 4.28,
+        "p99_ms": 4.49,
+        "max_ms": 4.54,
+        "std_ms": 0.26
+      },
+      "eye_inference": {
+        "count": 20,
+        "min_ms": 25.82,
+        "mean_ms": 31.92,
+        "median_ms": 30.72,
+        "p90_ms": 36.78,
+        "p95_ms": 37.72,
+        "p99_ms": 41.74,
+        "max_ms": 42.75,
+        "std_ms": 3.91
+      },
+      "gradcam": {
+        "count": 20,
+        "min_ms": 102.6,
+        "mean_ms": 114.99,
+        "median_ms": 114.79,
+        "p90_ms": 122.64,
+        "p95_ms": 126.33,
+        "p99_ms": 129.58,
+        "max_ms": 130.39,
+        "std_ms": 7.23
+      },
+      "vitals_analysis": {
+        "count": 20,
+        "min_ms": 0.17,
+        "mean_ms": 0.23,
+        "median_ms": 0.22,
+        "p90_ms": 0.3,
+        "p95_ms": 0.31,
+        "p99_ms": 0.36,
+        "max_ms": 0.37,
+        "std_ms": 0.05
+      }
+    }
+  },
+  "repeated_execution": {
+    "same_image_inference": {
+      "iterations": 50,
+      "success_count": 50,
+      "predictions_consistent": true,
+      "confidences_consistent": true,
+      "probabilities_consistent": true,
+      "predicted_class": "glaucoma",
+      "confidence": 0.9286,
+      "latency_stats": {
+        "count": 50,
+        "min_ms": 36.78,
+        "mean_ms": 41.14,
+        "median_ms": 40.87,
+        "p90_ms": 45.05,
+        "p95_ms": 46.27,
+        "p99_ms": 47.92,
+        "max_ms": 48.45,
+        "std_ms": 2.72
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1121.9,
+        "private_usage_mb": 2438.46,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1121.91,
+        "private_usage_mb": 2438.47,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "ram_slope_mb_per_iter": 0.00036,
+      "vram_slope_mb_per_iter": 0.0,
+      "has_leak": false
+    },
+    "diverse_images_inference": {
+      "iterations": 50,
+      "success_count": 50,
+      "error_count": 0,
+      "errors": [],
+      "latency_stats": {
+        "count": 50,
+        "min_ms": 2.59,
+        "mean_ms": 37.69,
+        "median_ms": 38.4,
+        "p90_ms": 72.09,
+        "p95_ms": 75.6,
+        "p99_ms": 102.33,
+        "max_ms": 102.45,
+        "std_ms": 27.45
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1121.93,
+        "private_usage_mb": 2438.47,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1129.58,
+        "private_usage_mb": 2445.45,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "ram_slope_mb_per_iter": 0.15782,
+      "second_half_growth_mb": 4.75,
+      "has_leak": false
+    },
+    "gradcam_generation": {
+      "iterations": 30,
+      "success_count": 30,
+      "hook_leak_detected": false,
+      "grad_flag_leak_detected": false,
+      "latency_stats": {
+        "count": 30,
+        "min_ms": 101.64,
+        "mean_ms": 112.36,
+        "median_ms": 111.49,
+        "p90_ms": 118.23,
+        "p95_ms": 121.95,
+        "p99_ms": 123.33,
+        "max_ms": 123.73,
+        "std_ms": 5.33
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1129.58,
+        "private_usage_mb": 2445.45,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1132.06,
+        "private_usage_mb": 2447.91,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "ram_slope_mb_per_iter": 0.00073,
+      "has_leak": false
+    },
+    "quality_rejections": {
+      "iterations": 30,
+      "rejected_every_time": true,
+      "downstream_inference_bypassed": true,
+      "latency_stats": {
+        "count": 30,
+        "min_ms": 57.9,
+        "mean_ms": 59.91,
+        "median_ms": 59.44,
+        "p90_ms": 62.41,
+        "p95_ms": 63.48,
+        "p99_ms": 65.55,
+        "max_ms": 66.28,
+        "std_ms": 1.9
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1132.06,
+        "private_usage_mb": 2447.91,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1132.07,
+        "private_usage_mb": 2447.91,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "ram_slope_mb_per_iter": 0.0,
+      "has_leak": false
+    },
+    "alternating_success_failure": {
+      "iterations": 30,
+      "all_success_correct": true,
+      "all_failures_handled": true,
+      "success_latency_stats": {
+        "count": 15,
+        "min_ms": 37.63,
+        "mean_ms": 41.3,
+        "median_ms": 40.86,
+        "p90_ms": 44.41,
+        "p95_ms": 44.75,
+        "p99_ms": 45.06,
+        "max_ms": 45.14,
+        "std_ms": 2.35
+      },
+      "failure_latency_stats": {
+        "count": 15,
+        "min_ms": 62.3,
+        "mean_ms": 68.88,
+        "median_ms": 69.55,
+        "p90_ms": 71.94,
+        "p95_ms": 72.27,
+        "p99_ms": 72.8,
+        "max_ms": 72.94,
+        "std_ms": 2.74
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1132.07,
+        "private_usage_mb": 2447.91,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1132.07,
+        "private_usage_mb": 2447.91,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "has_leak": false
+    },
+    "corrupted_inputs_resilience": {
+      "all_handled_safely": true,
+      "test_cases": {
+        "zero_byte_file": {
+          "status": "rejected",
+          "reason": "Image file is empty (0 bytes).",
+          "handled_safely": true
+        },
+        "garbage_binary_file": {
+          "status": "rejected",
+          "reason": "Failed to decode image. File may be corrupt, truncated, or in an unsupported format.",
+          "handled_safely": true
+        },
+        "non_existent_path": {
+          "status": "error",
+          "reason": "Retinal image file not found: non_existent_retina_image_99999.jpg",
+          "handled_safely": true
+        },
+        "directory_as_path": {
+          "status": "error",
+          "reason": "Retinal image file not found: evaluation_results",
+          "handled_safely": true
+        },
+        "empty_path_string": {
+          "status": "skipped",
+          "handled_safely": true
+        }
+      }
+    },
+    "missing_checkpoint_handling": {
+      "handled_in_pipeline": true,
+      "typed_exception_raised": true
+    },
+    "vital_signs_analysis": {
+      "iterations": 100,
+      "results_consistent": true,
+      "latency_microseconds": {
+        "mean_us": 37.57,
+        "median_us": 33.7,
+        "p95_us": 56.24,
+        "min_us": 30.0,
+        "max_us": 108.8
+      }
+    },
+    "mixed_workflow": {
+      "iterations": 50,
+      "mode_counts": {
+        "full": 10,
+        "image_only": 10,
+        "vitals_only": 10,
+        "quality_rejection": 10,
+        "corrupt_image": 10
+      },
+      "latency_stats": {
+        "count": 50,
+        "min_ms": 0.16,
+        "mean_ms": 54.82,
+        "median_ms": 41.01,
+        "p90_ms": 154.04,
+        "p95_ms": 159.67,
+        "p99_ms": 172.94,
+        "max_ms": 176.72,
+        "std_ms": 58.35
+      },
+      "memory_start_mb": {
+        "working_set_mb": 1195.63,
+        "private_usage_mb": 2517.42,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      },
+      "memory_end_mb": {
+        "working_set_mb": 1196.14,
+        "private_usage_mb": 2517.94,
+        "cuda_allocated_mb": 86.34,
+        "cuda_reserved_mb": 364.0,
+        "cuda_max_allocated_mb": 355.93
+      }
+    }
+  },
+  "concurrency": {
+    "2_workers": {
+      "workers": 2,
+      "requests": 16,
+      "duration_ms": 2415.7,
+      "throughput_qps": 6.62,
+      "errors_count": 0,
+      "errors": [],
+      "all_predictions_match_baseline": true,
+      "all_gradcams_successful": true
+    },
+    "4_workers": {
+      "workers": 4,
+      "requests": 16,
+      "duration_ms": 2330.27,
+      "throughput_qps": 6.87,
+      "errors_count": 0,
+      "errors": [],
+      "all_predictions_match_baseline": true,
+      "all_gradcams_successful": true
+    },
+    "8_workers": {
+      "workers": 8,
+      "requests": 16,
+      "duration_ms": 2348.96,
+      "throughput_qps": 6.81,
+      "errors_count": 0,
+      "errors": [],
+      "all_predictions_match_baseline": true,
+      "all_gradcams_successful": true
+    }
+  },
+  "resource_stability": {
+    "unreleased_forward_hooks": 0,
+    "unreleased_backward_hooks": 0,
+    "hooks_clean": true,
+    "unintended_param_gradients_active": false,
+    "telemetry_ring_buffer_size": 500,
+    "telemetry_ring_buffer_bounded": true,
+    "log_handlers_count": 1,
+    "log_handlers_idempotent": true,
+    "current_memory_mb": {
+      "working_set_mb": 1228.92,
+      "private_usage_mb": 2765.31,
+      "cuda_allocated_mb": 151.34,
+      "cuda_reserved_mb": 444.0,
+      "cuda_max_allocated_mb": 359.67
+    },
+    "stability_verdict": "STABLE"
+  },
+  "defects_and_fixes": []
+}

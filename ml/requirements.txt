@@ -1,0 +1,21 @@
+# ==============================================================================
+# Multimodal Health Screening ML Layer - Runtime Dependencies Manifest
+# Target Python Version: >=3.10, <=3.12 (Verified on Python 3.12.4 x86_64)
+# Hardware Target: NVIDIA GPU (CUDA 12.4) or CPU fallback
+# ==============================================================================
+
+# Core Deep Learning Framework
+# Note for GPU acceleration (NVIDIA CUDA 12.4):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# Note for CPU-only execution:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+torch>=2.4.0
+torchvision>=0.19.0
+
+# Numerical Computing & Imaging
+numpy>=1.26.0
+pillow>=10.2.0
+opencv-python>=4.9.0
+
+# Evaluation Analytics & Metrics
+scikit-learn>=1.4.0

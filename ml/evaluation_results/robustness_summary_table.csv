@@ -1,0 +1,16 @@
+Condition,Description,Images_Evaluated,Gate_Passed,Gate_Rejected,Gate_Pass_Rate,Overall_Accuracy,Macro_F1,Prediction_Consistency,Mean_Confidence,Mean_Confidence_Delta,Cataract_F1,DR_F1,Glaucoma_F1,Normal_F1
+baseline_clean,Original clean test image (unmodified reference),894,388,506,43.4%,87.14%,87.09%,99.33%,86.19%,-0.07%,87.10%,94.04%,81.60%,85.60%
+brightness_inc_15,Mild brightness increase (+15%),894,458,436,51.2%,86.69%,86.65%,96.76%,85.84%,-0.43%,86.68%,93.78%,80.47%,85.66%
+brightness_dec_15,Mild brightness decrease (-15%),894,302,592,33.8%,87.70%,87.63%,97.87%,86.28%,+0.01%,87.86%,95.15%,81.62%,85.88%
+contrast_inc_15,Mild contrast increase (+15%),894,448,446,50.1%,86.91%,86.86%,97.09%,85.91%,-0.36%,87.04%,93.81%,80.84%,85.77%
+contrast_dec_15,Mild contrast decrease (-15%),894,303,591,33.9%,87.36%,87.28%,97.99%,85.88%,-0.39%,87.38%,94.71%,81.15%,85.88%
+rotation_pos_5deg,Slight clockwise rotation (+5 degrees),894,244,650,27.3%,86.58%,86.54%,96.76%,85.86%,-0.41%,86.54%,93.78%,80.56%,85.31%
+rotation_neg_5deg,Slight counter-clockwise rotation (-5 degrees),894,242,652,27.1%,86.69%,86.62%,97.43%,86.15%,-0.12%,86.89%,94.30%,80.38%,84.91%
+blur_gaussian_r1,Mild Gaussian blur (radius = 1.0 px),894,0,894,0.0%,86.13%,86.14%,96.53%,85.33%,-0.94%,86.27%,93.78%,80.54%,83.99%
+compression_jpeg_q75,Mild JPEG recompression (Quality = 75),894,325,569,36.4%,86.69%,86.70%,97.32%,85.91%,-0.36%,86.68%,94.01%,81.74%,84.36%
+compression_jpeg_q50,Moderate JPEG recompression (Quality = 50),894,283,611,31.7%,85.57%,85.63%,95.19%,84.91%,-1.36%,86.27%,94.01%,80.18%,82.05%
+resample_down_up_384,"Spatial resampling (downsample to 384x384, upsample back)",894,24,870,2.7%,86.35%,86.38%,95.86%,85.63%,-0.63%,87.41%,93.51%,80.09%,84.52%
+noise_gaussian_s02,Mild additive Gaussian noise (sigma = 0.02),894,854,40,95.5%,87.25%,87.23%,97.20%,85.67%,-0.60%,86.98%,94.95%,81.92%,85.07%
+stress_severe_blur,Severe Gaussian blur (radius = 4.0 px) [Stress Gate Test],894,0,894,0.0%,56.15%,55.26%,61.19%,81.15%,-5.12%,57.40%,72.39%,54.29%,36.99%
+stress_severe_underexposure,Severe underexposure (-65% brightness) [Stress Gate Test],894,8,886,0.9%,80.98%,80.36%,82.21%,81.23%,-5.04%,78.24%,88.47%,70.09%,84.65%
+stress_severe_overexposure,Severe overexposure (+80% brightness) [Stress Gate Test],894,541,353,60.5%,79.19%,78.50%,84.34%,83.57%,-2.69%,80.72%,90.91%,62.37%,80.00%

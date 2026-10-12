@@ -1,0 +1,263 @@
+{
+  "demonstration_metadata": {
+    "timestamp": "2026-10-11T17:15:21Z",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "checkpoint_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth",
+    "checkpoint_epoch": 6,
+    "checkpoint_best_val_accuracy": 0.9029,
+    "canonical_classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "dataset_split": "test"
+  },
+  "eye_screening_demonstration": {
+    "total_samples_tested": 4,
+    "samples_passed_quality_gate": 4,
+    "inference_success_count": 4,
+    "ground_truth_matches": 2,
+    "accuracy_in_demo_sample": 0.5,
+    "gradcam_success_count": 4,
+    "sample_details": [
+      {
+        "sample_identifier": "kaggle_2052_right.jpg",
+        "ground_truth_class": "cataract",
+        "quality_gate": {
+          "passed": true,
+          "blur_score": 146.4,
+          "brightness_mean": 43.8,
+          "contrast_std": 27.4,
+          "retinal_detected": true,
+          "latency_ms": 5.3
+        },
+        "preprocessing": {
+          "tensor_shape": [
+            1,
+            3,
+            224,
+            224
+          ],
+          "latency_ms": 16.3
+        },
+        "inference": {
+          "predicted_class": "glaucoma",
+          "class_index": 2,
+          "confidence": 0.9286,
+          "risk_level": "HIGH",
+          "is_match": false,
+          "all_probabilities": {
+            "cataract": 0.0039,
+            "diabetic_retinopathy": 0.0015,
+            "glaucoma": 0.9286,
+            "normal": 0.066
+          },
+          "latency_ms": 386.94
+        },
+        "gradcam": {
+          "generated": true,
+          "image_format": "PNG",
+          "dimensions": [
+            512,
+            512
+          ],
+          "base64_length_chars": 358884,
+          "latency_ms": 392.2
+        }
+      },
+      {
+        "sample_identifier": "kaggle_10184_left.jpeg",
+        "ground_truth_class": "diabetic_retinopathy",
+        "quality_gate": {
+          "passed": true,
+          "blur_score": 123.9,
+          "brightness_mean": 83.5,
+          "contrast_std": 67.6,
+          "retinal_detected": true,
+          "latency_ms": 7.39
+        },
+        "preprocessing": {
+          "tensor_shape": [
+            1,
+            3,
+            224,
+            224
+          ],
+          "latency_ms": 5.26
+        },
+        "inference": {
+          "predicted_class": "diabetic_retinopathy",
+          "class_index": 1,
+          "confidence": 0.9713,
+          "risk_level": "HIGH",
+          "is_match": true,
+          "all_probabilities": {
+            "cataract": 0.0016,
+            "diabetic_retinopathy": 0.9713,
+            "glaucoma": 0.0253,
+            "normal": 0.0018
+          },
+          "latency_ms": 36.53
+        },
+        "gradcam": {
+          "generated": true,
+          "image_format": "PNG",
+          "dimensions": [
+            512,
+            512
+          ],
+          "base64_length_chars": 311084,
+          "latency_ms": 143.22
+        }
+      },
+      {
+        "sample_identifier": "kaggle_1491_left.jpg",
+        "ground_truth_class": "glaucoma",
+        "quality_gate": {
+          "passed": true,
+          "blur_score": 192.1,
+          "brightness_mean": 49.2,
+          "contrast_std": 29.9,
+          "retinal_detected": true,
+          "latency_ms": 6.93
+        },
+        "preprocessing": {
+          "tensor_shape": [
+            1,
+            3,
+            224,
+            224
+          ],
+          "latency_ms": 3.98
+        },
+        "inference": {
+          "predicted_class": "normal",
+          "class_index": 3,
+          "confidence": 0.9467,
+          "risk_level": "LOW",
+          "is_match": false,
+          "all_probabilities": {
+            "cataract": 0.0109,
+            "diabetic_retinopathy": 0.002,
+            "glaucoma": 0.0404,
+            "normal": 0.9467
+          },
+          "latency_ms": 40.89
+        },
+        "gradcam": {
+          "generated": true,
+          "image_format": "PNG",
+          "dimensions": [
+            512,
+            512
+          ],
+          "base64_length_chars": 387936,
+          "latency_ms": 150.34
+        }
+      },
+      {
+        "sample_identifier": "kaggle_2587_right.jpg",
+        "ground_truth_class": "normal",
+        "quality_gate": {
+          "passed": true,
+          "blur_score": 220.5,
+          "brightness_mean": 55.5,
+          "contrast_std": 34.9,
+          "retinal_detected": true,
+          "latency_ms": 8.07
+        },
+        "preprocessing": {
+          "tensor_shape": [
+            1,
+            3,
+            224,
+            224
+          ],
+          "latency_ms": 4.57
+        },
+        "inference": {
+          "predicted_class": "normal",
+          "class_index": 3,
+          "confidence": 0.941,
+          "risk_level": "LOW",
+          "is_match": true,
+          "all_probabilities": {
+            "cataract": 0.0086,
+            "diabetic_retinopathy": 0.0253,
+            "glaucoma": 0.025,
+            "normal": 0.941
+          },
+          "latency_ms": 38.34
+        },
+        "gradcam": {
+          "generated": true,
+          "image_format": "PNG",
+          "dimensions": [
+            512,
+            512
+          ],
+          "base64_length_chars": 401444,
+          "latency_ms": 157.15
+        }
+      }
+    ]
+  },
+  "quality_rejection_demonstration": {
+    "sample_identifier": "1019.png",
+    "status": "rejected",
+    "rejection_reason": "Excessive image blur (blur score 13.98 < threshold 100.0).",
+    "quality_check_failed": true,
+    "inference_prevented": true
+  },
+  "physiological_vitals_demonstration": {
+    "cases_evaluated": 3,
+    "invalid_input_rejection_verified": true,
+    "case_results": [
+      {
+        "case_name": "Normal Baseline Case",
+        "inputs": {
+          "heart_rate": 72.0,
+          "spo2": 98.0,
+          "temperature": 36.8
+        },
+        "overall_status": "Normal",
+        "risk_level": "LOW",
+        "is_abnormal": false,
+        "summary": "All vital signs are within normal clinical reference ranges."
+      },
+      {
+        "case_name": "Low-grade Pyrexia with Mild Tachycardia",
+        "inputs": {
+          "heart_rate": 104.0,
+          "spo2": 96.0,
+          "temperature": 37.8
+        },
+        "overall_status": "Higher than usual",
+        "risk_level": "MODERATE",
+        "is_abnormal": true,
+        "summary": "Flagged physiological metrics: Heart rate (104.0 BPM: Higher than usual), Temperature (37.8\u00b0C: Higher than usual)."
+      },
+      {
+        "case_name": "Severe Hypoxemic Tachycardia (Critical)",
+        "inputs": {
+          "heart_rate": 130.0,
+          "spo2": 88.0,
+          "temperature": 38.6
+        },
+        "overall_status": "Abnormal",
+        "risk_level": "HIGH",
+        "is_abnormal": true,
+        "summary": "Flagged physiological metrics: Heart rate (130.0 BPM: Abnormal), SpO2 (88.0%: Abnormal), Temperature (38.6\u00b0C: Abnormal)."
+      }
+    ]
+  },
+  "system_verification_verdict": {
+    "real_checkpoint_verified": true,
+    "end_to_end_pipeline_operational": true,
+    "quality_gate_blocks_bad_inputs": true,
+    "gradcam_verified_valid_png": true,
+    "ready_for_backend_handoff": true
+  }
+}

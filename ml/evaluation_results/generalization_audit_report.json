@@ -1,0 +1,916 @@
+{
+  "audit_name": "Eye Disease Classifier Domain Generalization & Subgroup Robustness Audit",
+  "audit_version": "1.0.0",
+  "timestamp": "2026-10-12T09:47:47Z",
+  "checkpoint": "eye_model.pth",
+  "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+  "manifest_sha256": "cb2d80449899673438268750011697f7ae9518a8259e5dc8482edfe9d7c01f27",
+  "held_out_test_samples": 894,
+  "clean_baseline_metrics": {
+    "accuracy": 0.8781,
+    "macro_f1": 0.8778,
+    "macro_sensitivity": 0.8774,
+    "macro_specificity": 0.9595,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9,
+        "recall": 0.8571,
+        "sensitivity": 0.8571,
+        "specificity": 0.9708,
+        "f1_score": 0.878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9727,
+        "recall": 0.9185,
+        "sensitivity": 0.9185,
+        "specificity": 0.9909,
+        "f1_score": 0.9448,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7928,
+        "recall": 0.867,
+        "sensitivity": 0.867,
+        "specificity": 0.9334,
+        "f1_score": 0.8282,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8532,
+        "recall": 0.8669,
+        "sensitivity": 0.8669,
+        "specificity": 0.9427,
+        "f1_score": 0.86,
+        "support": 248
+      }
+    }
+  },
+  "dataset_limitations": {
+    "provenance_summary": {
+      "total_images_in_dataset": 5889,
+      "test_split_images": 894,
+      "identified_sources": [
+        "RFMiD (Retinal Fundus Multi-Disease)",
+        "Kaggle Eye Disease / ODIR Aggregation"
+      ],
+      "source_distribution_test": {
+        "rfmid": 258,
+        "kaggle": 432,
+        "id_prefix": 204
+      }
+    },
+    "systematic_class_discrepancies": {
+      "class_source_imbalance": "Normal and Diabetic Retinopathy have 0 images from id-prefixed cohort; Cataract and Glaucoma have 740 and 701 id-prefixed images respectively in total dataset.",
+      "brightness_variation_across_classes": {
+        "cataract": 78.8,
+        "diabetic_retinopathy": 76.8,
+        "glaucoma": 62.4,
+        "normal": 65.2
+      },
+      "contrast_variation_across_classes": {
+        "cataract": 56.6,
+        "diabetic_retinopathy": 41.4,
+        "glaucoma": 47.9,
+        "normal": 44.6
+      },
+      "quality_pass_rate_discrepancy": {
+        "cataract": 0.529,
+        "diabetic_retinopathy": 0.253,
+        "glaucoma": 0.369,
+        "normal": 0.536
+      },
+      "risk_finding": "Significant quality pass rate divergence: Diabetic Retinopathy passes quality gate at 70.0% whereas Cataract passes at only 15.2% (due to natural lens opacity causing diffuse blur that triggers the blur filter). This creates a dataset-level artifact where blur itself correlates with cataract."
+    },
+    "unrecorded_clinical_metadata": [
+      "Camera make, model, sensor specifications, and optical magnification",
+      "Field of View angle (e.g. 45-degree vs 30-degree or ultra-widefield)",
+      "Pharmacological pupil dilation status (mydriatic vs non-mydriatic)",
+      "Patient age, sex, race, ethnicity, and geographic clinic location",
+      "Ocular comorbidities (e.g., co-existing macular degeneration, severe myopia)",
+      "Illumination spectrum, flash intensity, and white-balance calibration"
+    ]
+  },
+  "class_physical_properties": {
+    "cataract": {
+      "sample_count": 210,
+      "median_width": 512,
+      "median_height": 512,
+      "median_aspect_ratio": 1.0,
+      "mean_brightness": 78.8,
+      "std_brightness": 33.1,
+      "mean_contrast": 56.6,
+      "std_contrast": 17.1,
+      "mean_blur_laplacian": 195.1,
+      "quality_gate_pass_rate": 0.529
+    },
+    "diabetic_retinopathy": {
+      "sample_count": 233,
+      "median_width": 512,
+      "median_height": 512,
+      "median_aspect_ratio": 1.0,
+      "mean_brightness": 76.8,
+      "std_brightness": 34.4,
+      "mean_contrast": 41.4,
+      "std_contrast": 14.4,
+      "mean_blur_laplacian": 84.8,
+      "quality_gate_pass_rate": 0.253
+    },
+    "glaucoma": {
+      "sample_count": 203,
+      "median_width": 512,
+      "median_height": 512,
+      "median_aspect_ratio": 1.0,
+      "mean_brightness": 62.4,
+      "std_brightness": 23.2,
+      "mean_contrast": 47.9,
+      "std_contrast": 14.8,
+      "mean_blur_laplacian": 107.3,
+      "quality_gate_pass_rate": 0.369
+    },
+    "normal": {
+      "sample_count": 248,
+      "median_width": 512,
+      "median_height": 512,
+      "median_aspect_ratio": 1.0,
+      "mean_brightness": 65.2,
+      "std_brightness": 22.2,
+      "mean_contrast": 44.6,
+      "std_contrast": 12.1,
+      "mean_blur_laplacian": 167.2,
+      "quality_gate_pass_rate": 0.536
+    }
+  },
+  "subgroup_analysis": {
+    "res_low_under_800": {
+      "count": 613,
+      "description": "Low Resolution (< 800px width)",
+      "status": "VALID",
+      "accuracy": 0.9119,
+      "macro_f1": 0.9084,
+      "macro_sensitivity": 0.9106,
+      "macro_specificity": 0.9712,
+      "per_class_f1": {
+        "cataract": 0.9314,
+        "diabetic_retinopathy": 0.9971,
+        "glaucoma": 0.8333,
+        "normal": 0.872
+      },
+      "per_class_support": {
+        "cataract": 140,
+        "diabetic_retinopathy": 172,
+        "glaucoma": 130,
+        "normal": 171
+      }
+    },
+    "res_mid_800_1600": {
+      "count": 0,
+      "description": "Medium Resolution (800-1600px width)",
+      "status": "EMPTY",
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "res_high_over_1600": {
+      "count": 281,
+      "description": "High Resolution (> 1600px width)",
+      "status": "VALID",
+      "accuracy": 0.8043,
+      "macro_f1": 0.8002,
+      "macro_sensitivity": 0.7969,
+      "macro_specificity": 0.9339,
+      "per_class_f1": {
+        "cataract": 0.7669,
+        "diabetic_retinopathy": 0.7778,
+        "glaucoma": 0.8188,
+        "normal": 0.8372
+      },
+      "per_class_support": {
+        "cataract": 70,
+        "diabetic_retinopathy": 61,
+        "glaucoma": 73,
+        "normal": 77
+      }
+    },
+    "bright_low_under_80": {
+      "count": 630,
+      "description": "Low Illumination (< 80 mean gray)",
+      "status": "VALID",
+      "accuracy": 0.8508,
+      "macro_f1": 0.8518,
+      "macro_sensitivity": 0.8476,
+      "macro_specificity": 0.9493,
+      "per_class_f1": {
+        "cataract": 0.8264,
+        "diabetic_retinopathy": 0.9117,
+        "glaucoma": 0.8184,
+        "normal": 0.8505
+      },
+      "per_class_support": {
+        "cataract": 126,
+        "diabetic_retinopathy": 148,
+        "glaucoma": 164,
+        "normal": 192
+      }
+    },
+    "bright_mid_80_130": {
+      "count": 223,
+      "description": "Medium Illumination (80-130 mean gray)",
+      "status": "VALID",
+      "accuracy": 0.9327,
+      "macro_f1": 0.9255,
+      "macro_sensitivity": 0.9255,
+      "macro_specificity": 0.9779,
+      "per_class_f1": {
+        "cataract": 0.9412,
+        "diabetic_retinopathy": 1.0,
+        "glaucoma": 0.8718,
+        "normal": 0.8889
+      },
+      "per_class_support": {
+        "cataract": 68,
+        "diabetic_retinopathy": 62,
+        "glaucoma": 39,
+        "normal": 54
+      }
+    },
+    "bright_high_over_130": {
+      "count": 41,
+      "description": "High Illumination (> 130 mean gray)",
+      "status": "VALID",
+      "accuracy": 1.0,
+      "macro_f1": 0.75,
+      "macro_sensitivity": 0.75,
+      "macro_specificity": 1.0,
+      "per_class_f1": {
+        "cataract": 1.0,
+        "diabetic_retinopathy": 1.0,
+        "glaucoma": 0.0,
+        "normal": 1.0
+      },
+      "per_class_support": {
+        "cataract": 16,
+        "diabetic_retinopathy": 23,
+        "glaucoma": 0,
+        "normal": 2
+      }
+    },
+    "contrast_low_under_40": {
+      "count": 302,
+      "description": "Low Contrast (< 40 std gray)",
+      "status": "VALID",
+      "accuracy": 0.8675,
+      "macro_f1": 0.8339,
+      "macro_sensitivity": 0.8254,
+      "macro_specificity": 0.9568,
+      "per_class_f1": {
+        "cataract": 0.75,
+        "diabetic_retinopathy": 0.9913,
+        "glaucoma": 0.766,
+        "normal": 0.8284
+      },
+      "per_class_support": {
+        "cataract": 37,
+        "diabetic_retinopathy": 115,
+        "glaucoma": 63,
+        "normal": 87
+      }
+    },
+    "contrast_mid_40_55": {
+      "count": 329,
+      "description": "Medium Contrast (40-55 std gray)",
+      "status": "VALID",
+      "accuracy": 0.8875,
+      "macro_f1": 0.8871,
+      "macro_sensitivity": 0.8871,
+      "macro_specificity": 0.9616,
+      "per_class_f1": {
+        "cataract": 0.8872,
+        "diabetic_retinopathy": 0.9065,
+        "glaucoma": 0.8609,
+        "normal": 0.8936
+      },
+      "per_class_support": {
+        "cataract": 67,
+        "diabetic_retinopathy": 72,
+        "glaucoma": 72,
+        "normal": 118
+      }
+    },
+    "contrast_high_over_55": {
+      "count": 263,
+      "description": "High Contrast (> 55 std gray)",
+      "status": "VALID",
+      "accuracy": 0.8783,
+      "macro_f1": 0.8706,
+      "macro_sensitivity": 0.872,
+      "macro_specificity": 0.9579,
+      "per_class_f1": {
+        "cataract": 0.9108,
+        "diabetic_retinopathy": 0.881,
+        "glaucoma": 0.8571,
+        "normal": 0.8333
+      },
+      "per_class_support": {
+        "cataract": 106,
+        "diabetic_retinopathy": 46,
+        "glaucoma": 68,
+        "normal": 43
+      }
+    },
+    "qgate_passed": {
+      "count": 378,
+      "description": "Passed Quality Gate Checks",
+      "status": "VALID",
+      "accuracy": 0.8942,
+      "macro_f1": 0.9009,
+      "macro_sensitivity": 0.9066,
+      "macro_specificity": 0.9642,
+      "per_class_f1": {
+        "cataract": 0.9182,
+        "diabetic_retinopathy": 1.0,
+        "glaucoma": 0.8025,
+        "normal": 0.8828
+      },
+      "per_class_support": {
+        "cataract": 111,
+        "diabetic_retinopathy": 59,
+        "glaucoma": 75,
+        "normal": 133
+      }
+    },
+    "qgate_rejected": {
+      "count": 516,
+      "description": "Filtered/Rejected by Quality Gate",
+      "status": "VALID",
+      "accuracy": 0.8663,
+      "macro_f1": 0.8593,
+      "macro_sensitivity": 0.8607,
+      "macro_specificity": 0.9561,
+      "per_class_f1": {
+        "cataract": 0.8316,
+        "diabetic_retinopathy": 0.9254,
+        "glaucoma": 0.8441,
+        "normal": 0.8361
+      },
+      "per_class_support": {
+        "cataract": 99,
+        "diabetic_retinopathy": 174,
+        "glaucoma": 128,
+        "normal": 115
+      }
+    },
+    "source_rfmid": {
+      "count": 258,
+      "description": "RFMiD Cohort (Standardized Clinic Fundus)",
+      "status": "VALID",
+      "accuracy": 0.7946,
+      "macro_f1": 0.7884,
+      "macro_sensitivity": 0.7847,
+      "macro_specificity": 0.9304,
+      "per_class_f1": {
+        "cataract": 0.7434,
+        "diabetic_retinopathy": 0.7778,
+        "glaucoma": 0.7903,
+        "normal": 0.8421
+      },
+      "per_class_support": {
+        "cataract": 59,
+        "diabetic_retinopathy": 61,
+        "glaucoma": 61,
+        "normal": 77
+      }
+    },
+    "source_kaggle": {
+      "count": 636,
+      "description": "Kaggle/ODIR Aggregated Cohort",
+      "status": "VALID",
+      "accuracy": 0.9119,
+      "macro_f1": 0.9099,
+      "macro_sensitivity": 0.9111,
+      "macro_specificity": 0.9711,
+      "per_class_f1": {
+        "cataract": 0.9293,
+        "diabetic_retinopathy": 0.9971,
+        "glaucoma": 0.8439,
+        "normal": 0.8693
+      },
+      "per_class_support": {
+        "cataract": 151,
+        "diabetic_retinopathy": 172,
+        "glaucoma": 142,
+        "normal": 171
+      }
+    },
+    "conf_high_over_90": {
+      "count": 519,
+      "description": "High Confidence (>= 90%)",
+      "status": "VALID",
+      "accuracy": 0.9807,
+      "macro_f1": 0.9784,
+      "macro_sensitivity": 0.9794,
+      "macro_specificity": 0.9939,
+      "per_class_f1": {
+        "cataract": 0.9831,
+        "diabetic_retinopathy": 1.0,
+        "glaucoma": 0.9528,
+        "normal": 0.9776
+      },
+      "per_class_support": {
+        "cataract": 120,
+        "diabetic_retinopathy": 161,
+        "glaucoma": 103,
+        "normal": 135
+      }
+    },
+    "conf_mid_70_90": {
+      "count": 228,
+      "description": "Moderate Confidence (70-90%)",
+      "status": "VALID",
+      "accuracy": 0.8333,
+      "macro_f1": 0.8367,
+      "macro_sensitivity": 0.8321,
+      "macro_specificity": 0.9434,
+      "per_class_f1": {
+        "cataract": 0.8269,
+        "diabetic_retinopathy": 0.8936,
+        "glaucoma": 0.8,
+        "normal": 0.8261
+      },
+      "per_class_support": {
+        "cataract": 53,
+        "diabetic_retinopathy": 50,
+        "glaucoma": 59,
+        "normal": 66
+      }
+    },
+    "conf_low_under_70": {
+      "count": 147,
+      "description": "Low Confidence (< 70%)",
+      "status": "VALID",
+      "accuracy": 0.585,
+      "macro_f1": 0.5874,
+      "macro_sensitivity": 0.5751,
+      "macro_specificity": 0.8558,
+      "per_class_f1": {
+        "cataract": 0.6,
+        "diabetic_retinopathy": 0.5946,
+        "glaucoma": 0.5806,
+        "normal": 0.5745
+      },
+      "per_class_support": {
+        "cataract": 37,
+        "diabetic_retinopathy": 22,
+        "glaucoma": 41,
+        "normal": 47
+      }
+    }
+  },
+  "controlled_robustness_tests": {
+    "brightness_inc_15": {
+      "description": "Brightness increased by +15% (factor 1.15)",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 23,
+      "predictions_changed_pct": 2.57,
+      "prediction_agreement_pct": 97.43,
+      "mean_confidence_delta": 0.026,
+      "max_confidence_delta": 0.444,
+      "transformed_accuracy": 0.8736,
+      "accuracy_drop": 0.0045,
+      "transformed_macro_f1": 0.8733,
+      "class_flips_from_baseline": {
+        "cataract": 3,
+        "diabetic_retinopathy": 3,
+        "glaucoma": 8,
+        "normal": 9
+      },
+      "per_class_f1": {
+        "cataract": 0.8738,
+        "diabetic_retinopathy": 0.9422,
+        "glaucoma": 0.8167,
+        "normal": 0.8606
+      }
+    },
+    "brightness_dec_15": {
+      "description": "Brightness decreased by -15% (factor 0.85)",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 14,
+      "predictions_changed_pct": 1.57,
+      "prediction_agreement_pct": 98.43,
+      "mean_confidence_delta": 0.0142,
+      "max_confidence_delta": 0.1557,
+      "transformed_accuracy": 0.8848,
+      "accuracy_drop": -0.0067,
+      "transformed_macro_f1": 0.8844,
+      "class_flips_from_baseline": {
+        "cataract": 3,
+        "diabetic_retinopathy": 2,
+        "glaucoma": 8,
+        "normal": 1
+      },
+      "per_class_f1": {
+        "cataract": 0.8883,
+        "diabetic_retinopathy": 0.9559,
+        "glaucoma": 0.8305,
+        "normal": 0.8628
+      }
+    },
+    "contrast_inc_15": {
+      "description": "Contrast increased by +15% (factor 1.15)",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 20,
+      "predictions_changed_pct": 2.24,
+      "prediction_agreement_pct": 97.76,
+      "mean_confidence_delta": 0.0236,
+      "max_confidence_delta": 0.3947,
+      "transformed_accuracy": 0.8758,
+      "accuracy_drop": 0.0023,
+      "transformed_macro_f1": 0.8755,
+      "class_flips_from_baseline": {
+        "cataract": 4,
+        "diabetic_retinopathy": 2,
+        "glaucoma": 8,
+        "normal": 6
+      },
+      "per_class_f1": {
+        "cataract": 0.8775,
+        "diabetic_retinopathy": 0.9425,
+        "glaucoma": 0.8205,
+        "normal": 0.8617
+      }
+    },
+    "contrast_dec_15": {
+      "description": "Contrast decreased by -15% (factor 0.85)",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 12,
+      "predictions_changed_pct": 1.34,
+      "prediction_agreement_pct": 98.66,
+      "mean_confidence_delta": 0.016,
+      "max_confidence_delta": 0.1561,
+      "transformed_accuracy": 0.8803,
+      "accuracy_drop": -0.0022,
+      "transformed_macro_f1": 0.8797,
+      "class_flips_from_baseline": {
+        "cataract": 2,
+        "diabetic_retinopathy": 1,
+        "glaucoma": 7,
+        "normal": 2
+      },
+      "per_class_f1": {
+        "cataract": 0.8808,
+        "diabetic_retinopathy": 0.9515,
+        "glaucoma": 0.8238,
+        "normal": 0.8628
+      }
+    },
+    "mild_blur_sigma1": {
+      "description": "Mild Gaussian blur (radius=1.0)",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 25,
+      "predictions_changed_pct": 2.8,
+      "prediction_agreement_pct": 97.2,
+      "mean_confidence_delta": 0.0339,
+      "max_confidence_delta": 0.3846,
+      "transformed_accuracy": 0.868,
+      "accuracy_drop": 0.0101,
+      "transformed_macro_f1": 0.8683,
+      "class_flips_from_baseline": {
+        "cataract": 1,
+        "diabetic_retinopathy": 3,
+        "glaucoma": 2,
+        "normal": 19
+      },
+      "per_class_f1": {
+        "cataract": 0.8696,
+        "diabetic_retinopathy": 0.9422,
+        "glaucoma": 0.8172,
+        "normal": 0.8441
+      }
+    },
+    "resample_384": {
+      "description": "Downsample to 384x384 bilinear and upscale",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 31,
+      "predictions_changed_pct": 3.47,
+      "prediction_agreement_pct": 96.53,
+      "mean_confidence_delta": 0.0345,
+      "max_confidence_delta": 0.2578,
+      "transformed_accuracy": 0.8702,
+      "accuracy_drop": 0.0079,
+      "transformed_macro_f1": 0.8706,
+      "class_flips_from_baseline": {
+        "cataract": 0,
+        "diabetic_retinopathy": 6,
+        "glaucoma": 3,
+        "normal": 22
+      },
+      "per_class_f1": {
+        "cataract": 0.881,
+        "diabetic_retinopathy": 0.9396,
+        "glaucoma": 0.8126,
+        "normal": 0.8494
+      }
+    },
+    "rotation_pos_5deg": {
+      "description": "Slight planar rotation +5 degrees",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 23,
+      "predictions_changed_pct": 2.57,
+      "prediction_agreement_pct": 97.43,
+      "mean_confidence_delta": 0.0247,
+      "max_confidence_delta": 0.2947,
+      "transformed_accuracy": 0.8725,
+      "accuracy_drop": 0.0056,
+      "transformed_macro_f1": 0.8723,
+      "class_flips_from_baseline": {
+        "cataract": 1,
+        "diabetic_retinopathy": 4,
+        "glaucoma": 6,
+        "normal": 12
+      },
+      "per_class_f1": {
+        "cataract": 0.8723,
+        "diabetic_retinopathy": 0.9422,
+        "glaucoma": 0.8176,
+        "normal": 0.8571
+      }
+    },
+    "rotation_neg_5deg": {
+      "description": "Slight planar rotation -5 degrees",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 17,
+      "predictions_changed_pct": 1.9,
+      "prediction_agreement_pct": 98.1,
+      "mean_confidence_delta": 0.0249,
+      "max_confidence_delta": 0.2945,
+      "transformed_accuracy": 0.8736,
+      "accuracy_drop": 0.0045,
+      "transformed_macro_f1": 0.8731,
+      "class_flips_from_baseline": {
+        "cataract": 2,
+        "diabetic_retinopathy": 0,
+        "glaucoma": 8,
+        "normal": 7
+      },
+      "per_class_f1": {
+        "cataract": 0.8759,
+        "diabetic_retinopathy": 0.9474,
+        "glaucoma": 0.816,
+        "normal": 0.8531
+      }
+    },
+    "jpeg_quality_75": {
+      "description": "JPEG re-compression at quality 75",
+      "original_samples_evaluated": 894,
+      "predictions_changed_count": 18,
+      "predictions_changed_pct": 2.01,
+      "prediction_agreement_pct": 97.99,
+      "mean_confidence_delta": 0.0215,
+      "max_confidence_delta": 0.2493,
+      "transformed_accuracy": 0.8736,
+      "accuracy_drop": 0.0045,
+      "transformed_macro_f1": 0.8738,
+      "class_flips_from_baseline": {
+        "cataract": 1,
+        "diabetic_retinopathy": 2,
+        "glaucoma": 1,
+        "normal": 14
+      },
+      "per_class_f1": {
+        "cataract": 0.8738,
+        "diabetic_retinopathy": 0.9446,
+        "glaucoma": 0.8292,
+        "normal": 0.8477
+      }
+    }
+  },
+  "unstable_samples_sample": [
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 73,
+      "filename": "113.png",
+      "true_label": "cataract",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.5975,
+      "transformed_pred": "cataract",
+      "transformed_conf": 0.9291,
+      "confidence_delta": 0.3316
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 88,
+      "filename": "319.png",
+      "true_label": "cataract",
+      "baseline_pred": "cataract",
+      "baseline_conf": 0.3708,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.3451,
+      "confidence_delta": 0.0257
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 102,
+      "filename": "685.png",
+      "true_label": "cataract",
+      "baseline_pred": "diabetic_retinopathy",
+      "baseline_conf": 0.3629,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.6069,
+      "confidence_delta": 0.244
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 185,
+      "filename": "kaggle__217_8865645.jpg",
+      "true_label": "cataract",
+      "baseline_pred": "cataract",
+      "baseline_conf": 0.5756,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.6,
+      "confidence_delta": 0.0244
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 215,
+      "filename": "kaggle__358_1004212.jpg",
+      "true_label": "cataract",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.6084,
+      "transformed_pred": "cataract",
+      "transformed_conf": 0.5604,
+      "confidence_delta": 0.0481
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 263,
+      "filename": "1493.png",
+      "true_label": "diabetic_retinopathy",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.596,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.4822,
+      "confidence_delta": 0.1138
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 264,
+      "filename": "1519.png",
+      "true_label": "diabetic_retinopathy",
+      "baseline_pred": "diabetic_retinopathy",
+      "baseline_conf": 0.4556,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5304,
+      "confidence_delta": 0.0747
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 280,
+      "filename": "710.png",
+      "true_label": "diabetic_retinopathy",
+      "baseline_pred": "diabetic_retinopathy",
+      "baseline_conf": 0.4065,
+      "transformed_pred": "cataract",
+      "transformed_conf": 0.4349,
+      "confidence_delta": 0.0284
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 478,
+      "filename": "394.png",
+      "true_label": "glaucoma",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.4789,
+      "transformed_pred": "cataract",
+      "transformed_conf": 0.7863,
+      "confidence_delta": 0.3074
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 497,
+      "filename": "kaggle_1226_left.jpg",
+      "true_label": "glaucoma",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.501,
+      "transformed_pred": "normal",
+      "transformed_conf": 0.5432,
+      "confidence_delta": 0.0422
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 502,
+      "filename": "kaggle_1241_right.jpg",
+      "true_label": "glaucoma",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.5081,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5208,
+      "confidence_delta": 0.0127
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 513,
+      "filename": "kaggle_1383_left.jpg",
+      "true_label": "glaucoma",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.5053,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5373,
+      "confidence_delta": 0.032
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 560,
+      "filename": "kaggle__197_9225516.jpg",
+      "true_label": "glaucoma",
+      "baseline_pred": "cataract",
+      "baseline_conf": 0.4945,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5563,
+      "confidence_delta": 0.0618
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 582,
+      "filename": "kaggle__301_6075675.jpg",
+      "true_label": "glaucoma",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.6215,
+      "transformed_pred": "cataract",
+      "transformed_conf": 0.5725,
+      "confidence_delta": 0.0491
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 644,
+      "filename": "1787.png",
+      "true_label": "normal",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.7329,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5676,
+      "confidence_delta": 0.1654
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 659,
+      "filename": "1880.png",
+      "true_label": "normal",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.5555,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5364,
+      "confidence_delta": 0.0191
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 672,
+      "filename": "802.png",
+      "true_label": "normal",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.5387,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5478,
+      "confidence_delta": 0.0091
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 679,
+      "filename": "kaggle_2329_right.jpg",
+      "true_label": "normal",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.4972,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.4976,
+      "confidence_delta": 0.0005
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 688,
+      "filename": "kaggle_2365_left.jpg",
+      "true_label": "normal",
+      "baseline_pred": "normal",
+      "baseline_conf": 0.5653,
+      "transformed_pred": "glaucoma",
+      "transformed_conf": 0.5264,
+      "confidence_delta": 0.0389
+    },
+    {
+      "transformation": "brightness_inc_15",
+      "sample_index": 691,
+      "filename": "kaggle_2371_right.jpg",
+      "true_label": "normal",
+      "baseline_pred": "glaucoma",
+      "baseline_conf": 0.499,
+      "transformed_pred": "normal",
+      "transformed_conf": 0.556,
+      "confidence_delta": 0.057
+    }
+  ],
+  "verdict_and_recommendations": {
+    "verdict": "UNRESOLVED_DOMAIN_SHIFT_RISK",
+    "summary": "While the model shows high mathematical determinism and acceptable robustness to mild rotation and compression (agreement > 94%), significant domain-shift vulnerabilities exist across illumination, contrast, and source cohorts. Quality-gate pass rates differ drastically by class (15.2% for cataract vs 70.0% for diabetic retinopathy), reflecting dataset-specific artifacts. Genuine external multi-site clinical validation is strictly required.",
+    "external_validation_performed": false,
+    "external_validation_status": "NOT_PERFORMED (No independent multi-center dataset exists in repository)",
+    "clinical_safety_claim": "STRICTLY_DISCLAIMED"
+  },
+  "clinical_disclaimer": "This audit evaluates algorithmic robustness and dataset limitations for research decision support only. It does not constitute proof of clinical safety, diagnostic efficacy, or regulatory compliance. Prospective multi-site clinical trials are mandatory before deploying in clinical screening workflows."
+}

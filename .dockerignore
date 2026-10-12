@@ -1,0 +1,52 @@
+# ==============================================================================
+# Docker Ignore Configuration - Multimodal Health Screening Platform
+# ==============================================================================
+
+# Version Control
+.git
+.gitignore
+
+# Python Environments & Caching
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node & Frontend Build Caches
+node_modules/
+frontend/node_modules/
+.npm/
+
+# Datasets and Evaluation Data
+dataset/
+data/
+ml/dataset/*
+!ml/dataset/split_manifest.json
+
+# Exclude Backup / Resumption Checkpoints to keep image small (< 100MB model payload)
+ml/weights/*.pth
+!ml/weights/eye_model.pth
+
+# Local Uploads & Databases
+backend/uploads/*
+!backend/uploads/.gitkeep
+!backend/uploads/fundus/.gitkeep
+!backend/uploads/gradcam/.gitkeep
+backend/health_screening.db
+*.sqlite
+*.sqlite3
+*.db
+*.log
+logs/
+
+# Sensitive Environment Files
+.env
+.env.local
+.env.*.local
+
+# OS Artifacts
+.DS_Store
+Thumbs.db

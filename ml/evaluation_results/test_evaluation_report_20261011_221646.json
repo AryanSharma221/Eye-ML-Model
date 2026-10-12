@@ -1,0 +1,132 @@
+{
+  "dataset_split": "test",
+  "manifest_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\dataset\\split_manifest.json",
+  "checkpoint_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth",
+  "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+  "run_id": null,
+  "checkpoint_metadata": {
+    "epoch": 6,
+    "best_val_accuracy": 0.9028901734104047,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "architecture": "DenseNet201",
+    "seed": 42,
+    "run_id": null,
+    "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f"
+  },
+  "class_names": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "evaluation_timestamp": "2026-10-11T22:16:46.182992+00:00",
+  "device": "cuda",
+  "total_test_images": 894,
+  "evaluated_images": 894,
+  "failed_or_excluded_images": 0,
+  "excluded_samples": [],
+  "metrics": {
+    "overall_accuracy": 0.8781,
+    "macro_precision": 0.8797,
+    "macro_recall": 0.8774,
+    "macro_sensitivity": 0.8774,
+    "macro_specificity": 0.9595,
+    "macro_f1": 0.8778,
+    "weighted_precision": 0.8816,
+    "weighted_recall": 0.8781,
+    "weighted_sensitivity": 0.8781,
+    "weighted_specificity": 0.9598,
+    "weighted_f1": 0.8791,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9,
+        "recall": 0.8571,
+        "sensitivity": 0.8571,
+        "specificity": 0.9708,
+        "f1_score": 0.878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9727,
+        "recall": 0.9185,
+        "sensitivity": 0.9185,
+        "specificity": 0.9909,
+        "f1_score": 0.9448,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7928,
+        "recall": 0.867,
+        "sensitivity": 0.867,
+        "specificity": 0.9334,
+        "f1_score": 0.8282,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8532,
+        "recall": 0.8669,
+        "sensitivity": 0.8669,
+        "specificity": 0.9427,
+        "f1_score": 0.86,
+        "support": 248
+      }
+    },
+    "confusion_matrix": [
+      [
+        180,
+        2,
+        15,
+        13
+      ],
+      [
+        8,
+        214,
+        2,
+        9
+      ],
+      [
+        8,
+        4,
+        176,
+        15
+      ],
+      [
+        4,
+        0,
+        29,
+        215
+      ]
+    ],
+    "support": {
+      "cataract": 210,
+      "diabetic_retinopathy": 233,
+      "glaucoma": 203,
+      "normal": 248
+    },
+    "total_samples": 894
+  },
+  "overall_accuracy": 0.8781,
+  "latency_metrics": {
+    "mean_ms": 3.94,
+    "median_ms": 3.05,
+    "p95_ms": 7.65,
+    "min_ms": 3.0,
+    "max_ms": 10.05
+  },
+  "reliability_validation": {
+    "all_probabilities_finite": true,
+    "all_probabilities_bounded_0_1": true,
+    "probabilities_sum_approx_1": true,
+    "argmax_matches_prediction": true,
+    "suspiciously_perfect_leakage_detected": false,
+    "unexpected_prediction_failures": 0
+  },
+  "misclassified_samples_count": 109,
+  "evaluation_duration_seconds": 24.59,
+  "disclaimer": "This model is intended solely for clinical screening research and decision support, not as a definitive autonomous medical diagnosis. External population validation is required."
+}

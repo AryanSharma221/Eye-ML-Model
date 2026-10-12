@@ -1,0 +1,47 @@
+# ==============================================================================
+# Render Blueprint Specification (render.yaml)
+# Deploys both the Python Backend and the React Frontend on Render
+# ==============================================================================
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. FastAPI + PyTorch ML Backend Service
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: multimodal-health-backend
+    env: python
+    plan: standard
+    region: oregon
+    branch: master
+    buildCommand: "pip install -r requirements.txt && pip install -e ."
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health/live
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: ML_DEVICE
+        value: cpu
+      - key: CHECKPOINT_PATH
+        value: ml/weights/eye_model.pth
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "30"
+      - key: CORS_ORIGINS
+        value: "http://localhost:5173,https://multimodal-health-frontend.onrender.com"
+
+  # ----------------------------------------------------------------------------
+  # 2. React 18 + Vite 5 Static Frontend Service
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: multimodal-health-frontend
+    env: static
+    region: oregon
+    branch: master
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: "./frontend/dist"
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: "https://multimodal-health-backend.onrender.com"

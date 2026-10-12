@@ -1,0 +1,97 @@
+{
+  "dataset_split": "test",
+  "manifest_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\dataset\\split_manifest.json",
+  "checkpoint_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth",
+  "checkpoint_metadata": {
+    "epoch": 6,
+    "best_val_accuracy": 0.9028901734104047,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "architecture": "DenseNet201",
+    "seed": 42
+  },
+  "class_names": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "evaluation_timestamp": "2026-10-11T17:22:54.711512+00:00",
+  "device": "cuda",
+  "total_test_images": 894,
+  "evaluated_images": 894,
+  "failed_or_excluded_images": 0,
+  "excluded_samples": [],
+  "metrics": {
+    "overall_accuracy": 0.8781,
+    "macro_precision": 0.8797,
+    "macro_recall": 0.8774,
+    "macro_f1": 0.8778,
+    "weighted_f1": 0.8791,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9,
+        "recall": 0.8571,
+        "f1_score": 0.878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9727,
+        "recall": 0.9185,
+        "f1_score": 0.9448,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7928,
+        "recall": 0.867,
+        "f1_score": 0.8282,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8532,
+        "recall": 0.8669,
+        "f1_score": 0.86,
+        "support": 248
+      }
+    },
+    "confusion_matrix": [
+      [
+        180,
+        2,
+        15,
+        13
+      ],
+      [
+        8,
+        214,
+        2,
+        9
+      ],
+      [
+        8,
+        4,
+        176,
+        15
+      ],
+      [
+        4,
+        0,
+        29,
+        215
+      ]
+    ],
+    "support": {
+      "cataract": 210,
+      "diabetic_retinopathy": 233,
+      "glaucoma": 203,
+      "normal": 248
+    },
+    "total_samples": 894
+  },
+  "evaluation_duration_seconds": 31.84,
+  "disclaimer": "This model is intended solely for clinical screening research and decision support, not as a definitive autonomous medical diagnosis. External population validation is required."
+}

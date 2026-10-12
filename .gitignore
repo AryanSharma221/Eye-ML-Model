@@ -1,0 +1,88 @@
+# ==============================================================================
+# Git Ignore Configuration - Multimodal Health Screening & Analysis System
+# ==============================================================================
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python Bytecode and Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+*.egg-info/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+*.crt
+
+# Datasets and Medical Imagery (Do not track large or clinical data)
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+/dataset/
+/data/
+ml/dataset/*
+!ml/dataset/.gitkeep
+!ml/dataset/split_manifest.json
+
+# Model Weights and Checkpoints (Large binaries)
+*.pth
+*.pt
+*.onnx
+*.pkl
+*.h5
+*.keras
+*.ckpt
+ml/weights/*
+!ml/weights/.gitkeep
+!ml/weights/eye_model.pth
+
+# Uploaded Patient Data and Generated Artifacts
+backend/uploads/*
+!backend/uploads/gradcam/
+backend/uploads/gradcam/*
+!backend/uploads/gradcam/.gitkeep
+
+# Databases and Local Storage
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Frontend Dependencies and Build Outputs
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+build/
+frontend/build/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System and IDE Metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,73 @@
+{
+  "checkpoint_identifier": "eye_model.pth",
+  "checkpoint_path": "eye_model.pth",
+  "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+  "run_id": null,
+  "checkpoint_metadata": {
+    "epoch": 6,
+    "best_val_accuracy": 0.9028901734104047,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "architecture": "DenseNet201",
+    "seed": 42,
+    "run_id": null,
+    "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f"
+  },
+  "dataset_manifest_path": "split_manifest.json",
+  "test_samples_count": 894,
+  "failed_or_excluded_count": 0,
+  "class_order": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "evaluation_timestamp": "2026-10-12T09:22:18.114865+00:00",
+  "software_and_device": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch_version": "2.6.0+cu124",
+    "python_version": "3.12.4"
+  },
+  "overall_accuracy": 0.8781,
+  "macro_precision": 0.8797,
+  "macro_recall": 0.8774,
+  "macro_f1": 0.8778,
+  "weighted_f1": 0.8791,
+  "macro_sensitivity": 0.8774,
+  "macro_specificity": 0.9595,
+  "misclassified_count": 109,
+  "misclassification_rate": 0.1219,
+  "latency_summary": {
+    "mean_ms": 3.9,
+    "median_ms": 2.72,
+    "p95_ms": 9.89,
+    "min_ms": 2.48,
+    "max_ms": 19.49
+  },
+  "reliability_validation": {
+    "all_probabilities_finite": true,
+    "all_probabilities_bounded_0_1": true,
+    "probabilities_sum_approx_1": true,
+    "argmax_matches_prediction": true,
+    "suspiciously_perfect_leakage_detected": false,
+    "unexpected_prediction_failures": 0
+  },
+  "data_leakage_audit": {
+    "test_images_in_training": 0,
+    "test_images_in_validation": 0,
+    "patient_leakage_detected": false,
+    "suspiciously_perfect_results": false
+  },
+  "artifacts_generated": {
+    "classification_report": "classification_report.json",
+    "confusion_matrix_image": "confusion_matrix.png",
+    "misclassified_samples": "misclassified_samples.csv",
+    "evaluation_summary": "evaluation_summary.json"
+  },
+  "disclaimer": "This system is an automated multimodal health screening prototype engineered for clinical triage research and decision support. It does not provide definitive autonomous medical diagnoses. All flagged findings must be reviewed by qualified ophthalmic and medical practitioners."
+}

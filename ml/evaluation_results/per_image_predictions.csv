@@ -1,0 +1,895 @@
+sample_name,relative_path,true_label,predicted_label,confidence,margin,prob_cataract,prob_diabetic_retinopathy,prob_glaucoma,prob_normal,quality_gate_passed,quality_gate_reason,blur_score,brightness_mean,contrast_std,inference_error
+1019.png,test/cataract/1019.png,cataract,cataract,0.9587,0.9351,0.9587,0.0236,0.0158,0.0019,False,Excessive image blur (blur score 13.98 < threshold 100.0).,13.98,43.2,43.34,False
+1355.png,test/cataract/1355.png,cataract,cataract,0.7013,0.5525,0.7013,0.0556,0.1488,0.0944,False,Excessive image blur (blur score 13.99 < threshold 100.0).,13.99,46.88,51.15,False
+790.png,test/cataract/790.png,cataract,cataract,0.9743,0.9565,0.9743,0.0016,0.0178,0.0062,False,Excessive image blur (blur score 14.34 < threshold 100.0).,14.34,82.61,81.19,False
+kaggle_2052_right.jpg,test/cataract/kaggle_2052_right.jpg,cataract,glaucoma,0.9286,0.8626,0.0039,0.0015,0.9286,0.0659,True,PASSED,146.44,43.83,27.45,True
+kaggle_2120_right.jpg,test/cataract/kaggle_2120_right.jpg,cataract,cataract,0.9643,0.9471,0.9643,0.0022,0.0172,0.0163,True,PASSED,137.13,61.03,38.45,False
+kaggle_2155_left.jpg,test/cataract/kaggle_2155_left.jpg,cataract,cataract,0.9347,0.8975,0.9347,0.0014,0.0267,0.0372,True,PASSED,216.4,74.75,42.82,False
+kaggle_2155_right.jpg,test/cataract/kaggle_2155_right.jpg,cataract,cataract,0.8979,0.8472,0.8979,0.0013,0.05,0.0508,True,PASSED,373.11,102.57,58.75,False
+kaggle_769_right.jpg,test/cataract/kaggle_769_right.jpg,cataract,cataract,0.9784,0.9661,0.9784,0.0011,0.0082,0.0124,True,PASSED,538.33,122.5,65.72,False
+kaggle_cataract_057.png,test/cataract/kaggle_cataract_057.png,cataract,cataract,0.9204,0.8618,0.9204,0.0016,0.0193,0.0587,False,Excessive image blur (blur score 9.92 < threshold 100.0).,9.92,51.4,53.99,False
+kaggle__100_334408.jpg,test/cataract/kaggle__100_334408.jpg,cataract,cataract,0.9871,0.9758,0.9871,0.0005,0.0112,0.0012,True,PASSED,540.98,160.34,86.9,False
+kaggle__108_8917257.jpg,test/cataract/kaggle__108_8917257.jpg,cataract,cataract,0.9543,0.9123,0.9543,0.0007,0.042,0.003,True,PASSED,480.62,92.07,54.47,False
+kaggle__141_3457945.jpg,test/cataract/kaggle__141_3457945.jpg,cataract,cataract,0.9178,0.8675,0.9178,0.0236,0.0503,0.0083,False,No circular retinal boundary detected via Hough transform heuristic.,885.35,94.79,93.65,False
+kaggle__170_1001041.jpg,test/cataract/kaggle__170_1001041.jpg,cataract,cataract,0.9895,0.9799,0.9895,0.0005,0.0096,0.0004,True,PASSED,615.63,146.03,81.31,False
+kaggle__180_8003252.jpg,test/cataract/kaggle__180_8003252.jpg,cataract,cataract,0.8269,0.6613,0.8269,0.0065,0.1657,0.0009,True,PASSED,362.76,71.55,38.97,False
+kaggle__263_7022799.jpg,test/cataract/kaggle__263_7022799.jpg,cataract,cataract,0.9788,0.9607,0.9788,0.0014,0.018,0.0018,False,Excessive image blur (blur score 84.83 < threshold 100.0).,84.83,45.66,47.64,False
+kaggle__273_9043733.jpg,test/cataract/kaggle__273_9043733.jpg,cataract,cataract,0.9752,0.9551,0.9752,0.0042,0.02,0.0006,False,Excessive image blur (blur score 80.43 < threshold 100.0).,80.43,50.0,54.73,False
+kaggle__32_9153320.jpg,test/cataract/kaggle__32_9153320.jpg,cataract,glaucoma,0.9881,0.9785,0.0096,0.0004,0.9881,0.0018,False,Excessive image blur (blur score 97.37 < threshold 100.0).,97.37,52.37,32.48,True
+kaggle__344_5181730.jpg,test/cataract/kaggle__344_5181730.jpg,cataract,cataract,0.9595,0.9291,0.9595,0.0087,0.0304,0.0014,True,PASSED,176.33,66.95,66.89,False
+kaggle__345_8957256.jpg,test/cataract/kaggle__345_8957256.jpg,cataract,cataract,0.8867,0.8165,0.8867,0.042,0.0702,0.0011,True,PASSED,280.83,69.95,71.93,False
+kaggle__387_449073.jpg,test/cataract/kaggle__387_449073.jpg,cataract,cataract,0.9822,0.9699,0.9822,0.0052,0.0122,0.0004,True,PASSED,181.29,151.88,82.1,False
+kaggle__43_5838123.jpg,test/cataract/kaggle__43_5838123.jpg,cataract,cataract,0.9848,0.9711,0.9848,0.0011,0.0136,0.0004,True,PASSED,202.98,90.18,54.46,False
+1104.png,test/diabetic_retinopathy/1104.png,diabetic_retinopathy,cataract,0.7059,0.5121,0.7059,0.0289,0.1938,0.0713,False,Excessive image blur (blur score 14.60 < threshold 100.0).,14.6,63.86,64.25,True
+1258.png,test/diabetic_retinopathy/1258.png,diabetic_retinopathy,normal,0.878,0.81,0.0209,0.068,0.0331,0.878,False,Excessive image blur (blur score 14.14 < threshold 100.0).,14.14,63.01,63.42,True
+1406.png,test/diabetic_retinopathy/1406.png,diabetic_retinopathy,cataract,0.4287,0.0837,0.4287,0.345,0.1661,0.0602,False,Excessive image blur (blur score 10.32 < threshold 100.0).,10.32,66.94,67.01,True
+287.png,test/diabetic_retinopathy/287.png,diabetic_retinopathy,cataract,0.717,0.5799,0.717,0.137,0.1112,0.0348,False,Excessive image blur (blur score 10.89 < threshold 100.0).,10.89,74.67,74.48,True
+43.png,test/diabetic_retinopathy/43.png,diabetic_retinopathy,normal,0.5932,0.2771,0.0414,0.3161,0.0493,0.5932,False,Excessive image blur (blur score 8.86 < threshold 100.0).,8.86,61.31,61.62,True
+kaggle_10109_left.jpeg,test/diabetic_retinopathy/kaggle_10109_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9744,0.9613,0.0013,0.9744,0.0131,0.0112,False,Excessive image blur (blur score 86.16 < threshold 100.0).,86.16,45.82,35.41,False
+kaggle_10120_right.jpeg,test/diabetic_retinopathy/kaggle_10120_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8681,0.7731,0.0035,0.8681,0.095,0.0334,False,Excessive image blur (blur score 18.80 < threshold 100.0).,18.8,107.07,26.83,False
+kaggle_10184_left.jpeg,test/diabetic_retinopathy/kaggle_10184_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9713,0.9461,0.0016,0.9713,0.0253,0.0018,True,PASSED,123.88,83.49,67.61,False
+kaggle_1027_right.jpeg,test/diabetic_retinopathy/kaggle_1027_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9892,0.9839,0.0025,0.9892,0.0053,0.0031,False,Excessive image blur (blur score 65.62 < threshold 100.0).,65.62,46.98,38.23,False
+kaggle_10293_right.jpeg,test/diabetic_retinopathy/kaggle_10293_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.985,0.9749,0.0026,0.985,0.0101,0.0023,True,PASSED,129.36,77.51,54.97,False
+kaggle_102_right.jpeg,test/diabetic_retinopathy/kaggle_102_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9581,0.9363,0.0002,0.9581,0.0218,0.0199,False,Excessive image blur (blur score 73.04 < threshold 100.0).,73.04,92.89,28.49,False
+kaggle_10321_right.jpeg,test/diabetic_retinopathy/kaggle_10321_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9865,0.9817,0.0045,0.9865,0.0047,0.0042,True,PASSED,437.35,105.6,74.19,False
+kaggle_10650_right.jpeg,test/diabetic_retinopathy/kaggle_10650_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9818,0.9682,0.0007,0.9818,0.0136,0.004,True,PASSED,225.71,64.71,33.88,False
+kaggle_10751_left.jpeg,test/diabetic_retinopathy/kaggle_10751_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9599,0.9399,0.0036,0.9599,0.0201,0.0164,True,PASSED,330.92,72.18,42.78,False
+kaggle_10772_left.jpeg,test/diabetic_retinopathy/kaggle_10772_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9367,0.9059,0.0249,0.9367,0.0076,0.0308,False,Excessive image blur (blur score 60.87 < threshold 100.0).,60.87,41.23,32.31,False
+kaggle_10883_right.jpeg,test/diabetic_retinopathy/kaggle_10883_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9716,0.9527,0.0033,0.9716,0.0062,0.0189,False,Excessive image blur (blur score 83.25 < threshold 100.0).,83.25,107.47,32.81,False
+kaggle_11182_left.jpeg,test/diabetic_retinopathy/kaggle_11182_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.6996,0.4298,0.2698,0.6996,0.0213,0.0093,False,Excessive image blur (blur score 12.47 < threshold 100.0).,12.47,11.02,7.45,False
+kaggle_11408_left.jpeg,test/diabetic_retinopathy/kaggle_11408_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9318,0.8698,0.0006,0.9318,0.062,0.0055,False,Excessive image blur (blur score 33.43 < threshold 100.0).,33.43,138.38,26.69,False
+kaggle_11439_left.jpeg,test/diabetic_retinopathy/kaggle_11439_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.7141,0.4448,0.0102,0.7141,0.2692,0.0064,False,Excessive image blur (blur score 64.97 < threshold 100.0).,64.97,30.54,36.56,False
+286.png,test/glaucoma/286.png,glaucoma,glaucoma,0.8524,0.7867,0.0657,0.0226,0.8524,0.0593,False,Excessive image blur (blur score 10.94 < threshold 100.0).,10.94,70.12,72.31,False
+342.png,test/glaucoma/342.png,glaucoma,glaucoma,0.8905,0.8231,0.0673,0.0188,0.8905,0.0234,False,Excessive image blur (blur score 15.44 < threshold 100.0).,15.44,68.15,67.63,False
+kaggle_1020_left.jpg,test/glaucoma/kaggle_1020_left.jpg,glaucoma,glaucoma,0.7541,0.5329,0.0076,0.0171,0.7541,0.2212,False,Excessive image blur (blur score 66.33 < threshold 100.0).,66.33,75.91,48.29,False
+kaggle_1276_right.jpg,test/glaucoma/kaggle_1276_right.jpg,glaucoma,normal,0.907,0.8507,0.0341,0.0025,0.0563,0.907,False,Excessive image blur (blur score 96.63 < threshold 100.0).,96.63,56.18,38.18,True
+kaggle_1491_left.jpg,test/glaucoma/kaggle_1491_left.jpg,glaucoma,normal,0.9467,0.9063,0.0109,0.002,0.0404,0.9467,True,PASSED,192.13,49.19,29.86,True
+kaggle_Glaucoma_035.png,test/glaucoma/kaggle_Glaucoma_035.png,glaucoma,glaucoma,0.974,0.9603,0.0085,0.0039,0.974,0.0137,False,Excessive image blur (blur score 9.96 < threshold 100.0).,9.96,51.35,54.91,False
+kaggle__101_9321817.jpg,test/glaucoma/kaggle__101_9321817.jpg,glaucoma,glaucoma,0.9966,0.9949,0.0002,0.0016,0.9966,0.0016,True,PASSED,234.44,101.04,43.24,False
+kaggle__176_88942.jpg,test/glaucoma/kaggle__176_88942.jpg,glaucoma,glaucoma,0.9894,0.9823,0.0017,0.0018,0.9894,0.0071,False,Excessive image blur (blur score 33.45 < threshold 100.0).,33.45,45.81,34.12,False
+kaggle__209_6790686.jpg,test/glaucoma/kaggle__209_6790686.jpg,glaucoma,glaucoma,0.9075,0.8195,0.0881,0.0006,0.9075,0.0038,False,Excessive image blur (blur score 81.08 < threshold 100.0).,81.08,82.02,53.21,False
+kaggle__224_5329904.jpg,test/glaucoma/kaggle__224_5329904.jpg,glaucoma,glaucoma,0.9606,0.9262,0.0044,0.0006,0.9606,0.0344,True,PASSED,230.37,82.42,48.36,False
+kaggle__28_7928893.jpg,test/glaucoma/kaggle__28_7928893.jpg,glaucoma,glaucoma,0.7343,0.4816,0.2527,0.0031,0.7343,0.0099,False,Excessive image blur (blur score 98.61 < threshold 100.0).,98.61,69.74,33.46,False
+kaggle__397_9607497.jpg,test/glaucoma/kaggle__397_9607497.jpg,glaucoma,glaucoma,0.9722,0.9478,0.0245,0.0014,0.9722,0.0019,True,PASSED,100.62,60.21,64.95,False
+kaggle__8_4875579.jpg,test/glaucoma/kaggle__8_4875579.jpg,glaucoma,glaucoma,0.928,0.8617,0.0663,0.0013,0.928,0.0044,False,Excessive image blur (blur score 94.37 < threshold 100.0).,94.37,48.93,29.96,False
+1102.png,test/normal/1102.png,normal,normal,0.4811,0.242,0.2391,0.2014,0.0784,0.4811,False,Excessive image blur (blur score 7.73 < threshold 100.0).,7.73,45.57,45.81,False
+1663.png,test/normal/1663.png,normal,normal,0.953,0.9348,0.0182,0.0125,0.0163,0.953,False,Excessive image blur (blur score 11.25 < threshold 100.0).,11.25,66.19,45.76,False
+1810.png,test/normal/1810.png,normal,normal,0.9832,0.9732,0.0033,0.0036,0.01,0.9832,False,Excessive image blur (blur score 18.27 < threshold 100.0).,18.27,40.82,38.64,False
+68.png,test/normal/68.png,normal,glaucoma,0.7671,0.5937,0.0169,0.0426,0.7671,0.1734,False,Excessive image blur (blur score 9.53 < threshold 100.0).,9.53,64.92,66.4,True
+833.png,test/normal/833.png,normal,normal,0.9113,0.8703,0.0328,0.0149,0.041,0.9113,False,Excessive image blur (blur score 16.12 < threshold 100.0).,16.12,46.26,49.43,False
+kaggle_2575_right.jpg,test/normal/kaggle_2575_right.jpg,normal,normal,0.9755,0.9572,0.0025,0.0037,0.0183,0.9755,False,Excessive image blur (blur score 97.45 < threshold 100.0).,97.45,65.74,46.0,False
+kaggle_2587_right.jpg,test/normal/kaggle_2587_right.jpg,normal,normal,0.941,0.9157,0.0086,0.0253,0.0251,0.941,True,PASSED,220.46,55.47,34.86,False
+kaggle_2604_left.jpg,test/normal/kaggle_2604_left.jpg,normal,normal,0.9873,0.9808,0.0036,0.0027,0.0064,0.9873,True,PASSED,281.45,75.47,44.49,False
+kaggle_2647_left.jpg,test/normal/kaggle_2647_left.jpg,normal,normal,0.9767,0.9635,0.0062,0.0039,0.0132,0.9767,False,Excessive image blur (blur score 89.68 < threshold 100.0).,89.68,76.86,32.22,False
+kaggle_2892_right.jpg,test/normal/kaggle_2892_right.jpg,normal,normal,0.7063,0.4191,0.0006,0.0058,0.2872,0.7063,True,PASSED,173.45,72.5,38.53,False
+kaggle_2962_right.jpg,test/normal/kaggle_2962_right.jpg,normal,normal,0.8705,0.7878,0.04,0.0069,0.0827,0.8705,True,PASSED,333.78,72.87,44.78,False
+kaggle_2967_left.jpg,test/normal/kaggle_2967_left.jpg,normal,normal,0.7558,0.524,0.008,0.0044,0.2318,0.7558,True,PASSED,465.41,118.82,69.55,False
+kaggle_2967_right.jpg,test/normal/kaggle_2967_right.jpg,normal,normal,0.9319,0.8845,0.0157,0.0049,0.0475,0.9319,True,PASSED,670.64,126.21,75.04,False
+kaggle_2981_left.jpg,test/normal/kaggle_2981_left.jpg,normal,normal,0.8889,0.7863,0.0034,0.005,0.1026,0.8889,False,Excessive image blur (blur score 92.75 < threshold 100.0).,92.75,52.29,31.85,False
+kaggle_3018_right.jpg,test/normal/kaggle_3018_right.jpg,normal,normal,0.8433,0.6916,0.0016,0.0034,0.1517,0.8433,True,PASSED,291.7,95.95,44.11,False
+kaggle_3113_left.jpg,test/normal/kaggle_3113_left.jpg,normal,cataract,0.5831,0.2637,0.5831,0.0012,0.0962,0.3195,True,PASSED,128.0,44.48,37.01,True
+kaggle_3305_right.jpg,test/normal/kaggle_3305_right.jpg,normal,glaucoma,0.8109,0.6749,0.0041,0.136,0.8109,0.049,False,Excessive image blur (blur score 10.82 < threshold 100.0).,10.82,45.89,33.34,True
+kaggle_3325_left.jpg,test/normal/kaggle_3325_left.jpg,normal,normal,0.9911,0.9853,0.0014,0.0017,0.0057,0.9911,True,PASSED,110.11,48.16,31.79,False
+kaggle_3417_right.jpg,test/normal/kaggle_3417_right.jpg,normal,glaucoma,0.9075,0.8479,0.0126,0.0203,0.9075,0.0596,True,PASSED,119.07,55.44,51.49,True
+kaggle_3433_left.jpg,test/normal/kaggle_3433_left.jpg,normal,normal,0.9765,0.9608,0.0021,0.0057,0.0157,0.9765,True,PASSED,111.66,73.89,43.18,False
+113.png,train/cataract/113.png,cataract,glaucoma,0.5975,0.2418,0.3557,0.013,0.5975,0.0339,False,Excessive image blur (blur score 15.32 < threshold 100.0).,15.32,77.54,77.07,True
+1293.png,train/cataract/1293.png,cataract,cataract,0.8328,0.7434,0.8328,0.009,0.0688,0.0894,False,Excessive image blur (blur score 15.30 < threshold 100.0).,15.3,69.22,69.53,False
+1350.png,train/cataract/1350.png,cataract,normal,0.495,0.1645,0.3304,0.0657,0.1089,0.495,False,Excessive image blur (blur score 9.77 < threshold 100.0).,9.77,71.62,76.26,True
+1490.png,train/cataract/1490.png,cataract,cataract,0.7305,0.5305,0.7305,0.2,0.0655,0.004,False,Excessive image blur (blur score 11.35 < threshold 100.0).,11.35,29.56,29.85,False
+1548.png,train/cataract/1548.png,cataract,diabetic_retinopathy,0.6303,0.4448,0.1855,0.6303,0.0907,0.0935,False,Excessive image blur (blur score 10.50 < threshold 100.0).,10.5,64.66,43.44,True
+1566.png,train/cataract/1566.png,cataract,cataract,0.8821,0.8349,0.8821,0.026,0.0472,0.0447,False,Excessive image blur (blur score 6.14 < threshold 100.0).,6.14,101.59,65.2,False
+1615.png,train/cataract/1615.png,cataract,cataract,0.8922,0.8483,0.8922,0.0439,0.0303,0.0337,False,Excessive image blur (blur score 6.28 < threshold 100.0).,6.28,34.09,22.75,False
+1640.png,train/cataract/1640.png,cataract,cataract,0.9648,0.9474,0.9648,0.0081,0.0174,0.0097,False,Excessive image blur (blur score 3.39 < threshold 100.0).,3.39,118.77,74.93,False
+1652.png,train/cataract/1652.png,cataract,cataract,0.9484,0.9234,0.9484,0.0055,0.025,0.021,False,Excessive image blur (blur score 4.74 < threshold 100.0).,4.74,26.45,18.3,False
+1762.png,train/cataract/1762.png,cataract,normal,0.6431,0.4,0.243,0.0082,0.1057,0.6431,False,Excessive image blur (blur score 16.95 < threshold 100.0).,16.95,36.28,34.15,True
+1799.png,train/cataract/1799.png,cataract,cataract,0.9408,0.9105,0.9408,0.012,0.017,0.0303,False,Excessive image blur (blur score 13.60 < threshold 100.0).,13.6,41.89,38.13,False
+24.png,train/cataract/24.png,cataract,cataract,0.887,0.8401,0.887,0.0224,0.0437,0.0469,False,Excessive image blur (blur score 7.59 < threshold 100.0).,7.59,57.41,57.11,False
+251.png,train/cataract/251.png,cataract,cataract,0.9507,0.923,0.9507,0.001,0.0207,0.0277,False,Excessive image blur (blur score 8.68 < threshold 100.0).,8.68,77.83,77.82,False
+278.png,train/cataract/278.png,cataract,cataract,0.5891,0.3455,0.5891,0.0133,0.154,0.2436,False,Excessive image blur (blur score 14.82 < threshold 100.0).,14.82,65.08,66.12,False
+303.png,train/cataract/303.png,cataract,cataract,0.493,0.1084,0.493,0.0186,0.3847,0.1037,False,Excessive image blur (blur score 10.68 < threshold 100.0).,10.68,70.99,70.44,False
+319.png,train/cataract/319.png,cataract,cataract,0.3708,0.0042,0.3708,0.1841,0.3666,0.0785,False,Excessive image blur (blur score 12.96 < threshold 100.0).,12.96,52.96,53.08,False
+340.png,train/cataract/340.png,cataract,cataract,0.8908,0.8338,0.8908,0.002,0.057,0.0502,False,Excessive image blur (blur score 8.12 < threshold 100.0).,8.12,90.55,89.98,False
+341.png,train/cataract/341.png,cataract,cataract,0.8155,0.7183,0.8155,0.0043,0.083,0.0972,False,Excessive image blur (blur score 14.28 < threshold 100.0).,14.28,74.38,74.05,False
+361.png,train/cataract/361.png,cataract,cataract,0.6357,0.4175,0.6357,0.0285,0.2182,0.1176,False,Excessive image blur (blur score 10.66 < threshold 100.0).,10.66,74.35,73.76,False
+380.png,train/cataract/380.png,cataract,cataract,0.5093,0.2406,0.5093,0.0311,0.191,0.2686,False,Excessive image blur (blur score 15.29 < threshold 100.0).,15.29,70.13,70.1,False
+40.png,train/cataract/40.png,cataract,normal,0.3347,0.0732,0.2615,0.2104,0.1935,0.3347,False,Excessive image blur (blur score 12.71 < threshold 100.0).,12.71,39.23,45.64,True
+418.png,train/cataract/418.png,cataract,cataract,0.9195,0.8824,0.9195,0.027,0.037,0.0165,False,Excessive image blur (blur score 8.73 < threshold 100.0).,8.73,71.97,72.3,False
+46.png,train/cataract/46.png,cataract,normal,0.8723,0.8143,0.0385,0.0313,0.0579,0.8723,False,Excessive image blur (blur score 13.65 < threshold 100.0).,13.65,32.02,36.56,True
+499.png,train/cataract/499.png,cataract,cataract,0.6475,0.3999,0.6475,0.0178,0.087,0.2476,False,Excessive image blur (blur score 8.03 < threshold 100.0).,8.03,32.69,38.51,False
+510.png,train/cataract/510.png,cataract,cataract,0.662,0.4074,0.662,0.0343,0.2546,0.0492,False,Excessive image blur (blur score 10.07 < threshold 100.0).,10.07,84.32,83.88,False
+534.png,train/cataract/534.png,cataract,cataract,0.5867,0.2548,0.5867,0.3319,0.0649,0.0165,False,Excessive image blur (blur score 9.32 < threshold 100.0).,9.32,73.61,73.29,False
+63.png,train/cataract/63.png,cataract,cataract,0.8196,0.695,0.8196,0.0155,0.0403,0.1246,False,Excessive image blur (blur score 9.20 < threshold 100.0).,9.2,65.16,64.9,False
+646.png,train/cataract/646.png,cataract,cataract,0.5798,0.2846,0.5798,0.0167,0.1083,0.2952,False,Excessive image blur (blur score 13.91 < threshold 100.0).,13.91,53.62,56.41,False
+681.png,train/cataract/681.png,cataract,normal,0.757,0.6251,0.1319,0.0428,0.0682,0.757,False,Excessive image blur (blur score 14.54 < threshold 100.0).,14.54,54.31,55.01,True
+685.png,train/cataract/685.png,cataract,diabetic_retinopathy,0.3629,0.0453,0.296,0.3629,0.3176,0.0235,False,Excessive image blur (blur score 13.22 < threshold 100.0).,13.22,53.32,53.61,True
+845.png,train/cataract/845.png,cataract,cataract,0.9755,0.9631,0.9755,0.0016,0.0124,0.0106,False,Excessive image blur (blur score 9.84 < threshold 100.0).,9.84,67.63,67.26,False
+846.png,train/cataract/846.png,cataract,cataract,0.9252,0.8816,0.9252,0.0028,0.0284,0.0436,False,Excessive image blur (blur score 9.31 < threshold 100.0).,9.31,70.84,70.3,False
+903.png,train/cataract/903.png,cataract,cataract,0.821,0.7127,0.821,0.0054,0.0653,0.1083,False,Excessive image blur (blur score 15.46 < threshold 100.0).,15.46,61.08,61.54,False
+939.png,train/cataract/939.png,cataract,glaucoma,0.6327,0.4414,0.1913,0.1058,0.6327,0.0702,False,Excessive image blur (blur score 14.27 < threshold 100.0).,14.27,37.96,38.19,True
+995.png,train/cataract/995.png,cataract,cataract,0.7986,0.6448,0.7986,0.1537,0.0434,0.0043,False,Excessive image blur (blur score 13.90 < threshold 100.0).,13.9,43.06,42.87,False
+kaggle_0_left.jpg,train/cataract/kaggle_0_left.jpg,cataract,cataract,0.9631,0.9434,0.9631,0.0016,0.0157,0.0197,True,PASSED,258.66,77.84,41.67,False
+kaggle_103_left.jpg,train/cataract/kaggle_103_left.jpg,cataract,cataract,0.9557,0.9309,0.9557,0.0017,0.0248,0.0178,True,PASSED,368.18,106.13,58.9,False
+kaggle_1083_left.jpg,train/cataract/kaggle_1083_left.jpg,cataract,cataract,0.5365,0.1417,0.5365,0.0065,0.0622,0.3948,True,PASSED,134.3,64.86,46.44,False
+kaggle_1084_right.jpg,train/cataract/kaggle_1084_right.jpg,cataract,cataract,0.7869,0.6419,0.7869,0.0089,0.0592,0.145,True,PASSED,408.1,101.04,49.71,False
+kaggle_1144_left.jpg,train/cataract/kaggle_1144_left.jpg,cataract,normal,0.7373,0.5299,0.2074,0.0043,0.0511,0.7373,True,PASSED,507.36,125.62,71.0,True
+kaggle_1144_right.jpg,train/cataract/kaggle_1144_right.jpg,cataract,normal,0.7876,0.6459,0.0645,0.0063,0.1416,0.7876,True,PASSED,623.23,129.0,73.54,True
+kaggle_1484_left.jpg,train/cataract/kaggle_1484_left.jpg,cataract,cataract,0.8843,0.8105,0.8843,0.0031,0.0386,0.0739,True,PASSED,313.68,66.23,40.74,False
+kaggle_1484_right.jpg,train/cataract/kaggle_1484_right.jpg,cataract,cataract,0.9202,0.8696,0.9202,0.0014,0.0506,0.0278,True,PASSED,515.09,102.88,55.34,False
+kaggle_2052_left.jpg,train/cataract/kaggle_2052_left.jpg,cataract,normal,0.6199,0.3302,0.0812,0.0091,0.2898,0.6199,True,PASSED,130.87,48.1,27.04,True
+kaggle_2095_right.jpg,train/cataract/kaggle_2095_right.jpg,cataract,cataract,0.9655,0.9492,0.9655,0.0018,0.0163,0.0163,True,PASSED,398.37,120.92,65.2,False
+kaggle_2106_right.jpg,train/cataract/kaggle_2106_right.jpg,cataract,cataract,0.9787,0.9662,0.9787,0.0011,0.0077,0.0125,True,PASSED,493.33,107.6,65.28,False
+kaggle_2108_left.jpg,train/cataract/kaggle_2108_left.jpg,cataract,cataract,0.9655,0.9466,0.9655,0.0018,0.0138,0.0189,True,PASSED,232.49,58.6,46.09,False
+kaggle_2108_right.jpg,train/cataract/kaggle_2108_right.jpg,cataract,cataract,0.9501,0.9237,0.9501,0.0019,0.0264,0.0215,False,Excessive image blur (blur score 92.59 < threshold 100.0).,92.59,38.83,28.76,False
+kaggle_2109_left.jpg,train/cataract/kaggle_2109_left.jpg,cataract,cataract,0.9722,0.9575,0.9722,0.0013,0.0118,0.0147,True,PASSED,117.64,55.67,36.57,False
+kaggle_2109_right.jpg,train/cataract/kaggle_2109_right.jpg,cataract,cataract,0.9813,0.9717,0.9813,0.001,0.0081,0.0096,True,PASSED,253.29,82.96,48.68,False
+kaggle_2113_left.jpg,train/cataract/kaggle_2113_left.jpg,cataract,cataract,0.7265,0.5843,0.7265,0.0061,0.1253,0.1422,True,PASSED,742.25,137.68,84.08,False
+kaggle_2113_right.jpg,train/cataract/kaggle_2113_right.jpg,cataract,cataract,0.6075,0.2941,0.6075,0.0069,0.3134,0.0721,False,Excessive image blur (blur score 28.53 < threshold 100.0).,28.53,26.32,15.47,False
+kaggle_2120_left.jpg,train/cataract/kaggle_2120_left.jpg,cataract,cataract,0.8775,0.8002,0.8775,0.0042,0.0772,0.0411,False,Excessive image blur (blur score 78.09 < threshold 100.0).,78.09,39.46,23.73,False
+kaggle_2143_right.jpg,train/cataract/kaggle_2143_right.jpg,cataract,cataract,0.9081,0.8405,0.9081,0.0013,0.0229,0.0676,True,PASSED,302.48,97.74,58.12,False
+kaggle_2151_left.jpg,train/cataract/kaggle_2151_left.jpg,cataract,cataract,0.9822,0.9737,0.9822,0.0008,0.0084,0.0085,True,PASSED,166.91,77.34,44.56,False
+kaggle_2151_right.jpg,train/cataract/kaggle_2151_right.jpg,cataract,cataract,0.961,0.9374,0.961,0.0006,0.0148,0.0236,True,PASSED,748.14,156.47,87.82,False
+kaggle_2194_left.jpg,train/cataract/kaggle_2194_left.jpg,cataract,cataract,0.958,0.9315,0.958,0.0008,0.0148,0.0265,True,PASSED,923.36,172.38,94.15,False
+kaggle_2194_right.jpg,train/cataract/kaggle_2194_right.jpg,cataract,cataract,0.9653,0.9452,0.9653,0.0007,0.014,0.02,True,PASSED,923.58,172.22,94.24,False
+kaggle_2199_left.jpg,train/cataract/kaggle_2199_left.jpg,cataract,cataract,0.9679,0.9517,0.9679,0.0015,0.0144,0.0162,True,PASSED,292.74,83.9,49.0,False
+kaggle_2200_left.jpg,train/cataract/kaggle_2200_left.jpg,cataract,cataract,0.9799,0.9703,0.9799,0.0012,0.0096,0.0094,True,PASSED,120.27,72.18,39.5,False
+kaggle_2201_right.jpg,train/cataract/kaggle_2201_right.jpg,cataract,cataract,0.9683,0.9504,0.9683,0.0015,0.0179,0.0123,True,PASSED,532.24,99.2,50.09,False
+kaggle_2213_left.jpg,train/cataract/kaggle_2213_left.jpg,cataract,cataract,0.9464,0.9193,0.9464,0.002,0.0244,0.0272,True,PASSED,340.25,89.57,60.45,False
+kaggle_2213_right.jpg,train/cataract/kaggle_2213_right.jpg,cataract,cataract,0.9564,0.9355,0.9564,0.002,0.0209,0.0207,True,PASSED,401.38,102.43,58.06,False
+kaggle_2228_right.jpg,train/cataract/kaggle_2228_right.jpg,cataract,cataract,0.688,0.4226,0.688,0.0009,0.0458,0.2653,False,Excessive image blur (blur score 67.08 < threshold 100.0).,67.08,58.85,40.54,False
+kaggle_2236_left.jpg,train/cataract/kaggle_2236_left.jpg,cataract,cataract,0.4225,0.1025,0.4225,0.0032,0.2544,0.32,True,PASSED,190.95,115.18,50.23,False
+kaggle_2236_right.jpg,train/cataract/kaggle_2236_right.jpg,cataract,cataract,0.7027,0.4738,0.7027,0.0032,0.0652,0.2289,True,PASSED,173.3,118.4,54.78,False
+kaggle_477_left.jpg,train/cataract/kaggle_477_left.jpg,cataract,cataract,0.821,0.7236,0.821,0.0028,0.0974,0.0787,True,PASSED,232.31,94.96,40.27,False
+kaggle_477_right.jpg,train/cataract/kaggle_477_right.jpg,cataract,cataract,0.9066,0.858,0.9066,0.0028,0.042,0.0486,False,No circular retinal boundary detected via Hough transform heuristic.,218.04,97.26,37.62,False
+kaggle_625_right.jpg,train/cataract/kaggle_625_right.jpg,cataract,normal,0.634,0.3963,0.2377,0.0029,0.1255,0.634,True,PASSED,440.8,107.93,55.63,True
+kaggle_750_left.jpg,train/cataract/kaggle_750_left.jpg,cataract,cataract,0.9578,0.935,0.9578,0.0023,0.0171,0.0228,True,PASSED,631.74,115.96,66.14,False
+kaggle_999_left.jpg,train/cataract/kaggle_999_left.jpg,cataract,cataract,0.9789,0.9675,0.9789,0.001,0.0086,0.0115,True,PASSED,316.9,93.11,51.92,False
+kaggle_999_right.jpg,train/cataract/kaggle_999_right.jpg,cataract,cataract,0.8702,0.7797,0.8702,0.004,0.0353,0.0905,True,PASSED,296.37,92.46,53.91,False
+kaggle_cataract_005.png,train/cataract/kaggle_cataract_005.png,cataract,cataract,0.8819,0.8218,0.8819,0.0601,0.0385,0.0195,False,Excessive image blur (blur score 12.04 < threshold 100.0).,12.04,30.66,33.86,False
+kaggle_cataract_007.png,train/cataract/kaggle_cataract_007.png,cataract,cataract,0.8692,0.817,0.8692,0.0323,0.0522,0.0463,False,Excessive image blur (blur score 17.84 < threshold 100.0).,17.84,63.0,65.12,False
+kaggle_cataract_024.png,train/cataract/kaggle_cataract_024.png,cataract,cataract,0.8331,0.728,0.8331,0.1051,0.0481,0.0137,False,Excessive image blur (blur score 23.04 < threshold 100.0).,23.04,48.23,48.62,False
+kaggle_cataract_025.png,train/cataract/kaggle_cataract_025.png,cataract,cataract,0.9345,0.8976,0.9345,0.0044,0.0242,0.0369,False,Excessive image blur (blur score 21.38 < threshold 100.0).,21.38,74.35,74.38,False
+kaggle_cataract_037.png,train/cataract/kaggle_cataract_037.png,cataract,cataract,0.8751,0.8132,0.8751,0.0048,0.0582,0.0619,False,Excessive image blur (blur score 10.30 < threshold 100.0).,10.3,49.84,53.3,False
+kaggle_cataract_050.png,train/cataract/kaggle_cataract_050.png,cataract,cataract,0.751,0.548,0.751,0.0056,0.0405,0.203,False,Excessive image blur (blur score 10.09 < threshold 100.0).,10.09,49.25,52.2,False
+kaggle_cataract_053.png,train/cataract/kaggle_cataract_053.png,cataract,glaucoma,0.5652,0.2811,0.2841,0.0197,0.5652,0.131,False,Excessive image blur (blur score 10.68 < threshold 100.0).,10.68,56.0,60.02,True
+kaggle_cataract_065.png,train/cataract/kaggle_cataract_065.png,cataract,cataract,0.9844,0.9759,0.9844,0.0024,0.0085,0.0047,False,Excessive image blur (blur score 22.93 < threshold 100.0).,22.93,75.04,75.31,False
+kaggle_cataract_088.png,train/cataract/kaggle_cataract_088.png,cataract,normal,0.4051,0.0904,0.3147,0.0118,0.2684,0.4051,False,Excessive image blur (blur score 10.12 < threshold 100.0).,10.12,48.61,52.17,True
+kaggle_cataract_096.png,train/cataract/kaggle_cataract_096.png,cataract,cataract,0.914,0.8637,0.914,0.0073,0.0284,0.0503,False,Excessive image blur (blur score 9.27 < threshold 100.0).,9.27,61.27,64.24,False
+kaggle__103_5897328.jpg,train/cataract/kaggle__103_5897328.jpg,cataract,cataract,0.9927,0.9864,0.9927,0.0007,0.0064,0.0002,True,PASSED,400.89,114.84,65.75,False
+kaggle__109_2006348.jpg,train/cataract/kaggle__109_2006348.jpg,cataract,cataract,0.9889,0.9785,0.9889,0.0005,0.0104,0.0001,True,PASSED,210.48,78.55,54.94,False
+kaggle__114_3613830.jpg,train/cataract/kaggle__114_3613830.jpg,cataract,cataract,0.9917,0.9868,0.9917,0.0034,0.0048,0.0002,True,PASSED,297.96,90.7,64.48,False
+kaggle__123_8135331.jpg,train/cataract/kaggle__123_8135331.jpg,cataract,cataract,0.9505,0.9026,0.9505,0.0014,0.048,0.0001,True,PASSED,232.47,81.29,50.38,False
+kaggle__126_4964568.jpg,train/cataract/kaggle__126_4964568.jpg,cataract,cataract,0.9645,0.9303,0.9645,0.0008,0.0342,0.0005,True,PASSED,134.09,68.97,40.24,False
+kaggle__131_7587386.jpg,train/cataract/kaggle__131_7587386.jpg,cataract,cataract,0.948,0.9257,0.948,0.0082,0.0223,0.0214,False,No circular retinal boundary detected via Hough transform heuristic.,901.17,102.69,95.14,False
+kaggle__133_1300923.jpg,train/cataract/kaggle__133_1300923.jpg,cataract,cataract,0.9509,0.9219,0.9509,0.0055,0.0289,0.0147,True,PASSED,831.41,125.37,84.16,False
+kaggle__139_583821.jpg,train/cataract/kaggle__139_583821.jpg,cataract,cataract,0.9388,0.9141,0.9388,0.0124,0.024,0.0247,False,No circular retinal boundary detected via Hough transform heuristic.,778.55,105.23,96.94,False
+kaggle__141_9740629.jpg,train/cataract/kaggle__141_9740629.jpg,cataract,cataract,0.9312,0.8983,0.9312,0.0316,0.033,0.0042,False,No circular retinal boundary detected via Hough transform heuristic.,920.82,95.4,93.95,False
+kaggle__154_1054490.jpg,train/cataract/kaggle__154_1054490.jpg,cataract,cataract,0.9482,0.9011,0.9482,0.0027,0.0471,0.002,True,PASSED,107.28,95.95,54.73,False
+kaggle__157_8093661.jpg,train/cataract/kaggle__157_8093661.jpg,cataract,cataract,0.9897,0.98,0.9897,0.0003,0.0097,0.0003,True,PASSED,564.14,149.07,78.29,False
+kaggle__159_1399279.jpg,train/cataract/kaggle__159_1399279.jpg,cataract,cataract,0.9804,0.9652,0.9804,0.0022,0.0151,0.0023,True,PASSED,749.29,173.53,92.3,False
+kaggle__168_4661031.jpg,train/cataract/kaggle__168_4661031.jpg,cataract,cataract,0.9806,0.964,0.9806,0.0014,0.0166,0.0014,True,PASSED,429.03,113.39,56.46,False
+kaggle__170_5458800.jpg,train/cataract/kaggle__170_5458800.jpg,cataract,cataract,0.9915,0.9839,0.9915,0.0004,0.0076,0.0004,True,PASSED,729.35,153.24,81.71,False
+kaggle__175_2515467.jpg,train/cataract/kaggle__175_2515467.jpg,cataract,cataract,0.9341,0.8762,0.9341,0.0019,0.0579,0.006,False,No circular retinal boundary detected via Hough transform heuristic.,210.66,129.87,55.88,False
+kaggle__175_4238344.jpg,train/cataract/kaggle__175_4238344.jpg,cataract,cataract,0.9406,0.9064,0.9406,0.0208,0.0342,0.0043,False,No circular retinal boundary detected via Hough transform heuristic.,200.1,128.2,57.15,False
+kaggle__177_2299576.jpg,train/cataract/kaggle__177_2299576.jpg,cataract,cataract,0.9319,0.8861,0.9319,0.0092,0.0458,0.0131,False,No circular retinal boundary detected via Hough transform heuristic.,393.26,146.26,57.83,False
+kaggle__17_1497593.jpg,train/cataract/kaggle__17_1497593.jpg,cataract,cataract,0.9843,0.9691,0.9843,0.0002,0.0152,0.0002,True,PASSED,203.15,95.97,54.72,False
+kaggle__181_2009794.jpg,train/cataract/kaggle__181_2009794.jpg,cataract,cataract,0.8613,0.7271,0.8613,0.0016,0.1341,0.003,True,PASSED,710.04,47.87,27.47,False
+kaggle__182_9646286.jpg,train/cataract/kaggle__182_9646286.jpg,cataract,cataract,0.9507,0.9026,0.9507,0.0007,0.0481,0.0004,True,PASSED,282.87,103.93,56.17,False
+kaggle__183_2695432.jpg,train/cataract/kaggle__183_2695432.jpg,cataract,cataract,0.8887,0.7796,0.8887,0.0008,0.1091,0.0015,True,PASSED,354.55,46.56,28.77,False
+kaggle__190_7244239.jpg,train/cataract/kaggle__190_7244239.jpg,cataract,cataract,0.975,0.9511,0.975,0.0007,0.0239,0.0003,True,PASSED,107.82,79.51,43.18,False
+kaggle__192_7851600.jpg,train/cataract/kaggle__192_7851600.jpg,cataract,cataract,0.9856,0.9718,0.9856,0.0003,0.0138,0.0003,True,PASSED,141.63,84.38,45.14,False
+kaggle__198_6027510.jpg,train/cataract/kaggle__198_6027510.jpg,cataract,cataract,0.9768,0.9556,0.9768,0.0004,0.0212,0.0016,False,Excessive image blur (blur score 95.12 < threshold 100.0).,95.12,78.43,47.9,False
+kaggle__1_5346540.jpg,train/cataract/kaggle__1_5346540.jpg,cataract,cataract,0.9814,0.9649,0.9814,0.0018,0.0165,0.0004,True,PASSED,362.94,136.07,72.94,False
+kaggle__204_5979635.jpg,train/cataract/kaggle__204_5979635.jpg,cataract,cataract,0.9798,0.9614,0.9798,0.001,0.0184,0.0007,False,Excessive image blur (blur score 28.89 < threshold 100.0).,28.89,61.81,42.67,False
+kaggle__206_4468888.jpg,train/cataract/kaggle__206_4468888.jpg,cataract,cataract,0.8873,0.8254,0.8873,0.0493,0.0619,0.0016,True,PASSED,109.47,95.55,63.79,False
+kaggle__207_6945490.jpg,train/cataract/kaggle__207_6945490.jpg,cataract,cataract,0.9627,0.9384,0.9627,0.0041,0.0243,0.0089,True,PASSED,236.11,153.41,84.6,False
+kaggle__210_8722439.jpg,train/cataract/kaggle__210_8722439.jpg,cataract,cataract,0.9884,0.9779,0.9884,0.0007,0.0105,0.0003,True,PASSED,133.75,80.96,44.76,False
+kaggle__215_3764172.jpg,train/cataract/kaggle__215_3764172.jpg,cataract,cataract,0.8232,0.6792,0.8232,0.0208,0.1441,0.0119,False,No circular retinal boundary detected via Hough transform heuristic.,104.81,89.96,42.29,False
+kaggle__217_8865645.jpg,train/cataract/kaggle__217_8865645.jpg,cataract,cataract,0.5756,0.1817,0.5756,0.0019,0.3939,0.0285,False,Excessive image blur (blur score 78.51 < threshold 100.0).,78.51,74.18,32.7,False
+kaggle__221_9234991.jpg,train/cataract/kaggle__221_9234991.jpg,cataract,cataract,0.9872,0.9765,0.9872,0.0019,0.0107,0.0003,False,Excessive image blur (blur score 52.10 < threshold 100.0).,52.1,77.95,46.38,False
+kaggle__227_1163752.jpg,train/cataract/kaggle__227_1163752.jpg,cataract,cataract,0.903,0.8157,0.903,0.002,0.0873,0.0076,True,PASSED,355.09,104.6,64.74,False
+kaggle__228_4231065.jpg,train/cataract/kaggle__228_4231065.jpg,cataract,cataract,0.9744,0.9506,0.9744,0.0006,0.0238,0.0012,True,PASSED,224.86,110.47,64.58,False
+kaggle__229_5185520.jpg,train/cataract/kaggle__229_5185520.jpg,cataract,cataract,0.9505,0.9069,0.9505,0.0056,0.0436,0.0003,True,PASSED,161.93,78.17,46.31,False
+kaggle__231_3245768.jpg,train/cataract/kaggle__231_3245768.jpg,cataract,cataract,0.9912,0.9831,0.9912,0.0006,0.008,0.0002,True,PASSED,616.51,152.83,87.27,False
+kaggle__23_4636959.jpg,train/cataract/kaggle__23_4636959.jpg,cataract,cataract,0.6253,0.2537,0.6253,0.0014,0.3716,0.0017,True,PASSED,200.28,76.79,42.8,False
+kaggle__243_1070648.jpg,train/cataract/kaggle__243_1070648.jpg,cataract,glaucoma,0.6944,0.4686,0.2258,0.0013,0.6944,0.0786,True,PASSED,298.94,107.4,49.94,True
+kaggle__244_3481752.jpg,train/cataract/kaggle__244_3481752.jpg,cataract,cataract,0.5298,0.2557,0.5298,0.0098,0.274,0.1864,True,PASSED,297.33,106.88,55.34,False
+kaggle__246_8777337.jpg,train/cataract/kaggle__246_8777337.jpg,cataract,cataract,0.9645,0.943,0.9645,0.0101,0.0215,0.0039,True,PASSED,216.22,145.72,70.4,False
+kaggle__258_1685319.jpg,train/cataract/kaggle__258_1685319.jpg,cataract,cataract,0.9005,0.809,0.9005,0.0008,0.0915,0.0072,True,PASSED,161.2,134.02,62.9,False
+kaggle__259_2170334.jpg,train/cataract/kaggle__259_2170334.jpg,cataract,cataract,0.9922,0.985,0.9922,0.0003,0.0072,0.0003,True,PASSED,264.7,108.79,60.21,False
+kaggle__277_8311217.jpg,train/cataract/kaggle__277_8311217.jpg,cataract,cataract,0.5206,0.0786,0.5206,0.002,0.442,0.0354,True,PASSED,120.22,45.73,53.33,False
+kaggle__279_4656331.jpg,train/cataract/kaggle__279_4656331.jpg,cataract,cataract,0.9662,0.9383,0.9662,0.0033,0.0279,0.0027,True,PASSED,114.35,42.44,48.65,False
+kaggle__280_7714585.jpg,train/cataract/kaggle__280_7714585.jpg,cataract,cataract,0.9456,0.9174,0.9456,0.0282,0.026,0.0003,True,PASSED,138.1,45.91,54.01,False
+kaggle__281_5275221.jpg,train/cataract/kaggle__281_5275221.jpg,cataract,cataract,0.9893,0.9819,0.9893,0.003,0.0074,0.0004,True,PASSED,223.28,79.67,82.33,False
+kaggle__283_4908640.jpg,train/cataract/kaggle__283_4908640.jpg,cataract,cataract,0.977,0.9581,0.977,0.0031,0.0189,0.0009,False,No circular retinal boundary detected via Hough transform heuristic.,106.2,51.22,53.72,False
+kaggle__285_4325184.jpg,train/cataract/kaggle__285_4325184.jpg,cataract,cataract,0.9813,0.9655,0.9813,0.0015,0.0158,0.0014,True,PASSED,264.13,74.06,73.85,False
+kaggle__286_6140741.jpg,train/cataract/kaggle__286_6140741.jpg,cataract,cataract,0.9793,0.9642,0.9793,0.0035,0.0151,0.0021,False,Excessive image blur (blur score 90.83 < threshold 100.0).,90.83,58.67,61.98,False
+kaggle__288_9182789.jpg,train/cataract/kaggle__288_9182789.jpg,cataract,cataract,0.9232,0.8622,0.9232,0.0085,0.0609,0.0074,True,PASSED,137.93,49.67,52.35,False
+kaggle__295_4841360.jpg,train/cataract/kaggle__295_4841360.jpg,cataract,cataract,0.9772,0.9599,0.9772,0.0042,0.0174,0.0012,True,PASSED,126.77,59.98,62.86,False
+kaggle__302_822867.jpg,train/cataract/kaggle__302_822867.jpg,cataract,cataract,0.9672,0.9408,0.9672,0.0022,0.0264,0.0041,True,PASSED,108.37,59.57,62.76,False
+kaggle__31_5635423.jpg,train/cataract/kaggle__31_5635423.jpg,cataract,glaucoma,0.809,0.6264,0.1827,0.0039,0.809,0.0045,True,PASSED,109.96,70.36,39.07,True
+kaggle__328_3269333.jpg,train/cataract/kaggle__328_3269333.jpg,cataract,cataract,0.975,0.9559,0.975,0.004,0.019,0.002,True,PASSED,154.55,71.06,73.82,False
+kaggle__340_3239094.jpg,train/cataract/kaggle__340_3239094.jpg,cataract,cataract,0.5822,0.1745,0.5822,0.0022,0.4077,0.0079,True,PASSED,116.27,58.59,58.0,False
+kaggle__343_2631213.jpg,train/cataract/kaggle__343_2631213.jpg,cataract,cataract,0.8693,0.7436,0.8693,0.0027,0.1257,0.0024,True,PASSED,184.27,73.11,76.58,False
+kaggle__349_2751142.jpg,train/cataract/kaggle__349_2751142.jpg,cataract,cataract,0.9835,0.9702,0.9835,0.0025,0.0133,0.0007,False,Excessive image blur (blur score 94.58 < threshold 100.0).,94.58,47.69,52.19,False
+kaggle__351_7651498.jpg,train/cataract/kaggle__351_7651498.jpg,cataract,cataract,0.7556,0.5182,0.7556,0.0037,0.2374,0.0034,True,PASSED,105.07,59.96,62.85,False
+kaggle__352_5217565.jpg,train/cataract/kaggle__352_5217565.jpg,cataract,cataract,0.9886,0.9792,0.9886,0.0013,0.0094,0.0007,True,PASSED,196.46,77.66,81.24,False
+kaggle__353_8002933.jpg,train/cataract/kaggle__353_8002933.jpg,cataract,cataract,0.7956,0.5955,0.7956,0.0029,0.2001,0.0014,True,PASSED,234.85,79.19,81.63,False
+kaggle__358_1004212.jpg,train/cataract/kaggle__358_1004212.jpg,cataract,glaucoma,0.6085,0.2252,0.3833,0.006,0.6085,0.0022,True,PASSED,103.93,58.8,61.83,True
+kaggle__359_6265965.jpg,train/cataract/kaggle__359_6265965.jpg,cataract,cataract,0.9884,0.9788,0.9884,0.0015,0.0096,0.0006,True,PASSED,140.44,61.62,64.56,False
+kaggle__362_9739218.jpg,train/cataract/kaggle__362_9739218.jpg,cataract,cataract,0.992,0.9846,0.992,0.0004,0.0075,0.0001,True,PASSED,132.3,90.35,52.25,False
+kaggle__363_7332544.jpg,train/cataract/kaggle__363_7332544.jpg,cataract,cataract,0.9965,0.9931,0.9965,0.0001,0.0034,0.0,True,PASSED,110.65,90.59,64.17,False
+kaggle__364_9397731.jpg,train/cataract/kaggle__364_9397731.jpg,cataract,cataract,0.9885,0.9779,0.9885,0.0009,0.0105,0.0001,True,PASSED,135.83,85.55,53.58,False
+kaggle__365_8356754.jpg,train/cataract/kaggle__365_8356754.jpg,cataract,cataract,0.9955,0.9919,0.9955,0.0009,0.0036,0.0,False,Excessive image blur (blur score 46.77 < threshold 100.0).,46.77,113.51,67.77,False
+kaggle__368_3722136.jpg,train/cataract/kaggle__368_3722136.jpg,cataract,cataract,0.9927,0.9864,0.9927,0.001,0.0063,0.0001,True,PASSED,240.3,125.53,75.25,False
+kaggle__376_9321900.jpg,train/cataract/kaggle__376_9321900.jpg,cataract,cataract,0.9922,0.9845,0.9922,0.0002,0.0076,0.0,False,Excessive image blur (blur score 45.24 < threshold 100.0).,45.24,76.07,48.54,False
+kaggle__378_7653956.jpg,train/cataract/kaggle__378_7653956.jpg,cataract,cataract,0.8929,0.8041,0.8929,0.0048,0.0887,0.0136,True,PASSED,203.62,104.63,64.57,False
+kaggle__381_6039460.jpg,train/cataract/kaggle__381_6039460.jpg,cataract,cataract,0.8583,0.7175,0.8583,0.0007,0.1408,0.0003,False,Excessive image blur (blur score 98.52 < threshold 100.0).,98.52,77.43,42.39,False
+kaggle__385_4113427.jpg,train/cataract/kaggle__385_4113427.jpg,cataract,cataract,0.8026,0.612,0.8026,0.0027,0.1906,0.0041,False,Excessive image blur (blur score 79.56 < threshold 100.0).,79.56,38.71,45.8,False
+kaggle__391_3026815.jpg,train/cataract/kaggle__391_3026815.jpg,cataract,cataract,0.9853,0.9728,0.9853,0.0015,0.0125,0.0007,True,PASSED,106.07,65.69,66.76,False
+kaggle__44_6970984.jpg,train/cataract/kaggle__44_6970984.jpg,cataract,cataract,0.9896,0.9804,0.9896,0.0006,0.0092,0.0006,True,PASSED,289.93,87.09,55.02,False
+kaggle__45_6457682.jpg,train/cataract/kaggle__45_6457682.jpg,cataract,cataract,0.9913,0.983,0.9913,0.0002,0.0083,0.0002,True,PASSED,187.19,85.12,49.49,False
+kaggle__46_4314985.jpg,train/cataract/kaggle__46_4314985.jpg,cataract,cataract,0.9906,0.9818,0.9906,0.0005,0.0087,0.0002,True,PASSED,362.8,107.72,60.31,False
+kaggle__48_7953833.jpg,train/cataract/kaggle__48_7953833.jpg,cataract,cataract,0.9916,0.9841,0.9916,0.0003,0.0076,0.0004,True,PASSED,340.39,103.41,64.12,False
+kaggle__49_2405371.jpg,train/cataract/kaggle__49_2405371.jpg,cataract,cataract,0.9938,0.9886,0.9938,0.0008,0.0052,0.0002,True,PASSED,346.93,107.51,64.37,False
+kaggle__50_1920746.jpg,train/cataract/kaggle__50_1920746.jpg,cataract,cataract,0.9858,0.9729,0.9858,0.001,0.0129,0.0002,True,PASSED,308.86,70.63,56.16,False
+kaggle__57_8463167.jpg,train/cataract/kaggle__57_8463167.jpg,cataract,cataract,0.6797,0.3706,0.6797,0.01,0.3091,0.0013,False,Excessive image blur (blur score 88.19 < threshold 100.0).,88.19,56.45,33.12,False
+kaggle__60_7070159.jpg,train/cataract/kaggle__60_7070159.jpg,cataract,cataract,0.9914,0.984,0.9914,0.001,0.0074,0.0001,True,PASSED,107.23,81.73,44.48,False
+kaggle__71_5079718.jpg,train/cataract/kaggle__71_5079718.jpg,cataract,cataract,0.99,0.9805,0.99,0.0003,0.0095,0.0003,True,PASSED,278.7,72.99,45.46,False
+kaggle__77_2197698.jpg,train/cataract/kaggle__77_2197698.jpg,cataract,glaucoma,0.9153,0.8639,0.0266,0.0067,0.9153,0.0514,True,PASSED,385.18,37.03,49.22,True
+kaggle__77_938150.jpg,train/cataract/kaggle__77_938150.jpg,cataract,glaucoma,0.8561,0.7362,0.1199,0.0153,0.8561,0.0087,True,PASSED,440.53,37.73,49.95,True
+kaggle__82_1805923.jpg,train/cataract/kaggle__82_1805923.jpg,cataract,cataract,0.9768,0.9587,0.9768,0.0017,0.0181,0.0035,True,PASSED,289.5,121.17,68.47,False
+kaggle__92_5284437.jpg,train/cataract/kaggle__92_5284437.jpg,cataract,cataract,0.9889,0.9783,0.9889,0.0003,0.0106,0.0002,False,Excessive image blur (blur score 91.16 < threshold 100.0).,91.16,83.55,49.98,False
+kaggle__99_746342.jpg,train/cataract/kaggle__99_746342.jpg,cataract,cataract,0.99,0.9805,0.99,0.0004,0.0095,0.0002,True,PASSED,221.51,114.3,65.83,False
+1.png,train/diabetic_retinopathy/1.png,diabetic_retinopathy,diabetic_retinopathy,0.8449,0.7625,0.0705,0.8449,0.0824,0.0022,False,Excessive image blur (blur score 8.79 < threshold 100.0).,8.79,60.06,60.99,False
+1093.png,train/diabetic_retinopathy/1093.png,diabetic_retinopathy,diabetic_retinopathy,0.7075,0.4551,0.0357,0.7075,0.2524,0.0044,False,Excessive image blur (blur score 13.11 < threshold 100.0).,13.11,35.11,36.42,False
+1105.png,train/diabetic_retinopathy/1105.png,diabetic_retinopathy,diabetic_retinopathy,0.472,0.0076,0.0538,0.472,0.4644,0.0098,False,Excessive image blur (blur score 11.18 < threshold 100.0).,11.18,74.59,75.81,False
+111.png,train/diabetic_retinopathy/111.png,diabetic_retinopathy,diabetic_retinopathy,0.8039,0.7178,0.0608,0.8039,0.0861,0.0492,False,Excessive image blur (blur score 15.25 < threshold 100.0).,15.25,60.34,60.67,False
+1133.png,train/diabetic_retinopathy/1133.png,diabetic_retinopathy,glaucoma,0.6159,0.2475,0.0058,0.3684,0.6159,0.0099,False,Excessive image blur (blur score 13.47 < threshold 100.0).,13.47,47.38,47.85,True
+1146.png,train/diabetic_retinopathy/1146.png,diabetic_retinopathy,cataract,0.5466,0.1897,0.5466,0.3569,0.0936,0.0028,False,Excessive image blur (blur score 13.03 < threshold 100.0).,13.03,46.46,46.76,True
+1154.png,train/diabetic_retinopathy/1154.png,diabetic_retinopathy,diabetic_retinopathy,0.8789,0.8284,0.0226,0.8789,0.0505,0.0479,False,Excessive image blur (blur score 14.13 < threshold 100.0).,14.13,45.37,46.85,False
+1186.png,train/diabetic_retinopathy/1186.png,diabetic_retinopathy,normal,0.4685,0.0967,0.0757,0.3718,0.084,0.4685,False,Excessive image blur (blur score 13.01 < threshold 100.0).,13.01,39.52,41.64,True
+1199.png,train/diabetic_retinopathy/1199.png,diabetic_retinopathy,cataract,0.8066,0.6844,0.8066,0.0073,0.0639,0.1222,False,Excessive image blur (blur score 8.15 < threshold 100.0).,8.15,37.89,38.19,True
+1208.png,train/diabetic_retinopathy/1208.png,diabetic_retinopathy,diabetic_retinopathy,0.737,0.4876,0.0086,0.737,0.2494,0.005,False,Excessive image blur (blur score 13.04 < threshold 100.0).,13.04,46.07,46.82,False
+1277.png,train/diabetic_retinopathy/1277.png,diabetic_retinopathy,diabetic_retinopathy,0.8947,0.8516,0.0229,0.8947,0.0391,0.0432,False,Excessive image blur (blur score 13.35 < threshold 100.0).,13.35,45.17,45.64,False
+1308.png,train/diabetic_retinopathy/1308.png,diabetic_retinopathy,diabetic_retinopathy,0.9209,0.8495,0.0038,0.9209,0.0713,0.0041,False,Excessive image blur (blur score 15.59 < threshold 100.0).,15.59,55.82,56.74,False
+1322.png,train/diabetic_retinopathy/1322.png,diabetic_retinopathy,diabetic_retinopathy,0.8481,0.7052,0.0068,0.8481,0.143,0.0021,False,Excessive image blur (blur score 13.32 < threshold 100.0).,13.32,47.31,47.46,False
+1331.png,train/diabetic_retinopathy/1331.png,diabetic_retinopathy,cataract,0.4688,0.0335,0.4688,0.4353,0.0843,0.0116,False,Excessive image blur (blur score 9.78 < threshold 100.0).,9.78,63.2,63.39,True
+1337.png,train/diabetic_retinopathy/1337.png,diabetic_retinopathy,diabetic_retinopathy,0.9289,0.8749,0.0076,0.9289,0.0539,0.0096,False,Excessive image blur (blur score 7.70 < threshold 100.0).,7.7,48.56,49.72,False
+134.png,train/diabetic_retinopathy/134.png,diabetic_retinopathy,diabetic_retinopathy,0.6289,0.328,0.3009,0.6289,0.0509,0.0194,False,Excessive image blur (blur score 13.73 < threshold 100.0).,13.73,59.28,59.35,False
+1357.png,train/diabetic_retinopathy/1357.png,diabetic_retinopathy,diabetic_retinopathy,0.8075,0.652,0.0257,0.8075,0.1555,0.0114,False,Excessive image blur (blur score 14.00 < threshold 100.0).,14.0,58.5,58.53,False
+1373.png,train/diabetic_retinopathy/1373.png,diabetic_retinopathy,diabetic_retinopathy,0.7743,0.592,0.0388,0.7743,0.1823,0.0046,False,Excessive image blur (blur score 7.15 < threshold 100.0).,7.15,52.29,52.91,False
+1377.png,train/diabetic_retinopathy/1377.png,diabetic_retinopathy,diabetic_retinopathy,0.8386,0.77,0.0686,0.8386,0.0464,0.0465,False,Excessive image blur (blur score 14.15 < threshold 100.0).,14.15,58.98,59.76,False
+1394.png,train/diabetic_retinopathy/1394.png,diabetic_retinopathy,diabetic_retinopathy,0.6567,0.3189,0.0033,0.6567,0.3378,0.0023,False,Excessive image blur (blur score 12.99 < threshold 100.0).,12.99,45.16,45.91,False
+1412.png,train/diabetic_retinopathy/1412.png,diabetic_retinopathy,diabetic_retinopathy,0.8167,0.7007,0.0274,0.8167,0.116,0.0399,False,Excessive image blur (blur score 7.58 < threshold 100.0).,7.58,57.21,57.9,False
+1466.png,train/diabetic_retinopathy/1466.png,diabetic_retinopathy,diabetic_retinopathy,0.7382,0.4917,0.0103,0.7382,0.2464,0.0051,False,Excessive image blur (blur score 13.28 < threshold 100.0).,13.28,46.99,48.54,False
+1493.png,train/diabetic_retinopathy/1493.png,diabetic_retinopathy,normal,0.596,0.4072,0.1888,0.0557,0.1595,0.596,False,Excessive image blur (blur score 14.55 < threshold 100.0).,14.55,47.26,48.6,True
+1519.png,train/diabetic_retinopathy/1519.png,diabetic_retinopathy,diabetic_retinopathy,0.4557,0.0855,0.1342,0.4557,0.3701,0.04,False,Excessive image blur (blur score 8.43 < threshold 100.0).,8.43,47.75,32.62,False
+1537.png,train/diabetic_retinopathy/1537.png,diabetic_retinopathy,diabetic_retinopathy,0.8341,0.7445,0.0091,0.8341,0.0672,0.0896,False,Excessive image blur (blur score 11.02 < threshold 100.0).,11.02,72.27,48.6,False
+1645.png,train/diabetic_retinopathy/1645.png,diabetic_retinopathy,diabetic_retinopathy,0.6713,0.4352,0.0121,0.6713,0.0806,0.2361,False,Excessive image blur (blur score 11.23 < threshold 100.0).,11.23,74.05,52.18,False
+1693.png,train/diabetic_retinopathy/1693.png,diabetic_retinopathy,diabetic_retinopathy,0.8855,0.8089,0.0269,0.8855,0.0765,0.0112,False,Excessive image blur (blur score 10.62 < threshold 100.0).,10.62,61.53,43.13,False
+170.png,train/diabetic_retinopathy/170.png,diabetic_retinopathy,glaucoma,0.7619,0.6024,0.0516,0.1596,0.7619,0.0269,False,Excessive image blur (blur score 8.31 < threshold 100.0).,8.31,61.24,61.36,True
+1917.png,train/diabetic_retinopathy/1917.png,diabetic_retinopathy,diabetic_retinopathy,0.798,0.6811,0.0462,0.798,0.0389,0.1169,False,Excessive image blur (blur score 11.45 < threshold 100.0).,11.45,70.93,45.13,False
+277.png,train/diabetic_retinopathy/277.png,diabetic_retinopathy,normal,0.7438,0.6434,0.1005,0.0806,0.0751,0.7438,False,Excessive image blur (blur score 13.18 < threshold 100.0).,13.18,55.43,55.62,True
+36.png,train/diabetic_retinopathy/36.png,diabetic_retinopathy,diabetic_retinopathy,0.8331,0.7375,0.0956,0.8331,0.0566,0.0147,False,Excessive image blur (blur score 9.16 < threshold 100.0).,9.16,66.44,66.58,False
+39.png,train/diabetic_retinopathy/39.png,diabetic_retinopathy,diabetic_retinopathy,0.8783,0.8136,0.0196,0.8783,0.0373,0.0647,False,Excessive image blur (blur score 8.53 < threshold 100.0).,8.53,58.98,59.83,False
+441.png,train/diabetic_retinopathy/441.png,diabetic_retinopathy,diabetic_retinopathy,0.6981,0.4394,0.0404,0.6981,0.2587,0.0028,False,Excessive image blur (blur score 14.07 < threshold 100.0).,14.07,45.27,49.14,False
+463.png,train/diabetic_retinopathy/463.png,diabetic_retinopathy,diabetic_retinopathy,0.955,0.9197,0.0067,0.955,0.0353,0.0029,False,Excessive image blur (blur score 9.77 < threshold 100.0).,9.77,62.39,63.07,False
+465.png,train/diabetic_retinopathy/465.png,diabetic_retinopathy,normal,0.7525,0.6542,0.0859,0.0983,0.0633,0.7525,False,Excessive image blur (blur score 11.25 < threshold 100.0).,11.25,71.92,72.11,True
+5.png,train/diabetic_retinopathy/5.png,diabetic_retinopathy,diabetic_retinopathy,0.8944,0.8385,0.0452,0.8944,0.0559,0.0046,False,Excessive image blur (blur score 13.83 < threshold 100.0).,13.83,56.38,56.88,False
+586.png,train/diabetic_retinopathy/586.png,diabetic_retinopathy,normal,0.5313,0.2009,0.0146,0.1237,0.3304,0.5313,False,Excessive image blur (blur score 13.49 < threshold 100.0).,13.49,53.91,54.34,True
+633.png,train/diabetic_retinopathy/633.png,diabetic_retinopathy,diabetic_retinopathy,0.8745,0.8067,0.0678,0.8745,0.0555,0.0022,False,Excessive image blur (blur score 13.84 < threshold 100.0).,13.84,55.2,55.2,False
+70.png,train/diabetic_retinopathy/70.png,diabetic_retinopathy,diabetic_retinopathy,0.9085,0.836,0.0134,0.9085,0.0725,0.0056,False,Excessive image blur (blur score 9.67 < threshold 100.0).,9.67,56.2,57.17,False
+710.png,train/diabetic_retinopathy/710.png,diabetic_retinopathy,diabetic_retinopathy,0.4065,0.0011,0.4054,0.4065,0.1736,0.0144,False,Excessive image blur (blur score 9.29 < threshold 100.0).,9.29,70.54,70.98,False
+86.png,train/diabetic_retinopathy/86.png,diabetic_retinopathy,diabetic_retinopathy,0.9519,0.9297,0.0125,0.9519,0.0221,0.0135,False,Excessive image blur (blur score 10.70 < threshold 100.0).,10.7,66.41,66.67,False
+949.png,train/diabetic_retinopathy/949.png,diabetic_retinopathy,diabetic_retinopathy,0.8692,0.8166,0.0264,0.8692,0.0519,0.0526,False,Excessive image blur (blur score 14.31 < threshold 100.0).,14.31,43.08,43.21,False
+98.png,train/diabetic_retinopathy/98.png,diabetic_retinopathy,diabetic_retinopathy,0.7954,0.632,0.0351,0.7954,0.1634,0.0061,False,Excessive image blur (blur score 13.21 < threshold 100.0).,13.21,58.96,59.05,False
+kaggle_10003_left.jpeg,train/diabetic_retinopathy/kaggle_10003_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.979,0.965,0.0058,0.979,0.0012,0.014,True,PASSED,185.12,80.26,61.44,False
+kaggle_10003_right.jpeg,train/diabetic_retinopathy/kaggle_10003_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.98,0.966,0.0052,0.98,0.0009,0.0139,True,PASSED,186.52,83.95,64.39,False
+kaggle_10035_left.jpeg,train/diabetic_retinopathy/kaggle_10035_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9834,0.9726,0.0108,0.9834,0.0012,0.0045,False,Excessive image blur (blur score 37.28 < threshold 100.0).,37.28,39.4,27.2,False
+kaggle_10035_right.jpeg,train/diabetic_retinopathy/kaggle_10035_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9867,0.979,0.0077,0.9867,0.0009,0.0047,False,Excessive image blur (blur score 61.85 < threshold 100.0).,61.85,58.45,41.36,False
+kaggle_10042_left.jpeg,train/diabetic_retinopathy/kaggle_10042_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9685,0.9523,0.0058,0.9685,0.0095,0.0162,True,PASSED,157.65,66.92,34.32,False
+kaggle_10042_right.jpeg,train/diabetic_retinopathy/kaggle_10042_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9813,0.9692,0.0014,0.9813,0.0122,0.0051,True,PASSED,175.52,72.0,38.78,False
+kaggle_10058_left.jpeg,train/diabetic_retinopathy/kaggle_10058_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.972,0.9534,0.0186,0.972,0.0043,0.0052,False,Excessive image blur (blur score 31.56 < threshold 100.0).,31.56,35.81,13.27,False
+kaggle_10058_right.jpeg,train/diabetic_retinopathy/kaggle_10058_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9529,0.9071,0.0004,0.9529,0.0458,0.0009,False,Excessive image blur (blur score 44.37 < threshold 100.0).,44.37,59.01,19.85,False
+kaggle_10078_left.jpeg,train/diabetic_retinopathy/kaggle_10078_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.7949,0.5979,0.0013,0.7949,0.197,0.0068,False,Excessive image blur (blur score 23.76 < threshold 100.0).,23.76,133.05,34.5,False
+kaggle_10078_right.jpeg,train/diabetic_retinopathy/kaggle_10078_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8755,0.7579,0.0012,0.8755,0.1176,0.0057,False,Excessive image blur (blur score 24.14 < threshold 100.0).,24.14,110.14,28.1,False
+kaggle_1008_left.jpeg,train/diabetic_retinopathy/kaggle_1008_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9113,0.8417,0.0696,0.9113,0.0057,0.0134,True,PASSED,126.16,63.35,44.43,False
+kaggle_1008_right.jpeg,train/diabetic_retinopathy/kaggle_1008_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9702,0.9519,0.0183,0.9702,0.0017,0.0099,True,PASSED,106.45,69.15,46.58,False
+kaggle_10109_right.jpeg,train/diabetic_retinopathy/kaggle_10109_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9817,0.97,0.0028,0.9817,0.0038,0.0117,True,PASSED,104.33,43.59,34.32,False
+kaggle_10120_left.jpeg,train/diabetic_retinopathy/kaggle_10120_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8731,0.7642,0.0025,0.8731,0.1089,0.0154,False,Excessive image blur (blur score 20.01 < threshold 100.0).,20.01,101.09,27.43,False
+kaggle_10147_left.jpeg,train/diabetic_retinopathy/kaggle_10147_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9664,0.9449,0.0027,0.9664,0.0215,0.0095,False,Excessive image blur (blur score 22.79 < threshold 100.0).,22.79,99.86,23.66,False
+kaggle_10147_right.jpeg,train/diabetic_retinopathy/kaggle_10147_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9107,0.8282,0.0005,0.9107,0.0825,0.0064,False,Excessive image blur (blur score 26.89 < threshold 100.0).,26.89,127.92,31.28,False
+kaggle_10156_left.jpeg,train/diabetic_retinopathy/kaggle_10156_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9771,0.9614,0.0027,0.9771,0.0157,0.0044,True,PASSED,492.44,100.91,71.85,False
+kaggle_10156_right.jpeg,train/diabetic_retinopathy/kaggle_10156_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9704,0.9421,0.0003,0.9704,0.0283,0.001,True,PASSED,394.57,82.14,63.69,False
+kaggle_10163_left.jpeg,train/diabetic_retinopathy/kaggle_10163_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9845,0.9768,0.0077,0.9845,0.0051,0.0027,False,Excessive image blur (blur score 74.10 < threshold 100.0).,74.1,49.34,37.81,False
+kaggle_10163_right.jpeg,train/diabetic_retinopathy/kaggle_10163_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9765,0.9566,0.02,0.9765,0.0025,0.001,True,PASSED,101.08,53.89,41.36,False
+kaggle_10184_right.jpeg,train/diabetic_retinopathy/kaggle_10184_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9431,0.9116,0.0196,0.9431,0.0315,0.0058,True,PASSED,136.27,71.32,57.57,False
+kaggle_1020_left.jpeg,train/diabetic_retinopathy/kaggle_1020_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.931,0.8934,0.0014,0.931,0.03,0.0376,True,PASSED,140.24,66.59,52.26,False
+kaggle_1020_right.jpeg,train/diabetic_retinopathy/kaggle_1020_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9653,0.9389,0.0062,0.9653,0.0021,0.0264,False,Excessive image blur (blur score 96.84 < threshold 100.0).,96.84,66.34,52.07,False
+kaggle_10212_left.jpeg,train/diabetic_retinopathy/kaggle_10212_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9895,0.9836,0.0013,0.9895,0.0033,0.0059,False,Excessive image blur (blur score 85.55 < threshold 100.0).,85.55,34.14,30.95,False
+kaggle_10212_right.jpeg,train/diabetic_retinopathy/kaggle_10212_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9953,0.9923,0.0006,0.9953,0.0012,0.0029,True,PASSED,166.22,48.58,41.4,False
+kaggle_1027_left.jpeg,train/diabetic_retinopathy/kaggle_1027_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9903,0.985,0.0032,0.9903,0.0012,0.0053,False,Excessive image blur (blur score 66.31 < threshold 100.0).,66.31,45.06,35.43,False
+kaggle_10293_left.jpeg,train/diabetic_retinopathy/kaggle_10293_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9696,0.9431,0.0265,0.9696,0.0017,0.0023,False,Excessive image blur (blur score 98.12 < threshold 100.0).,98.12,65.82,46.97,False
+kaggle_10295_left.jpeg,train/diabetic_retinopathy/kaggle_10295_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9467,0.9209,0.003,0.9467,0.0258,0.0245,False,Excessive image blur (blur score 20.83 < threshold 100.0).,20.83,81.52,34.5,False
+kaggle_10295_right.jpeg,train/diabetic_retinopathy/kaggle_10295_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9343,0.8875,0.0027,0.9343,0.0163,0.0468,False,Excessive image blur (blur score 11.11 < threshold 100.0).,11.11,61.23,27.81,False
+kaggle_102_left.jpeg,train/diabetic_retinopathy/kaggle_102_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8415,0.6867,0.0001,0.8415,0.1548,0.0037,False,Excessive image blur (blur score 35.88 < threshold 100.0).,35.88,90.59,21.23,False
+kaggle_10319_left.jpeg,train/diabetic_retinopathy/kaggle_10319_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8231,0.6752,0.0254,0.8231,0.1479,0.0035,False,Excessive image blur (blur score 13.96 < threshold 100.0).,13.96,117.65,29.19,False
+kaggle_10319_right.jpeg,train/diabetic_retinopathy/kaggle_10319_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9515,0.9085,0.0044,0.9515,0.043,0.001,False,Excessive image blur (blur score 14.14 < threshold 100.0).,14.14,120.39,31.51,False
+kaggle_10321_left.jpeg,train/diabetic_retinopathy/kaggle_10321_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9698,0.9479,0.0219,0.9698,0.0017,0.0065,True,PASSED,476.37,99.61,72.59,False
+kaggle_10325_left.jpeg,train/diabetic_retinopathy/kaggle_10325_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9619,0.9308,0.0053,0.9619,0.0018,0.0311,False,Excessive image blur (blur score 73.19 < threshold 100.0).,73.19,57.66,40.13,False
+kaggle_10325_right.jpeg,train/diabetic_retinopathy/kaggle_10325_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9575,0.9231,0.0063,0.9575,0.0019,0.0344,False,Excessive image blur (blur score 82.61 < threshold 100.0).,82.61,63.16,43.5,False
+kaggle_10337_left.jpeg,train/diabetic_retinopathy/kaggle_10337_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9771,0.9606,0.0055,0.9771,0.0008,0.0166,True,PASSED,307.33,74.58,47.86,False
+kaggle_10337_right.jpeg,train/diabetic_retinopathy/kaggle_10337_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9816,0.9706,0.004,0.9816,0.0034,0.0109,True,PASSED,233.64,69.73,45.47,False
+kaggle_10340_left.jpeg,train/diabetic_retinopathy/kaggle_10340_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9731,0.953,0.0012,0.9731,0.0201,0.0057,True,PASSED,196.24,59.49,33.71,False
+kaggle_10340_right.jpeg,train/diabetic_retinopathy/kaggle_10340_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9814,0.967,0.0009,0.9814,0.0144,0.0033,True,PASSED,405.91,101.0,47.97,False
+kaggle_1034_left.jpeg,train/diabetic_retinopathy/kaggle_1034_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9121,0.8395,0.0045,0.9121,0.0726,0.0107,True,PASSED,240.46,96.41,57.52,False
+kaggle_1034_right.jpeg,train/diabetic_retinopathy/kaggle_1034_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.912,0.8578,0.0136,0.912,0.0542,0.0203,True,PASSED,225.37,96.94,58.21,False
+kaggle_10368_left.jpeg,train/diabetic_retinopathy/kaggle_10368_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9869,0.9773,0.001,0.9869,0.0026,0.0095,False,Excessive image blur (blur score 90.90 < threshold 100.0).,90.9,69.24,52.22,False
+kaggle_10368_right.jpeg,train/diabetic_retinopathy/kaggle_10368_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9859,0.9749,0.0009,0.9859,0.0023,0.011,True,PASSED,119.29,72.73,54.27,False
+kaggle_10377_left.jpeg,train/diabetic_retinopathy/kaggle_10377_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9916,0.9871,0.001,0.9916,0.0027,0.0046,True,PASSED,145.13,62.43,46.22,False
+kaggle_10377_right.jpeg,train/diabetic_retinopathy/kaggle_10377_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9913,0.9869,0.0006,0.9913,0.0037,0.0044,True,PASSED,129.66,55.44,42.48,False
+kaggle_10386_left.jpeg,train/diabetic_retinopathy/kaggle_10386_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9816,0.9673,0.0015,0.9816,0.0026,0.0143,False,Excessive image blur (blur score 29.95 < threshold 100.0).,29.95,73.98,26.99,False
+kaggle_10386_right.jpeg,train/diabetic_retinopathy/kaggle_10386_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9708,0.952,0.0063,0.9708,0.0042,0.0187,False,Excessive image blur (blur score 47.72 < threshold 100.0).,47.72,96.81,31.02,False
+kaggle_10398_left.jpeg,train/diabetic_retinopathy/kaggle_10398_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9836,0.9743,0.0012,0.9836,0.0092,0.0059,True,PASSED,120.97,51.45,37.04,False
+kaggle_10398_right.jpeg,train/diabetic_retinopathy/kaggle_10398_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9902,0.985,0.0012,0.9902,0.0034,0.0052,True,PASSED,150.84,53.71,39.03,False
+kaggle_10403_left.jpeg,train/diabetic_retinopathy/kaggle_10403_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9725,0.9566,0.005,0.9725,0.0065,0.0159,False,Excessive image blur (blur score 42.56 < threshold 100.0).,42.56,95.18,28.84,False
+kaggle_10403_right.jpeg,train/diabetic_retinopathy/kaggle_10403_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8999,0.8376,0.0024,0.8999,0.0622,0.0355,False,Excessive image blur (blur score 16.90 < threshold 100.0).,16.9,93.35,25.45,False
+kaggle_10409_left.jpeg,train/diabetic_retinopathy/kaggle_10409_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9483,0.9066,0.0007,0.9483,0.0418,0.0092,False,Excessive image blur (blur score 20.91 < threshold 100.0).,20.91,157.78,42.72,False
+kaggle_10409_right.jpeg,train/diabetic_retinopathy/kaggle_10409_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9641,0.9458,0.0018,0.9641,0.0183,0.0158,False,Excessive image blur (blur score 31.88 < threshold 100.0).,31.88,114.05,36.16,False
+kaggle_10426_left.jpeg,train/diabetic_retinopathy/kaggle_10426_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9914,0.986,0.0005,0.9914,0.0054,0.0026,False,Excessive image blur (blur score 52.66 < threshold 100.0).,52.66,38.36,29.67,False
+kaggle_10426_right.jpeg,train/diabetic_retinopathy/kaggle_10426_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9935,0.9898,0.0009,0.9935,0.0019,0.0037,False,Excessive image blur (blur score 67.70 < threshold 100.0).,67.7,46.61,36.38,False
+kaggle_10444_left.jpeg,train/diabetic_retinopathy/kaggle_10444_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.876,0.8069,0.0691,0.876,0.0496,0.0053,False,Excessive image blur (blur score 31.18 < threshold 100.0).,31.18,148.58,43.67,False
+kaggle_10444_right.jpeg,train/diabetic_retinopathy/kaggle_10444_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8899,0.8064,0.0192,0.8899,0.0836,0.0073,False,Excessive image blur (blur score 45.90 < threshold 100.0).,45.9,120.78,32.27,False
+kaggle_10457_left.jpeg,train/diabetic_retinopathy/kaggle_10457_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9894,0.985,0.0026,0.9894,0.0037,0.0044,True,PASSED,256.07,77.18,56.55,False
+kaggle_10457_right.jpeg,train/diabetic_retinopathy/kaggle_10457_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9707,0.9581,0.0098,0.9707,0.007,0.0126,True,PASSED,218.94,86.31,60.71,False
+kaggle_10487_left.jpeg,train/diabetic_retinopathy/kaggle_10487_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9866,0.9804,0.0061,0.9866,0.0032,0.0041,False,Excessive image blur (blur score 59.37 < threshold 100.0).,59.37,65.87,19.8,False
+kaggle_10487_right.jpeg,train/diabetic_retinopathy/kaggle_10487_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9807,0.9703,0.0104,0.9807,0.0033,0.0056,False,Excessive image blur (blur score 75.07 < threshold 100.0).,75.07,72.71,19.56,False
+kaggle_10562_left.jpeg,train/diabetic_retinopathy/kaggle_10562_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9804,0.9663,0.0004,0.9804,0.0051,0.0141,False,Excessive image blur (blur score 78.62 < threshold 100.0).,78.62,113.16,34.2,False
+kaggle_10562_right.jpeg,train/diabetic_retinopathy/kaggle_10562_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9726,0.9527,0.0011,0.9726,0.0062,0.02,False,Excessive image blur (blur score 71.72 < threshold 100.0).,71.72,107.51,31.0,False
+kaggle_10606_left.jpeg,train/diabetic_retinopathy/kaggle_10606_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9879,0.9802,0.0016,0.9879,0.0029,0.0076,True,PASSED,459.35,92.64,49.3,False
+kaggle_10606_right.jpeg,train/diabetic_retinopathy/kaggle_10606_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9871,0.9789,0.0033,0.9871,0.0014,0.0082,True,PASSED,472.2,88.49,48.84,False
+kaggle_10650_left.jpeg,train/diabetic_retinopathy/kaggle_10650_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.942,0.8864,0.0004,0.942,0.0556,0.0021,False,Excessive image blur (blur score 83.62 < threshold 100.0).,83.62,48.14,32.92,False
+kaggle_10653_left.jpeg,train/diabetic_retinopathy/kaggle_10653_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9482,0.9188,0.0294,0.9482,0.0213,0.0011,False,Excessive image blur (blur score 16.33 < threshold 100.0).,16.33,127.86,27.56,False
+kaggle_10653_right.jpeg,train/diabetic_retinopathy/kaggle_10653_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.959,0.9283,0.0307,0.959,0.0094,0.0009,False,Excessive image blur (blur score 13.48 < threshold 100.0).,13.48,156.18,27.45,False
+kaggle_10675_left.jpeg,train/diabetic_retinopathy/kaggle_10675_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9845,0.976,0.0064,0.9845,0.0006,0.0085,True,PASSED,159.05,61.75,50.62,False
+kaggle_10675_right.jpeg,train/diabetic_retinopathy/kaggle_10675_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.988,0.9813,0.0048,0.988,0.0005,0.0067,True,PASSED,146.2,66.24,51.7,False
+kaggle_10695_left.jpeg,train/diabetic_retinopathy/kaggle_10695_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9657,0.9368,0.001,0.9657,0.0289,0.0044,True,PASSED,107.34,76.68,26.59,False
+kaggle_10695_right.jpeg,train/diabetic_retinopathy/kaggle_10695_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9648,0.9378,0.003,0.9648,0.027,0.0052,False,Excessive image blur (blur score 99.78 < threshold 100.0).,99.78,61.06,21.31,False
+kaggle_1070_left.jpeg,train/diabetic_retinopathy/kaggle_1070_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9732,0.9543,0.0026,0.9732,0.0189,0.0053,False,Excessive image blur (blur score 26.30 < threshold 100.0).,26.3,65.13,18.25,False
+kaggle_1070_right.jpeg,train/diabetic_retinopathy/kaggle_1070_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9425,0.8955,0.0028,0.9425,0.0076,0.047,False,Excessive image blur (blur score 33.91 < threshold 100.0).,33.91,87.97,22.9,False
+kaggle_10720_left.jpeg,train/diabetic_retinopathy/kaggle_10720_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9389,0.8877,0.0009,0.9389,0.0513,0.0089,False,Excessive image blur (blur score 43.49 < threshold 100.0).,43.49,145.32,34.81,False
+kaggle_10720_right.jpeg,train/diabetic_retinopathy/kaggle_10720_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9131,0.8541,0.0046,0.9131,0.0589,0.0234,False,Excessive image blur (blur score 39.90 < threshold 100.0).,39.9,154.17,34.48,False
+kaggle_10751_right.jpeg,train/diabetic_retinopathy/kaggle_10751_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9546,0.9258,0.0008,0.9546,0.0288,0.0158,True,PASSED,222.25,60.86,36.23,False
+kaggle_10752_left.jpeg,train/diabetic_retinopathy/kaggle_10752_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9884,0.9821,0.0012,0.9884,0.0063,0.0041,True,PASSED,215.29,87.19,63.86,False
+kaggle_10752_right.jpeg,train/diabetic_retinopathy/kaggle_10752_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9831,0.9726,0.0042,0.9831,0.0021,0.0105,True,PASSED,272.96,104.23,74.94,False
+kaggle_10755_left.jpeg,train/diabetic_retinopathy/kaggle_10755_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9298,0.8653,0.0007,0.9298,0.0645,0.005,True,PASSED,338.18,130.36,34.92,False
+kaggle_10755_right.jpeg,train/diabetic_retinopathy/kaggle_10755_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9886,0.983,0.0035,0.9886,0.0022,0.0057,False,Excessive image blur (blur score 73.97 < threshold 100.0).,73.97,74.36,21.22,False
+kaggle_1075_left.jpeg,train/diabetic_retinopathy/kaggle_1075_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9467,0.9054,0.0089,0.9467,0.0413,0.003,False,Excessive image blur (blur score 18.14 < threshold 100.0).,18.14,146.18,29.55,False
+kaggle_1075_right.jpeg,train/diabetic_retinopathy/kaggle_1075_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9392,0.8867,0.0037,0.9392,0.0525,0.0046,False,Excessive image blur (blur score 28.72 < threshold 100.0).,28.72,131.76,27.98,False
+kaggle_1076_left.jpeg,train/diabetic_retinopathy/kaggle_1076_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9903,0.9846,0.0013,0.9903,0.0028,0.0056,False,Excessive image blur (blur score 68.50 < threshold 100.0).,68.5,101.73,30.0,False
+kaggle_1076_right.jpeg,train/diabetic_retinopathy/kaggle_1076_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.975,0.9562,0.0016,0.975,0.0047,0.0187,False,Excessive image blur (blur score 73.88 < threshold 100.0).,73.88,105.44,28.19,False
+kaggle_10772_right.jpeg,train/diabetic_retinopathy/kaggle_10772_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9656,0.9457,0.0082,0.9656,0.0063,0.0199,False,Excessive image blur (blur score 62.67 < threshold 100.0).,62.67,41.32,33.02,False
+kaggle_10787_left.jpeg,train/diabetic_retinopathy/kaggle_10787_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9737,0.9553,0.0018,0.9737,0.0183,0.0062,False,Excessive image blur (blur score 67.84 < threshold 100.0).,67.84,61.98,19.51,False
+kaggle_10787_right.jpeg,train/diabetic_retinopathy/kaggle_10787_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9655,0.9365,0.0007,0.9655,0.029,0.0047,False,Excessive image blur (blur score 60.67 < threshold 100.0).,60.67,60.27,19.23,False
+kaggle_1084_left.jpeg,train/diabetic_retinopathy/kaggle_1084_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8658,0.7396,0.0046,0.8658,0.1261,0.0035,False,Excessive image blur (blur score 90.42 < threshold 100.0).,90.42,129.94,41.72,False
+kaggle_1084_right.jpeg,train/diabetic_retinopathy/kaggle_1084_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8069,0.6168,0.0021,0.8069,0.1901,0.0008,False,Excessive image blur (blur score 39.44 < threshold 100.0).,39.44,103.11,38.56,False
+kaggle_10879_left.jpeg,train/diabetic_retinopathy/kaggle_10879_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9484,0.9278,0.0159,0.9484,0.0205,0.0152,False,Excessive image blur (blur score 47.65 < threshold 100.0).,47.65,135.46,42.46,False
+kaggle_10879_right.jpeg,train/diabetic_retinopathy/kaggle_10879_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9515,0.9251,0.0016,0.9515,0.0264,0.0205,False,Excessive image blur (blur score 90.76 < threshold 100.0).,90.76,129.06,37.94,False
+kaggle_10883_left.jpeg,train/diabetic_retinopathy/kaggle_10883_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9899,0.9842,0.0018,0.9899,0.0027,0.0057,False,Excessive image blur (blur score 70.44 < threshold 100.0).,70.44,103.99,36.37,False
+kaggle_10891_left.jpeg,train/diabetic_retinopathy/kaggle_10891_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9658,0.9471,0.0122,0.9658,0.0187,0.0032,True,PASSED,191.98,51.01,35.58,False
+kaggle_10891_right.jpeg,train/diabetic_retinopathy/kaggle_10891_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9687,0.9549,0.0126,0.9687,0.0138,0.0048,False,Excessive image blur (blur score 98.88 < threshold 100.0).,98.88,40.58,25.87,False
+kaggle_10954_left.jpeg,train/diabetic_retinopathy/kaggle_10954_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9443,0.9063,0.0171,0.9443,0.038,0.0007,False,Excessive image blur (blur score 33.84 < threshold 100.0).,33.84,69.19,27.05,False
+kaggle_10954_right.jpeg,train/diabetic_retinopathy/kaggle_10954_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9342,0.8935,0.0406,0.9342,0.0231,0.0021,False,Excessive image blur (blur score 80.96 < threshold 100.0).,80.96,60.93,21.91,False
+kaggle_10960_left.jpeg,train/diabetic_retinopathy/kaggle_10960_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9657,0.9497,0.016,0.9657,0.009,0.0093,False,Excessive image blur (blur score 19.84 < threshold 100.0).,19.84,14.19,12.31,False
+kaggle_10960_right.jpeg,train/diabetic_retinopathy/kaggle_10960_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9916,0.9863,0.0015,0.9916,0.0053,0.0016,False,Excessive image blur (blur score 29.94 < threshold 100.0).,29.94,21.76,15.99,False
+kaggle_11008_left.jpeg,train/diabetic_retinopathy/kaggle_11008_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9618,0.9434,0.0149,0.9618,0.0184,0.005,False,Excessive image blur (blur score 26.79 < threshold 100.0).,26.79,78.19,46.87,False
+kaggle_11008_right.jpeg,train/diabetic_retinopathy/kaggle_11008_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9623,0.9377,0.0246,0.9623,0.0089,0.0042,False,Excessive image blur (blur score 36.80 < threshold 100.0).,36.8,129.53,70.26,False
+kaggle_11026_left.jpeg,train/diabetic_retinopathy/kaggle_11026_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9444,0.9047,0.0044,0.9444,0.0115,0.0397,False,Excessive image blur (blur score 81.79 < threshold 100.0).,81.79,155.8,35.57,False
+kaggle_11026_right.jpeg,train/diabetic_retinopathy/kaggle_11026_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9783,0.9662,0.0031,0.9783,0.0066,0.012,False,Excessive image blur (blur score 58.21 < threshold 100.0).,58.21,116.57,30.94,False
+kaggle_11032_left.jpeg,train/diabetic_retinopathy/kaggle_11032_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8308,0.6706,0.0023,0.8308,0.1602,0.0067,False,Excessive image blur (blur score 50.67 < threshold 100.0).,50.67,103.43,34.28,False
+kaggle_11032_right.jpeg,train/diabetic_retinopathy/kaggle_11032_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8904,0.7936,0.0088,0.8904,0.0968,0.004,False,Excessive image blur (blur score 63.28 < threshold 100.0).,63.28,80.51,26.74,False
+kaggle_11053_left.jpeg,train/diabetic_retinopathy/kaggle_11053_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9653,0.9502,0.0151,0.9653,0.0142,0.0053,True,PASSED,237.99,94.79,44.15,False
+kaggle_11053_right.jpeg,train/diabetic_retinopathy/kaggle_11053_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.978,0.9599,0.0004,0.978,0.0181,0.0034,True,PASSED,184.68,80.66,41.19,False
+kaggle_11147_left.jpeg,train/diabetic_retinopathy/kaggle_11147_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8813,0.7691,0.0022,0.8813,0.1122,0.0043,False,Excessive image blur (blur score 27.30 < threshold 100.0).,27.3,90.4,28.52,False
+kaggle_11147_right.jpeg,train/diabetic_retinopathy/kaggle_11147_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9213,0.8512,0.0015,0.9213,0.0701,0.007,False,Excessive image blur (blur score 35.03 < threshold 100.0).,35.03,82.72,19.4,False
+kaggle_11152_left.jpeg,train/diabetic_retinopathy/kaggle_11152_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9585,0.9387,0.002,0.9585,0.0198,0.0196,False,Excessive image blur (blur score 47.01 < threshold 100.0).,47.01,135.83,43.48,False
+kaggle_11152_right.jpeg,train/diabetic_retinopathy/kaggle_11152_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.985,0.9732,0.0008,0.985,0.0024,0.0119,False,Excessive image blur (blur score 81.79 < threshold 100.0).,81.79,133.67,42.98,False
+kaggle_11156_left.jpeg,train/diabetic_retinopathy/kaggle_11156_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8922,0.7941,0.0003,0.8922,0.0981,0.0094,False,Excessive image blur (blur score 34.47 < threshold 100.0).,34.47,102.32,32.67,False
+kaggle_11156_right.jpeg,train/diabetic_retinopathy/kaggle_11156_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9428,0.8912,0.0018,0.9428,0.0516,0.0038,False,Excessive image blur (blur score 14.97 < threshold 100.0).,14.97,167.69,39.13,False
+kaggle_11157_left.jpeg,train/diabetic_retinopathy/kaggle_11157_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9861,0.9797,0.0048,0.9861,0.0027,0.0063,True,PASSED,361.43,71.38,33.65,False
+kaggle_11157_right.jpeg,train/diabetic_retinopathy/kaggle_11157_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9809,0.9725,0.0028,0.9809,0.008,0.0083,True,PASSED,347.22,68.95,36.18,False
+kaggle_11169_left.jpeg,train/diabetic_retinopathy/kaggle_11169_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9885,0.9814,0.004,0.9885,0.0004,0.0071,False,Excessive image blur (blur score 72.34 < threshold 100.0).,72.34,37.52,28.49,False
+kaggle_11169_right.jpeg,train/diabetic_retinopathy/kaggle_11169_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9905,0.9839,0.0025,0.9905,0.0003,0.0067,False,Excessive image blur (blur score 95.50 < threshold 100.0).,95.5,50.43,40.08,False
+kaggle_11182_right.jpeg,train/diabetic_retinopathy/kaggle_11182_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.935,0.9069,0.0207,0.935,0.0161,0.0282,False,Excessive image blur (blur score 14.13 < threshold 100.0).,14.13,13.03,10.04,False
+kaggle_11241_left.jpeg,train/diabetic_retinopathy/kaggle_11241_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9802,0.9671,0.0055,0.9802,0.0011,0.0131,False,Excessive image blur (blur score 62.98 < threshold 100.0).,62.98,36.8,32.84,False
+kaggle_11241_right.jpeg,train/diabetic_retinopathy/kaggle_11241_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9874,0.9795,0.0033,0.9874,0.0013,0.0079,True,PASSED,117.16,59.93,46.16,False
+kaggle_11271_left.jpeg,train/diabetic_retinopathy/kaggle_11271_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9783,0.9656,0.0002,0.9783,0.0127,0.0087,False,Excessive image blur (blur score 60.02 < threshold 100.0).,60.02,89.68,36.2,False
+kaggle_11271_right.jpeg,train/diabetic_retinopathy/kaggle_11271_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9607,0.9337,0.0005,0.9607,0.027,0.0117,False,Excessive image blur (blur score 62.20 < threshold 100.0).,62.2,119.2,32.3,False
+kaggle_11301_left.jpeg,train/diabetic_retinopathy/kaggle_11301_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9719,0.951,0.0209,0.9719,0.0035,0.0036,True,PASSED,296.79,85.76,59.73,False
+kaggle_11301_right.jpeg,train/diabetic_retinopathy/kaggle_11301_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9602,0.9344,0.0258,0.9602,0.0067,0.0072,True,PASSED,246.47,91.38,63.51,False
+kaggle_11304_left.jpeg,train/diabetic_retinopathy/kaggle_11304_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.7384,0.5194,0.219,0.7384,0.0353,0.0072,False,Excessive image blur (blur score 12.63 < threshold 100.0).,12.63,179.34,25.55,False
+kaggle_11304_right.jpeg,train/diabetic_retinopathy/kaggle_11304_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9172,0.8718,0.0313,0.9172,0.0454,0.006,False,Excessive image blur (blur score 16.56 < threshold 100.0).,16.56,154.89,39.76,False
+kaggle_11315_left.jpeg,train/diabetic_retinopathy/kaggle_11315_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9501,0.9262,0.0021,0.9501,0.0239,0.0239,False,Excessive image blur (blur score 51.87 < threshold 100.0).,51.87,88.37,29.63,False
+kaggle_11315_right.jpeg,train/diabetic_retinopathy/kaggle_11315_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9047,0.8578,0.0045,0.9047,0.0439,0.047,False,Excessive image blur (blur score 58.17 < threshold 100.0).,58.17,115.86,30.2,False
+kaggle_11326_left.jpeg,train/diabetic_retinopathy/kaggle_11326_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9873,0.9825,0.0035,0.9873,0.0048,0.0044,False,Excessive image blur (blur score 45.48 < threshold 100.0).,45.48,104.55,60.89,False
+kaggle_11326_right.jpeg,train/diabetic_retinopathy/kaggle_11326_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.973,0.9586,0.0145,0.973,0.0109,0.0016,False,Excessive image blur (blur score 31.36 < threshold 100.0).,31.36,79.68,48.74,False
+kaggle_11335_left.jpeg,train/diabetic_retinopathy/kaggle_11335_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9893,0.9833,0.0006,0.9893,0.0061,0.004,True,PASSED,196.39,60.91,42.53,False
+kaggle_11335_right.jpeg,train/diabetic_retinopathy/kaggle_11335_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9737,0.9609,0.0023,0.9737,0.0128,0.0111,True,PASSED,177.89,62.98,45.46,False
+kaggle_11408_right.jpeg,train/diabetic_retinopathy/kaggle_11408_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9447,0.9235,0.0204,0.9447,0.0212,0.0136,False,Excessive image blur (blur score 26.50 < threshold 100.0).,26.5,193.0,35.84,False
+kaggle_11409_left.jpeg,train/diabetic_retinopathy/kaggle_11409_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9772,0.9685,0.0058,0.9772,0.0083,0.0087,False,Excessive image blur (blur score 50.40 < threshold 100.0).,50.4,32.38,29.69,False
+kaggle_11409_right.jpeg,train/diabetic_retinopathy/kaggle_11409_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9829,0.9707,0.0033,0.9829,0.0015,0.0122,False,Excessive image blur (blur score 87.30 < threshold 100.0).,87.3,45.9,37.19,False
+kaggle_11425_left.jpeg,train/diabetic_retinopathy/kaggle_11425_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9829,0.9745,0.0037,0.9829,0.0084,0.005,True,PASSED,139.18,49.56,28.44,False
+kaggle_11425_right.jpeg,train/diabetic_retinopathy/kaggle_11425_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9761,0.9589,0.0172,0.9761,0.0036,0.0031,False,Excessive image blur (blur score 48.22 < threshold 100.0).,48.22,44.87,21.86,False
+kaggle_11435_left.jpeg,train/diabetic_retinopathy/kaggle_11435_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9788,0.9705,0.0078,0.9788,0.0052,0.0083,False,Excessive image blur (blur score 28.19 < threshold 100.0).,28.19,49.18,16.17,False
+kaggle_11435_right.jpeg,train/diabetic_retinopathy/kaggle_11435_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9754,0.9584,0.0049,0.9754,0.017,0.0027,False,Excessive image blur (blur score 26.87 < threshold 100.0).,26.87,46.81,12.31,False
+kaggle_11438_left.jpeg,train/diabetic_retinopathy/kaggle_11438_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.966,0.9372,0.0004,0.966,0.0288,0.0048,True,PASSED,472.2,90.31,60.08,False
+kaggle_11438_right.jpeg,train/diabetic_retinopathy/kaggle_11438_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9179,0.8801,0.0266,0.9179,0.0377,0.0178,True,PASSED,281.08,71.6,50.94,False
+kaggle_11439_right.jpeg,train/diabetic_retinopathy/kaggle_11439_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9175,0.838,0.0006,0.9175,0.0795,0.0024,False,Excessive image blur (blur score 34.88 < threshold 100.0).,34.88,34.48,22.27,False
+kaggle_1147_left.jpeg,train/diabetic_retinopathy/kaggle_1147_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9588,0.9377,0.0049,0.9588,0.0153,0.0211,False,Excessive image blur (blur score 42.14 < threshold 100.0).,42.14,150.98,35.83,False
+kaggle_1147_right.jpeg,train/diabetic_retinopathy/kaggle_1147_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.8835,0.7732,0.0007,0.8835,0.1104,0.0054,False,Excessive image blur (blur score 51.56 < threshold 100.0).,51.56,64.17,24.75,False
+kaggle_11495_left.jpeg,train/diabetic_retinopathy/kaggle_11495_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9177,0.8673,0.0031,0.9177,0.0505,0.0287,True,PASSED,210.88,64.66,40.06,False
+kaggle_11495_right.jpeg,train/diabetic_retinopathy/kaggle_11495_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9542,0.9341,0.0176,0.9542,0.0081,0.0201,True,PASSED,210.15,68.57,42.7,False
+kaggle_11519_left.jpeg,train/diabetic_retinopathy/kaggle_11519_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9403,0.9127,0.0255,0.9403,0.0276,0.0065,True,PASSED,160.15,83.02,44.46,False
+kaggle_11519_right.jpeg,train/diabetic_retinopathy/kaggle_11519_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9195,0.8538,0.0657,0.9195,0.0109,0.0039,False,Excessive image blur (blur score 71.39 < threshold 100.0).,71.39,62.01,25.96,False
+kaggle_11575_left.jpeg,train/diabetic_retinopathy/kaggle_11575_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9817,0.9717,0.0025,0.9817,0.0057,0.01,False,Excessive image blur (blur score 14.68 < threshold 100.0).,14.68,97.21,28.77,False
+kaggle_11575_right.jpeg,train/diabetic_retinopathy/kaggle_11575_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9794,0.9662,0.0027,0.9794,0.0047,0.0132,False,Excessive image blur (blur score 22.23 < threshold 100.0).,22.23,75.51,23.89,False
+kaggle_11584_left.jpeg,train/diabetic_retinopathy/kaggle_11584_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9162,0.8446,0.0716,0.9162,0.0094,0.0028,False,Excessive image blur (blur score 10.90 < threshold 100.0).,10.9,168.73,40.12,False
+kaggle_11584_right.jpeg,train/diabetic_retinopathy/kaggle_11584_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9571,0.9175,0.0004,0.9571,0.0397,0.0028,False,Excessive image blur (blur score 15.45 < threshold 100.0).,15.45,125.69,29.15,False
+kaggle_1178_left.jpeg,train/diabetic_retinopathy/kaggle_1178_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.98,0.9678,0.0121,0.98,0.001,0.007,False,Excessive image blur (blur score 14.31 < threshold 100.0).,14.31,17.6,12.82,False
+kaggle_1178_right.jpeg,train/diabetic_retinopathy/kaggle_1178_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9842,0.9733,0.004,0.9842,0.0009,0.0109,False,Excessive image blur (blur score 80.27 < threshold 100.0).,80.27,44.86,37.07,False
+kaggle_1204_left.jpeg,train/diabetic_retinopathy/kaggle_1204_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9786,0.9708,0.0078,0.9786,0.0078,0.0057,False,Excessive image blur (blur score 73.12 < threshold 100.0).,73.12,156.8,34.2,False
+kaggle_1204_right.jpeg,train/diabetic_retinopathy/kaggle_1204_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9719,0.9548,0.0027,0.9719,0.0082,0.0171,True,PASSED,161.03,141.08,33.36,False
+kaggle_1275_left.jpeg,train/diabetic_retinopathy/kaggle_1275_left.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.9709,0.9543,0.0045,0.9709,0.0081,0.0165,False,Excessive image blur (blur score 94.90 < threshold 100.0).,94.9,138.95,36.55,False
+kaggle_1275_right.jpeg,train/diabetic_retinopathy/kaggle_1275_right.jpeg,diabetic_retinopathy,diabetic_retinopathy,0.985,0.9762,0.0009,0.985,0.0053,0.0088,True,PASSED,110.06,120.93,33.57,False
+1073.png,train/glaucoma/1073.png,glaucoma,glaucoma,0.5334,0.1098,0.0196,0.0233,0.5334,0.4237,False,Excessive image blur (blur score 14.89 < threshold 100.0).,14.89,46.53,48.23,False
+1168.png,train/glaucoma/1168.png,glaucoma,glaucoma,0.976,0.9634,0.0003,0.0127,0.976,0.011,False,Excessive image blur (blur score 13.86 < threshold 100.0).,13.86,42.81,43.84,False
+1169.png,train/glaucoma/1169.png,glaucoma,glaucoma,0.9932,0.9897,0.0011,0.0021,0.9932,0.0035,False,Excessive image blur (blur score 12.47 < threshold 100.0).,12.47,37.33,39.94,False
+122.png,train/glaucoma/122.png,glaucoma,glaucoma,0.8335,0.6747,0.0009,0.1588,0.8335,0.0068,False,Excessive image blur (blur score 14.02 < threshold 100.0).,14.02,60.93,61.49,False
+1300.png,train/glaucoma/1300.png,glaucoma,normal,0.8061,0.6785,0.0151,0.0511,0.1277,0.8061,False,Excessive image blur (blur score 11.92 < threshold 100.0).,11.92,60.07,60.91,True
+1324.png,train/glaucoma/1324.png,glaucoma,glaucoma,0.8296,0.7148,0.1147,0.0366,0.8296,0.0191,False,Excessive image blur (blur score 13.85 < threshold 100.0).,13.85,48.88,49.35,False
+1362.png,train/glaucoma/1362.png,glaucoma,diabetic_retinopathy,0.8468,0.7361,0.0414,0.8468,0.1107,0.0011,False,Excessive image blur (blur score 8.74 < threshold 100.0).,8.74,54.29,54.19,True
+1369.png,train/glaucoma/1369.png,glaucoma,glaucoma,0.8943,0.8014,0.0004,0.0124,0.8943,0.0929,False,Excessive image blur (blur score 14.19 < threshold 100.0).,14.19,51.85,53.4,False
+1385.png,train/glaucoma/1385.png,glaucoma,cataract,0.7905,0.6775,0.7905,0.012,0.1131,0.0844,False,Excessive image blur (blur score 10.38 < threshold 100.0).,10.38,67.72,67.61,True
+1397.png,train/glaucoma/1397.png,glaucoma,glaucoma,0.8533,0.7908,0.0262,0.058,0.8533,0.0625,False,Excessive image blur (blur score 8.78 < threshold 100.0).,8.78,56.79,58.43,False
+1399.png,train/glaucoma/1399.png,glaucoma,normal,0.8646,0.7684,0.0187,0.0206,0.0962,0.8646,False,Excessive image blur (blur score 9.63 < threshold 100.0).,9.63,62.57,63.3,True
+1448.png,train/glaucoma/1448.png,glaucoma,normal,0.8782,0.7936,0.0088,0.0285,0.0846,0.8782,False,Excessive image blur (blur score 14.80 < threshold 100.0).,14.8,42.9,45.92,True
+145.png,train/glaucoma/145.png,glaucoma,glaucoma,0.437,0.1524,0.2463,0.0322,0.437,0.2846,False,Excessive image blur (blur score 13.74 < threshold 100.0).,13.74,57.14,56.86,False
+1450.png,train/glaucoma/1450.png,glaucoma,glaucoma,0.6308,0.3122,0.0126,0.0381,0.6308,0.3186,False,Excessive image blur (blur score 13.77 < threshold 100.0).,13.77,49.96,50.41,False
+1451.png,train/glaucoma/1451.png,glaucoma,normal,0.7427,0.5317,0.0131,0.0332,0.211,0.7427,False,Excessive image blur (blur score 14.19 < threshold 100.0).,14.19,47.11,47.88,True
+1464.png,train/glaucoma/1464.png,glaucoma,glaucoma,0.751,0.5446,0.0012,0.0414,0.751,0.2064,False,Excessive image blur (blur score 14.39 < threshold 100.0).,14.39,48.98,49.97,False
+1481.png,train/glaucoma/1481.png,glaucoma,glaucoma,0.6591,0.4851,0.0065,0.174,0.6591,0.1605,False,Excessive image blur (blur score 17.09 < threshold 100.0).,17.09,53.39,54.9,False
+1486.png,train/glaucoma/1486.png,glaucoma,glaucoma,0.5877,0.3163,0.0473,0.0937,0.5877,0.2713,False,Excessive image blur (blur score 13.62 < threshold 100.0).,13.62,51.46,51.57,False
+1596.png,train/glaucoma/1596.png,glaucoma,diabetic_retinopathy,0.7212,0.466,0.0061,0.7212,0.2552,0.0175,False,Excessive image blur (blur score 10.25 < threshold 100.0).,10.25,74.52,50.86,True
+164.png,train/glaucoma/164.png,glaucoma,cataract,0.6381,0.3187,0.6381,0.0129,0.3195,0.0295,False,Excessive image blur (blur score 8.79 < threshold 100.0).,8.79,89.12,88.07,True
+1708.png,train/glaucoma/1708.png,glaucoma,glaucoma,0.9727,0.9545,0.0072,0.0183,0.9727,0.0018,False,Excessive image blur (blur score 11.97 < threshold 100.0).,11.97,52.21,35.43,False
+171.png,train/glaucoma/171.png,glaucoma,glaucoma,0.9083,0.8309,0.0004,0.014,0.9083,0.0773,False,Excessive image blur (blur score 9.65 < threshold 100.0).,9.65,56.62,58.53,False
+1726.png,train/glaucoma/1726.png,glaucoma,glaucoma,0.5857,0.2651,0.0195,0.3206,0.5857,0.0742,False,Excessive image blur (blur score 7.38 < threshold 100.0).,7.38,53.74,36.47,False
+1755.png,train/glaucoma/1755.png,glaucoma,glaucoma,0.7624,0.5387,0.0061,0.0077,0.7624,0.2238,False,Excessive image blur (blur score 15.54 < threshold 100.0).,15.54,54.47,50.89,False
+178.png,train/glaucoma/178.png,glaucoma,glaucoma,0.9592,0.9389,0.0034,0.0203,0.9592,0.0171,False,Excessive image blur (blur score 9.68 < threshold 100.0).,9.68,67.83,69.74,False
+1793.png,train/glaucoma/1793.png,glaucoma,glaucoma,0.4939,0.0474,0.0393,0.0203,0.4939,0.4465,False,Excessive image blur (blur score 43.34 < threshold 100.0).,43.34,20.39,20.28,False
+1806.png,train/glaucoma/1806.png,glaucoma,glaucoma,0.8814,0.7765,0.0044,0.0093,0.8814,0.1049,False,Excessive image blur (blur score 11.33 < threshold 100.0).,11.33,48.29,46.05,False
+184.png,train/glaucoma/184.png,glaucoma,cataract,0.5309,0.3026,0.5309,0.0365,0.2283,0.2043,False,Excessive image blur (blur score 11.15 < threshold 100.0).,11.15,72.36,73.26,True
+1842.png,train/glaucoma/1842.png,glaucoma,glaucoma,0.8581,0.7249,0.0031,0.0055,0.8581,0.1332,False,Excessive image blur (blur score 11.72 < threshold 100.0).,11.72,57.87,53.44,False
+260.png,train/glaucoma/260.png,glaucoma,glaucoma,0.9002,0.8236,0.0009,0.0223,0.9002,0.0766,False,Excessive image blur (blur score 8.30 < threshold 100.0).,8.3,56.87,57.31,False
+288.png,train/glaucoma/288.png,glaucoma,glaucoma,0.8323,0.6915,0.0017,0.0251,0.8323,0.1408,False,Excessive image blur (blur score 15.77 < threshold 100.0).,15.77,49.13,51.4,False
+328.png,train/glaucoma/328.png,glaucoma,glaucoma,0.7124,0.5811,0.1314,0.0551,0.7124,0.1011,False,Excessive image blur (blur score 7.63 < threshold 100.0).,7.63,58.64,58.38,False
+329.png,train/glaucoma/329.png,glaucoma,glaucoma,0.6005,0.3443,0.1048,0.2563,0.6005,0.0383,False,Excessive image blur (blur score 9.91 < threshold 100.0).,9.91,59.29,59.55,False
+33.png,train/glaucoma/33.png,glaucoma,glaucoma,0.7296,0.5775,0.0513,0.067,0.7296,0.1521,False,Excessive image blur (blur score 9.24 < threshold 100.0).,9.24,64.52,65.47,False
+358.png,train/glaucoma/358.png,glaucoma,glaucoma,0.9936,0.9906,0.0008,0.0025,0.9936,0.003,False,Excessive image blur (blur score 8.85 < threshold 100.0).,8.85,51.55,52.57,False
+366.png,train/glaucoma/366.png,glaucoma,glaucoma,0.8215,0.7497,0.052,0.0717,0.8215,0.0548,False,Excessive image blur (blur score 13.24 < threshold 100.0).,13.24,57.89,61.11,False
+394.png,train/glaucoma/394.png,glaucoma,glaucoma,0.479,0.0441,0.4349,0.0245,0.479,0.0617,False,Excessive image blur (blur score 9.48 < threshold 100.0).,9.48,87.99,87.66,False
+524.png,train/glaucoma/524.png,glaucoma,glaucoma,0.6752,0.3686,0.0025,0.0157,0.6752,0.3066,False,Excessive image blur (blur score 11.13 < threshold 100.0).,11.13,70.44,71.22,False
+542.png,train/glaucoma/542.png,glaucoma,glaucoma,0.9398,0.9097,0.0098,0.0203,0.9398,0.0301,False,Excessive image blur (blur score 8.92 < threshold 100.0).,8.92,87.49,87.77,False
+548.png,train/glaucoma/548.png,glaucoma,glaucoma,0.3546,0.0176,0.337,0.0303,0.3546,0.2782,False,Excessive image blur (blur score 14.94 < threshold 100.0).,14.94,64.7,64.93,False
+573.png,train/glaucoma/573.png,glaucoma,glaucoma,0.9286,0.8992,0.0294,0.0139,0.9286,0.0281,False,Excessive image blur (blur score 9.09 < threshold 100.0).,9.09,56.75,57.87,False
+645.png,train/glaucoma/645.png,glaucoma,glaucoma,0.9826,0.971,0.0011,0.0116,0.9826,0.0048,False,Excessive image blur (blur score 10.25 < threshold 100.0).,10.25,64.49,64.4,False
+678.png,train/glaucoma/678.png,glaucoma,glaucoma,0.8725,0.7806,0.0169,0.0188,0.8725,0.0919,False,Excessive image blur (blur score 13.26 < threshold 100.0).,13.26,56.82,56.63,False
+699.png,train/glaucoma/699.png,glaucoma,glaucoma,0.9161,0.8737,0.0203,0.0212,0.9161,0.0424,False,Excessive image blur (blur score 14.47 < threshold 100.0).,14.47,64.12,65.52,False
+711.png,train/glaucoma/711.png,glaucoma,cataract,0.6093,0.2759,0.6093,0.3334,0.0492,0.0081,False,Excessive image blur (blur score 7.67 < threshold 100.0).,7.67,57.39,57.14,True
+724.png,train/glaucoma/724.png,glaucoma,glaucoma,0.9742,0.9597,0.0003,0.0145,0.9742,0.011,False,Excessive image blur (blur score 8.13 < threshold 100.0).,8.13,59.38,60.24,False
+78.png,train/glaucoma/78.png,glaucoma,glaucoma,0.8862,0.8281,0.0581,0.0048,0.8862,0.0508,False,Excessive image blur (blur score 11.96 < threshold 100.0).,11.96,78.45,78.76,False
+825.png,train/glaucoma/825.png,glaucoma,glaucoma,0.9878,0.9794,0.0013,0.0026,0.9878,0.0084,False,Excessive image blur (blur score 12.86 < threshold 100.0).,12.86,32.98,35.15,False
+980.png,train/glaucoma/980.png,glaucoma,glaucoma,0.8714,0.7593,0.112,0.0058,0.8714,0.0109,False,Excessive image blur (blur score 8.81 < threshold 100.0).,8.81,60.1,59.93,False
+kaggle_1209_left.jpg,train/glaucoma/kaggle_1209_left.jpg,glaucoma,glaucoma,0.6219,0.3185,0.3033,0.0045,0.6219,0.0703,False,Excessive image blur (blur score 40.33 < threshold 100.0).,40.33,5.23,6.3,False
+kaggle_1209_right.jpg,train/glaucoma/kaggle_1209_right.jpg,glaucoma,glaucoma,0.9778,0.9571,0.0007,0.0007,0.9778,0.0208,False,Image underexposed/too dark (brightness 27.51 < minimum 30.0).,136.58,27.51,25.32,False
+kaggle_1215_left.jpg,train/glaucoma/kaggle_1215_left.jpg,glaucoma,glaucoma,0.9211,0.8503,0.006,0.0021,0.9211,0.0708,True,PASSED,776.75,127.45,74.09,False
+kaggle_1215_right.jpg,train/glaucoma/kaggle_1215_right.jpg,glaucoma,glaucoma,0.9796,0.9634,0.0016,0.0027,0.9796,0.0161,True,PASSED,627.04,104.56,59.77,False
+kaggle_1218_left.jpg,train/glaucoma/kaggle_1218_left.jpg,glaucoma,glaucoma,0.9538,0.9089,0.0005,0.0007,0.9538,0.0449,False,Excessive image blur (blur score 34.54 < threshold 100.0).,34.54,34.88,22.36,False
+kaggle_1218_right.jpg,train/glaucoma/kaggle_1218_right.jpg,glaucoma,glaucoma,0.9267,0.8551,0.0002,0.0015,0.9267,0.0716,False,Excessive image blur (blur score 34.78 < threshold 100.0).,34.78,34.24,23.7,False
+kaggle_1226_left.jpg,train/glaucoma/kaggle_1226_left.jpg,glaucoma,glaucoma,0.501,0.0108,0.0069,0.002,0.501,0.4901,True,PASSED,163.84,86.78,45.68,False
+kaggle_1226_right.jpg,train/glaucoma/kaggle_1226_right.jpg,glaucoma,glaucoma,0.6145,0.3698,0.2447,0.0027,0.6145,0.1381,False,Excessive image blur (blur score 90.34 < threshold 100.0).,90.34,45.93,21.8,False
+kaggle_1237_left.jpg,train/glaucoma/kaggle_1237_left.jpg,glaucoma,glaucoma,0.7498,0.5124,0.0014,0.0114,0.7498,0.2374,True,PASSED,166.98,80.1,37.07,False
+kaggle_1237_right.jpg,train/glaucoma/kaggle_1237_right.jpg,glaucoma,normal,0.6205,0.2537,0.0073,0.0054,0.3668,0.6205,True,PASSED,510.86,107.96,46.75,True
+kaggle_1241_left.jpg,train/glaucoma/kaggle_1241_left.jpg,glaucoma,glaucoma,0.8544,0.7235,0.0092,0.0054,0.8544,0.131,True,PASSED,289.19,55.47,37.26,False
+kaggle_1241_right.jpg,train/glaucoma/kaggle_1241_right.jpg,glaucoma,normal,0.5081,0.0306,0.0091,0.0052,0.4775,0.5081,True,PASSED,199.23,52.46,35.27,True
+kaggle_1276_left.jpg,train/glaucoma/kaggle_1276_left.jpg,glaucoma,glaucoma,0.8143,0.6371,0.0071,0.0014,0.8143,0.1772,False,Excessive image blur (blur score 19.49 < threshold 100.0).,19.49,22.54,21.26,False
+kaggle_1286_left.jpg,train/glaucoma/kaggle_1286_left.jpg,glaucoma,glaucoma,0.9915,0.9843,0.0001,0.0013,0.9915,0.0072,True,PASSED,235.4,102.16,43.24,False
+kaggle_1286_right.jpg,train/glaucoma/kaggle_1286_right.jpg,glaucoma,glaucoma,0.9616,0.9394,0.0116,0.0046,0.9616,0.0222,True,PASSED,225.23,100.59,40.98,False
+kaggle_1287_left.jpg,train/glaucoma/kaggle_1287_left.jpg,glaucoma,normal,0.7508,0.5135,0.0087,0.0032,0.2373,0.7508,False,Excessive image blur (blur score 60.81 < threshold 100.0).,60.81,42.13,26.91,True
+kaggle_1287_right.jpg,train/glaucoma/kaggle_1287_right.jpg,glaucoma,glaucoma,0.9469,0.8974,0.0009,0.0027,0.9469,0.0495,True,PASSED,214.98,53.18,38.48,False
+kaggle_1303_left.jpg,train/glaucoma/kaggle_1303_left.jpg,glaucoma,glaucoma,0.8135,0.6414,0.0096,0.0048,0.8135,0.1721,True,PASSED,222.04,73.9,41.92,False
+kaggle_1334_left.jpg,train/glaucoma/kaggle_1334_left.jpg,glaucoma,glaucoma,0.582,0.1795,0.0027,0.0128,0.582,0.4025,True,PASSED,147.1,75.6,43.63,False
+kaggle_1334_right.jpg,train/glaucoma/kaggle_1334_right.jpg,glaucoma,normal,0.5685,0.1673,0.0012,0.0292,0.4012,0.5685,True,PASSED,188.89,78.09,44.63,True
+kaggle_1365_left.jpg,train/glaucoma/kaggle_1365_left.jpg,glaucoma,glaucoma,0.9051,0.8292,0.0088,0.0101,0.9051,0.076,True,PASSED,127.52,67.36,42.71,False
+kaggle_1365_right.jpg,train/glaucoma/kaggle_1365_right.jpg,glaucoma,glaucoma,0.8894,0.8036,0.0198,0.0051,0.8894,0.0857,True,PASSED,133.99,62.98,42.15,False
+kaggle_1383_left.jpg,train/glaucoma/kaggle_1383_left.jpg,glaucoma,normal,0.5052,0.0205,0.0008,0.0091,0.4848,0.5052,True,PASSED,101.04,60.76,26.56,True
+kaggle_1386_left.jpg,train/glaucoma/kaggle_1386_left.jpg,glaucoma,glaucoma,0.8051,0.6221,0.0047,0.0072,0.8051,0.183,False,Excessive image blur (blur score 16.64 < threshold 100.0).,16.64,42.09,33.41,False
+kaggle_1386_right.jpg,train/glaucoma/kaggle_1386_right.jpg,glaucoma,diabetic_retinopathy,0.4704,0.0115,0.0019,0.4704,0.4589,0.0688,False,Excessive image blur (blur score 23.32 < threshold 100.0).,23.32,46.26,31.62,True
+kaggle_1404_left.jpg,train/glaucoma/kaggle_1404_left.jpg,glaucoma,glaucoma,0.7379,0.4867,0.0002,0.0108,0.7379,0.2512,False,Excessive image blur (blur score 89.81 < threshold 100.0).,89.81,48.26,29.13,False
+kaggle_1410_left.jpg,train/glaucoma/kaggle_1410_left.jpg,glaucoma,glaucoma,0.7811,0.6187,0.0536,0.0029,0.7811,0.1625,False,Excessive image blur (blur score 24.41 < threshold 100.0).,24.41,26.3,16.02,False
+kaggle_1425_right.jpg,train/glaucoma/kaggle_1425_right.jpg,glaucoma,glaucoma,0.7928,0.5895,0.0005,0.0033,0.7928,0.2034,False,Excessive image blur (blur score 85.17 < threshold 100.0).,85.17,51.61,23.58,False
+kaggle_1426_left.jpg,train/glaucoma/kaggle_1426_left.jpg,glaucoma,glaucoma,0.9326,0.8773,0.0048,0.0074,0.9326,0.0553,True,PASSED,168.65,82.9,42.89,False
+kaggle_1427_right.jpg,train/glaucoma/kaggle_1427_right.jpg,glaucoma,glaucoma,0.7331,0.4787,0.0107,0.0018,0.7331,0.2544,True,PASSED,151.2,60.59,47.84,False
+kaggle_1429_left.jpg,train/glaucoma/kaggle_1429_left.jpg,glaucoma,normal,0.5336,0.0899,0.0094,0.0132,0.4438,0.5336,False,Insufficient contrast (contrast std 19.89 < threshold 20.0).,402.01,30.56,19.89,True
+kaggle_1453_right.jpg,train/glaucoma/kaggle_1453_right.jpg,glaucoma,normal,0.5108,0.0505,0.0239,0.005,0.4603,0.5108,True,PASSED,567.44,92.84,57.34,True
+kaggle_1462_left.jpg,train/glaucoma/kaggle_1462_left.jpg,glaucoma,glaucoma,0.6566,0.319,0.0018,0.004,0.6566,0.3376,True,PASSED,174.83,75.11,42.1,False
+kaggle_1470_left.jpg,train/glaucoma/kaggle_1470_left.jpg,glaucoma,glaucoma,0.6632,0.3336,0.0029,0.0043,0.6632,0.3296,True,PASSED,341.41,75.11,45.44,False
+kaggle_1470_right.jpg,train/glaucoma/kaggle_1470_right.jpg,glaucoma,glaucoma,0.6405,0.2862,0.0009,0.0043,0.6405,0.3543,True,PASSED,334.06,83.11,48.86,False
+kaggle_1496_right.jpg,train/glaucoma/kaggle_1496_right.jpg,glaucoma,glaucoma,0.6426,0.2986,0.0074,0.006,0.6426,0.344,True,PASSED,170.04,53.46,33.47,False
+kaggle_1497_left.jpg,train/glaucoma/kaggle_1497_left.jpg,glaucoma,glaucoma,0.6981,0.4058,0.0005,0.0091,0.6981,0.2923,False,Excessive image blur (blur score 80.48 < threshold 100.0).,80.48,42.84,25.6,False
+kaggle_1497_right.jpg,train/glaucoma/kaggle_1497_right.jpg,glaucoma,normal,0.6409,0.2868,0.0013,0.0038,0.3541,0.6409,False,Excessive image blur (blur score 53.84 < threshold 100.0).,53.84,32.88,20.82,True
+kaggle_153_left.jpg,train/glaucoma/kaggle_153_left.jpg,glaucoma,glaucoma,0.843,0.6953,0.0063,0.0029,0.843,0.1477,True,PASSED,113.62,58.94,38.19,False
+kaggle_1881_left.jpg,train/glaucoma/kaggle_1881_left.jpg,glaucoma,glaucoma,0.6437,0.3242,0.0116,0.0251,0.6437,0.3196,True,PASSED,138.97,97.1,58.66,False
+kaggle_1881_right.jpg,train/glaucoma/kaggle_1881_right.jpg,glaucoma,glaucoma,0.8395,0.6986,0.0017,0.0178,0.8395,0.1409,True,PASSED,132.74,98.63,59.66,False
+kaggle_1959_left.jpg,train/glaucoma/kaggle_1959_left.jpg,glaucoma,glaucoma,0.783,0.5747,0.0038,0.0049,0.783,0.2083,True,PASSED,185.91,57.96,32.25,False
+kaggle_1959_right.jpg,train/glaucoma/kaggle_1959_right.jpg,glaucoma,glaucoma,0.7927,0.5918,0.0049,0.0015,0.7927,0.2009,True,PASSED,271.78,61.67,40.11,False
+kaggle_43_right.jpg,train/glaucoma/kaggle_43_right.jpg,glaucoma,glaucoma,0.5072,0.0295,0.0081,0.007,0.5072,0.4777,True,PASSED,369.82,106.03,58.14,False
+kaggle_Glaucoma_011.png,train/glaucoma/kaggle_Glaucoma_011.png,glaucoma,glaucoma,0.8744,0.8009,0.0459,0.0063,0.8744,0.0734,False,Excessive image blur (blur score 9.78 < threshold 100.0).,9.78,35.02,38.49,False
+kaggle_Glaucoma_017.png,train/glaucoma/kaggle_Glaucoma_017.png,glaucoma,glaucoma,0.8448,0.7101,0.0136,0.0069,0.8448,0.1347,False,Excessive image blur (blur score 21.99 < threshold 100.0).,21.99,50.58,52.32,False
+kaggle_Glaucoma_039.png,train/glaucoma/kaggle_Glaucoma_039.png,glaucoma,glaucoma,0.5949,0.2594,0.0464,0.0232,0.5949,0.3355,False,Excessive image blur (blur score 9.80 < threshold 100.0).,9.8,63.01,66.58,False
+kaggle_Glaucoma_048.png,train/glaucoma/kaggle_Glaucoma_048.png,glaucoma,glaucoma,0.6081,0.245,0.0091,0.0197,0.6081,0.3631,False,Excessive image blur (blur score 19.81 < threshold 100.0).,19.81,48.0,52.23,False
+kaggle_Glaucoma_055.png,train/glaucoma/kaggle_Glaucoma_055.png,glaucoma,glaucoma,0.9726,0.9507,0.0032,0.0023,0.9726,0.0219,False,Excessive image blur (blur score 10.61 < threshold 100.0).,10.61,48.8,53.72,False
+kaggle_Glaucoma_065.png,train/glaucoma/kaggle_Glaucoma_065.png,glaucoma,glaucoma,0.9483,0.9141,0.0086,0.009,0.9483,0.0341,False,Excessive image blur (blur score 11.85 < threshold 100.0).,11.85,51.43,54.91,False
+kaggle_Glaucoma_080.png,train/glaucoma/kaggle_Glaucoma_080.png,glaucoma,glaucoma,0.9954,0.9926,0.0006,0.0012,0.9954,0.0028,False,Excessive image blur (blur score 10.40 < threshold 100.0).,10.4,43.64,47.34,False
+kaggle_Glaucoma_083.png,train/glaucoma/kaggle_Glaucoma_083.png,glaucoma,glaucoma,0.7886,0.6524,0.04,0.0351,0.7886,0.1362,False,Excessive image blur (blur score 11.98 < threshold 100.0).,11.98,49.66,54.16,False
+kaggle_Glaucoma_087.png,train/glaucoma/kaggle_Glaucoma_087.png,glaucoma,glaucoma,0.9477,0.9108,0.0069,0.0086,0.9477,0.0369,False,Excessive image blur (blur score 9.67 < threshold 100.0).,9.67,64.18,67.96,False
+kaggle_Glaucoma_093.png,train/glaucoma/kaggle_Glaucoma_093.png,glaucoma,glaucoma,0.9847,0.9768,0.0039,0.0036,0.9847,0.0079,False,Excessive image blur (blur score 10.33 < threshold 100.0).,10.33,65.41,68.83,False
+kaggle_Glaucoma_100.png,train/glaucoma/kaggle_Glaucoma_100.png,glaucoma,glaucoma,0.9087,0.8586,0.0367,0.0045,0.9087,0.0501,False,Excessive image blur (blur score 18.79 < threshold 100.0).,18.79,59.74,59.93,False
+kaggle__100_965860.jpg,train/glaucoma/kaggle__100_965860.jpg,glaucoma,glaucoma,0.9055,0.8242,0.0115,0.0018,0.9055,0.0812,False,Excessive image blur (blur score 65.80 < threshold 100.0).,65.8,57.14,34.69,False
+kaggle__102_5502806.jpg,train/glaucoma/kaggle__102_5502806.jpg,glaucoma,glaucoma,0.9807,0.971,0.0097,0.0024,0.9807,0.0072,True,PASSED,326.37,115.09,48.16,False
+kaggle__104_4154423.jpg,train/glaucoma/kaggle__104_4154423.jpg,glaucoma,glaucoma,0.9924,0.9862,0.0062,0.0003,0.9924,0.001,True,PASSED,139.14,55.02,40.05,False
+kaggle__114_4182799.jpg,train/glaucoma/kaggle__114_4182799.jpg,glaucoma,glaucoma,0.9829,0.9732,0.0097,0.0046,0.9829,0.0028,True,PASSED,105.55,64.85,39.21,False
+kaggle__129_2098170.jpg,train/glaucoma/kaggle__129_2098170.jpg,glaucoma,glaucoma,0.9969,0.9947,0.0023,0.0001,0.9969,0.0007,True,PASSED,279.2,125.7,72.76,False
+kaggle__135_2706541.jpg,train/glaucoma/kaggle__135_2706541.jpg,glaucoma,glaucoma,0.7647,0.5441,0.2205,0.0027,0.7647,0.0121,True,PASSED,373.07,105.13,60.28,False
+kaggle__150_5894989.jpg,train/glaucoma/kaggle__150_5894989.jpg,glaucoma,glaucoma,0.9665,0.9379,0.0286,0.0005,0.9665,0.0044,True,PASSED,293.77,91.15,59.44,False
+kaggle__15_5946153.jpg,train/glaucoma/kaggle__15_5946153.jpg,glaucoma,cataract,0.787,0.5846,0.787,0.0015,0.2024,0.0092,True,PASSED,463.08,124.62,68.05,True
+kaggle__163_6292807.jpg,train/glaucoma/kaggle__163_6292807.jpg,glaucoma,glaucoma,0.9701,0.9527,0.0174,0.0026,0.9701,0.0099,False,Excessive image blur (blur score 24.04 < threshold 100.0).,24.04,44.95,35.64,False
+kaggle__172_2814012.jpg,train/glaucoma/kaggle__172_2814012.jpg,glaucoma,glaucoma,0.9707,0.9428,0.0279,0.0004,0.9707,0.001,True,PASSED,170.02,87.07,54.75,False
+kaggle__174_2440424.jpg,train/glaucoma/kaggle__174_2440424.jpg,glaucoma,glaucoma,0.9952,0.9913,0.0005,0.0004,0.9952,0.0039,False,Excessive image blur (blur score 56.08 < threshold 100.0).,56.08,48.2,28.55,False
+kaggle__175_9511671.jpg,train/glaucoma/kaggle__175_9511671.jpg,glaucoma,cataract,0.7854,0.5735,0.7854,0.0014,0.212,0.0012,True,PASSED,173.97,74.51,41.71,True
+kaggle__187_6167645.jpg,train/glaucoma/kaggle__187_6167645.jpg,glaucoma,glaucoma,0.9209,0.8562,0.0647,0.0044,0.9209,0.0101,True,PASSED,131.58,86.01,54.14,False
+kaggle__18_2435759.jpg,train/glaucoma/kaggle__18_2435759.jpg,glaucoma,glaucoma,0.9834,0.9673,0.0002,0.0002,0.9834,0.0161,False,Excessive image blur (blur score 22.29 < threshold 100.0).,22.29,33.96,23.49,False
+kaggle__197_9225516.jpg,train/glaucoma/kaggle__197_9225516.jpg,glaucoma,cataract,0.4945,0.0018,0.4945,0.0028,0.4927,0.0101,True,PASSED,202.82,57.81,35.47,True
+kaggle__202_7508135.jpg,train/glaucoma/kaggle__202_7508135.jpg,glaucoma,glaucoma,0.9957,0.9933,0.0024,0.0004,0.9957,0.0016,False,Excessive image blur (blur score 82.17 < threshold 100.0).,82.17,53.31,30.2,False
+kaggle__205_8557164.jpg,train/glaucoma/kaggle__205_8557164.jpg,glaucoma,glaucoma,0.868,0.8008,0.0672,0.0013,0.868,0.0636,True,PASSED,356.84,68.26,45.99,False
+kaggle__206_1459040.jpg,train/glaucoma/kaggle__206_1459040.jpg,glaucoma,glaucoma,0.9888,0.9813,0.0075,0.001,0.9888,0.0026,True,PASSED,132.0,70.07,41.8,False
+kaggle__206_5637335.jpg,train/glaucoma/kaggle__206_5637335.jpg,glaucoma,glaucoma,0.9165,0.8383,0.0782,0.0016,0.9165,0.0037,True,PASSED,115.23,70.66,41.64,False
+kaggle__20_7421444.jpg,train/glaucoma/kaggle__20_7421444.jpg,glaucoma,glaucoma,0.9984,0.9976,0.0005,0.0002,0.9984,0.0008,True,PASSED,128.94,73.87,43.76,False
+kaggle__214_6540926.jpg,train/glaucoma/kaggle__214_6540926.jpg,glaucoma,glaucoma,0.9894,0.981,0.0084,0.001,0.9894,0.0013,False,Excessive image blur (blur score 51.32 < threshold 100.0).,51.32,28.26,21.94,False
+kaggle__218_8917311.jpg,train/glaucoma/kaggle__218_8917311.jpg,glaucoma,glaucoma,0.9993,0.9989,0.0004,0.0001,0.9993,0.0001,True,PASSED,119.99,64.45,39.98,False
+kaggle__21_1293428.jpg,train/glaucoma/kaggle__21_1293428.jpg,glaucoma,glaucoma,0.9719,0.957,0.0111,0.0021,0.9719,0.0149,False,Excessive image blur (blur score 22.16 < threshold 100.0).,22.16,65.99,34.64,False
+kaggle__221_3079640.jpg,train/glaucoma/kaggle__221_3079640.jpg,glaucoma,glaucoma,0.9649,0.9425,0.0224,0.0014,0.9649,0.0112,True,PASSED,107.01,87.62,38.46,False
+kaggle__235_1365390.jpg,train/glaucoma/kaggle__235_1365390.jpg,glaucoma,glaucoma,0.9955,0.9915,0.0004,0.0002,0.9955,0.0039,False,Excessive image blur (blur score 25.90 < threshold 100.0).,25.9,40.38,32.2,False
+kaggle__235_7683512.jpg,train/glaucoma/kaggle__235_7683512.jpg,glaucoma,glaucoma,0.9949,0.9908,0.0007,0.0002,0.9949,0.0042,False,Excessive image blur (blur score 24.63 < threshold 100.0).,24.63,40.85,32.2,False
+kaggle__239_5512637.jpg,train/glaucoma/kaggle__239_5512637.jpg,glaucoma,glaucoma,0.9425,0.8871,0.0554,0.0009,0.9425,0.0012,False,Excessive image blur (blur score 95.73 < threshold 100.0).,95.73,71.76,40.96,False
+kaggle__24_3870780.jpg,train/glaucoma/kaggle__24_3870780.jpg,glaucoma,glaucoma,0.9197,0.88,0.0182,0.0397,0.9197,0.0224,False,Excessive image blur (blur score 15.65 < threshold 100.0).,15.65,23.03,25.56,False
+kaggle__252_4705064.jpg,train/glaucoma/kaggle__252_4705064.jpg,glaucoma,glaucoma,0.9567,0.9204,0.0058,0.0012,0.9567,0.0363,False,Excessive image blur (blur score 36.63 < threshold 100.0).,36.63,33.7,21.17,False
+kaggle__274_7999199.jpg,train/glaucoma/kaggle__274_7999199.jpg,glaucoma,glaucoma,0.9906,0.9838,0.0022,0.0005,0.9906,0.0068,False,Excessive image blur (blur score 33.22 < threshold 100.0).,33.22,40.72,24.9,False
+kaggle__276_1824789.jpg,train/glaucoma/kaggle__276_1824789.jpg,glaucoma,glaucoma,0.9937,0.9899,0.0013,0.0012,0.9937,0.0038,True,PASSED,163.22,71.55,42.49,False
+kaggle__277_6049716.jpg,train/glaucoma/kaggle__277_6049716.jpg,glaucoma,glaucoma,0.9794,0.9675,0.0119,0.0024,0.9794,0.0063,False,Excessive image blur (blur score 93.31 < threshold 100.0).,93.31,76.91,48.76,False
+kaggle__27_8607848.jpg,train/glaucoma/kaggle__27_8607848.jpg,glaucoma,glaucoma,0.9203,0.8631,0.0188,0.0038,0.9203,0.0571,False,Excessive image blur (blur score 79.45 < threshold 100.0).,79.45,86.0,45.51,False
+kaggle__284_1958940.jpg,train/glaucoma/kaggle__284_1958940.jpg,glaucoma,glaucoma,0.9875,0.9777,0.0012,0.0014,0.9875,0.0098,True,PASSED,230.83,87.87,55.24,False
+kaggle__288_5661981.jpg,train/glaucoma/kaggle__288_5661981.jpg,glaucoma,glaucoma,0.9415,0.8849,0.0565,0.0008,0.9415,0.0012,True,PASSED,223.11,99.35,56.75,False
+kaggle__293_8683971.jpg,train/glaucoma/kaggle__293_8683971.jpg,glaucoma,glaucoma,0.8827,0.7783,0.1043,0.0079,0.8827,0.005,False,Excessive image blur (blur score 78.70 < threshold 100.0).,78.7,73.61,44.22,False
+kaggle__301_6075675.jpg,train/glaucoma/kaggle__301_6075675.jpg,glaucoma,glaucoma,0.6216,0.2617,0.3599,0.0079,0.6216,0.0107,True,PASSED,285.99,113.07,65.75,False
+kaggle__302_4887010.jpg,train/glaucoma/kaggle__302_4887010.jpg,glaucoma,glaucoma,0.953,0.9111,0.0419,0.0017,0.953,0.0033,True,PASSED,209.52,108.28,64.32,False
+kaggle__315_1059988.jpg,train/glaucoma/kaggle__315_1059988.jpg,glaucoma,glaucoma,0.8371,0.6808,0.1562,0.0021,0.8371,0.0045,False,Excessive image blur (blur score 62.39 < threshold 100.0).,62.39,48.1,52.46,False
+kaggle__316_4359949.jpg,train/glaucoma/kaggle__316_4359949.jpg,glaucoma,glaucoma,0.8604,0.7286,0.1317,0.0016,0.8604,0.0063,False,Excessive image blur (blur score 31.53 < threshold 100.0).,31.53,34.91,38.16,False
+kaggle__318_5873639.jpg,train/glaucoma/kaggle__318_5873639.jpg,glaucoma,glaucoma,0.9928,0.988,0.0048,0.0004,0.9928,0.002,False,Excessive image blur (blur score 38.93 < threshold 100.0).,38.93,34.45,41.12,False
+kaggle__324_1040139.jpg,train/glaucoma/kaggle__324_1040139.jpg,glaucoma,glaucoma,0.8816,0.7765,0.1051,0.0036,0.8816,0.0097,True,PASSED,136.4,55.61,56.85,False
+kaggle__332_7068969.jpg,train/glaucoma/kaggle__332_7068969.jpg,glaucoma,cataract,0.5674,0.1547,0.5674,0.0027,0.4127,0.0172,True,PASSED,133.56,58.97,62.43,True
+kaggle__334_2912159.jpg,train/glaucoma/kaggle__334_2912159.jpg,glaucoma,glaucoma,0.9753,0.9573,0.018,0.002,0.9753,0.0047,False,Excessive image blur (blur score 93.38 < threshold 100.0).,93.38,53.99,57.3,False
+kaggle__336_4442986.jpg,train/glaucoma/kaggle__336_4442986.jpg,glaucoma,glaucoma,0.9713,0.9465,0.0248,0.0024,0.9713,0.0014,True,PASSED,171.27,69.05,73.15,False
+kaggle__341_3030606.jpg,train/glaucoma/kaggle__341_3030606.jpg,glaucoma,glaucoma,0.9872,0.9768,0.0104,0.0017,0.9872,0.0006,False,Excessive image blur (blur score 82.47 < threshold 100.0).,82.47,53.18,58.25,False
+kaggle__344_6025727.jpg,train/glaucoma/kaggle__344_6025727.jpg,glaucoma,glaucoma,0.9358,0.885,0.0508,0.0039,0.9358,0.0096,True,PASSED,113.34,62.48,66.13,False
+kaggle__356_7024951.jpg,train/glaucoma/kaggle__356_7024951.jpg,glaucoma,glaucoma,0.7903,0.5905,0.1998,0.004,0.7903,0.0059,False,Excessive image blur (blur score 64.86 < threshold 100.0).,64.86,52.21,56.15,False
+kaggle__366_3572426.jpg,train/glaucoma/kaggle__366_3572426.jpg,glaucoma,glaucoma,0.5547,0.1622,0.3925,0.0175,0.5547,0.0353,True,PASSED,131.28,58.42,59.59,False
+kaggle__367_403099.jpg,train/glaucoma/kaggle__367_403099.jpg,glaucoma,glaucoma,0.9687,0.9456,0.0232,0.0059,0.9687,0.0022,True,PASSED,111.5,59.89,63.07,False
+kaggle__375_1575212.jpg,train/glaucoma/kaggle__375_1575212.jpg,glaucoma,glaucoma,0.9969,0.9955,0.0005,0.0014,0.9969,0.0012,False,Excessive image blur (blur score 54.40 < threshold 100.0).,54.4,33.66,37.63,False
+kaggle__375_3812551.jpg,train/glaucoma/kaggle__375_3812551.jpg,glaucoma,glaucoma,0.9925,0.9878,0.0006,0.0047,0.9925,0.0022,False,Excessive image blur (blur score 58.92 < threshold 100.0).,58.92,33.86,37.67,False
+kaggle__377_8059232.jpg,train/glaucoma/kaggle__377_8059232.jpg,glaucoma,glaucoma,0.9619,0.9331,0.0288,0.0034,0.9619,0.006,True,PASSED,179.96,55.41,56.38,False
+kaggle__385_2935625.jpg,train/glaucoma/kaggle__385_2935625.jpg,glaucoma,glaucoma,0.9956,0.9925,0.0031,0.0002,0.9956,0.001,False,Excessive image blur (blur score 65.83 < threshold 100.0).,65.83,44.04,46.97,False
+kaggle__386_7977995.jpg,train/glaucoma/kaggle__386_7977995.jpg,glaucoma,glaucoma,0.9968,0.995,0.0018,0.0011,0.9968,0.0003,True,PASSED,178.57,57.88,58.56,False
+kaggle__388_7162342.jpg,train/glaucoma/kaggle__388_7162342.jpg,glaucoma,glaucoma,0.8654,0.7695,0.0959,0.0049,0.8654,0.0338,False,Excessive image blur (blur score 95.17 < threshold 100.0).,95.17,49.83,53.77,False
+kaggle__393_2129148.jpg,train/glaucoma/kaggle__393_2129148.jpg,glaucoma,glaucoma,0.997,0.9953,0.0016,0.0008,0.997,0.0006,True,PASSED,121.95,66.57,70.21,False
+kaggle__395_9075896.jpg,train/glaucoma/kaggle__395_9075896.jpg,glaucoma,glaucoma,0.9508,0.9074,0.0434,0.0018,0.9508,0.004,True,PASSED,113.3,46.33,49.72,False
+kaggle__399_8219023.jpg,train/glaucoma/kaggle__399_8219023.jpg,glaucoma,glaucoma,0.9097,0.8244,0.0853,0.0038,0.9097,0.0011,True,PASSED,163.37,62.08,65.52,False
+kaggle__41_7018471.jpg,train/glaucoma/kaggle__41_7018471.jpg,glaucoma,glaucoma,0.9903,0.9822,0.0009,0.0006,0.9903,0.0082,False,Excessive image blur (blur score 42.64 < threshold 100.0).,42.64,48.9,35.5,False
+kaggle__43_2637980.jpg,train/glaucoma/kaggle__43_2637980.jpg,glaucoma,glaucoma,0.8287,0.7216,0.0528,0.0114,0.8287,0.1071,True,PASSED,304.37,114.73,48.78,False
+kaggle__43_5688154.jpg,train/glaucoma/kaggle__43_5688154.jpg,glaucoma,glaucoma,0.8539,0.7612,0.0292,0.0241,0.8539,0.0928,True,PASSED,449.47,112.91,47.35,False
+kaggle__44_8455804.jpg,train/glaucoma/kaggle__44_8455804.jpg,glaucoma,glaucoma,0.9787,0.961,0.0178,0.0018,0.9787,0.0017,False,Excessive image blur (blur score 34.95 < threshold 100.0).,34.95,43.02,29.08,False
+kaggle__54_1709440.jpg,train/glaucoma/kaggle__54_1709440.jpg,glaucoma,glaucoma,0.9821,0.9665,0.0156,0.0008,0.9821,0.0014,True,PASSED,112.7,63.97,43.27,False
+kaggle__54_4840369.jpg,train/glaucoma/kaggle__54_4840369.jpg,glaucoma,glaucoma,0.9111,0.8231,0.088,0.0003,0.9111,0.0006,True,PASSED,141.82,64.39,42.84,False
+kaggle__60_3287251.jpg,train/glaucoma/kaggle__60_3287251.jpg,glaucoma,glaucoma,0.9233,0.8495,0.0738,0.0014,0.9233,0.0015,True,PASSED,470.25,128.16,72.43,False
+kaggle__61_1340813.jpg,train/glaucoma/kaggle__61_1340813.jpg,glaucoma,glaucoma,0.9798,0.9666,0.0132,0.0007,0.9798,0.0064,True,PASSED,539.4,120.59,64.44,False
+kaggle__66_8732996.jpg,train/glaucoma/kaggle__66_8732996.jpg,glaucoma,glaucoma,0.9603,0.9322,0.0093,0.0022,0.9603,0.0281,False,Excessive image blur (blur score 50.02 < threshold 100.0).,50.02,60.46,42.92,False
+kaggle__68_7591745.jpg,train/glaucoma/kaggle__68_7591745.jpg,glaucoma,glaucoma,0.9855,0.979,0.0056,0.0023,0.9855,0.0065,False,Excessive image blur (blur score 60.63 < threshold 100.0).,60.63,64.78,45.91,False
+kaggle__77_3641818.jpg,train/glaucoma/kaggle__77_3641818.jpg,glaucoma,glaucoma,0.9885,0.9797,0.0012,0.0016,0.9885,0.0088,True,PASSED,304.4,114.35,57.64,False
+kaggle__7_5314686.jpg,train/glaucoma/kaggle__7_5314686.jpg,glaucoma,glaucoma,0.9869,0.9801,0.0018,0.0045,0.9869,0.0068,False,Excessive image blur (blur score 10.51 < threshold 100.0).,10.51,17.47,26.07,False
+kaggle__80_1430822.jpg,train/glaucoma/kaggle__80_1430822.jpg,glaucoma,glaucoma,0.8325,0.7051,0.1273,0.0113,0.8325,0.0289,True,PASSED,492.69,120.3,67.58,False
+kaggle__85_9846035.jpg,train/glaucoma/kaggle__85_9846035.jpg,glaucoma,glaucoma,0.9655,0.9352,0.0024,0.0018,0.9655,0.0303,False,Excessive image blur (blur score 39.91 < threshold 100.0).,39.91,55.16,36.54,False
+kaggle__87_9110812.jpg,train/glaucoma/kaggle__87_9110812.jpg,glaucoma,glaucoma,0.9927,0.987,0.0058,0.001,0.9927,0.0005,False,Excessive image blur (blur score 55.88 < threshold 100.0).,55.88,50.39,37.28,False
+kaggle__92_2709771.jpg,train/glaucoma/kaggle__92_2709771.jpg,glaucoma,glaucoma,0.9832,0.9716,0.0115,0.0006,0.9832,0.0047,False,Excessive image blur (blur score 51.40 < threshold 100.0).,51.4,46.61,38.15,False
+kaggle__97_139770.jpg,train/glaucoma/kaggle__97_139770.jpg,glaucoma,glaucoma,0.9833,0.9702,0.0131,0.0008,0.9833,0.0028,True,PASSED,114.17,60.74,37.52,False
+10.png,train/normal/10.png,normal,normal,0.8124,0.6751,0.0307,0.0196,0.1373,0.8124,False,Excessive image blur (blur score 10.58 < threshold 100.0).,10.58,63.2,63.77,False
+1010.png,train/normal/1010.png,normal,normal,0.78,0.6759,0.1041,0.0555,0.0604,0.78,False,Excessive image blur (blur score 8.99 < threshold 100.0).,8.99,53.07,53.67,False
+1035.png,train/normal/1035.png,normal,normal,0.9242,0.8915,0.0292,0.0138,0.0328,0.9242,False,Excessive image blur (blur score 14.30 < threshold 100.0).,14.3,43.9,45.24,False
+1041.png,train/normal/1041.png,normal,glaucoma,0.472,0.0816,0.0407,0.097,0.472,0.3904,False,Excessive image blur (blur score 14.35 < threshold 100.0).,14.35,45.9,46.63,True
+1046.png,train/normal/1046.png,normal,normal,0.801,0.6975,0.0558,0.0398,0.1035,0.801,False,Excessive image blur (blur score 9.04 < threshold 100.0).,9.04,48.97,49.73,False
+1071.png,train/normal/1071.png,normal,normal,0.647,0.3972,0.2499,0.0127,0.0904,0.647,False,Excessive image blur (blur score 14.76 < threshold 100.0).,14.76,46.36,48.08,False
+1188.png,train/normal/1188.png,normal,normal,0.952,0.9306,0.0081,0.0185,0.0214,0.952,False,Excessive image blur (blur score 15.15 < threshold 100.0).,15.15,43.18,44.49,False
+1209.png,train/normal/1209.png,normal,normal,0.6604,0.3717,0.0199,0.031,0.2887,0.6604,False,Excessive image blur (blur score 13.92 < threshold 100.0).,13.92,44.39,45.21,False
+1264.png,train/normal/1264.png,normal,normal,0.9182,0.8568,0.0103,0.0101,0.0614,0.9182,False,Excessive image blur (blur score 16.75 < threshold 100.0).,16.75,55.77,57.31,False
+1508.png,train/normal/1508.png,normal,normal,0.9044,0.8463,0.0179,0.0581,0.0197,0.9044,False,Excessive image blur (blur score 8.16 < threshold 100.0).,8.16,96.16,63.82,False
+1588.png,train/normal/1588.png,normal,normal,0.9724,0.9581,0.0013,0.0119,0.0143,0.9724,False,Excessive image blur (blur score 10.93 < threshold 100.0).,10.93,66.2,46.51,False
+16.png,train/normal/16.png,normal,normal,0.7184,0.5401,0.1783,0.046,0.0573,0.7184,False,Excessive image blur (blur score 10.42 < threshold 100.0).,10.42,64.82,65.05,False
+1647.png,train/normal/1647.png,normal,normal,0.9115,0.8478,0.0068,0.0637,0.018,0.9115,False,Excessive image blur (blur score 12.08 < threshold 100.0).,12.08,68.87,45.27,False
+1691.png,train/normal/1691.png,normal,normal,0.9276,0.8816,0.0095,0.046,0.0169,0.9276,False,Excessive image blur (blur score 11.90 < threshold 100.0).,11.9,64.61,44.92,False
+1709.png,train/normal/1709.png,normal,normal,0.9322,0.9004,0.0195,0.0318,0.0165,0.9322,False,Excessive image blur (blur score 9.30 < threshold 100.0).,9.3,47.09,33.05,False
+1714.png,train/normal/1714.png,normal,normal,0.8725,0.7984,0.0282,0.0741,0.0253,0.8725,False,Excessive image blur (blur score 11.04 < threshold 100.0).,11.04,75.94,50.32,False
+1730.png,train/normal/1730.png,normal,glaucoma,0.5377,0.126,0.0268,0.0238,0.5377,0.4117,False,Excessive image blur (blur score 10.97 < threshold 100.0).,10.97,48.63,34.32,True
+1732.png,train/normal/1732.png,normal,normal,0.9582,0.9389,0.0174,0.0051,0.0192,0.9582,False,Excessive image blur (blur score 6.86 < threshold 100.0).,6.86,37.74,29.63,False
+1734.png,train/normal/1734.png,normal,normal,0.7819,0.6479,0.134,0.0477,0.0364,0.7819,False,Excessive image blur (blur score 8.30 < threshold 100.0).,8.3,45.19,30.44,False
+1745.png,train/normal/1745.png,normal,normal,0.979,0.9666,0.0062,0.0024,0.0124,0.979,False,Excessive image blur (blur score 34.27 < threshold 100.0).,34.27,32.08,33.62,False
+1746.png,train/normal/1746.png,normal,normal,0.9571,0.9219,0.0051,0.0025,0.0353,0.9571,False,Excessive image blur (blur score 15.94 < threshold 100.0).,15.94,42.45,40.61,False
+1759.png,train/normal/1759.png,normal,normal,0.9386,0.9119,0.0212,0.0134,0.0268,0.9386,False,Excessive image blur (blur score 17.23 < threshold 100.0).,17.23,42.5,41.08,False
+1787.png,train/normal/1787.png,normal,normal,0.7329,0.5183,0.0187,0.0337,0.2146,0.7329,False,Excessive image blur (blur score 17.73 < threshold 100.0).,17.73,40.85,39.28,False
+1788.png,train/normal/1788.png,normal,normal,0.963,0.9366,0.0081,0.0024,0.0264,0.963,False,Excessive image blur (blur score 15.07 < threshold 100.0).,15.07,47.05,44.04,False
+1790.png,train/normal/1790.png,normal,normal,0.968,0.9522,0.0127,0.0035,0.0158,0.968,False,Excessive image blur (blur score 16.49 < threshold 100.0).,16.49,43.38,40.56,False
+1794.png,train/normal/1794.png,normal,normal,0.9422,0.9149,0.0271,0.0034,0.0273,0.9422,False,Excessive image blur (blur score 15.48 < threshold 100.0).,15.48,49.0,45.44,False
+1795.png,train/normal/1795.png,normal,normal,0.9721,0.9572,0.0092,0.0037,0.0149,0.9721,False,Excessive image blur (blur score 14.10 < threshold 100.0).,14.1,49.59,46.69,False
+1797.png,train/normal/1797.png,normal,normal,0.8249,0.7595,0.0448,0.0648,0.0655,0.8249,False,Excessive image blur (blur score 16.99 < threshold 100.0).,16.99,40.37,39.46,False
+1809.png,train/normal/1809.png,normal,normal,0.737,0.5233,0.0434,0.0058,0.2138,0.737,False,Excessive image blur (blur score 16.70 < threshold 100.0).,16.7,39.38,36.91,False
+1811.png,train/normal/1811.png,normal,glaucoma,0.6743,0.3666,0.0022,0.0158,0.6743,0.3077,False,Excessive image blur (blur score 17.46 < threshold 100.0).,17.46,43.61,42.65,True
+1812.png,train/normal/1812.png,normal,normal,0.9719,0.9567,0.0084,0.0044,0.0153,0.9719,False,Excessive image blur (blur score 16.53 < threshold 100.0).,16.53,46.29,42.7,False
+1813.png,train/normal/1813.png,normal,normal,0.9459,0.9169,0.0172,0.0079,0.029,0.9459,False,Excessive image blur (blur score 17.57 < threshold 100.0).,17.57,39.42,38.19,False
+1830.png,train/normal/1830.png,normal,normal,0.8933,0.8267,0.0667,0.008,0.032,0.8933,False,Excessive image blur (blur score 14.84 < threshold 100.0).,14.84,49.24,45.45,False
+1844.png,train/normal/1844.png,normal,normal,0.8841,0.8123,0.0054,0.0387,0.0718,0.8841,False,Excessive image blur (blur score 15.64 < threshold 100.0).,15.64,44.51,42.38,False
+1850.png,train/normal/1850.png,normal,normal,0.968,0.9491,0.0064,0.0066,0.019,0.968,False,Excessive image blur (blur score 18.32 < threshold 100.0).,18.32,40.26,39.33,False
+1872.png,train/normal/1872.png,normal,normal,0.9647,0.9352,0.0031,0.0026,0.0296,0.9647,False,Excessive image blur (blur score 19.30 < threshold 100.0).,19.3,39.74,37.22,False
+1873.png,train/normal/1873.png,normal,normal,0.9611,0.9409,0.012,0.0067,0.0202,0.9611,False,Excessive image blur (blur score 15.85 < threshold 100.0).,15.85,49.46,47.61,False
+1880.png,train/normal/1880.png,normal,normal,0.5555,0.1494,0.0302,0.0082,0.4061,0.5555,False,Excessive image blur (blur score 16.22 < threshold 100.0).,16.22,62.51,58.87,False
+1894.png,train/normal/1894.png,normal,normal,0.9003,0.8518,0.0242,0.0485,0.0269,0.9003,False,Excessive image blur (blur score 8.13 < threshold 100.0).,8.13,41.94,29.71,False
+1898.png,train/normal/1898.png,normal,normal,0.922,0.8774,0.0135,0.02,0.0445,0.922,False,Excessive image blur (blur score 8.19 < threshold 100.0).,8.19,40.28,30.63,False
+1901.png,train/normal/1901.png,normal,normal,0.6338,0.3042,0.0065,0.0301,0.3296,0.6338,False,Excessive image blur (blur score 8.91 < threshold 100.0).,8.91,41.25,29.67,False
+230.png,train/normal/230.png,normal,normal,0.6274,0.4789,0.1102,0.1484,0.114,0.6274,False,Excessive image blur (blur score 14.69 < threshold 100.0).,14.69,55.62,56.33,False
+271.png,train/normal/271.png,normal,normal,0.9379,0.9123,0.0124,0.0241,0.0256,0.9379,False,Excessive image blur (blur score 9.47 < threshold 100.0).,9.47,59.27,59.81,False
+313.png,train/normal/313.png,normal,normal,0.8915,0.8361,0.0271,0.0259,0.0554,0.8915,False,Excessive image blur (blur score 9.19 < threshold 100.0).,9.19,52.23,53.7,False
+314.png,train/normal/314.png,normal,normal,0.7742,0.6642,0.0537,0.11,0.062,0.7742,False,Excessive image blur (blur score 15.05 < threshold 100.0).,15.05,50.01,52.43,False
+374.png,train/normal/374.png,normal,normal,0.7916,0.6232,0.0093,0.0308,0.1684,0.7916,False,Excessive image blur (blur score 15.39 < threshold 100.0).,15.39,51.91,52.85,False
+420.png,train/normal/420.png,normal,normal,0.6572,0.3413,0.005,0.0219,0.3159,0.6572,False,Excessive image blur (blur score 11.59 < threshold 100.0).,11.59,66.11,67.53,False
+421.png,train/normal/421.png,normal,normal,0.6466,0.3499,0.0158,0.0408,0.2967,0.6466,False,Excessive image blur (blur score 11.90 < threshold 100.0).,11.9,65.62,67.09,False
+442.png,train/normal/442.png,normal,normal,0.8835,0.8231,0.0284,0.0278,0.0603,0.8835,False,Excessive image blur (blur score 17.34 < threshold 100.0).,17.34,65.34,65.91,False
+489.png,train/normal/489.png,normal,normal,0.6516,0.3918,0.0468,0.0418,0.2598,0.6516,False,Excessive image blur (blur score 11.62 < threshold 100.0).,11.62,75.55,76.38,False
+802.png,train/normal/802.png,normal,normal,0.5387,0.1121,0.0067,0.0281,0.4265,0.5387,False,Excessive image blur (blur score 14.85 < threshold 100.0).,14.85,40.2,41.88,False
+859.png,train/normal/859.png,normal,normal,0.6762,0.4555,0.2207,0.0163,0.0869,0.6762,False,Excessive image blur (blur score 10.92 < threshold 100.0).,10.92,62.77,63.64,False
+863.png,train/normal/863.png,normal,normal,0.9289,0.8966,0.024,0.0147,0.0324,0.9289,False,Excessive image blur (blur score 14.93 < threshold 100.0).,14.93,46.07,48.23,False
+883.png,train/normal/883.png,normal,normal,0.9171,0.8839,0.0251,0.0245,0.0332,0.9171,False,Excessive image blur (blur score 8.27 < threshold 100.0).,8.27,54.4,55.18,False
+kaggle_1034_left.jpg,train/normal/kaggle_1034_left.jpg,normal,normal,0.9872,0.979,0.0021,0.0026,0.0081,0.9872,True,PASSED,157.42,77.88,47.73,False
+kaggle_1034_right.jpg,train/normal/kaggle_1034_right.jpg,normal,normal,0.9573,0.9205,0.0017,0.0042,0.0368,0.9573,True,PASSED,155.08,78.41,47.56,False
+kaggle_2329_left.jpg,train/normal/kaggle_2329_left.jpg,normal,normal,0.974,0.9612,0.0113,0.0018,0.0128,0.974,True,PASSED,146.46,59.26,33.77,False
+kaggle_2329_right.jpg,train/normal/kaggle_2329_right.jpg,normal,normal,0.4972,0.0132,0.0131,0.0058,0.484,0.4972,True,PASSED,419.74,81.79,48.37,False
+kaggle_2351_left.jpg,train/normal/kaggle_2351_left.jpg,normal,glaucoma,0.5448,0.1082,0.0022,0.0163,0.5448,0.4366,False,Image underexposed/too dark (brightness 19.62 < minimum 30.0).,320.53,19.62,16.41,True
+kaggle_2351_right.jpg,train/normal/kaggle_2351_right.jpg,normal,normal,0.5206,0.0548,0.0038,0.0097,0.4659,0.5206,False,Image underexposed/too dark (brightness 22.52 < minimum 30.0).,296.67,22.52,20.17,False
+kaggle_2353_left.jpg,train/normal/kaggle_2353_left.jpg,normal,normal,0.8723,0.7853,0.037,0.0038,0.0869,0.8723,True,PASSED,127.54,67.83,41.75,False
+kaggle_2353_right.jpg,train/normal/kaggle_2353_right.jpg,normal,normal,0.8148,0.6752,0.0307,0.015,0.1396,0.8148,True,PASSED,147.63,67.15,41.38,False
+kaggle_2359_left.jpg,train/normal/kaggle_2359_left.jpg,normal,normal,0.8244,0.7395,0.0848,0.006,0.0848,0.8244,True,PASSED,164.2,81.7,49.21,False
+kaggle_2359_right.jpg,train/normal/kaggle_2359_right.jpg,normal,normal,0.861,0.7929,0.0681,0.0063,0.0647,0.861,True,PASSED,126.12,75.03,49.01,False
+kaggle_2362_left.jpg,train/normal/kaggle_2362_left.jpg,normal,normal,0.9375,0.9108,0.0155,0.0268,0.0202,0.9375,False,Excessive image blur (blur score 35.18 < threshold 100.0).,35.18,45.1,29.03,False
+kaggle_2362_right.jpg,train/normal/kaggle_2362_right.jpg,normal,normal,0.9378,0.9136,0.0142,0.0242,0.0237,0.9378,False,Excessive image blur (blur score 54.40 < threshold 100.0).,54.4,54.16,37.79,False
+kaggle_2365_left.jpg,train/normal/kaggle_2365_left.jpg,normal,normal,0.5653,0.1462,0.0011,0.0145,0.4191,0.5653,True,PASSED,237.32,63.87,39.33,False
+kaggle_2365_right.jpg,train/normal/kaggle_2365_right.jpg,normal,normal,0.7305,0.4674,0.0007,0.0056,0.2631,0.7305,True,PASSED,209.31,68.63,39.22,False
+kaggle_2371_left.jpg,train/normal/kaggle_2371_left.jpg,normal,glaucoma,0.5174,0.0494,0.0099,0.0046,0.5174,0.4681,True,PASSED,184.7,75.45,48.09,True
+kaggle_2371_right.jpg,train/normal/kaggle_2371_right.jpg,normal,glaucoma,0.499,0.0147,0.0095,0.0073,0.499,0.4843,True,PASSED,238.13,76.38,50.58,True
+kaggle_2380_left.jpg,train/normal/kaggle_2380_left.jpg,normal,normal,0.9233,0.8754,0.0479,0.0027,0.0261,0.9233,True,PASSED,509.65,102.76,56.98,False
+kaggle_2380_right.jpg,train/normal/kaggle_2380_right.jpg,normal,normal,0.9876,0.9793,0.0015,0.0027,0.0082,0.9876,True,PASSED,275.27,74.96,42.78,False
+kaggle_2383_left.jpg,train/normal/kaggle_2383_left.jpg,normal,normal,0.9635,0.9462,0.008,0.0113,0.0173,0.9635,True,PASSED,122.71,46.55,29.52,False
+kaggle_2383_right.jpg,train/normal/kaggle_2383_right.jpg,normal,glaucoma,0.6361,0.2769,0.002,0.0029,0.6361,0.3591,False,Excessive image blur (blur score 94.52 < threshold 100.0).,94.52,51.24,29.1,True
+kaggle_2389_left.jpg,train/normal/kaggle_2389_left.jpg,normal,normal,0.917,0.8443,0.0042,0.0061,0.0727,0.917,True,PASSED,402.29,97.21,59.85,False
+kaggle_2389_right.jpg,train/normal/kaggle_2389_right.jpg,normal,normal,0.5941,0.199,0.0014,0.0094,0.3951,0.5941,True,PASSED,379.32,96.84,58.64,False
+kaggle_2432_left.jpg,train/normal/kaggle_2432_left.jpg,normal,normal,0.9357,0.8786,0.0027,0.0044,0.0571,0.9357,True,PASSED,162.89,69.53,41.21,False
+kaggle_2432_right.jpg,train/normal/kaggle_2432_right.jpg,normal,normal,0.9871,0.9794,0.0025,0.0026,0.0077,0.9871,True,PASSED,161.48,71.46,41.72,False
+kaggle_2437_left.jpg,train/normal/kaggle_2437_left.jpg,normal,normal,0.8246,0.7023,0.1223,0.0036,0.0496,0.8246,True,PASSED,182.56,56.62,47.72,False
+kaggle_2437_right.jpg,train/normal/kaggle_2437_right.jpg,normal,normal,0.932,0.8792,0.0109,0.0043,0.0528,0.932,True,PASSED,114.01,57.27,34.61,False
+kaggle_2465_left.jpg,train/normal/kaggle_2465_left.jpg,normal,normal,0.9888,0.9818,0.0014,0.0029,0.007,0.9888,True,PASSED,334.28,87.95,49.98,False
+kaggle_2465_right.jpg,train/normal/kaggle_2465_right.jpg,normal,normal,0.9865,0.9795,0.0014,0.0051,0.007,0.9865,True,PASSED,306.3,84.5,56.63,False
+kaggle_2488_left.jpg,train/normal/kaggle_2488_left.jpg,normal,normal,0.968,0.9525,0.0145,0.0021,0.0155,0.968,False,Excessive image blur (blur score 58.24 < threshold 100.0).,58.24,35.34,27.71,False
+kaggle_2488_right.jpg,train/normal/kaggle_2488_right.jpg,normal,normal,0.9791,0.9675,0.0066,0.0027,0.0116,0.9791,False,Excessive image blur (blur score 33.90 < threshold 100.0).,33.9,48.32,34.28,False
+kaggle_2496_right.jpg,train/normal/kaggle_2496_right.jpg,normal,normal,0.9,0.8085,0.0031,0.0054,0.0915,0.9,False,Excessive image blur (blur score 97.87 < threshold 100.0).,97.87,59.38,37.88,False
+kaggle_2556_left.jpg,train/normal/kaggle_2556_left.jpg,normal,glaucoma,0.6541,0.3401,0.0276,0.0042,0.6541,0.3141,True,PASSED,221.91,60.79,49.02,True
+kaggle_2556_right.jpg,train/normal/kaggle_2556_right.jpg,normal,normal,0.9419,0.901,0.0147,0.0025,0.0409,0.9419,True,PASSED,284.85,65.81,46.84,False
+kaggle_2570_left.jpg,train/normal/kaggle_2570_left.jpg,normal,normal,0.6683,0.36,0.0183,0.0052,0.3083,0.6683,True,PASSED,108.51,68.26,40.07,False
+kaggle_2570_right.jpg,train/normal/kaggle_2570_right.jpg,normal,glaucoma,0.5197,0.0506,0.0021,0.0092,0.5197,0.4691,True,PASSED,110.87,57.09,31.71,True
+kaggle_2573_left.jpg,train/normal/kaggle_2573_left.jpg,normal,normal,0.9701,0.952,0.0099,0.0019,0.0181,0.9701,True,PASSED,806.19,110.66,63.75,False
+kaggle_2573_right.jpg,train/normal/kaggle_2573_right.jpg,normal,normal,0.9714,0.9515,0.0034,0.0053,0.0199,0.9714,True,PASSED,508.52,87.85,51.6,False
+kaggle_2575_left.jpg,train/normal/kaggle_2575_left.jpg,normal,normal,0.9697,0.9446,0.0012,0.0041,0.0251,0.9697,True,PASSED,103.44,65.68,44.85,False
+kaggle_2576_left.jpg,train/normal/kaggle_2576_left.jpg,normal,normal,0.9546,0.9152,0.0023,0.0037,0.0394,0.9546,False,Excessive image blur (blur score 95.11 < threshold 100.0).,95.11,63.81,32.81,False
+kaggle_2576_right.jpg,train/normal/kaggle_2576_right.jpg,normal,normal,0.5584,0.2639,0.1396,0.0076,0.2945,0.5584,False,Excessive image blur (blur score 83.08 < threshold 100.0).,83.08,46.5,19.57,False
+kaggle_2587_left.jpg,train/normal/kaggle_2587_left.jpg,normal,normal,0.9776,0.9642,0.0043,0.0047,0.0134,0.9776,True,PASSED,212.12,53.72,33.34,False
+kaggle_2598_left.jpg,train/normal/kaggle_2598_left.jpg,normal,normal,0.9757,0.9584,0.0044,0.0025,0.0174,0.9757,True,PASSED,260.86,80.89,47.18,False
+kaggle_2598_right.jpg,train/normal/kaggle_2598_right.jpg,normal,normal,0.9453,0.914,0.0312,0.0021,0.0215,0.9453,True,PASSED,408.17,91.94,58.67,False
+kaggle_2602_left.jpg,train/normal/kaggle_2602_left.jpg,normal,normal,0.9815,0.9693,0.0042,0.002,0.0123,0.9815,True,PASSED,229.13,79.44,51.24,False
+kaggle_2602_right.jpg,train/normal/kaggle_2602_right.jpg,normal,normal,0.985,0.9767,0.002,0.0048,0.0083,0.985,True,PASSED,220.42,82.4,49.45,False
+kaggle_2604_right.jpg,train/normal/kaggle_2604_right.jpg,normal,normal,0.9859,0.9797,0.0019,0.006,0.0062,0.9859,True,PASSED,265.57,79.67,47.95,False
+kaggle_2617_left.jpg,train/normal/kaggle_2617_left.jpg,normal,normal,0.7486,0.5096,0.0067,0.0057,0.239,0.7486,True,PASSED,373.43,112.26,67.16,False
+kaggle_2617_right.jpg,train/normal/kaggle_2617_right.jpg,normal,normal,0.5959,0.2184,0.0163,0.0103,0.3775,0.5959,True,PASSED,304.66,108.18,65.47,False
+kaggle_2632_left.jpg,train/normal/kaggle_2632_left.jpg,normal,normal,0.8483,0.7059,0.0008,0.0084,0.1425,0.8483,True,PASSED,234.32,78.37,47.32,False
+kaggle_2632_right.jpg,train/normal/kaggle_2632_right.jpg,normal,normal,0.9746,0.9567,0.0019,0.0055,0.0179,0.9746,True,PASSED,244.15,79.57,44.63,False
+kaggle_2647_right.jpg,train/normal/kaggle_2647_right.jpg,normal,normal,0.9881,0.979,0.0009,0.0019,0.0091,0.9881,True,PASSED,107.89,79.66,33.2,False
+kaggle_2650_left.jpg,train/normal/kaggle_2650_left.jpg,normal,normal,0.5224,0.0573,0.0058,0.0067,0.4651,0.5224,False,Excessive image blur (blur score 44.76 < threshold 100.0).,44.76,27.87,16.43,False
+kaggle_2650_right.jpg,train/normal/kaggle_2650_right.jpg,normal,glaucoma,0.6129,0.2316,0.001,0.0049,0.6129,0.3813,False,Excessive image blur (blur score 61.68 < threshold 100.0).,61.68,43.23,25.31,True
+kaggle_2658_left.jpg,train/normal/kaggle_2658_left.jpg,normal,normal,0.9791,0.9674,0.0067,0.0025,0.0117,0.9791,True,PASSED,326.98,89.4,51.06,False
+kaggle_2658_right.jpg,train/normal/kaggle_2658_right.jpg,normal,normal,0.9789,0.9674,0.0032,0.0064,0.0115,0.9789,True,PASSED,379.38,90.51,51.39,False
+kaggle_2659_left.jpg,train/normal/kaggle_2659_left.jpg,normal,normal,0.9344,0.8988,0.0356,0.0059,0.0241,0.9344,True,PASSED,324.69,80.14,50.35,False
+kaggle_2659_right.jpg,train/normal/kaggle_2659_right.jpg,normal,normal,0.7966,0.606,0.005,0.0077,0.1906,0.7966,True,PASSED,225.67,68.2,47.64,False
+kaggle_2661_left.jpg,train/normal/kaggle_2661_left.jpg,normal,normal,0.9773,0.9649,0.0055,0.0048,0.0124,0.9773,True,PASSED,100.33,54.86,35.91,False
+kaggle_2661_right.jpg,train/normal/kaggle_2661_right.jpg,normal,normal,0.9895,0.9812,0.0005,0.0017,0.0083,0.9895,True,PASSED,102.72,56.82,43.3,False
+kaggle_2662_left.jpg,train/normal/kaggle_2662_left.jpg,normal,normal,0.8152,0.6654,0.0338,0.0013,0.1498,0.8152,True,PASSED,339.66,77.3,45.73,False
+kaggle_2662_right.jpg,train/normal/kaggle_2662_right.jpg,normal,normal,0.5228,0.0688,0.0207,0.0026,0.454,0.5228,True,PASSED,199.13,46.71,27.35,False
+kaggle_2667_left.jpg,train/normal/kaggle_2667_left.jpg,normal,glaucoma,0.7705,0.5461,0.0016,0.0035,0.7705,0.2244,True,PASSED,528.79,38.77,28.03,True
+kaggle_2667_right.jpg,train/normal/kaggle_2667_right.jpg,normal,glaucoma,0.7621,0.5447,0.0023,0.0182,0.7621,0.2175,True,PASSED,503.22,32.18,22.98,True
+kaggle_2676_right.jpg,train/normal/kaggle_2676_right.jpg,normal,normal,0.9689,0.9493,0.0078,0.0037,0.0196,0.9689,True,PASSED,231.51,72.61,46.54,False
+kaggle_2677_left.jpg,train/normal/kaggle_2677_left.jpg,normal,cataract,0.7415,0.5599,0.7415,0.0033,0.0737,0.1816,True,PASSED,250.43,62.4,44.42,True
+kaggle_2677_right.jpg,train/normal/kaggle_2677_right.jpg,normal,normal,0.4659,0.0236,0.0884,0.0034,0.4423,0.4659,True,PASSED,756.22,130.78,74.77,False
+kaggle_2681_left.jpg,train/normal/kaggle_2681_left.jpg,normal,normal,0.9441,0.9171,0.0253,0.0037,0.027,0.9441,True,PASSED,133.75,75.05,42.68,False
+kaggle_2681_right.jpg,train/normal/kaggle_2681_right.jpg,normal,normal,0.8282,0.7152,0.0465,0.0123,0.113,0.8282,True,PASSED,108.4,62.96,37.67,False
+kaggle_2689_left.jpg,train/normal/kaggle_2689_left.jpg,normal,normal,0.868,0.7415,0.0019,0.0035,0.1266,0.868,True,PASSED,150.22,64.63,39.9,False
+kaggle_2689_right.jpg,train/normal/kaggle_2689_right.jpg,normal,normal,0.9241,0.8804,0.0082,0.0239,0.0438,0.9241,True,PASSED,213.99,80.47,50.76,False
+kaggle_2697_left.jpg,train/normal/kaggle_2697_left.jpg,normal,normal,0.9349,0.8786,0.0006,0.0083,0.0563,0.9349,True,PASSED,111.25,58.77,39.39,False
+kaggle_2697_right.jpg,train/normal/kaggle_2697_right.jpg,normal,normal,0.8038,0.6134,0.0004,0.0054,0.1904,0.8038,False,Excessive image blur (blur score 79.66 < threshold 100.0).,79.66,54.19,31.6,False
+kaggle_2710_left.jpg,train/normal/kaggle_2710_left.jpg,normal,normal,0.9329,0.8865,0.011,0.0098,0.0464,0.9329,False,Excessive image blur (blur score 84.03 < threshold 100.0).,84.03,62.81,24.08,False
+kaggle_2710_right.jpg,train/normal/kaggle_2710_right.jpg,normal,normal,0.9595,0.9322,0.0099,0.0032,0.0274,0.9595,False,Excessive image blur (blur score 85.44 < threshold 100.0).,85.44,63.29,23.46,False
+kaggle_2737_right.jpg,train/normal/kaggle_2737_right.jpg,normal,normal,0.739,0.5781,0.1609,0.0121,0.0881,0.739,True,PASSED,322.96,87.67,39.08,False
+kaggle_2748_left.jpg,train/normal/kaggle_2748_left.jpg,normal,normal,0.8651,0.7382,0.004,0.0041,0.1269,0.8651,True,PASSED,231.17,66.55,37.4,False
+kaggle_2748_right.jpg,train/normal/kaggle_2748_right.jpg,normal,normal,0.9632,0.9371,0.0031,0.0076,0.0261,0.9632,True,PASSED,309.82,78.92,44.25,False
+kaggle_2750_left.jpg,train/normal/kaggle_2750_left.jpg,normal,normal,0.8975,0.8259,0.0716,0.0032,0.0277,0.8975,True,PASSED,547.88,105.64,66.68,False
+kaggle_2750_right.jpg,train/normal/kaggle_2750_right.jpg,normal,normal,0.9647,0.9444,0.0111,0.0039,0.0203,0.9647,True,PASSED,630.42,103.29,64.72,False
+kaggle_2789_left.jpg,train/normal/kaggle_2789_left.jpg,normal,normal,0.9318,0.8689,0.0022,0.0029,0.063,0.9318,True,PASSED,170.73,75.17,44.73,False
+kaggle_2789_right.jpg,train/normal/kaggle_2789_right.jpg,normal,normal,0.7925,0.5951,0.0044,0.0058,0.1974,0.7925,True,PASSED,194.93,78.25,47.05,False
+kaggle_2802_left.jpg,train/normal/kaggle_2802_left.jpg,normal,normal,0.9548,0.9211,0.0084,0.003,0.0337,0.9548,True,PASSED,328.17,107.0,63.91,False
+kaggle_2802_right.jpg,train/normal/kaggle_2802_right.jpg,normal,normal,0.9399,0.9106,0.0293,0.0064,0.0243,0.9399,True,PASSED,368.77,122.25,71.45,False
+kaggle_2820_left.jpg,train/normal/kaggle_2820_left.jpg,normal,normal,0.9704,0.9475,0.0038,0.0029,0.0229,0.9704,True,PASSED,300.14,99.34,55.36,False
+kaggle_2820_right.jpg,train/normal/kaggle_2820_right.jpg,normal,normal,0.9273,0.8632,0.0047,0.004,0.0641,0.9273,True,PASSED,335.62,99.28,56.52,False
+kaggle_2833_left.jpg,train/normal/kaggle_2833_left.jpg,normal,glaucoma,0.5829,0.2318,0.0582,0.0079,0.5829,0.3511,True,PASSED,169.97,64.31,38.97,True
+kaggle_2833_right.jpg,train/normal/kaggle_2833_right.jpg,normal,cataract,0.5912,0.2902,0.5912,0.0051,0.301,0.1027,True,PASSED,307.09,91.59,51.99,True
+kaggle_2850_left.jpg,train/normal/kaggle_2850_left.jpg,normal,normal,0.7822,0.6512,0.1309,0.0057,0.0812,0.7822,True,PASSED,109.12,61.61,31.13,False
+kaggle_2850_right.jpg,train/normal/kaggle_2850_right.jpg,normal,normal,0.9397,0.9043,0.0203,0.0046,0.0354,0.9397,True,PASSED,186.02,86.34,55.34,False
+kaggle_2857_left.jpg,train/normal/kaggle_2857_left.jpg,normal,normal,0.9821,0.9711,0.0033,0.0036,0.011,0.9821,True,PASSED,171.02,65.13,45.99,False
+kaggle_2857_right.jpg,train/normal/kaggle_2857_right.jpg,normal,normal,0.983,0.9698,0.0007,0.0031,0.0132,0.983,True,PASSED,139.35,66.21,44.31,False
+kaggle_2858_left.jpg,train/normal/kaggle_2858_left.jpg,normal,normal,0.7289,0.5079,0.0125,0.0376,0.221,0.7289,False,Excessive image blur (blur score 69.56 < threshold 100.0).,69.56,67.9,42.57,False
+kaggle_2858_right.jpg,train/normal/kaggle_2858_right.jpg,normal,normal,0.8373,0.7768,0.0606,0.05,0.0522,0.8373,False,Excessive image blur (blur score 95.45 < threshold 100.0).,95.45,65.56,43.48,False
+kaggle_2860_left.jpg,train/normal/kaggle_2860_left.jpg,normal,normal,0.9901,0.983,0.0004,0.0025,0.0071,0.9901,False,Excessive image blur (blur score 99.30 < threshold 100.0).,99.3,68.27,45.14,False
+kaggle_2860_right.jpg,train/normal/kaggle_2860_right.jpg,normal,normal,0.9122,0.8422,0.012,0.0057,0.07,0.9122,True,PASSED,174.24,82.44,49.91,False
+kaggle_2862_left.jpg,train/normal/kaggle_2862_left.jpg,normal,glaucoma,0.7392,0.4918,0.0109,0.0024,0.7392,0.2474,False,Excessive image blur (blur score 46.76 < threshold 100.0).,46.76,32.62,19.75,True
+kaggle_2862_right.jpg,train/normal/kaggle_2862_right.jpg,normal,normal,0.5607,0.1372,0.0131,0.0028,0.4234,0.5607,False,Excessive image blur (blur score 83.13 < threshold 100.0).,83.13,51.9,32.52,False
+kaggle_2872_left.jpg,train/normal/kaggle_2872_left.jpg,normal,glaucoma,0.9188,0.8424,0.0034,0.0013,0.9188,0.0764,False,Excessive image blur (blur score 90.20 < threshold 100.0).,90.2,47.21,22.57,True
+kaggle_2872_right.jpg,train/normal/kaggle_2872_right.jpg,normal,glaucoma,0.6469,0.3333,0.0357,0.0038,0.6469,0.3136,True,PASSED,142.89,82.48,37.34,True
+kaggle_2881_left.jpg,train/normal/kaggle_2881_left.jpg,normal,normal,0.9755,0.961,0.0077,0.0024,0.0145,0.9755,True,PASSED,398.63,76.41,61.33,False
+kaggle_2881_right.jpg,train/normal/kaggle_2881_right.jpg,normal,normal,0.8528,0.719,0.0075,0.006,0.1338,0.8528,True,PASSED,317.35,79.81,49.22,False
+kaggle_2883_left.jpg,train/normal/kaggle_2883_left.jpg,normal,glaucoma,0.8012,0.6067,0.0015,0.0027,0.8012,0.1946,True,PASSED,514.75,85.94,48.27,True
+kaggle_2883_right.jpg,train/normal/kaggle_2883_right.jpg,normal,glaucoma,0.9449,0.893,0.0013,0.002,0.9449,0.0519,True,PASSED,539.47,78.6,45.52,True
+kaggle_2892_left.jpg,train/normal/kaggle_2892_left.jpg,normal,normal,0.8364,0.7088,0.0241,0.012,0.1275,0.8364,True,PASSED,335.89,96.11,54.25,False
+kaggle_2911_left.jpg,train/normal/kaggle_2911_left.jpg,normal,cataract,0.8137,0.6921,0.8137,0.0021,0.0627,0.1215,True,PASSED,286.16,89.37,41.57,True
+kaggle_2911_right.jpg,train/normal/kaggle_2911_right.jpg,normal,normal,0.7092,0.5679,0.1413,0.0145,0.135,0.7092,True,PASSED,360.45,97.92,45.69,False
+kaggle_2962_left.jpg,train/normal/kaggle_2962_left.jpg,normal,normal,0.9412,0.9119,0.0272,0.0022,0.0294,0.9412,True,PASSED,320.17,87.74,48.9,False
+kaggle_2979_left.jpg,train/normal/kaggle_2979_left.jpg,normal,normal,0.978,0.961,0.003,0.002,0.017,0.978,True,PASSED,294.47,107.94,61.88,False
+kaggle_2979_right.jpg,train/normal/kaggle_2979_right.jpg,normal,normal,0.966,0.9364,0.0008,0.0036,0.0296,0.966,True,PASSED,341.26,105.87,60.08,False
+kaggle_2981_right.jpg,train/normal/kaggle_2981_right.jpg,normal,normal,0.9258,0.8574,0.0016,0.0042,0.0684,0.9258,False,Excessive image blur (blur score 68.28 < threshold 100.0).,68.28,42.1,27.07,False
+kaggle_3018_left.jpg,train/normal/kaggle_3018_left.jpg,normal,normal,0.9727,0.9559,0.0085,0.0021,0.0167,0.9727,True,PASSED,376.76,85.27,38.25,False
+kaggle_3038_left.jpg,train/normal/kaggle_3038_left.jpg,normal,normal,0.8959,0.82,0.0232,0.0051,0.0758,0.8959,True,PASSED,115.33,58.32,35.03,False
+kaggle_3038_right.jpg,train/normal/kaggle_3038_right.jpg,normal,normal,0.9531,0.9158,0.0069,0.0028,0.0373,0.9531,True,PASSED,108.35,57.62,35.79,False
+kaggle_3058_left.jpg,train/normal/kaggle_3058_left.jpg,normal,normal,0.9803,0.9689,0.0062,0.0021,0.0114,0.9803,True,PASSED,131.93,41.81,28.85,False
+kaggle_3058_right.jpg,train/normal/kaggle_3058_right.jpg,normal,normal,0.9547,0.9235,0.0098,0.0044,0.0312,0.9547,True,PASSED,127.46,38.42,25.34,False
+kaggle_3062_left.jpg,train/normal/kaggle_3062_left.jpg,normal,normal,0.8044,0.6369,0.0168,0.0113,0.1675,0.8044,True,PASSED,197.81,65.43,38.5,False
+kaggle_3062_right.jpg,train/normal/kaggle_3062_right.jpg,normal,normal,0.6796,0.44,0.2396,0.0031,0.0778,0.6796,True,PASSED,333.38,80.91,45.87,False
+kaggle_3084_left.jpg,train/normal/kaggle_3084_left.jpg,normal,normal,0.974,0.9586,0.0055,0.005,0.0155,0.974,True,PASSED,320.66,81.25,46.42,False
+kaggle_3084_right.jpg,train/normal/kaggle_3084_right.jpg,normal,normal,0.8688,0.8006,0.0579,0.0051,0.0682,0.8688,True,PASSED,182.04,76.63,44.6,False
+kaggle_3113_right.jpg,train/normal/kaggle_3113_right.jpg,normal,glaucoma,0.6585,0.4547,0.1355,0.0021,0.6585,0.2038,True,PASSED,103.95,52.31,30.69,True
+kaggle_3124_left.jpg,train/normal/kaggle_3124_left.jpg,normal,normal,0.781,0.5906,0.0034,0.0253,0.1903,0.781,True,PASSED,230.9,57.15,34.18,False
+kaggle_3124_right.jpg,train/normal/kaggle_3124_right.jpg,normal,normal,0.7343,0.544,0.041,0.0343,0.1904,0.7343,True,PASSED,195.91,48.33,29.25,False
+kaggle_3183_left.jpg,train/normal/kaggle_3183_left.jpg,normal,glaucoma,0.4237,0.1141,0.0635,0.3096,0.4237,0.2033,False,Excessive image blur (blur score 25.09 < threshold 100.0).,25.09,43.65,29.15,True
+kaggle_3188_left.jpg,train/normal/kaggle_3188_left.jpg,normal,normal,0.9297,0.8929,0.0368,0.0027,0.0308,0.9297,False,Excessive image blur (blur score 55.32 < threshold 100.0).,55.32,40.94,25.82,False
+kaggle_3188_right.jpg,train/normal/kaggle_3188_right.jpg,normal,normal,0.8275,0.6648,0.0038,0.0061,0.1626,0.8275,True,PASSED,108.52,55.9,39.81,False
+kaggle_3212_left.jpg,train/normal/kaggle_3212_left.jpg,normal,normal,0.8101,0.6546,0.1556,0.002,0.0324,0.8101,True,PASSED,951.91,160.24,89.62,False
+kaggle_3214_left.jpg,train/normal/kaggle_3214_left.jpg,normal,normal,0.9895,0.9819,0.0016,0.0013,0.0076,0.9895,False,Excessive image blur (blur score 80.57 < threshold 100.0).,80.57,67.64,41.17,False
+kaggle_3214_right.jpg,train/normal/kaggle_3214_right.jpg,normal,normal,0.9935,0.9894,0.0003,0.0023,0.004,0.9935,False,Excessive image blur (blur score 91.24 < threshold 100.0).,91.24,63.43,33.12,False
+kaggle_3216_left.jpg,train/normal/kaggle_3216_left.jpg,normal,normal,0.4071,0.0691,0.338,0.0029,0.252,0.4071,False,Excessive image blur (blur score 20.84 < threshold 100.0).,20.84,25.53,17.38,False
+kaggle_3218_right.jpg,train/normal/kaggle_3218_right.jpg,normal,glaucoma,0.427,0.1109,0.11,0.147,0.427,0.316,True,PASSED,496.91,78.79,64.33,True
+kaggle_3223_left.jpg,train/normal/kaggle_3223_left.jpg,normal,normal,0.9605,0.9381,0.0224,0.0019,0.0151,0.9605,False,Excessive image blur (blur score 43.34 < threshold 100.0).,43.34,37.6,25.85,False
+kaggle_3223_right.jpg,train/normal/kaggle_3223_right.jpg,normal,normal,0.9714,0.9497,0.0044,0.0025,0.0217,0.9714,False,Excessive image blur (blur score 79.16 < threshold 100.0).,79.16,53.54,34.79,False
+kaggle_3255_left.jpg,train/normal/kaggle_3255_left.jpg,normal,normal,0.9634,0.9408,0.0063,0.0077,0.0226,0.9634,True,PASSED,150.84,55.72,39.96,False
+kaggle_3255_right.jpg,train/normal/kaggle_3255_right.jpg,normal,normal,0.9759,0.96,0.0029,0.0054,0.0158,0.9759,True,PASSED,159.77,59.01,42.74,False
+kaggle_3256_right.jpg,train/normal/kaggle_3256_right.jpg,normal,normal,0.9861,0.9789,0.0037,0.003,0.0072,0.9861,False,Excessive image blur (blur score 64.73 < threshold 100.0).,64.73,61.66,41.19,False
+kaggle_3259_left.jpg,train/normal/kaggle_3259_left.jpg,normal,normal,0.9197,0.8473,0.0026,0.0053,0.0724,0.9197,True,PASSED,315.5,91.01,54.4,False
+kaggle_3259_right.jpg,train/normal/kaggle_3259_right.jpg,normal,normal,0.9705,0.9579,0.0105,0.0065,0.0126,0.9705,True,PASSED,391.27,107.78,61.86,False
+kaggle_3262_right.jpg,train/normal/kaggle_3262_right.jpg,normal,normal,0.9697,0.9468,0.0049,0.0024,0.0229,0.9697,True,PASSED,750.24,111.03,63.05,False
+kaggle_3283_left.jpg,train/normal/kaggle_3283_left.jpg,normal,normal,0.965,0.9391,0.0058,0.0033,0.0259,0.965,False,Excessive image blur (blur score 95.29 < threshold 100.0).,95.29,54.29,35.99,False
+kaggle_3296_left.jpg,train/normal/kaggle_3296_left.jpg,normal,glaucoma,0.9254,0.8546,0.0004,0.0033,0.9254,0.0709,True,PASSED,281.39,84.41,49.46,True
+kaggle_3298_left.jpg,train/normal/kaggle_3298_left.jpg,normal,normal,0.885,0.8124,0.0726,0.0027,0.0398,0.885,True,PASSED,262.66,82.46,38.32,False
+kaggle_3298_right.jpg,train/normal/kaggle_3298_right.jpg,normal,glaucoma,0.533,0.1342,0.0592,0.0089,0.533,0.3989,True,PASSED,335.59,86.54,38.01,True
+kaggle_3305_left.jpg,train/normal/kaggle_3305_left.jpg,normal,glaucoma,0.6954,0.508,0.0112,0.1874,0.6954,0.106,False,Excessive image blur (blur score 23.96 < threshold 100.0).,23.96,60.64,42.75,True
+kaggle_3315_right.jpg,train/normal/kaggle_3315_right.jpg,normal,normal,0.9425,0.8987,0.0076,0.0062,0.0438,0.9425,True,PASSED,596.23,74.88,54.96,False
+kaggle_3329_right.jpg,train/normal/kaggle_3329_right.jpg,normal,normal,0.9728,0.959,0.0084,0.005,0.0138,0.9728,True,PASSED,899.01,128.31,72.56,False
+kaggle_3357_left.jpg,train/normal/kaggle_3357_left.jpg,normal,normal,0.9772,0.9641,0.0065,0.0031,0.0132,0.9772,True,PASSED,234.31,89.62,52.37,False
+kaggle_3357_right.jpg,train/normal/kaggle_3357_right.jpg,normal,normal,0.9781,0.9646,0.0038,0.0046,0.0135,0.9781,True,PASSED,220.32,90.09,53.96,False
+kaggle_3364_right.jpg,train/normal/kaggle_3364_right.jpg,normal,normal,0.9543,0.9232,0.0089,0.0058,0.031,0.9543,True,PASSED,329.65,103.69,59.1,False
+kaggle_3376_left.jpg,train/normal/kaggle_3376_left.jpg,normal,normal,0.7824,0.5882,0.0208,0.0025,0.1942,0.7824,True,PASSED,202.42,85.94,41.1,False
+kaggle_3377_left.jpg,train/normal/kaggle_3377_left.jpg,normal,normal,0.9744,0.9569,0.0057,0.0024,0.0175,0.9744,True,PASSED,233.97,55.76,36.84,False
+kaggle_3377_right.jpg,train/normal/kaggle_3377_right.jpg,normal,normal,0.9728,0.9571,0.0044,0.0071,0.0157,0.9728,True,PASSED,237.17,55.09,39.24,False
+kaggle_3416_right.jpg,train/normal/kaggle_3416_right.jpg,normal,normal,0.6984,0.465,0.2334,0.0052,0.063,0.6984,True,PASSED,197.8,47.35,43.98,False
+kaggle_3417_left.jpg,train/normal/kaggle_3417_left.jpg,normal,glaucoma,0.7594,0.5772,0.0507,0.0077,0.7594,0.1822,True,PASSED,113.34,37.83,39.16,True
+kaggle_3433_right.jpg,train/normal/kaggle_3433_right.jpg,normal,normal,0.9867,0.9798,0.0045,0.0019,0.0069,0.9867,False,Excessive image blur (blur score 95.12 < threshold 100.0).,95.12,75.78,44.14,False
+kaggle_3437_left.jpg,train/normal/kaggle_3437_left.jpg,normal,normal,0.6328,0.3079,0.0346,0.0077,0.3249,0.6328,False,Excessive image blur (blur score 62.66 < threshold 100.0).,62.66,40.8,27.15,False
+kaggle_3443_left.jpg,train/normal/kaggle_3443_left.jpg,normal,normal,0.666,0.3472,0.0094,0.0057,0.3189,0.666,True,PASSED,361.67,75.81,44.35,False
+106.png,val/cataract/106.png,cataract,cataract,0.9045,0.8579,0.9045,0.0065,0.0466,0.0424,False,Excessive image blur (blur score 8.87 < threshold 100.0).,8.87,71.46,76.86,False
+123.png,val/cataract/123.png,cataract,glaucoma,0.7621,0.6134,0.1487,0.0281,0.7621,0.0611,False,Excessive image blur (blur score 8.17 < threshold 100.0).,8.17,71.9,73.26,True
+155.png,val/cataract/155.png,cataract,cataract,0.7688,0.6154,0.7688,0.0292,0.0486,0.1534,False,Excessive image blur (blur score 9.92 < threshold 100.0).,9.92,62.56,62.23,False
+203.png,val/cataract/203.png,cataract,normal,0.6433,0.3912,0.0498,0.0548,0.2521,0.6433,False,Excessive image blur (blur score 13.85 < threshold 100.0).,13.85,56.4,58.26,True
+223.png,val/cataract/223.png,cataract,cataract,0.8277,0.7177,0.8277,0.0184,0.0439,0.11,False,Excessive image blur (blur score 13.99 < threshold 100.0).,13.99,57.94,57.91,False
+257.png,val/cataract/257.png,cataract,cataract,0.8388,0.7382,0.8388,0.0239,0.1006,0.0367,False,Excessive image blur (blur score 10.47 < threshold 100.0).,10.47,25.93,29.18,False
+286.png,val/cataract/286.png,cataract,glaucoma,0.839,0.7507,0.0529,0.0199,0.839,0.0883,False,Excessive image blur (blur score 12.59 < threshold 100.0).,12.59,31.12,36.26,True
+327.png,val/cataract/327.png,cataract,cataract,0.6919,0.4604,0.6919,0.0107,0.0659,0.2315,False,Excessive image blur (blur score 8.93 < threshold 100.0).,8.93,59.53,59.9,False
+328.png,val/cataract/328.png,cataract,cataract,0.8852,0.8294,0.8852,0.0146,0.0444,0.0558,False,Excessive image blur (blur score 14.64 < threshold 100.0).,14.64,51.44,54.67,False
+344.png,val/cataract/344.png,cataract,cataract,0.9572,0.9341,0.9572,0.0049,0.0231,0.0148,False,Excessive image blur (blur score 11.82 < threshold 100.0).,11.82,25.81,26.51,False
+351.png,val/cataract/351.png,cataract,cataract,0.9724,0.9566,0.9724,0.0022,0.0158,0.0096,False,Excessive image blur (blur score 9.82 < threshold 100.0).,9.82,58.62,59.12,False
+377.png,val/cataract/377.png,cataract,glaucoma,0.4284,0.001,0.4274,0.1147,0.4284,0.0294,False,Excessive image blur (blur score 10.76 < threshold 100.0).,10.76,25.16,28.47,True
+392.png,val/cataract/392.png,cataract,cataract,0.816,0.7079,0.816,0.0233,0.0526,0.1081,False,Excessive image blur (blur score 11.92 < threshold 100.0).,11.92,35.05,36.47,False
+521.png,val/cataract/521.png,cataract,cataract,0.9647,0.949,0.9647,0.0051,0.0156,0.0146,False,Excessive image blur (blur score 4.08 < threshold 100.0).,4.08,22.61,14.55,False
+534.png,val/cataract/534.png,cataract,glaucoma,0.7826,0.6944,0.0829,0.0883,0.7826,0.0462,False,Excessive image blur (blur score 9.64 < threshold 100.0).,9.64,57.46,39.26,True
+537.png,val/cataract/537.png,cataract,glaucoma,0.9435,0.9019,0.0068,0.008,0.9435,0.0416,False,Excessive image blur (blur score 7.67 < threshold 100.0).,7.67,38.08,29.07,True
+545.png,val/cataract/545.png,cataract,cataract,0.8508,0.7676,0.8508,0.0832,0.0362,0.0297,False,Excessive image blur (blur score 8.97 < threshold 100.0).,8.97,49.04,31.94,False
+549.png,val/cataract/549.png,cataract,normal,0.7684,0.6166,0.1518,0.0082,0.0716,0.7684,False,Excessive image blur (blur score 22.53 < threshold 100.0).,22.53,31.0,32.67,True
+550.png,val/cataract/550.png,cataract,normal,0.5971,0.2667,0.3304,0.0105,0.062,0.5971,False,Excessive image blur (blur score 31.67 < threshold 100.0).,31.67,31.44,34.22,True
+555.png,val/cataract/555.png,cataract,cataract,0.5651,0.234,0.5651,0.0272,0.0765,0.3311,False,Excessive image blur (blur score 14.72 < threshold 100.0).,14.72,39.89,38.09,False
+99.png,val/cataract/99.png,cataract,cataract,0.8481,0.731,0.8481,0.0021,0.0327,0.1171,False,Excessive image blur (blur score 11.40 < threshold 100.0).,11.4,65.86,68.61,False
+103.png,val/diabetic_retinopathy/103.png,diabetic_retinopathy,cataract,0.4792,0.0286,0.4792,0.4506,0.0597,0.0105,False,Excessive image blur (blur score 7.73 < threshold 100.0).,7.73,50.87,52.54,True
+161.png,val/diabetic_retinopathy/161.png,diabetic_retinopathy,diabetic_retinopathy,0.9197,0.8737,0.0251,0.9197,0.0459,0.0093,False,Excessive image blur (blur score 13.39 < threshold 100.0).,13.39,43.71,44.12,False
+198.png,val/diabetic_retinopathy/198.png,diabetic_retinopathy,normal,0.8976,0.8448,0.0171,0.0324,0.0528,0.8976,False,Excessive image blur (blur score 14.24 < threshold 100.0).,14.24,49.62,49.77,True
+199.png,val/diabetic_retinopathy/199.png,diabetic_retinopathy,diabetic_retinopathy,0.9011,0.8377,0.0024,0.9011,0.0332,0.0634,False,Excessive image blur (blur score 14.33 < threshold 100.0).,14.33,48.18,48.87,False
+212.png,val/diabetic_retinopathy/212.png,diabetic_retinopathy,diabetic_retinopathy,0.9041,0.849,0.0122,0.9041,0.0287,0.0551,False,Excessive image blur (blur score 15.01 < threshold 100.0).,15.01,48.86,49.97,False
+307.png,val/diabetic_retinopathy/307.png,diabetic_retinopathy,cataract,0.6004,0.3062,0.6004,0.2942,0.0918,0.0137,False,Excessive image blur (blur score 8.58 < threshold 100.0).,8.58,51.49,52.99,True
+314.png,val/diabetic_retinopathy/314.png,diabetic_retinopathy,diabetic_retinopathy,0.8051,0.6732,0.0524,0.8051,0.1319,0.0105,False,Excessive image blur (blur score 12.46 < threshold 100.0).,12.46,33.83,36.96,False
+331.png,val/diabetic_retinopathy/331.png,diabetic_retinopathy,diabetic_retinopathy,0.8768,0.757,0.0023,0.8768,0.1197,0.0012,False,Excessive image blur (blur score 14.16 < threshold 100.0).,14.16,46.57,47.5,False
+336.png,val/diabetic_retinopathy/336.png,diabetic_retinopathy,normal,0.6481,0.3603,0.0197,0.2878,0.0444,0.6481,False,Excessive image blur (blur score 14.63 < threshold 100.0).,14.63,48.05,49.06,True
+338.png,val/diabetic_retinopathy/338.png,diabetic_retinopathy,diabetic_retinopathy,0.653,0.4936,0.1593,0.653,0.1201,0.0676,False,Excessive image blur (blur score 13.02 < threshold 100.0).,13.02,47.09,47.62,False
+354.png,val/diabetic_retinopathy/354.png,diabetic_retinopathy,diabetic_retinopathy,0.5591,0.1527,0.0169,0.5591,0.4064,0.0176,False,Excessive image blur (blur score 13.46 < threshold 100.0).,13.46,45.51,46.36,False
+426.png,val/diabetic_retinopathy/426.png,diabetic_retinopathy,diabetic_retinopathy,0.8849,0.8233,0.0446,0.8849,0.0616,0.0089,False,Excessive image blur (blur score 13.10 < threshold 100.0).,13.1,43.02,46.18,False
+430.png,val/diabetic_retinopathy/430.png,diabetic_retinopathy,diabetic_retinopathy,0.3798,0.1321,0.2149,0.3798,0.1575,0.2477,False,Excessive image blur (blur score 14.45 < threshold 100.0).,14.45,56.39,57.05,False
+341.png,val/glaucoma/341.png,glaucoma,glaucoma,0.9857,0.9791,0.0019,0.0056,0.9857,0.0067,False,Excessive image blur (blur score 7.16 < threshold 100.0).,7.16,18.73,30.14,False
+373.png,val/glaucoma/373.png,glaucoma,glaucoma,0.9465,0.9167,0.0039,0.0298,0.9465,0.0198,False,Excessive image blur (blur score 12.45 < threshold 100.0).,12.45,30.98,38.23,False
+391.png,val/glaucoma/391.png,glaucoma,diabetic_retinopathy,0.6138,0.3343,0.0401,0.6138,0.2795,0.0666,False,Excessive image blur (blur score 13.54 < threshold 100.0).,13.54,52.73,55.06,True
+412.png,val/glaucoma/412.png,glaucoma,glaucoma,0.6476,0.3196,0.0078,0.328,0.6476,0.0166,False,Excessive image blur (blur score 14.00 < threshold 100.0).,14.0,49.11,49.73,False
+428.png,val/glaucoma/428.png,glaucoma,glaucoma,0.9407,0.9036,0.008,0.0143,0.9407,0.0371,False,Excessive image blur (blur score 15.03 < threshold 100.0).,15.03,67.03,68.55,False
+429.png,val/glaucoma/429.png,glaucoma,glaucoma,0.9179,0.8705,0.0034,0.0312,0.9179,0.0474,False,Excessive image blur (blur score 13.77 < threshold 100.0).,13.77,50.57,50.7,False
+490.png,val/glaucoma/490.png,glaucoma,glaucoma,0.8883,0.8133,0.029,0.0077,0.8883,0.075,False,Excessive image blur (blur score 13.06 < threshold 100.0).,13.06,35.57,37.57,False
+60.png,val/glaucoma/60.png,glaucoma,glaucoma,0.9955,0.9931,0.0004,0.0016,0.9955,0.0025,False,Excessive image blur (blur score 12.13 < threshold 100.0).,12.13,34.12,36.43,False
+611.png,val/glaucoma/611.png,glaucoma,normal,0.7757,0.6838,0.0869,0.092,0.0454,0.7757,False,Excessive image blur (blur score 7.83 < threshold 100.0).,7.83,88.19,55.26,True
+70.png,val/glaucoma/70.png,glaucoma,glaucoma,0.9411,0.8925,0.0074,0.0486,0.9411,0.0028,False,Excessive image blur (blur score 13.81 < threshold 100.0).,13.81,48.15,48.62,False
+116.png,val/normal/116.png,normal,normal,0.8825,0.8372,0.0386,0.0453,0.0337,0.8825,False,Excessive image blur (blur score 9.84 < threshold 100.0).,9.84,55.84,56.25,False
+171.png,val/normal/171.png,normal,normal,0.9766,0.9643,0.0021,0.009,0.0123,0.9766,False,Excessive image blur (blur score 17.66 < threshold 100.0).,17.66,52.45,54.11,False
+239.png,val/normal/239.png,normal,normal,0.9419,0.9164,0.015,0.0176,0.0255,0.9419,False,Excessive image blur (blur score 14.24 < threshold 100.0).,14.24,50.05,51.25,False
+262.png,val/normal/262.png,normal,normal,0.9649,0.9437,0.0056,0.0082,0.0213,0.9649,False,Excessive image blur (blur score 15.91 < threshold 100.0).,15.91,47.47,50.63,False
+289.png,val/normal/289.png,normal,normal,0.9495,0.9264,0.0091,0.0182,0.0232,0.9495,False,Excessive image blur (blur score 14.65 < threshold 100.0).,14.65,50.01,50.55,False
+369.png,val/normal/369.png,normal,normal,0.9529,0.9272,0.0081,0.0132,0.0258,0.9529,False,Excessive image blur (blur score 14.69 < threshold 100.0).,14.69,43.43,46.25,False
+410.png,val/normal/410.png,normal,glaucoma,0.5567,0.2119,0.0514,0.0472,0.5567,0.3447,False,Excessive image blur (blur score 15.19 < threshold 100.0).,15.19,54.7,56.02,True
+438.png,val/normal/438.png,normal,normal,0.9267,0.8915,0.0207,0.0173,0.0353,0.9267,False,Excessive image blur (blur score 14.78 < threshold 100.0).,14.78,39.88,41.78,False
+450.png,val/normal/450.png,normal,normal,0.8127,0.7319,0.0807,0.0545,0.0521,0.8127,False,Excessive image blur (blur score 13.87 < threshold 100.0).,13.87,46.61,47.08,False
+454.png,val/normal/454.png,normal,normal,0.9042,0.8654,0.0343,0.0226,0.0388,0.9042,False,Excessive image blur (blur score 14.58 < threshold 100.0).,14.58,43.03,44.72,False
+563.png,val/normal/563.png,normal,normal,0.9606,0.9404,0.0201,0.0027,0.0166,0.9606,False,Excessive image blur (blur score 13.47 < threshold 100.0).,13.47,52.3,49.06,False
+566.png,val/normal/566.png,normal,normal,0.9192,0.8595,0.0156,0.0055,0.0597,0.9192,False,Excessive image blur (blur score 19.86 < threshold 100.0).,19.86,52.5,49.92,False
+574.png,val/normal/574.png,normal,normal,0.9621,0.9386,0.0017,0.0126,0.0235,0.9621,False,Excessive image blur (blur score 18.64 < threshold 100.0).,18.64,39.98,37.45,False
+585.png,val/normal/585.png,normal,normal,0.8429,0.7005,0.0075,0.0071,0.1424,0.8429,False,Excessive image blur (blur score 20.35 < threshold 100.0).,20.35,56.62,54.08,False
+591.png,val/normal/591.png,normal,normal,0.8655,0.7711,0.0322,0.008,0.0944,0.8655,False,Excessive image blur (blur score 37.98 < threshold 100.0).,37.98,27.9,30.05,False
+617.png,val/normal/617.png,normal,normal,0.8433,0.7701,0.0732,0.0134,0.07,0.8433,False,Excessive image blur (blur score 4.79 < threshold 100.0).,4.79,24.17,23.2,False
+619.png,val/normal/619.png,normal,normal,0.9451,0.9072,0.0012,0.0158,0.0379,0.9451,False,Excessive image blur (blur score 11.07 < threshold 100.0).,11.07,67.43,45.71,False
+638.png,val/normal/638.png,normal,normal,0.9575,0.9324,0.0019,0.0251,0.0155,0.9575,False,Excessive image blur (blur score 13.40 < threshold 100.0).,13.4,67.93,47.38,False

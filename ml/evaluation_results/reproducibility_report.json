@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-12T08:09:57Z",
+    "verifier": "ReproducibilityVerifier",
+    "status": "VERIFIED"
+  },
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "os_name": "Windows",
+    "os_release": "11",
+    "architecture": "AMD64",
+    "python_version": "3.12.4",
+    "python_compiler": "MSC v.1940 64 bit (AMD64)",
+    "pytorch_version": "2.6.0+cu124",
+    "torchvision_version": "0.21.0+cu124",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "cudnn_version": 90100,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_capability": [
+      8,
+      9
+    ],
+    "opencv_version": "5.0.0",
+    "pillow_version": "12.3.0",
+    "numpy_version": "2.5.4",
+    "sklearn_version": "1.9.1",
+    "checkpoint_path": "eye_model.pth",
+    "checkpoint_size_bytes": 73754057,
+    "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f"
+  },
+  "test_cohort": {
+    "manifest_path": "split_manifest.json",
+    "total_samples": 40,
+    "samples_per_class": 10,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "sample_manifest": [
+      {
+        "filename": "kaggle_2052_right.jpg",
+        "class_name": "cataract",
+        "patient_id": "kaggle_2052",
+        "sha256": "c4793cb6eb8e04c8bb00bde404d2d5e538d3f04c6cee2f14ce1918a991f7e183"
+      },
+      {
+        "filename": "kaggle_2120_right.jpg",
+        "class_name": "cataract",
+        "patient_id": "kaggle_2120",
+        "sha256": "bf82303546ae5f1f1702858cc268c9d97d0afbfcbaa4f7fc4b9afa762b7022e9"
+      },
+      {
+        "filename": "kaggle_2155_left.jpg",
+        "class_name": "cataract",
+        "patient_id": "kaggle_2155",
+        "sha256": "6be552b2ec49d5b93f1355a14c4bd7a08ad7762060d540a7a41aa4addda2cadf"
+      },
+      {
+        "filename": "kaggle_2155_right.jpg",
+        "class_name": "cataract",
+        "patient_id": "kaggle_2155",
+        "sha256": "7053ec7f8c1cd65827a415656be0948a30e585463995a58f5b14ba8216db3d10"
+      },
+      {
+        "filename": "kaggle_769_right.jpg",
+        "class_name": "cataract",
+        "patient_id": "kaggle_769",
+        "sha256": "b6cd841e6f0d003c0204c09bb0ad1ce8a5e9298f140b15a8ed77c99eaef1a8e2"
+      },
+      {
+        "filename": "kaggle__100_334408.jpg",
+        "class_name": "cataract",
+        "patient_id": "id_kaggle__100_334408",
+        "sha256": "daadae0e48d99e5148f6536e0ac092c3d8aa961f2e9ff1ece32331320e077aee"
+      },
+      {
+        "filename": "kaggle__108_8917257.jpg",
+        "class_name": "cataract",
+        "patient_id": "id_kaggle__108_8917257",
+        "sha256": "0210419640e58a92e2858e88b24909d9630271f0d8326fe9a0141dd2970fd0ac"
+      },
+      {
+        "filename": "kaggle__170_1001041.jpg",
+        "class_name": "cataract",
+        "patient_id": "id_kaggle__170_1001041",
+        "sha256": "0a42c8e2f943a54a026bd297045a60728d9f834900f2ab9ffa66d7fe0a2317ec"
+      },
+      {
+        "filename": "kaggle__180_8003252.jpg",
+        "class_name": "cataract",
+        "patient_id": "id_kaggle__180_8003252",
+        "sha256": "971a7fd7b3cbce13210cb075dc34fe5ce04abc8229f7fc0253f84a6eabebf2c2"
+      },
+      {
+        "filename": "kaggle__344_5181730.jpg",
+        "class_name": "cataract",
+        "patient_id": "id_kaggle__344_5181730",
+        "sha256": "61c4d5494499e2737c0e0e67bf20165cd284d2943a4806aac8e2aaf8678a81a5"
+      },
+      {
+        "filename": "kaggle_10184_left.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10184",
+        "sha256": "05b41c413d322b2c835ba1fbf09c5adb7e4765799db1496e63887e45bd20a570"
+      },
+      {
+        "filename": "kaggle_10293_right.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10293",
+        "sha256": "32dd3150fbb505d899cc03cc2ad802bee4590173637632ee491f3e2ccfa8cdf8"
+      },
+      {
+        "filename": "kaggle_10321_right.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10321",
+        "sha256": "eafb80abe04e699ca685b88e38285c02d73f9d2a0c942ebbcc78295834401641"
+      },
+      {
+        "filename": "kaggle_10650_right.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10650",
+        "sha256": "25a578151f874c1ca4c218cad8654e1d065f064a355f77250552a9090a5c4a05"
+      },
+      {
+        "filename": "kaggle_10751_left.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10751",
+        "sha256": "fe368d7415b9e554bbd689e0da98a3f7e861db0071b9cfedbc807e4cd211581f"
+      },
+      {
+        "filename": "kaggle_10003_left.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10003",
+        "sha256": "4a50aac069c6c9efcbbbda68098fb4f545b89101054d7b6bb68e75dfe5573913"
+      },
+      {
+        "filename": "kaggle_10003_right.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10003",
+        "sha256": "59aa030568a91c2e63b28c66b9c0a13609e9eb0a13606e613a0d399fa878003c"
+      },
+      {
+        "filename": "kaggle_10042_left.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10042",
+        "sha256": "eed93a479bfcd4b6aa70531c30b1f7f0244681f2c45ab8ab846b291c11910d20"
+      },
+      {
+        "filename": "kaggle_10042_right.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_10042",
+        "sha256": "ba792ca9144928a63dd828d9f19a44777834c76c34a8a3b60d231c2802283d0c"
+      },
+      {
+        "filename": "kaggle_1008_left.jpeg",
+        "class_name": "diabetic_retinopathy",
+        "patient_id": "kaggle_1008",
+        "sha256": "aba1c0ef0bfbb980bf498dd50054933a3e3fa9ba4697011c9ead18ac1926731b"
+      },
+      {
+        "filename": "kaggle_1491_left.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1491",
+        "sha256": "615ddb2cda88073c6b98ff84e53d8507c89221d1e595db2a34e8ee7378e20c8b"
+      },
+      {
+        "filename": "kaggle__101_9321817.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "id_kaggle__101_9321817",
+        "sha256": "00854fbb6c9dc2cf194292b14f9be456222f696f5f6c5f2d709254949db8f93e"
+      },
+      {
+        "filename": "kaggle__224_5329904.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "id_kaggle__224_5329904",
+        "sha256": "b89ed04e8c81b760af855a7ffc722c374ff0861060ea4237bb9f6ee14c3e921a"
+      },
+      {
+        "filename": "kaggle__397_9607497.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "id_kaggle__397_9607497",
+        "sha256": "e9f1e9347cf555524ae3908f824dcc8d916f26aa6f225d15bf86565227d734a9"
+      },
+      {
+        "filename": "kaggle_1215_left.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1215",
+        "sha256": "4f0fa3cfadd874f14277d17d7fed55b43a6eb52e96755a29628d3245d56e9586"
+      },
+      {
+        "filename": "kaggle_1215_right.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1215",
+        "sha256": "8e6d79383fa2103614d66bf9364edbdc6938befa531c2166919e9a18e7860223"
+      },
+      {
+        "filename": "kaggle_1226_left.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1226",
+        "sha256": "e0948375f57a10b26b120753a7b4250788d17e81c17bdf46b39d5fc7dbf3bd41"
+      },
+      {
+        "filename": "kaggle_1237_left.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1237",
+        "sha256": "476cebc6058d319dbd0c8a4e8c81a3d2e4b587e6283c1b0f6f20028c2fe9f308"
+      },
+      {
+        "filename": "kaggle_1237_right.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1237",
+        "sha256": "b9c44c6574cf8667c6a66c8f1737cb35a9337ef62ea17e482f2407140e0f1dad"
+      },
+      {
+        "filename": "kaggle_1241_left.jpg",
+        "class_name": "glaucoma",
+        "patient_id": "kaggle_1241",
+        "sha256": "9a29150f48fd950dbf51253a45ab8ca10d0baca1a843d1e8e1625badd9022cdd"
+      },
+      {
+        "filename": "kaggle_2587_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2587",
+        "sha256": "52d2db034779a839c4060bb1d24c9393c7224ae1a310a31b0b660af776f1d04f"
+      },
+      {
+        "filename": "kaggle_2604_left.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2604",
+        "sha256": "958f0cbaa5159439f13f8b1cea94b11ee3d318ab8d3cc40112043385c4bd88da"
+      },
+      {
+        "filename": "kaggle_2892_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2892",
+        "sha256": "635c1529ba5861387a8ff40806b6bc525bf34062ca0e2366779db379ac163321"
+      },
+      {
+        "filename": "kaggle_2962_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2962",
+        "sha256": "b85230c0080b4fe30b6b3d97692c0df21bf07ee85486834a8225009dc70ce09f"
+      },
+      {
+        "filename": "kaggle_2967_left.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2967",
+        "sha256": "fa0e4c9804f116c6b171a10efedc2514130c85f404383a84ffbce7d043d0112b"
+      },
+      {
+        "filename": "kaggle_2967_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_2967",
+        "sha256": "7bba8a3316f02b83592cd3524736267134f3645406cff5eff1c728f1102d6ffc"
+      },
+      {
+        "filename": "kaggle_3018_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_3018",
+        "sha256": "971c14c2965f9a522354c7a30e8cf9e592893fd694db7e0b20e61aa15224c16c"
+      },
+      {
+        "filename": "kaggle_3113_left.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_3113",
+        "sha256": "ca5472b2044dfca886f7c9bf6b1d10497cfc96d2c44079857a027c06f082c587"
+      },
+      {
+        "filename": "kaggle_3325_left.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_3325",
+        "sha256": "22ca08408a527bdc80b1c2ec4b07ced46265d2b569ef7b69c4c6e66c9c213944"
+      },
+      {
+        "filename": "kaggle_3417_right.jpg",
+        "class_name": "normal",
+        "patient_id": "kaggle_3417",
+        "sha256": "965e4d6aaddb59a91432ec8dc3ecaac16d579f8e02ce71eaae0b93efdaa3aff9"
+      }
+    ]
+  },
+  "mode_benchmarks": {
+    "cpu": {
+      "device": "cpu",
+      "device_type": "cpu",
+      "init_time_ms": 370.53,
+      "total_samples": 40,
+      "mean_latency_ms": 74.41,
+      "median_latency_ms": 73.71,
+      "p95_latency_ms": 78.38,
+      "accuracy_on_cohort": 0.875
+    },
+    "cuda": {
+      "device": "cuda",
+      "device_type": "cuda",
+      "init_time_ms": 436.21,
+      "total_samples": 40,
+      "mean_latency_ms": 37.39,
+      "median_latency_ms": 34.66,
+      "p95_latency_ms": 47.38,
+      "accuracy_on_cohort": 0.875
+    },
+    "repeated": {
+      "device": "cuda",
+      "device_type": "cuda",
+      "init_time_ms": 439.14,
+      "total_samples": 40,
+      "mean_latency_ms": 36.33,
+      "median_latency_ms": 36.05,
+      "p95_latency_ms": 41.42,
+      "accuracy_on_cohort": 0.875
+    }
+  },
+  "numerical_consistency": {
+    "cpu_vs_cuda": {
+      "comparison": "cpu_vs_cuda",
+      "sample_count": 40,
+      "prediction_agreement_count": 40,
+      "prediction_agreement_pct": 100.0,
+      "max_probability_diff": 0.0002,
+      "mean_probability_diff": 2.6e-05,
+      "mean_confidence_diff": 3.8e-05,
+      "strictly_identical_predictions": true
+    },
+    "repeated_same_process": {
+      "comparison": "cuda_vs_cuda_repeat",
+      "sample_count": 40,
+      "prediction_agreement_count": 40,
+      "prediction_agreement_pct": 100.0,
+      "max_probability_diff": 0.0,
+      "mean_probability_diff": 0.0,
+      "mean_confidence_diff": 0.0,
+      "strictly_identical_predictions": true
+    },
+    "in_process_cpu_vs_fresh_cpu": {
+      "comparison": "in_process_cpu_vs_fresh_process_cpu",
+      "sample_count": 40,
+      "prediction_agreement_count": 40,
+      "prediction_agreement_pct": 100.0,
+      "max_probability_diff": 0.0,
+      "mean_probability_diff": 0.0,
+      "mean_confidence_diff": 0.0,
+      "strictly_identical_predictions": true
+    },
+    "in_process_cuda_vs_fresh_cuda": {
+      "comparison": "in_process_cuda_vs_fresh_process_cuda",
+      "sample_count": 40,
+      "prediction_agreement_count": 40,
+      "prediction_agreement_pct": 100.0,
+      "max_probability_diff": 0.0,
+      "mean_probability_diff": 0.0,
+      "mean_confidence_diff": 0.0,
+      "strictly_identical_predictions": true
+    }
+  },
+  "portability_checks": {
+    "explicit_cpu_resolution": true,
+    "explicit_cuda_resolution": true,
+    "auto_selects_cuda": true,
+    "missing_checkpoint_fails_cleanly": true,
+    "silent_downloads_prevented": true,
+    "checkpoint_configurable_via_arg": true
+  }
+}

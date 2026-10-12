@@ -1,0 +1,97 @@
+{
+  "dataset_split": "test",
+  "manifest_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\dataset\\split_manifest.json",
+  "checkpoint_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_densenet201_best.pth",
+  "checkpoint_metadata": {
+    "epoch": 4,
+    "best_val_accuracy": 0.8820809248554913,
+    "classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "architecture": "DenseNet201",
+    "seed": 42
+  },
+  "class_names": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "evaluation_timestamp": "2026-10-11T16:02:27.191481+00:00",
+  "device": "cuda",
+  "total_test_images": 894,
+  "evaluated_images": 894,
+  "failed_or_excluded_images": 0,
+  "excluded_samples": [],
+  "metrics": {
+    "overall_accuracy": 0.8434,
+    "macro_precision": 0.844,
+    "macro_recall": 0.8394,
+    "macro_f1": 0.8405,
+    "weighted_f1": 0.843,
+    "per_class": {
+      "cataract": {
+        "precision": 0.9022,
+        "recall": 0.7905,
+        "f1_score": 0.8426,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.8862,
+        "recall": 0.9356,
+        "f1_score": 0.9102,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7647,
+        "recall": 0.7685,
+        "f1_score": 0.7666,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8231,
+        "recall": 0.8629,
+        "f1_score": 0.8425,
+        "support": 248
+      }
+    },
+    "confusion_matrix": [
+      [
+        166,
+        13,
+        20,
+        11
+      ],
+      [
+        5,
+        218,
+        2,
+        8
+      ],
+      [
+        10,
+        10,
+        156,
+        27
+      ],
+      [
+        3,
+        5,
+        26,
+        214
+      ]
+    ],
+    "support": {
+      "cataract": 210,
+      "diabetic_retinopathy": 233,
+      "glaucoma": 203,
+      "normal": 248
+    },
+    "total_samples": 894
+  },
+  "evaluation_duration_seconds": 31.59,
+  "disclaimer": "This model is intended solely for clinical screening research and decision support, not as a definitive autonomous medical diagnosis. External population validation is required."
+}

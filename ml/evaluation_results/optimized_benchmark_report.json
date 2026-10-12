@@ -1,0 +1,237 @@
+{
+  "benchmark_metadata": {
+    "timestamp": "2026-10-11T18:06:45Z",
+    "python_version": "3.12.4",
+    "pytorch_version": "2.6.0+cu124",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "checkpoint_path": "ml/weights/eye_model.pth",
+    "is_trained_checkpoint": true,
+    "benchmark_image_path": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\Custom_Eye_Disease_Model\\dataset\\test\\cataract\\kaggle_2052_right.jpg",
+    "iterations": 30,
+    "warmup_iterations": 5,
+    "include_gradcam": true
+  },
+  "model_loading_overhead": {
+    "cold_load_from_disk_ms": 454.87,
+    "cached_lookup_ms": 0.0173,
+    "model_memory_footprint_cuda_mb": 70.09
+  },
+  "stage_latency_summary_ms": {
+    "image_loading": {
+      "mean_ms": 0.83,
+      "median_ms": 0.83,
+      "p95_ms": 0.87,
+      "min_ms": 0.8,
+      "max_ms": 0.88,
+      "std_ms": 0.02,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 1202.52,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "quality_gate": {
+      "mean_ms": 4.83,
+      "median_ms": 4.81,
+      "p95_ms": 5.24,
+      "min_ms": 4.37,
+      "max_ms": 5.89,
+      "std_ms": 0.28,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 207.12,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "preprocessing": {
+      "mean_ms": 3.47,
+      "median_ms": 3.42,
+      "p95_ms": 4.05,
+      "min_ms": 2.86,
+      "max_ms": 4.18,
+      "std_ms": 0.35,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 288.05,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "model_inference": {
+      "mean_ms": 24.36,
+      "median_ms": 24.25,
+      "p95_ms": 25.49,
+      "min_ms": 23.47,
+      "max_ms": 25.74,
+      "std_ms": 0.57,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 41.05,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "gradcam": {
+      "mean_ms": 107.63,
+      "median_ms": 106.94,
+      "p95_ms": 116.18,
+      "min_ms": 99.79,
+      "max_ms": 121.39,
+      "std_ms": 4.62,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 9.29,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "end_to_end_with_gradcam": {
+      "mean_ms": 142.93,
+      "median_ms": 142.29,
+      "p95_ms": 151.91,
+      "min_ms": 135.67,
+      "max_ms": 152.86,
+      "std_ms": 5.03,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 7.0,
+      "successful_count": 30,
+      "failed_count": 0
+    },
+    "end_to_end_no_gradcam": {
+      "mean_ms": 37.73,
+      "median_ms": 37.65,
+      "p95_ms": 40.3,
+      "min_ms": 34.82,
+      "max_ms": 41.91,
+      "std_ms": 1.44,
+      "samples_count": 30,
+      "warmup_count": 5,
+      "batch_size": 1,
+      "throughput_fps": 26.51,
+      "successful_count": 30,
+      "failed_count": 0
+    }
+  },
+  "bottleneck_analysis": {
+    "primary_bottleneck": "Grad-CAM Generation",
+    "total_breakdown_ms": 141.12,
+    "stage_percentages": {
+      "image_loading_pct": 0.6,
+      "quality_gate_pct": 3.4,
+      "preprocessing_pct": 2.5,
+      "model_inference_pct": 17.3,
+      "gradcam_pct": 76.3
+    },
+    "stage_ranking": [
+      {
+        "stage": "Grad-CAM Generation",
+        "mean_ms": 107.63
+      },
+      {
+        "stage": "Model Inference",
+        "mean_ms": 24.36
+      },
+      {
+        "stage": "Quality Gate",
+        "mean_ms": 4.83
+      },
+      {
+        "stage": "Preprocessing",
+        "mean_ms": 3.47
+      },
+      {
+        "stage": "Image Loading",
+        "mean_ms": 0.83
+      }
+    ]
+  },
+  "batched_inference_throughput": {
+    "batch_1": {
+      "mean_ms": 24.56,
+      "median_ms": 22.18,
+      "p95_ms": 31.72,
+      "min_ms": 21.57,
+      "max_ms": 34.86,
+      "std_ms": 4.0,
+      "samples_count": 15,
+      "warmup_count": 2,
+      "batch_size": 1,
+      "throughput_fps": 40.71,
+      "successful_count": 15,
+      "failed_count": 0
+    },
+    "batch_4": {
+      "mean_ms": 22.29,
+      "median_ms": 22.21,
+      "p95_ms": 23.12,
+      "min_ms": 21.4,
+      "max_ms": 23.14,
+      "std_ms": 0.59,
+      "samples_count": 15,
+      "warmup_count": 2,
+      "batch_size": 4,
+      "throughput_fps": 179.44,
+      "successful_count": 15,
+      "failed_count": 0
+    },
+    "batch_8": {
+      "mean_ms": 23.76,
+      "median_ms": 23.89,
+      "p95_ms": 24.97,
+      "min_ms": 22.16,
+      "max_ms": 25.12,
+      "std_ms": 0.91,
+      "samples_count": 15,
+      "warmup_count": 2,
+      "batch_size": 8,
+      "throughput_fps": 336.64,
+      "successful_count": 15,
+      "failed_count": 0
+    },
+    "batch_16": {
+      "mean_ms": 42.16,
+      "median_ms": 42.17,
+      "p95_ms": 42.91,
+      "min_ms": 41.33,
+      "max_ms": 43.15,
+      "std_ms": 0.48,
+      "samples_count": 15,
+      "warmup_count": 2,
+      "batch_size": 16,
+      "throughput_fps": 379.53,
+      "successful_count": 15,
+      "failed_count": 0
+    }
+  },
+  "memory_metrics": {
+    "process_memory_start": {
+      "platform": "Windows",
+      "working_set_mb": 564.13,
+      "private_usage_mb": 1331.7
+    },
+    "process_memory_end": {
+      "platform": "Windows",
+      "working_set_mb": 1162.93,
+      "private_usage_mb": 2573.14
+    },
+    "cuda_memory_start": {
+      "cuda_available": true,
+      "allocated_mb": 0.0,
+      "max_allocated_mb": 0.0,
+      "reserved_mb": 0.0
+    },
+    "cuda_memory_end": {
+      "cuda_available": true,
+      "allocated_mb": 96.11,
+      "max_allocated_mb": 285.14,
+      "reserved_mb": 452.0
+    },
+    "cuda_peak_allocated_mb": 285.14
+  }
+}

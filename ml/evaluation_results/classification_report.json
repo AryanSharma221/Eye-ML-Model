@@ -1,0 +1,93 @@
+{
+  "checkpoint_path": "eye_model.pth",
+  "checkpoint_identifier": "eye_model.pth",
+  "dataset_split": "test",
+  "total_test_images": 894,
+  "evaluated_images": 894,
+  "failed_or_excluded_images": 0,
+  "overall_accuracy": 0.8781,
+  "macro_precision": 0.8797,
+  "macro_recall": 0.8774,
+  "macro_sensitivity": 0.8774,
+  "macro_specificity": 0.9595,
+  "macro_f1": 0.8778,
+  "weighted_precision": 0.8816,
+  "weighted_recall": 0.8781,
+  "weighted_sensitivity": 0.8781,
+  "weighted_specificity": 0.9598,
+  "weighted_f1": 0.8791,
+  "per_class": {
+    "cataract": {
+      "precision": 0.9,
+      "recall": 0.8571,
+      "sensitivity": 0.8571,
+      "specificity": 0.9708,
+      "f1_score": 0.878,
+      "support": 210
+    },
+    "diabetic_retinopathy": {
+      "precision": 0.9727,
+      "recall": 0.9185,
+      "sensitivity": 0.9185,
+      "specificity": 0.9909,
+      "f1_score": 0.9448,
+      "support": 233
+    },
+    "glaucoma": {
+      "precision": 0.7928,
+      "recall": 0.867,
+      "sensitivity": 0.867,
+      "specificity": 0.9334,
+      "f1_score": 0.8282,
+      "support": 203
+    },
+    "normal": {
+      "precision": 0.8532,
+      "recall": 0.8669,
+      "sensitivity": 0.8669,
+      "specificity": 0.9427,
+      "f1_score": 0.86,
+      "support": 248
+    }
+  },
+  "confusion_matrix": [
+    [
+      180,
+      2,
+      15,
+      13
+    ],
+    [
+      8,
+      214,
+      2,
+      9
+    ],
+    [
+      8,
+      4,
+      176,
+      15
+    ],
+    [
+      4,
+      0,
+      29,
+      215
+    ]
+  ],
+  "class_order": [
+    "cataract",
+    "diabetic_retinopathy",
+    "glaucoma",
+    "normal"
+  ],
+  "latency_metrics": {
+    "mean_ms": 3.9,
+    "median_ms": 2.72,
+    "p95_ms": 9.89,
+    "min_ms": 2.48,
+    "max_ms": 19.49
+  },
+  "evaluation_timestamp": "2026-10-12T09:22:18.114865+00:00"
+}

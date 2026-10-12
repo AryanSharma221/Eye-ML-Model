@@ -1,0 +1,279 @@
+{
+  "audit_name": "Pipeline Runtime, Resource & Memory Optimization Audit",
+  "timestamp": "2026-10-12T09:54:12Z",
+  "checkpoint": "eye_model.pth",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.12.4",
+    "torch_version": "2.6.0+cu124",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "cuda_profile": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "sample_count": 4,
+    "iterations_total": 60,
+    "model_loading": {
+      "cold_start_ms": 479.6,
+      "cached_retrieval": {
+        "median_ms": 0.02,
+        "p95_ms": 0.05,
+        "mean_ms": 0.03,
+        "min_ms": 0.02,
+        "max_ms": 0.06,
+        "std_ms": 0.01,
+        "iterations_evaluated": 8,
+        "warmup_discarded": 2
+      }
+    },
+    "stage_latencies": {
+      "quality_gate": {
+        "median_ms": 9.32,
+        "p95_ms": 11.12,
+        "mean_ms": 9.3,
+        "min_ms": 6.6,
+        "max_ms": 12.04,
+        "std_ms": 1.04,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "preprocessing": {
+        "median_ms": 4.83,
+        "p95_ms": 5.69,
+        "mean_ms": 4.86,
+        "min_ms": 4.06,
+        "max_ms": 6.26,
+        "std_ms": 0.47,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "eye_model_inference": {
+        "median_ms": 32.25,
+        "p95_ms": 43.11,
+        "mean_ms": 33.47,
+        "min_ms": 25.53,
+        "max_ms": 44.85,
+        "std_ms": 5.46,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "gradcam": {
+        "median_ms": 126.14,
+        "p95_ms": 154.51,
+        "mean_ms": 128.87,
+        "min_ms": 112.45,
+        "max_ms": 166.87,
+        "std_ms": 12.76,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "vitals_analysis": {
+        "median_ms": 0.08,
+        "p95_ms": 0.21,
+        "mean_ms": 0.09,
+        "min_ms": 0.07,
+        "max_ms": 0.26,
+        "std_ms": 0.04,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "total_pipeline_e2e": {
+        "median_ms": 192.79,
+        "p95_ms": 216.61,
+        "mean_ms": 193.28,
+        "min_ms": 176.94,
+        "max_ms": 225.4,
+        "std_ms": 11.33,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      },
+      "total_pipeline_without_gradcam": {
+        "median_ms": 52.3,
+        "p95_ms": 63.17,
+        "mean_ms": 53.69,
+        "min_ms": 45.02,
+        "max_ms": 76.42,
+        "std_ms": 5.16,
+        "iterations_evaluated": 48,
+        "warmup_discarded": 12
+      }
+    },
+    "memory_profile": {
+      "cpu_working_set_start_mb": 475.88,
+      "cpu_working_set_peak_mb": 1182.91,
+      "cpu_private_usage_mb": 2503.3,
+      "gpu_allocated_start_mb": 0.0,
+      "gpu_allocated_peak_mb": 357.08,
+      "gpu_reserved_peak_mb": 364.0
+    },
+    "stage_breakdown_percentage": {
+      "quality_gate_pct": 4.8,
+      "preprocessing_pct": 2.5,
+      "eye_inference_pct": 16.7,
+      "gradcam_pct": 65.4,
+      "vitals_pct": 0.04
+    }
+  },
+  "cpu_fallback_profile": {
+    "device": "cpu",
+    "device_name": "CPU",
+    "sample_count": 4,
+    "iterations_total": 40,
+    "model_loading": {
+      "cold_start_ms": 403.94,
+      "cached_retrieval": {
+        "median_ms": 0.0,
+        "p95_ms": 0.01,
+        "mean_ms": 0.0,
+        "min_ms": 0.0,
+        "max_ms": 0.01,
+        "std_ms": 0.0,
+        "iterations_evaluated": 8,
+        "warmup_discarded": 2
+      }
+    },
+    "stage_latencies": {
+      "quality_gate": {
+        "median_ms": 8.19,
+        "p95_ms": 9.53,
+        "mean_ms": 8.29,
+        "min_ms": 6.84,
+        "max_ms": 9.79,
+        "std_ms": 0.82,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "preprocessing": {
+        "median_ms": 4.62,
+        "p95_ms": 5.47,
+        "mean_ms": 4.66,
+        "min_ms": 3.95,
+        "max_ms": 5.81,
+        "std_ms": 0.37,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "eye_model_inference": {
+        "median_ms": 74.17,
+        "p95_ms": 82.31,
+        "mean_ms": 74.8,
+        "min_ms": 66.5,
+        "max_ms": 84.23,
+        "std_ms": 4.18,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "gradcam": {
+        "median_ms": 198.75,
+        "p95_ms": 221.47,
+        "mean_ms": 201.59,
+        "min_ms": 188.24,
+        "max_ms": 226.42,
+        "std_ms": 10.19,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "vitals_analysis": {
+        "median_ms": 0.07,
+        "p95_ms": 0.2,
+        "mean_ms": 0.08,
+        "min_ms": 0.05,
+        "max_ms": 0.22,
+        "std_ms": 0.04,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "total_pipeline_e2e": {
+        "median_ms": 292.96,
+        "p95_ms": 324.15,
+        "mean_ms": 300.18,
+        "min_ms": 280.19,
+        "max_ms": 367.22,
+        "std_ms": 17.67,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      },
+      "total_pipeline_without_gradcam": {
+        "median_ms": 92.09,
+        "p95_ms": 101.92,
+        "mean_ms": 92.98,
+        "min_ms": 86.4,
+        "max_ms": 110.4,
+        "std_ms": 4.65,
+        "iterations_evaluated": 32,
+        "warmup_discarded": 8
+      }
+    },
+    "memory_profile": {
+      "cpu_working_set_start_mb": 1182.91,
+      "cpu_working_set_peak_mb": 1475.34,
+      "cpu_private_usage_mb": 3002.63,
+      "gpu_allocated_start_mb": 0.0,
+      "gpu_allocated_peak_mb": 0.0,
+      "gpu_reserved_peak_mb": 0.0
+    },
+    "stage_breakdown_percentage": {
+      "quality_gate_pct": 2.8,
+      "preprocessing_pct": 1.6,
+      "eye_inference_pct": 25.3,
+      "gradcam_pct": 67.8,
+      "vitals_pct": 0.02
+    }
+  },
+  "finite_stress_test": {
+    "total_calls": 100,
+    "total_duration_seconds": 17.31,
+    "mean_latency_ms": 173.1,
+    "median_latency_ms": 161.24,
+    "p95_latency_ms": 203.4,
+    "gpu_memory_allocated_growth_mb": 0.0,
+    "cpu_memory_working_set_growth_mb": 0.53,
+    "memory_checkpoints": [
+      {
+        "iteration": 1,
+        "cpu_mb": 1474.35,
+        "gpu_allocated_mb": 86.34,
+        "gpu_reserved_mb": 300.0
+      },
+      {
+        "iteration": 25,
+        "cpu_mb": 1474.29,
+        "gpu_allocated_mb": 86.34,
+        "gpu_reserved_mb": 300.0
+      },
+      {
+        "iteration": 50,
+        "cpu_mb": 1474.86,
+        "gpu_allocated_mb": 86.34,
+        "gpu_reserved_mb": 300.0
+      },
+      {
+        "iteration": 75,
+        "cpu_mb": 1474.88,
+        "gpu_allocated_mb": 86.34,
+        "gpu_reserved_mb": 300.0
+      },
+      {
+        "iteration": 100,
+        "cpu_mb": 1474.88,
+        "gpu_allocated_mb": 86.34,
+        "gpu_reserved_mb": 300.0
+      }
+    ],
+    "leak_detected": false,
+    "all_screenings_succeeded": true
+  },
+  "bottleneck_analysis": {
+    "dominant_stage_cuda": "Grad-CAM Generation",
+    "gradcam_overhead_percentage": 65.4,
+    "quality_gate_overhead_percentage": 4.8,
+    "cpu_slowdown_factor": 1.52,
+    "cache_efficiency": "Cached load is 23980.0x faster than cold load"
+  },
+  "verdict": {
+    "status": "PASS",
+    "leak_detected": false,
+    "recommendation": "The pipeline already employs device-aware in-memory model caching, tensor reuse into Grad-CAM, and strict inference mode. No lossy optimizations or architectural mutations needed."
+  }
+}

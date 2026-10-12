@@ -1,0 +1,207 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2026-10-11T16:14:36Z",
+    "device": "cuda",
+    "seed": 42,
+    "fine_tuning_epochs": 2,
+    "learning_rate": 0.0001,
+    "label_smoothing": 0.05,
+    "difficulty_weights": {
+      "cataract": 1.095,
+      "diabetic_retinopathy": 0.857,
+      "glaucoma": 1.19,
+      "normal": 0.857
+    },
+    "baseline_checkpoint": "ml\\weights\\baseline_eye_model_backup.pth",
+    "selected_checkpoint": "C:\\Users\\Aryan\\.gemini\\antigravity\\scratch\\multimodal-health-screening\\ml\\weights\\eye_model.pth"
+  },
+  "baseline_validation_metrics": {
+    "val_loss": 0.3718,
+    "val_accuracy": 0.8821,
+    "val_macro_f1": 0.881,
+    "val_per_class": {
+      "cataract": {
+        "precision": 0.8916,
+        "recall": 0.8744,
+        "f1_score": 0.8829,
+        "support": 207
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9279,
+        "recall": 0.945,
+        "f1_score": 0.9364,
+        "support": 218
+      },
+      "glaucoma": {
+        "precision": 0.8402,
+        "recall": 0.8232,
+        "f1_score": 0.8316,
+        "support": 198
+      },
+      "normal": {
+        "precision": 0.8659,
+        "recall": 0.8802,
+        "f1_score": 0.873,
+        "support": 242
+      }
+    },
+    "val_confusion_matrix": [
+      [
+        181,
+        10,
+        8,
+        8
+      ],
+      [
+        2,
+        206,
+        4,
+        6
+      ],
+      [
+        11,
+        5,
+        163,
+        19
+      ],
+      [
+        9,
+        1,
+        19,
+        213
+      ]
+    ]
+  },
+  "experiment_training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5107,
+      "train_acc": 0.8794,
+      "val_loss": 0.4743,
+      "val_acc": 0.8971,
+      "val_macro_f1": 0.8966,
+      "val_per_class": {
+        "cataract": {
+          "precision": 0.9378,
+          "recall": 0.8744,
+          "f1_score": 0.905,
+          "support": 207
+        },
+        "diabetic_retinopathy": {
+          "precision": 0.9583,
+          "recall": 0.9495,
+          "f1_score": 0.9539,
+          "support": 218
+        },
+        "glaucoma": {
+          "precision": 0.8358,
+          "recall": 0.8485,
+          "f1_score": 0.8421,
+          "support": 198
+        },
+        "normal": {
+          "precision": 0.8627,
+          "recall": 0.9091,
+          "f1_score": 0.8853,
+          "support": 242
+        }
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.4691,
+      "train_acc": 0.8879,
+      "val_loss": 0.4647,
+      "val_acc": 0.9029,
+      "val_macro_f1": 0.903,
+      "val_per_class": {
+        "cataract": {
+          "precision": 0.9265,
+          "recall": 0.913,
+          "f1_score": 0.9197,
+          "support": 207
+        },
+        "diabetic_retinopathy": {
+          "precision": 0.9755,
+          "recall": 0.9128,
+          "f1_score": 0.9431,
+          "support": 218
+        },
+        "glaucoma": {
+          "precision": 0.8186,
+          "recall": 0.8889,
+          "f1_score": 0.8523,
+          "support": 198
+        },
+        "normal": {
+          "precision": 0.8967,
+          "recall": 0.8967,
+          "f1_score": 0.8967,
+          "support": 242
+        }
+      }
+    }
+  ],
+  "model_selection": {
+    "improved_on_validation": true,
+    "selected_model": "experiment_candidate",
+    "validation_decision_criterion": "Validation Accuracy and Macro F1"
+  },
+  "final_held_out_test_metrics": {
+    "test_loss": 0.3352,
+    "test_accuracy": 0.8781,
+    "test_macro_f1": 0.8778,
+    "test_per_class": {
+      "cataract": {
+        "precision": 0.9,
+        "recall": 0.8571,
+        "f1_score": 0.878,
+        "support": 210
+      },
+      "diabetic_retinopathy": {
+        "precision": 0.9727,
+        "recall": 0.9185,
+        "f1_score": 0.9448,
+        "support": 233
+      },
+      "glaucoma": {
+        "precision": 0.7928,
+        "recall": 0.867,
+        "f1_score": 0.8282,
+        "support": 203
+      },
+      "normal": {
+        "precision": 0.8532,
+        "recall": 0.8669,
+        "f1_score": 0.86,
+        "support": 248
+      }
+    },
+    "test_confusion_matrix": [
+      [
+        180,
+        2,
+        15,
+        13
+      ],
+      [
+        8,
+        214,
+        2,
+        9
+      ],
+      [
+        8,
+        4,
+        176,
+        15
+      ],
+      [
+        4,
+        0,
+        29,
+        215
+      ]
+    ]
+  }
+}

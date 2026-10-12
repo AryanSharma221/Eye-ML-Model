@@ -1,0 +1,10 @@
+# ==============================================================================
+# Multimodal Health Screening ML Layer - Development & Testing Dependencies
+# Target Python Version: >=3.10, <=3.12 (Verified on Python 3.12.4 x86_64)
+# ==============================================================================
+
+# Core runtime dependencies
+-r ml/requirements.txt
+
+# Testing framework and test runners
+pytest>=8.0.0

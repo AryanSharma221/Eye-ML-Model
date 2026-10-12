@@ -1,0 +1,59 @@
+{
+  "mode": "pipeline_validation",
+  "timestamp_utc": "2026-10-12T17:09:42Z",
+  "notice": "MOCKED / DRY-RUN VALIDATION ONLY -- NOT CLINICAL DIAGNOSTIC PREDICTIONS",
+  "subsystems": {
+    "module_imports": {
+      "status": "PASS",
+      "modules": {
+        "torch": "AVAILABLE",
+        "torchvision": "AVAILABLE",
+        "cv2": "AVAILABLE",
+        "PIL": "AVAILABLE",
+        "numpy": "AVAILABLE",
+        "ml.quality_gate": "AVAILABLE",
+        "ml.preprocessing": "AVAILABLE",
+        "ml.eye_model": "AVAILABLE",
+        "ml.gradcam": "AVAILABLE",
+        "ml.physio_model": "AVAILABLE",
+        "ml.screening_pipeline": "AVAILABLE",
+        "ml.checkpoint_manager": "AVAILABLE"
+      }
+    },
+    "checkpoint_health": {
+      "path": "eye_model.pth",
+      "exists_on_disk": true,
+      "loadable_weights_only": true,
+      "classes": [
+        "cataract",
+        "diabetic_retinopathy",
+        "glaucoma",
+        "normal"
+      ],
+      "epoch": 6,
+      "best_val_accuracy": 0.9028901734104047,
+      "status": "PASS"
+    },
+    "quality_gate": {
+      "status": "PASS",
+      "tests": {
+        "blank_canvas_rejected": true,
+        "blur_canvas_rejected": true
+      }
+    },
+    "vitals_engine": {
+      "status": "PASS",
+      "tests": {
+        "normal_case_low_risk": true,
+        "critical_case_high_risk": true,
+        "implausible_value_rejected": true
+      }
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "smoke_status": "partial"
+    }
+  },
+  "elapsed_ms": 276.2,
+  "overall_status": "PASS"
+}

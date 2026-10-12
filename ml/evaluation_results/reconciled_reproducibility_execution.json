@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "execution_timestamp": "2026-10-12T09:30:10Z",
+    "checkpoint_sha256": "e819440c35f166c90e6469b071cc83136857e95aa80bcd6697336894bb459f5f",
+    "manifest_sha256": "cb2d80449899673438268750011697f7ae9518a8259e5dc8482edfe9d7c01f27",
+    "total_test_samples": 894,
+    "target_classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ]
+  },
+  "timings_seconds": {
+    "cuda_pass_1": 28.8,
+    "cuda_pass_2": 27.59,
+    "cpu_pass": 67.29
+  },
+  "accuracy": {
+    "cuda_pass_1": 0.8781,
+    "cuda_pass_2": 0.8781,
+    "cpu_pass": 0.8781
+  },
+  "repeatability_cuda_vs_cuda": {
+    "sample_count": 894,
+    "prediction_agreement_count": 894,
+    "prediction_agreement_pct": 100.0,
+    "bit_for_bit_identical": true,
+    "max_absolute_probability_difference": 0.0,
+    "mean_absolute_probability_difference": 0.0
+  },
+  "cross_device_cpu_vs_cuda": {
+    "sample_count": 894,
+    "prediction_agreement_count": 894,
+    "prediction_agreement_pct": 100.0,
+    "bit_for_bit_identical": false,
+    "max_absolute_probability_difference": 0.0005432367324829102,
+    "mean_absolute_probability_difference": 2.886258516809903e-05
+  }
+}

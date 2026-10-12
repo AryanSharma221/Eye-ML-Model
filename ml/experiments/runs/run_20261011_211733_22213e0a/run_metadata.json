@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "run_20261011_211733_22213e0a",
+  "experiment_name": "eye_densenet201_screening",
+  "description": "",
+  "tags": [
+    "densenet201",
+    "retinal_screening"
+  ],
+  "status": "COMPLETED",
+  "timestamps": {
+    "start_utc": "2026-10-11T21:17:33.742699+00:00",
+    "completion_utc": "2026-10-11T21:17:38.732873+00:00",
+    "total_duration_seconds": 4.99
+  },
+  "reproducibility": {
+    "seed": 42,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "git_commit": "unavailable"
+  },
+  "device": {
+    "configured": "cpu",
+    "cuda_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "dataset": {
+    "manifest_path": "mini_manifest.json",
+    "manifest_sha256": "90353db9eac9417ad0cfc6803932b6ed227b2720ffb9c7995afc05757f98f5ac",
+    "split_manifest_sha256": "90353db9eac9417ad0cfc6803932b6ed227b2720ffb9c7995afc05757f98f5ac",
+    "total_images": 12,
+    "split_counts": {
+      "train": 4,
+      "val": 4,
+      "test": 4
+    },
+    "class_distribution": {
+      "train": {
+        "cataract": 1,
+        "diabetic_retinopathy": 1,
+        "glaucoma": 1,
+        "normal": 1
+      },
+      "val": {
+        "cataract": 1,
+        "diabetic_retinopathy": 1,
+        "glaucoma": 1,
+        "normal": 1
+      },
+      "test": {
+        "cataract": 1,
+        "diabetic_retinopathy": 1,
+        "glaucoma": 1,
+        "normal": 1
+      }
+    },
+    "canonical_classes": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "num_classes": 4
+  },
+  "model": {
+    "architecture": "DenseNet201",
+    "in_features": 1920,
+    "num_classes": 4,
+    "class_names": [
+      "cataract",
+      "diabetic_retinopathy",
+      "glaucoma",
+      "normal"
+    ],
+    "pretrained_backbone": false,
+    "total_parameters": 18100612
+  },
+  "hyperparameters": {
+    "batch_size": 2,
+    "num_epochs": 1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "optimizer": "Adam",
+    "scheduler": "ReduceLROnPlateau",
+    "scheduler_factor": 0.5,
+    "patience": 3,
+    "loss_criterion": "CrossEntropyLoss",
+    "use_class_weights": true,
+    "checkpoint_selection_metric": "max_val_accuracy"
+  },
+  "preprocessing": {
+    "target_resolution": [
+      224,
+      224
+    ],
+    "color_mode": "RGB",
+    "normalization": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "data_augmentation": "RandomHorizontalFlip(p=0.5), RandomRotation(degrees=15)"
+  },
+  "environment": {
+    "platform": {
+      "system": "Windows",
+      "release": "11",
+      "machine": "AMD64",
+      "processor": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD"
+    },
+    "python_version": "3.12.4",
+    "git_commit": "unavailable",
+    "dependencies": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "opencv": "5.0.0",
+      "pillow": "12.3.0",
+      "numpy": "2.5.4"
+    },
+    "cuda": {
+      "available": true,
+      "device_count": 1,
+      "current_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "cudnn_enabled": true,
+      "cudnn_deterministic": true,
+      "cudnn_benchmark": false,
+      "vram_total_mb": 8187.5
+    }
+  },
+  "epoch_history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.0008,
+      "train_acc": 0.0,
+      "val_loss": 2.8803,
+      "val_acc": 0.25,
+      "learning_rate": 0.001,
+      "epoch_duration_seconds": 2.4
+    }
+  ],
+  "best_metrics": {
+    "best_epoch": 1,
+    "best_val_accuracy": 0.25,
+    "best_val_loss": 2.8802956342697144
+  },
+  "checkpoints": {
+    "best_checkpoint": {
+      "path": "best_model.pth",
+      "filename": "best_model.pth",
+      "sha256": "651016ec6d06cd543c0d675968f6afcf451483883eb56d0460ed90f62970ba00",
+      "file_size_bytes": 73760176,
+      "epoch": 1,
+      "best_val_accuracy": 0.25,
+      "val_loss": 2.8802956342697144,
+      "saved_utc": "2026-10-11T21:17:35.585889+00:00",
+      "verified": true
+    },
+    "final_checkpoint": {
+      "path": "final_model.pth",
+      "filename": "final_model.pth",
+      "sha256": "b155a187271f15f6c34656f00529bc9dce9ea3a3199a033a793073f06db41a75",
+      "file_size_bytes": 219076343,
+      "epoch": 1,
+      "best_val_accuracy": 0.25,
+      "val_loss": 2.8802956342697144,
+      "saved_utc": "2026-10-11T21:17:38.248764+00:00",
+      "verified": true
+    },
+    "recovery_checkpoint": {
+      "path": "recovery_checkpoint.pth",
+      "filename": "recovery_checkpoint.pth",
+      "sha256": "dc8e247a260f33d39ff45897bd0f88bc024477800462f5c0e8d1a3a8e35ead55",
+      "file_size_bytes": 219100591,
+      "epoch": 1,
+      "best_val_accuracy": 0.25,
+      "val_loss": 2.8802956342697144,
+      "saved_utc": "2026-10-11T21:17:37.098906+00:00",
+      "verified": true
+    }
+  },
+  "evaluations": [
+    {
+      "evaluation_timestamp": "2026-10-11T21:17:38.730874+00:00",
+      "dataset_split": "test",
+      "evaluated_images": 4,
+      "checkpoint_sha256": "651016ec6d06cd543c0d675968f6afcf451483883eb56d0460ed90f62970ba00",
+      "overall_accuracy": 0.25,
+      "macro_f1": null,
+      "weighted_f1": null,
+      "report_path": null
+    }
+  ],
+  "failure_reason": null
+}
